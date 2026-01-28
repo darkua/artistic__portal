@@ -1,0 +1,373 @@
+{
+  "works": {
+    "theaterDirector": [
+      {
+        "id": 1,
+        "title": {
+          "en": "Theater Piece #01 (2024)",
+          "es": "Pieza Teatral #01 (2024)"
+        },
+        "shortDescription": {
+          "en": "A theatrical piece exploring themes of identity and transformation.",
+          "es": "Una pieza teatral que explora temas de identidad y transformación."
+        },
+        "description": {
+          "en": "This theatrical work delves into the complex relationship between identity and transformation. Through innovative staging and powerful performances, the piece invites audiences to reflect on the fluid nature of self-discovery and personal growth.",
+          "es": "Esta obra teatral profundiza en la compleja relación entre identidad y transformación. A través de una puesta en escena innovadora y actuaciones poderosas, la pieza invita al público a reflexionar sobre la naturaleza fluida del autodescubrimiento y el crecimiento personal."
+        },
+        "thumbnail": "/placeholder-theater-1.jpg",
+        "images": [
+          {
+            "url": "/placeholder-theater-1.jpg",
+            "caption": {
+              "en": "Photo: Production Name",
+              "es": "Foto: Nombre de la Producción"
+            }
+          },
+          {
+            "url": "/placeholder-theater-1-2.jpg",
+            "caption": {
+              "en": "Photo: Production Name",
+              "es": "Foto: Nombre de la Producción"
+            }
+          }
+        ],
+        "video": {
+          "url": "",
+          "thumbnail": ""
+        },
+        "materials": {
+          "en": "Theater production",
+          "es": "Producción teatral"
+        },
+        "size": {
+          "en": "Duration: 90 minutes",
+          "es": "Duración: 90 minutos"
+        },
+        "year": 2024
+      },
+      {
+        "id": 2,
+        "title": {
+          "en": "Theater Piece #02 (2023)",
+          "es": "Pieza Teatral #02 (2023)"
+        },
+        "shortDescription": {
+          "en": "An experimental theater work combining movement and text.",
+          "es": "Una obra de teatro experimental que combina movimiento y texto."
+        },
+        "description": {
+          "en": "This experimental piece merges physical theater with spoken word, creating a unique performance that challenges traditional narrative structures. The work explores the boundaries between dance, theater, and poetry.",
+          "es": "Esta pieza experimental fusiona teatro físico con palabra hablada, creando una actuación única que desafía las estructuras narrativas tradicionales. La obra explora los límites entre danza, teatro y poesía."
+        },
+        "thumbnail": "/placeholder-theater-2.jpg",
+        "images": [
+          {
+            "url": "/placeholder-theater-2.jpg",
+            "caption": {
+              "en": "Photo: Production Name",
+              "es": "Foto: Nombre de la Producción"
+            }
+          }
+        ],
+        "video": {
+          "url": "",
+          "thumbnail": ""
+        },
+        "materials": {
+          "en": "Theater production",
+          "es": "Producción teatral"
+        },
+        "size": {
+          "en": "Duration: 60 minutes",
+          "es": "Duración: 60 minutos"
+        },
+        "year": 2023
+      },
+      {
+        "id": 6,
+        "title": {
+          "en": "El pez y la gaviota (2022)",
+          "es": "El pez y la gaviota (2022)"
+        },
+        "shortDescription": {
+          "en": "A theatrical piece about encountering \"the other\" and dismantling social labels.",
+          "es": "Una pieza teatral sobre el encuentro con \"el otro\" y el desmantelamiento de las etiquetas sociales."
+        },
+        "description": {
+          "en": "We live in a stereotyped world where social relations are often built not on direct experience, but on our ignorance of \"the other\". We create a foreign figure onto whom we project our insecurities, fears, and prejudices, giving rise to social labels that obscure our shared humanity. \"El pez y la gaviota\" invites us to question these labels and to explore what happens when we are able to become that \"other\" and recognize that, within their difference, they are fundamentally like ourselves.",
+          "es": "Vivimos en un mundo estereotipado, cuyas relaciones sociales no se basan en una experiencia directa, sino en el desconocimiento de \"el otro\". Necesitamos crear un extranjero diferente al que hacer depositario de nuestras inseguridades, nuestros miedos y nuestros prejuicios, naciendo así las etiquetas sociales que ocultan nuestra humanidad compartida. \"El pez y la gaviota\" nos invita a cuestionar esas etiquetas y a explorar qué ocurre cuando somos capaces de convertirnos en ese \"otro\" y aceptar que, dentro de su diferencia, es en esencia igual a nosotros mismos."
+        },
+        "thumbnail": "/works/pez-gaviota/Cartel1_El pez y la gaviota_limpio_72.jpg",
+        "images": [
+          {
+            "url": "/works/pez-gaviota/Cartel1_El pez y la gaviota_limpio_72.jpg",
+            "caption": {
+              "en": "Poster: El pez y la gaviota",
+              "es": "Cartel: El pez y la gaviota"
+            }
+          },
+          {
+            "url": "/works/pez-gaviota/cartel2b_El pez y la gaviota_72.jpg",
+            "caption": {
+              "en": "Poster detail",
+              "es": "Detalle del cartel"
+            }
+          },
+          {
+            "url": "/works/pez-gaviota/cartel3_El pez y la gaviota.jpg",
+            "caption": {
+              "en": "Poster variation",
+              "es": "Variación del cartel"
+            }
+          },
+          {
+            "url": "/works/pez-gaviota/WhatsApp Image 2022-01-18 at 16.24.46.jpeg",
+            "caption": {
+              "en": "Rehearsal photo",
+              "es": "Foto de ensayo"
+            }
+          },
+          {
+            "url": "/works/pez-gaviota/WhatsApp Image 2022-01-18 at 16.24.49.jpeg",
+            "caption": {
+              "en": "Scene from the play",
+              "es": "Escena de la obra"
+            }
+          }
+        ],
+        "videos": [
+          {
+            "url": "https://www.youtube.com/watch?v=zTNq5Oe6mpY",
+            "thumbnail": "https://img.youtube.com/vi/zTNq5Oe6mpY/maxresdefault.jpg"
+          }
+        ],
+        "materials": {
+          "en": "Theater production",
+          "es": "Producción teatral"
+        },
+        "size": {
+          "en": "Theater piece",
+          "es": "Pieza teatral"
+        },
+        "year": 2022
+      }
+    ],
+    "actress": [
+      {
+        "id": 3,
+        "title": {
+          "en": "Performance #01 (2024)",
+          "es": "Actuación #01 (2024)"
+        },
+        "shortDescription": {
+          "en": "A dramatic role exploring emotional depth and vulnerability.",
+          "es": "Un papel dramático que explora la profundidad emocional y la vulnerabilidad."
+        },
+        "description": {
+          "en": "In this performance, Elma Hache brings to life a complex character navigating the intricacies of human relationships. The role demands emotional authenticity and physical presence, showcasing her versatility as an actress.",
+          "es": "En esta actuación, Elma Hache da vida a un personaje complejo que navega por las complejidades de las relaciones humanas. El papel exige autenticidad emocional y presencia física, mostrando su versatilidad como actriz."
+        },
+        "thumbnail": "/placeholder-actress-1.jpg",
+        "images": [
+          {
+            "url": "/placeholder-actress-1.jpg",
+            "caption": {
+              "en": "Photo: Production Name",
+              "es": "Foto: Nombre de la Producción"
+            }
+          }
+        ],
+        "video": {
+          "url": "",
+          "thumbnail": ""
+        },
+        "materials": {
+          "en": "Theater performance",
+          "es": "Actuación teatral"
+        },
+        "size": {
+          "en": "Theater production",
+          "es": "Producción teatral"
+        },
+        "year": 2024
+      }
+    ],
+    "movieDirector": [
+      {
+        "id": 4,
+        "title": {
+          "en": "El último paquete (2020)",
+          "es": "El último paquete (2020)"
+        },
+        "shortDescription": {
+          "en": "A short film exploring themes of memory and loss.",
+          "es": "Un cortometraje que explora temas de memoria y pérdida."
+        },
+        "description": {
+          "en": "El último paquete is a short film that delves into the emotional landscape of memory and loss. Through poetic imagery and nuanced storytelling, the film invites viewers to reflect on the weight of the past and the fragility of human connections. The work explores how personal narratives intersect with collective memory, creating spaces for reflection and dialogue.",
+          "es": "El último paquete es un cortometraje que profundiza en el paisaje emocional de la memoria y la pérdida. A través de imágenes poéticas y una narrativa matizada, la película invita a los espectadores a reflexionar sobre el peso del pasado y la fragilidad de las conexiones humanas. La obra explora cómo las narrativas personales se cruzan con la memoria colectiva, creando espacios para la reflexión y el diálogo."
+        },
+        "thumbnail": "https://img.youtube.com/vi/MNsRA5Ksnyo/maxresdefault.jpg",
+        "images": [],
+        "videos": [
+          {
+            "url": "https://www.youtube.com/watch?v=MNsRA5Ksnyo",
+            "thumbnail": "https://img.youtube.com/vi/MNsRA5Ksnyo/maxresdefault.jpg"
+          }
+        ],
+        "materials": {
+          "en": "Short film",
+          "es": "Cortometraje"
+        },
+        "size": {
+          "en": "Duration: 15 minutes",
+          "es": "Duración: 15 minutos"
+        },
+        "year": 2020
+      },
+      {
+        "id": 5,
+        "title": {
+          "en": "Short Story #02 (2023)",
+          "es": "Cortometraje #02 (2023)"
+        },
+        "shortDescription": {
+          "en": "A narrative short exploring contemporary themes.",
+          "es": "Un cortometraje narrativo que explora temas contemporáneos."
+        },
+        "description": {
+          "en": "This short film presents a contemporary narrative that examines the complexities of modern life. Through careful composition and evocative cinematography, the work creates an intimate portrait of its characters and their struggles.",
+          "es": "Este cortometraje presenta una narrativa contemporánea que examina las complejidades de la vida moderna. A través de una composición cuidadosa y una cinematografía evocadora, la obra crea un retrato íntimo de sus personajes y sus luchas."
+        },
+        "thumbnail": "/placeholder-film-2.jpg",
+        "images": [
+          {
+            "url": "/placeholder-film-2.jpg",
+            "caption": {
+              "en": "Film still",
+              "es": "Fotograma de la película"
+            }
+          }
+        ],
+        "video": {
+          "url": "",
+          "thumbnail": ""
+        },
+        "materials": {
+          "en": "Short film",
+          "es": "Cortometraje"
+        },
+        "size": {
+          "en": "Duration: 12 minutes",
+          "es": "Duración: 12 minutos"
+        },
+        "year": 2023
+      }
+    ]
+  },
+  "news": [
+    {
+      "id": 1,
+      "date": "2024-03-15",
+      "title": {
+        "en": "New Theater Production",
+        "es": "Nueva Producción Teatral"
+      },
+      "description": {
+        "en": "Elma Hache will be premiering a new theater piece next month at the Contemporary Theater.",
+        "es": "Elma Hache estrenará una nueva pieza teatral el próximo mes en el Teatro Contemporáneo."
+      }
+    },
+    {
+      "id": 2,
+      "date": "2024-02-20",
+      "title": {
+        "en": "Film Festival Selection",
+        "es": "Selección en Festival de Cine"
+      },
+      "description": {
+        "en": "El último paquete has been selected for the International Short Film Festival.",
+        "es": "El último paquete ha sido seleccionado para el Festival Internacional de Cortometrajes."
+      }
+    },
+    {
+      "id": 3,
+      "date": "2024-01-10",
+      "title": {
+        "en": "Theater Award",
+        "es": "Premio de Teatro"
+      },
+      "description": {
+        "en": "Elma's latest theater production has received recognition at the National Theater Awards.",
+        "es": "La última producción teatral de Elma ha recibido reconocimiento en los Premios Nacionales de Teatro."
+      }
+    }
+  ],
+  "cv": {
+    "bio": {
+      "en": "Elma Hache is an artist working across theater, film, and performance. Her practice explores themes of identity, memory, and transformation through contemporary storytelling and innovative staging. Born in 1985, she lives and works in Madrid, Spain.\n\nHer work examines how personal narratives intersect with collective memory, creating spaces for reflection and dialogue. By moving beyond traditional media boundaries, she creates works that invite audiences to engage with complex emotional and social themes.",
+      "es": "Elma Hache es una artista que trabaja en teatro, cine y performance. Su práctica explora temas de identidad, memoria y transformación a través de la narrativa contemporánea y puestas en escena innovadoras. Nacida en 1985, vive y trabaja en Madrid, España.\n\nSu trabajo examina cómo las narrativas personales se cruzan con la memoria colectiva, creando espacios para la reflexión y el diálogo. Al ir más allá de los límites de los medios tradicionales, crea obras que invitan al público a involucrarse con temas emocionales y sociales complejos."
+    },
+    "education": [
+      {
+        "year": 2020,
+        "degree": {
+          "en": "Stage Direction and Dramaturgy",
+          "es": "Dirección de Escena y Dramaturgia"
+        },
+        "institution": {
+          "en": "Drama School",
+          "es": "Escuela de Teatro"
+        }
+      },
+      {
+        "year": 2008,
+        "degree": {
+          "en": "BFA, Fine Arts",
+          "es": "Licenciatura en Bellas Artes"
+        },
+        "institution": {
+          "en": "Universidad Complutense de Madrid",
+          "es": "Universidad Complutense de Madrid"
+        }
+      }
+    ],
+    "awards": [
+      {
+        "year": 2023,
+        "title": {
+          "en": "Theater Direction Award",
+          "es": "Premio de Dirección Teatral"
+        },
+        "organization": {
+          "en": "National Theater Association",
+          "es": "Asociación Nacional de Teatro"
+        }
+      },
+      {
+        "year": 2021,
+        "title": {
+          "en": "Short Film Award",
+          "es": "Premio de Cortometraje"
+        },
+        "organization": {
+          "en": "Independent Film Festival",
+          "es": "Festival de Cine Independiente"
+        }
+      }
+    ],
+    "collection": []
+  },
+  "contact": {
+    "email": "info@elmahache.com",
+    "studio": {
+      "en": "Elma Hache Studio",
+      "es": "Estudio Elma Hache"
+    },
+    "social": {
+      "instagram": "https://instagram.com/elmahache",
+      "vimeo": "https://vimeo.com/elmahache"
+    }
+  }
+}

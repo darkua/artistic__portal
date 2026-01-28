@@ -1,0 +1,86 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 0 0% 0%;
+    --radius: 0.5rem;
+  }
+
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    font-feature-settings: "rlig" 1, "calt" 1;
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+}
+
+/* Minimalist styles matching Akinori Goto aesthetic */
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Full-width sections */
+section {
+  width: 100%;
+}
+
+/* Generous spacing */
+.container {
+  @apply mx-auto px-4 sm:px-6 lg:px-8;
+  max-width: 100%;
+}
+
+/* Large typography - matching minimalist aesthetic */
+h1 {
+  @apply text-4xl sm:text-5xl lg:text-6xl font-light tracking-tight;
+  letter-spacing: -0.02em;
+}
+
+h2 {
+  @apply text-3xl sm:text-4xl lg:text-5xl font-light tracking-tight;
+  letter-spacing: -0.01em;
+}
+
+h3 {
+  @apply text-2xl sm:text-3xl font-light;
+}
+
+/* Link styles */
+a {
+  @apply transition-opacity;
+}
+
+a:hover {
+  @apply opacity-70;
+}
+
+/* Image styles */
+img {
+  @apply select-none;
+}
+
+/* Focus styles for accessibility */
+button:focus-visible,
+a:focus-visible {
+  @apply outline-2 outline-offset-2 outline-primary;
+}
+

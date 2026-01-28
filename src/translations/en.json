@@ -1,0 +1,60 @@
+{
+  "nav": {
+    "works": "WORKS",
+    "news": "NEWS",
+    "cv": "CV",
+    "contact": "CONTACT"
+  },
+  "home": {
+    "title": "ELMA HACHE",
+    "subtitle": "Artist Portfolio",
+    "introduction": "Elma is a restless soul. She defines herself as \"the eternal learner,\" perhaps because her path has never been linear. The artistic, the social, and the therapeutic have been interweaving throughout her life, in a trajectory marked by curiosity.\n\nBy profession: photographer, journalist, social educator, theater-therapist, playwright, and stage director, among others. Traveling, learning, discovering new paradigms, and building bridges between worlds and perspectives define her way of being in life.\n\nSince 2020, her syncretic nature has pushed her again to explore other creative languages: theater and film. She graduates in Stage Direction and Dramaturgy, directs and writes five theatrical pieces and a short film: \"El último paquete\"."
+  },
+  "works": {
+    "title": "WORKS",
+    "viewWork": "View Work",
+    "backToWorks": "Back to Works",
+    "notFound": "Work not found",
+    "materials": "Materials",
+    "size": "Size",
+    "theaterDirector": "Theater Director",
+    "actress": "Actress",
+    "movieDirector": "Movie Director - Short Stories",
+    "noWorks": "No works available in this category"
+  },
+  "news": {
+    "title": "NEWS",
+    "readMore": "Read More"
+  },
+  "cv": {
+    "title": "CV",
+    "bio": {
+      "title": "Biography",
+      "content": "Elma Hache is an artist working across installation, video, and sculpture. Her practice explores themes of time, movement, and perception through contemporary technologies and historical methods."
+    },
+    "awards": {
+      "title": "Awards"
+    },
+    "collection": {
+      "title": "Collection"
+    },
+    "education": {
+      "title": "Education"
+    }
+  },
+  "contact": {
+    "title": "CONTACT",
+    "studio": "Elma Hache Studio",
+    "email": "info@elmahache.com"
+  },
+  "footer": {
+    "copyright": "Elma Hache All Rights Reserved."
+  },
+  "language": {
+    "switch": "Switch Language"
+  },
+  "common": {
+    "photo": "Photo"
+  }
+}
+
