@@ -3,11 +3,13 @@ import { useTranslation } from '../hooks/useTranslation'
 import { LanguageSwitcher } from './LanguageSwitcher'
 import { useState } from 'react'
 import { Menu, X } from 'lucide-react'
+import { useSpotlight } from '../contexts/SpotlightContext'
 
 export default function Navigation() {
   const { t } = useTranslation()
   const location = useLocation()
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
+  const { activate } = useSpotlight()
 
   const navItems = [
     { path: '/', key: 'nav.home' },
@@ -28,6 +30,10 @@ export default function Navigation() {
           <Link
             to="/"
             className="text-xl font-light tracking-wide uppercase hover:opacity-70 transition-opacity"
+            onClick={(e) => {
+              e.preventDefault() // Prevent navigation, only activate spotlight
+              activate()
+            }}
           >
             {t('home.title')}
           </Link>

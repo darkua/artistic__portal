@@ -1,5 +1,6 @@
 import { Routes, Route } from 'react-router-dom'
 import { LanguageProvider } from './contexts/LanguageContext'
+import { SpotlightProvider } from './contexts/SpotlightContext'
 import Layout from './components/Layout'
 import Home from './pages/Home'
 import Works from './pages/Works'
@@ -12,17 +13,19 @@ import Contact from './pages/Contact'
 function App() {
   return (
     <LanguageProvider>
-      <Layout>
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/works" element={<Works />} />
-          <Route path="/works/:id" element={<WorkDetail />} />
-          <Route path="/news" element={<News />} />
-          <Route path="/assistant-direction" element={<AssistantDirection />} />
-          <Route path="/cv" element={<CV />} />
-          <Route path="/contact" element={<Contact />} />
-        </Routes>
-      </Layout>
+      <SpotlightProvider>
+        <Layout>
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/works" element={<Works />} />
+            <Route path="/works/:id" element={<WorkDetail />} />
+            <Route path="/news" element={<News />} />
+            <Route path="/assistant-direction" element={<AssistantDirection />} />
+            <Route path="/cv" element={<CV />} />
+            <Route path="/contact" element={<Contact />} />
+          </Routes>
+        </Layout>
+      </SpotlightProvider>
     </LanguageProvider>
   )
 }
