@@ -12,7 +12,7 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
 const app = express();
-const PORT = process.env.PORT || 8081;
+const PORT = 8082;
 
 // Initialize Ollama
 // Uses OLLAMA_BASE_URL environment variable or defaults to http://localhost:11434
@@ -155,6 +155,63 @@ function readGalleryData() {
 function writeGalleryData(data) {
   const galleryDataPath = path.join(__dirname, 'src', 'data', 'galleryData.json');
   fs.writeFileSync(galleryDataPath, JSON.stringify(data, null, 2), 'utf-8');
+}
+
+// Helper functions to read/write portfolioData.json (works for theater/cine)
+function readPortfolioData() {
+  const portfolioDataPath = path.join(__dirname, 'src', 'data', 'portfolioData.json');
+  const content = fs.readFileSync(portfolioDataPath, 'utf-8');
+  return JSON.parse(content);
+}
+
+function writePortfolioData(data) {
+  const portfolioDataPath = path.join(__dirname, 'src', 'data', 'portfolioData.json');
+  fs.writeFileSync(portfolioDataPath, JSON.stringify(data, null, 2), 'utf-8');
+}
+
+// Find a work by numeric ID across all categories
+function findWorkById(portfolioData, workId) {
+  if (!portfolioData.works) return null;
+  const sections = ['theaterDirector', 'actress', 'movieDirector'];
+  for (const section of sections) {
+    const arr = portfolioData.works[section];
+    if (Array.isArray(arr)) {
+      const index = arr.findIndex((w) => w.id === workId);
+      if (index !== -1) {
+        return { section, index, work: arr[index] };
+      }
+    }
+  }
+  return null;
+}
+
+// Process a work image: resize and compress with ImageMagick, no watermark, target < 200KB
+function processWorkImage(sourcePath, destPath) {
+  try {
+    let quality = 85;
+    const maxSize = 200 * 1024; // 200 KB
+
+    for (let attempt = 0; attempt < 5; attempt++) {
+      // Resize to max 1920px, strip metadata, adjust quality
+      execSync(
+        `magick "${sourcePath}" -auto-orient -resize "1920x1920>" -strip -quality ${quality} "${destPath}"`,
+        { stdio: 'ignore' }
+      );
+
+      const { size } = fs.statSync(destPath);
+      if (size <= maxSize || quality <= 40) {
+        break;
+      }
+
+      // Reduce quality and try again
+      quality -= 10;
+    }
+
+    return { success: true };
+  } catch (error) {
+    console.error('Error processing work image:', error);
+    return { success: false, error: error.message };
+  }
 }
 
 // Find all exhibition IDs that match the pattern (for duplicates like underwater-*)
@@ -709,6 +766,106 @@ app.post('/api/upload', upload.single('image'), async (req, res) => {
     });
   } catch (error) {
     console.error('Upload error:', error);
+    if (req.file && fs.existsSync(req.file.path)) {
+      fs.unlinkSync(req.file.path);
+    }
+    res.status(500).json({ error: error.message });
+  }
+});
+
+// Upload work gallery image (used by Works detail page photo gallery)
+// Each image is uploaded individually; it is resized/compressed with ImageMagick (no watermark)
+// and appended to the end of the corresponding work's images array in portfolioData.json
+app.post('/api/works/:workId/images', upload.single('image'), async (req, res) => {
+  try {
+    console.log('=== WORK IMAGE UPLOAD REQUEST ===');
+    console.log('File:', req.file ? req.file.originalname : 'No file');
+    console.log('Params:', req.params);
+
+    if (!req.file) {
+      return res.status(400).json({ error: 'No file uploaded' });
+    }
+
+    const workId = Number(req.params.workId);
+    if (!workId || Number.isNaN(workId)) {
+      fs.unlinkSync(req.file.path);
+      return res.status(400).json({ error: 'Invalid workId' });
+    }
+
+    // Read current portfolio data and locate the work
+    const portfolioData = readPortfolioData();
+    const found = findWorkById(portfolioData, workId);
+
+    if (!found) {
+      fs.unlinkSync(req.file.path);
+      return res.status(404).json({ error: `Work with id ${workId} not found` });
+    }
+
+    const { section, index, work } = found;
+    console.log(`Uploading image for work ${workId} in section ${section} at index ${index}`);
+
+    // Derive directory name from existing thumbnail or first image
+    let baseFolder = 'misc';
+    const basePath =
+      (work.thumbnail && typeof work.thumbnail === 'string' && work.thumbnail) ||
+      (work.images && work.images.length > 0 && work.images[0].url);
+
+    if (basePath && typeof basePath === 'string' && basePath.startsWith('/works/')) {
+      const segments = basePath.split('/');
+      if (segments.length >= 3 && segments[2]) {
+        baseFolder = segments[2];
+      }
+    }
+
+    const worksDir = path.join(__dirname, 'public', 'works', baseFolder);
+    if (!fs.existsSync(worksDir)) {
+      fs.mkdirSync(worksDir, { recursive: true });
+    }
+
+    const ext = path.extname(req.file.originalname).toLowerCase() || '.jpg';
+    const filename = `work-${Date.now()}${ext}`;
+    const destPath = path.join(worksDir, filename);
+
+    // Process image with ImageMagick (resize + compress, no watermark)
+    const result = processWorkImage(req.file.path, destPath);
+
+    // Remove temp upload
+    fs.unlinkSync(req.file.path);
+
+    if (!result.success) {
+      return res.status(500).json({ error: result.error || 'Failed to process image' });
+    }
+
+    const urlPath = `/works/${baseFolder}/${filename}`;
+
+    // Append new image to the end of the work's images array
+    if (!Array.isArray(work.images)) {
+      work.images = [];
+    }
+
+    work.images.push({
+      url: urlPath,
+      caption: {
+        en: 'Scene from the play',
+        es: 'Escena de la obra',
+      },
+    });
+
+    // Persist back to portfolioData.json
+    portfolioData.works[section][index] = work;
+    writePortfolioData(portfolioData);
+
+    console.log(`✅ Added new image to work ${workId}: ${urlPath}`);
+
+    res.json({
+      success: true,
+      image: {
+        url: urlPath,
+        index: work.images.length - 1,
+      },
+    });
+  } catch (error) {
+    console.error('Work image upload error:', error);
     if (req.file && fs.existsSync(req.file.path)) {
       fs.unlinkSync(req.file.path);
     }

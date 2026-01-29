@@ -2,134 +2,79 @@
   "works": {
     "theaterDirector": [
       {
-        "id": 1,
-        "title": {
-          "en": "Theater Piece #01 (2024)",
-          "es": "Pieza Teatral #01 (2024)"
-        },
-        "shortDescription": {
-          "en": "A theatrical piece exploring themes of identity and transformation.",
-          "es": "Una pieza teatral que explora temas de identidad y transformación."
-        },
-        "description": {
-          "en": "This theatrical work delves into the complex relationship between identity and transformation. Through innovative staging and powerful performances, the piece invites audiences to reflect on the fluid nature of self-discovery and personal growth.",
-          "es": "Esta obra teatral profundiza en la compleja relación entre identidad y transformación. A través de una puesta en escena innovadora y actuaciones poderosas, la pieza invita al público a reflexionar sobre la naturaleza fluida del autodescubrimiento y el crecimiento personal."
-        },
-        "thumbnail": "/placeholder-theater-1.jpg",
-        "images": [
-          {
-            "url": "/placeholder-theater-1.jpg",
-            "caption": {
-              "en": "Photo: Production Name",
-              "es": "Foto: Nombre de la Producción"
-            }
-          },
-          {
-            "url": "/placeholder-theater-1-2.jpg",
-            "caption": {
-              "en": "Photo: Production Name",
-              "es": "Foto: Nombre de la Producción"
-            }
-          }
-        ],
-        "video": {
-          "url": "",
-          "thumbnail": ""
-        },
-        "materials": {
-          "en": "Theater production",
-          "es": "Producción teatral"
-        },
-        "size": {
-          "en": "Duration: 90 minutes",
-          "es": "Duración: 90 minutos"
-        },
-        "year": 2024
-      },
-      {
-        "id": 2,
-        "title": {
-          "en": "Theater Piece #02 (2023)",
-          "es": "Pieza Teatral #02 (2023)"
-        },
-        "shortDescription": {
-          "en": "An experimental theater work combining movement and text.",
-          "es": "Una obra de teatro experimental que combina movimiento y texto."
-        },
-        "description": {
-          "en": "This experimental piece merges physical theater with spoken word, creating a unique performance that challenges traditional narrative structures. The work explores the boundaries between dance, theater, and poetry.",
-          "es": "Esta pieza experimental fusiona teatro físico con palabra hablada, creando una actuación única que desafía las estructuras narrativas tradicionales. La obra explora los límites entre danza, teatro y poesía."
-        },
-        "thumbnail": "/placeholder-theater-2.jpg",
-        "images": [
-          {
-            "url": "/placeholder-theater-2.jpg",
-            "caption": {
-              "en": "Photo: Production Name",
-              "es": "Foto: Nombre de la Producción"
-            }
-          }
-        ],
-        "video": {
-          "url": "",
-          "thumbnail": ""
-        },
-        "materials": {
-          "en": "Theater production",
-          "es": "Producción teatral"
-        },
-        "size": {
-          "en": "Duration: 60 minutes",
-          "es": "Duración: 60 minutos"
-        },
-        "year": 2023
-      },
-      {
         "id": 6,
         "title": {
-          "en": "El pez y la gaviota (2022)",
-          "es": "El pez y la gaviota (2022)"
+          "en": "The fish and the seagull",
+          "es": "El pez y la gaviota"
         },
         "shortDescription": {
           "en": "A theatrical piece about encountering \"the other\" and dismantling social labels.",
           "es": "Una pieza teatral sobre el encuentro con \"el otro\" y el desmantelamiento de las etiquetas sociales."
         },
         "description": {
-          "en": "We live in a stereotyped world where social relations are often built not on direct experience, but on our ignorance of \"the other\". We create a foreign figure onto whom we project our insecurities, fears, and prejudices, giving rise to social labels that obscure our shared humanity. \"El pez y la gaviota\" invites us to question these labels and to explore what happens when we are able to become that \"other\" and recognize that, within their difference, they are fundamentally like ourselves.",
-          "es": "Vivimos en un mundo estereotipado, cuyas relaciones sociales no se basan en una experiencia directa, sino en el desconocimiento de \"el otro\". Necesitamos crear un extranjero diferente al que hacer depositario de nuestras inseguridades, nuestros miedos y nuestros prejuicios, naciendo así las etiquetas sociales que ocultan nuestra humanidad compartida. \"El pez y la gaviota\" nos invita a cuestionar esas etiquetas y a explorar qué ocurre cuando somos capaces de convertirnos en ese \"otro\" y aceptar que, dentro de su diferencia, es en esencia igual a nosotros mismos."
+          "en": "Living in a stereotyped world, where social relationships are not based on direct experience but on ignorance of \"the other\". We need to create an other different from us, who bears our insecurities, our fears and our prejudices. Social labels are born this way, which in reality do not exist, because we are all human beings with our fears and our dreams, our privileges and our deficiencies.\n\nWhat happens when we are capable of becoming that \"other\", when we accept that despite the difference, it is equal to us?",
+          "es": "Vivimos en un mundo estereotipado, cuyas relaciones sociales no se basan en una experiencia directa, sino en el desconocimiento de “el otro”. Necesitamos crear un\nextranjero diferente al que hacer depositario de nuestras inseguridades,\nnuestros miedos y nuestros prejuicios. Nacen así las etiquetas sociales, que en la realidad no las hay, pues somos todos  seres humanos con nuestros miedos y nuestros anhelos, nuestros privilegios y nuestras carencias.\n\n¿Y qué ocurre cuando somos capaces de convertirnos en ese “otro”, cuando aceptamos que es, dentro de su diferencia, igual a nosotros mismos?"
         },
-        "thumbnail": "/works/pez-gaviota/Cartel1_El pez y la gaviota_limpio_72.jpg",
+        "thumbnail": "/works/pez-gaviota/pez-1.jpg",
         "images": [
           {
-            "url": "/works/pez-gaviota/Cartel1_El pez y la gaviota_limpio_72.jpg",
+            "url": "/works/pez-gaviota/pez-1.jpg",
             "caption": {
               "en": "Poster: El pez y la gaviota",
               "es": "Cartel: El pez y la gaviota"
             }
           },
           {
-            "url": "/works/pez-gaviota/cartel2b_El pez y la gaviota_72.jpg",
+            "url": "/works/pez-gaviota/pez-2.jpg",
             "caption": {
               "en": "Poster detail",
               "es": "Detalle del cartel"
             }
           },
           {
-            "url": "/works/pez-gaviota/cartel3_El pez y la gaviota.jpg",
+            "url": "/works/pez-gaviota/pez-3.jpg",
             "caption": {
               "en": "Poster variation",
               "es": "Variación del cartel"
             }
           },
           {
-            "url": "/works/pez-gaviota/WhatsApp Image 2022-01-18 at 16.24.46.jpeg",
+            "url": "/works/pez-gaviota/pez-4.jpg",
             "caption": {
               "en": "Rehearsal photo",
               "es": "Foto de ensayo"
             }
           },
           {
-            "url": "/works/pez-gaviota/WhatsApp Image 2022-01-18 at 16.24.49.jpeg",
+            "url": "/works/pez-gaviota/pez-5.jpg",
+            "caption": {
+              "en": "Scene from the play",
+              "es": "Escena de la obra"
+            }
+          },
+          {
+            "url": "/works/pez-gaviota/pez-6.jpg",
+            "caption": {
+              "en": "Scene from the play",
+              "es": "Escena de la obra"
+            }
+          },
+          {
+            "url": "/works/pez-gaviota/pez-7.jpg",
+            "caption": {
+              "en": "Scene from the play",
+              "es": "Escena de la obra"
+            }
+          },
+          {
+            "url": "/works/pez-gaviota/pez-8.jpg",
+            "caption": {
+              "en": "Scene from the play",
+              "es": "Escena de la obra"
+            }
+          },
+          {
+            "url": "/works/pez-gaviota/pez-9.jpg",
             "caption": {
               "en": "Scene from the play",
               "es": "Escena de la obra"
@@ -137,6 +82,279 @@
           }
         ],
         "videos": [
+          {
+            "url": "https://www.youtube.com/watch?v=MNsRA5Ksnyo&feature=youtu.be",
+            "thumbnail": "https://img.youtube.com/vi/zTNq5Oe6mpY/maxresdefault.jpg"
+          }
+        ],
+        "materials": {
+          "en": "Theater production",
+          "es": "Producción teatral"
+        },
+        "size": {
+          "en": "Theater piece",
+          "es": "Pieza teatral"
+        },
+        "year": 2021
+      },
+      {
+        "id": 7,
+        "title": {
+          "en": "Deception and Quinones",
+          "es": "El Engaño y Quiñones"
+        },
+        "shortDescription": {
+          "en": "A metatheatrical adaptation in verse inspired by Luis Quiñones de Benavente’s entremeses \"El borracho\" and \"El barbero\".",
+          "es": "Una adaptación metateatral en verso inspirada en los entremeses \"El borracho\" y \"El barbero\" de Luis Quiñones de Benavente."
+        },
+        "description": {
+          "en": "\"El Engaño y Quiñones\" is a personal adaptation with original dramaturgy based on the entremeses \"El borracho\" and \"El barbero\", both included in the book \"Jocoseria. Burlas veras, o reprehensión moral y festiva de los desórdenes públicos\" by Luis Quiñones de Benavente (Madrid, 1645).\n\nThe piece plays with metatheater: the supposed author of \"El Engaño\" himself—Quiñones de Benavente, a famous Golden Age entremés playwright—appears on stage and interacts with the characters of his work, taking sides and bursting into the action on several occasions.\n\nThe dramaturgy, also written in verse, follows the stanzaic composition corresponding, at each moment, to the two original works.",
+          "es": "\"El Engaño y Quiñones\" es una adaptación personal, con dramaturgia propia, que parte de los entremeses \"El borracho\" y \"El barbero\", ambos insertos en el libro \"Jocoseria. Burlas veras, o reprehensión moral y festiva de los desórdenes públicos\" de Luis Quiñones de Benavente (Madrid, 1645).\n\nLa pieza juega con el metateatro, pues aparece en escena la figura del supuesto autor de \"El Engaño\" —Quiñones de Benavente, célebre entremesista del Siglo de Oro— que interactúa con los personajes de su obra, toma partido e irrumpe en escena en varias ocasiones.\n\nLa dramaturgia, escrita también en verso, sigue en cada momento la composición estrófica correspondiente a las dos obras originales."
+        },
+        "thumbnail": "/works/engano-quinones/engano-1.jpg",
+        "images": [
+          {
+            "url": "/works/engano-quinones/engano-2.jpg",
+            "caption": {
+              "en": "Scene from the play",
+              "es": "Escena de la obra"
+            }
+          },
+          {
+            "url": "/works/engano-quinones/engano-3.jpg",
+            "caption": {
+              "en": "Scene from the play",
+              "es": "Escena de la obra"
+            }
+          },
+          {
+            "url": "/works/engano-quinones/engano-4.jpg",
+            "caption": {
+              "en": "Scene from the play",
+              "es": "Escena de la obra"
+            }
+          },
+          {
+            "url": "/works/engano-quinones/engano-5.jpg",
+            "caption": {
+              "en": "Scene from the play",
+              "es": "Escena de la obra"
+            }
+          },
+          {
+            "url": "/works/engano-quinones/engano-6.jpg",
+            "caption": {
+              "en": "Scene from the play",
+              "es": "Escena de la obra"
+            }
+          },
+          {
+            "url": "/works/engano-quinones/engano-7.jpg",
+            "caption": {
+              "en": "Scene from the play",
+              "es": "Escena de la obra"
+            }
+          },
+          {
+            "url": "/works/engano-quinones/engano-8.jpg",
+            "caption": {
+              "en": "Scene from the play",
+              "es": "Escena de la obra"
+            }
+          },
+          {
+            "url": "/works/engano-quinones/engano-9.jpg",
+            "caption": {
+              "en": "Scene from the play",
+              "es": "Escena de la obra"
+            }
+          },
+          {
+            "url": "/works/engano-quinones/engano-10.jpg",
+            "caption": {
+              "en": "Scene from the play",
+              "es": "Escena de la obra"
+            }
+          },
+          {
+            "url": "/works/engano-quinones/engano-11.jpg",
+            "caption": {
+              "en": "Scene from the play",
+              "es": "Escena de la obra"
+            }
+          },
+          {
+            "url": "/works/engano-quinones/engano-12.jpg",
+            "caption": {
+              "en": "Scene from the play",
+              "es": "Escena de la obra"
+            }
+          },
+          {
+            "url": "/works/engano-quinones/engano-13.jpg",
+            "caption": {
+              "en": "Scene from the play",
+              "es": "Escena de la obra"
+            }
+          }
+        ],
+        "videos": [
+          {
+            "url": "https://youtu.be/1bABAzDwxVc",
+            "thumbnail": "https://img.youtube.com/vi/1bABAzDwxVc/maxresdefault.jpg"
+          }
+        ],
+        "materials": {
+          "en": "Theater production",
+          "es": "Producción teatral"
+        },
+        "size": {
+          "en": "Theater piece",
+          "es": "Pieza teatral"
+        },
+        "year": 2022
+      },
+      {
+        "id": 10,
+        "title": {
+          "en": "PERSONA",
+          "es": "PERSONA"
+        },
+        "shortDescription": {
+          "en": "A theatrical exploration of identity as a mirror that only echoes what surrounds us and what the system reflects.",
+          "es": "Una exploración teatral de la identidad como un espejo que solo hace eco de lo que nos rodea y de lo que el sistema refleja."
+        },
+        "description": {
+          "en": "PERSONA asks a radical question: am I truly myself, or just a mirror that only echoes what surrounds me, what the system shows me? Through an intimate scenic device, the piece explores how identities are constructed, reflected and distorted by the social and cultural structures that frame our lives.\n\nFrom the tension between the inner voice and external expectations, the work invites the audience to question the boundaries between the authentic self and the roles we inhabit every day.",
+          "es": "PERSONA plantea una pregunta radical: ¿soy realmente yo o solo un espejo que hace eco de lo que me rodea, de lo que me muestra el sistema? A través de un dispositivo escénico íntimo, la pieza explora cómo las identidades se construyen, se reflejan y se distorsionan a partir de las estructuras sociales y culturales que enmarcan nuestras vidas.\n\nDesde la tensión entre la voz interna y las expectativas externas, la obra invita al espectador a cuestionar los límites entre el yo auténtico y los personajes que habitamos en el día a día."
+        },
+        "thumbnail": "/works/persona/persona-poster.jpg",
+        "images": [
+          {
+            "url": "/works/persona/persona-poster.jpg",
+            "caption": {
+              "en": "Poster: PERSONA",
+              "es": "Cartel: PERSONA"
+            }
+          },
+          {
+            "url": "/works/persona/persona-1.jpg",
+            "caption": {
+              "en": "Scene from the play",
+              "es": "Escena de la obra"
+            }
+          },
+          {
+            "url": "/works/persona/persona-2.jpg",
+            "caption": {
+              "en": "Scene from the play",
+              "es": "Escena de la obra"
+            }
+          },
+          {
+            "url": "/works/persona/persona-3.jpg",
+            "caption": {
+              "en": "Scene from the play",
+              "es": "Escena de la obra"
+            }
+          },
+          {
+            "url": "/works/persona/persona-4.jpg",
+            "caption": {
+              "en": "Scene from the play",
+              "es": "Escena de la obra"
+            }
+          },
+          {
+            "url": "/works/persona/persona-5.jpg",
+            "caption": {
+              "en": "Scene from the play",
+              "es": "Escena de la obra"
+            }
+          },
+          {
+            "url": "/works/persona/persona-6.jpg",
+            "caption": {
+              "en": "Scene from the play",
+              "es": "Escena de la obra"
+            }
+          },
+          {
+            "url": "/works/persona/persona-7.jpg",
+            "caption": {
+              "en": "Scene from the play",
+              "es": "Escena de la obra"
+            }
+          },
+          {
+            "url": "/works/persona/persona-8.jpg",
+            "caption": {
+              "en": "Scene from the play",
+              "es": "Escena de la obra"
+            }
+          },
+          {
+            "url": "/works/persona/persona-9.jpg",
+            "caption": {
+              "en": "Scene from the play",
+              "es": "Escena de la obra"
+            }
+          },
+          {
+            "url": "/works/persona/persona-10.jpg",
+            "caption": {
+              "en": "Scene from the play",
+              "es": "Escena de la obra"
+            }
+          },
+          {
+            "url": "/works/persona/persona-11.jpg",
+            "caption": {
+              "en": "Scene from the play",
+              "es": "Escena de la obra"
+            }
+          },
+          {
+            "url": "/works/persona/persona-12.jpg",
+            "caption": {
+              "en": "Scene from the play",
+              "es": "Escena de la obra"
+            }
+          },
+          {
+            "url": "/works/persona/persona-13.jpg",
+            "caption": {
+              "en": "Scene from the play",
+              "es": "Escena de la obra"
+            }
+          },
+          {
+            "url": "/works/persona/persona-14.jpg",
+            "caption": {
+              "en": "Scene from the play",
+              "es": "Escena de la obra"
+            }
+          },
+          {
+            "url": "/works/persona/persona-15.jpg",
+            "caption": {
+              "en": "Scene from the play",
+              "es": "Escena de la obra"
+            }
+          },
+          {
+            "url": "/works/persona/persona-16.jpg",
+            "caption": {
+              "en": "Scene from the play",
+              "es": "Escena de la obra"
+            }
+          }
+        ],
+        "videos": [
+          {
+            "url": "/works/persona/persona-teaser.mp4",
+            "thumbnail": ""
+          },
           {
             "url": "https://www.youtube.com/watch?v=zTNq5Oe6mpY",
             "thumbnail": "https://img.youtube.com/vi/zTNq5Oe6mpY/maxresdefault.jpg"
@@ -150,7 +368,542 @@
           "en": "Theater piece",
           "es": "Pieza teatral"
         },
+        "year": 2024
+      },
+      {
+        "id": 8,
+        "title": {
+          "en": "Interior",
+          "es": "Interior"
+        },
+        "shortDescription": {
+          "en": "A theatrical piece by Maurice Maeterlinck that explores death and destiny through an existential climax and symbolist atmosphere.",
+          "es": "Una pieza teatral de Maurice Maeterlinck que explora la muerte y el destino a través de un clímax existencial y una atmósfera simbolista."
+        },
+        "description": {
+          "en": "Death and destiny, as the two great mysteries of life, are exposed from an existential climax and a symbolist atmosphere. The Freudian concept of the unconscious is explored through the story of characters who arrive at a house to announce the death of one of the daughters. However, upon seeing through the windows the simple daily happiness of those who live there, they remain paralyzed without daring to give the bad news.\n\nThe characters observe and describe what they see in the house, while being observed, in turn, by the spectators.",
+          "es": "La muerte y el destino, como los dos grandes misterios de la vida, son expuestos desde un clímax existencial y una atmósfera simbolista. El concepto freudiano del inconsciente se explora a través de la historia de personajes que llegan a una casa para anunciar la muerte de una de sus hijas. Sin embargo, al ver a través de las ventanas la sencilla felicidad cotidiana de quienes viven allí, quedan paralizados sin atreverse a dar la mala noticia.\n\nLos personajes observan y describen lo que ven en la casa, mientras son observados, a su vez, por los espectadores."
+        },
+        "thumbnail": "/works/interior/interior-24.jpg",
+        "images": [
+          {
+            "url": "/works/interior/interior-1.jpg",
+            "caption": {
+              "en": "Poster: Interior",
+              "es": "Cartel: Interior"
+            }
+          },
+          {
+            "url": "/works/interior/interior-2.jpg",
+            "caption": {
+              "en": "Scene from the play",
+              "es": "Escena de la obra"
+            }
+          },
+          {
+            "url": "/works/interior/interior-3.jpg",
+            "caption": {
+              "en": "Scene from the play",
+              "es": "Escena de la obra"
+            }
+          },
+          {
+            "url": "/works/interior/interior-4.jpg",
+            "caption": {
+              "en": "Scene from the play",
+              "es": "Escena de la obra"
+            }
+          },
+          {
+            "url": "/works/interior/interior-5.jpg",
+            "caption": {
+              "en": "Scene from the play",
+              "es": "Escena de la obra"
+            }
+          },
+          {
+            "url": "/works/interior/interior-6.jpg",
+            "caption": {
+              "en": "Scene from the play",
+              "es": "Escena de la obra"
+            }
+          },
+          {
+            "url": "/works/interior/interior-7.jpg",
+            "caption": {
+              "en": "Scene from the play",
+              "es": "Escena de la obra"
+            }
+          },
+          {
+            "url": "/works/interior/interior-8.jpg",
+            "caption": {
+              "en": "Scene from the play",
+              "es": "Escena de la obra"
+            }
+          },
+          {
+            "url": "/works/interior/interior-9.jpg",
+            "caption": {
+              "en": "Scene from the play",
+              "es": "Escena de la obra"
+            }
+          },
+          {
+            "url": "/works/interior/interior-10.jpg",
+            "caption": {
+              "en": "Scene from the play",
+              "es": "Escena de la obra"
+            }
+          },
+          {
+            "url": "/works/interior/interior-11.jpg",
+            "caption": {
+              "en": "Scene from the play",
+              "es": "Escena de la obra"
+            }
+          },
+          {
+            "url": "/works/interior/interior-12.jpg",
+            "caption": {
+              "en": "Scene from the play",
+              "es": "Escena de la obra"
+            }
+          },
+          {
+            "url": "/works/interior/interior-13.jpg",
+            "caption": {
+              "en": "Scene from the play",
+              "es": "Escena de la obra"
+            }
+          },
+          {
+            "url": "/works/interior/interior-14.jpg",
+            "caption": {
+              "en": "Scene from the play",
+              "es": "Escena de la obra"
+            }
+          },
+          {
+            "url": "/works/interior/interior-15.jpg",
+            "caption": {
+              "en": "Scene from the play",
+              "es": "Escena de la obra"
+            }
+          },
+          {
+            "url": "/works/interior/interior-16.jpg",
+            "caption": {
+              "en": "Scene from the play",
+              "es": "Escena de la obra"
+            }
+          },
+          {
+            "url": "/works/interior/interior-17.jpg",
+            "caption": {
+              "en": "Scene from the play",
+              "es": "Escena de la obra"
+            }
+          },
+          {
+            "url": "/works/interior/interior-18.jpg",
+            "caption": {
+              "en": "Scene from the play",
+              "es": "Escena de la obra"
+            }
+          },
+          {
+            "url": "/works/interior/interior-19.jpg",
+            "caption": {
+              "en": "Scene from the play",
+              "es": "Escena de la obra"
+            }
+          },
+          {
+            "url": "/works/interior/interior-20.jpg",
+            "caption": {
+              "en": "Scene from the play",
+              "es": "Escena de la obra"
+            }
+          },
+          {
+            "url": "/works/interior/interior-21.jpg",
+            "caption": {
+              "en": "Scene from the play",
+              "es": "Escena de la obra"
+            }
+          },
+          {
+            "url": "/works/interior/interior-22.jpg",
+            "caption": {
+              "en": "Scene from the play",
+              "es": "Escena de la obra"
+            }
+          },
+          {
+            "url": "/works/interior/interior-23.jpg",
+            "caption": {
+              "en": "Scene from the play",
+              "es": "Escena de la obra"
+            }
+          },
+          {
+            "url": "/works/interior/interior-24.jpg",
+            "caption": {
+              "en": "Scene from the play",
+              "es": "Escena de la obra"
+            }
+          }
+        ],
+        "videos": [
+          {
+            "url": "https://www.youtube.com/watch?v=PwgkGTE7VDs",
+            "thumbnail": "https://img.youtube.com/vi/PwgkGTE7VDs/maxresdefault.jpg"
+          }
+        ],
+        "materials": {
+          "en": "Theater production",
+          "es": "Producción teatral"
+        },
+        "size": {
+          "en": "Theater piece",
+          "es": "Pieza teatral"
+        },
         "year": 2022
+      },
+      {
+        "id": 9,
+        "title": {
+          "en": "IN.OUT",
+          "es": "IN.OUT"
+        },
+        "shortDescription": {
+          "en": "A collective creation that explores identity through an inner journey between light and shadow, masks and social pressure.",
+          "es": "Una creación colectiva que explora la identidad a través de un viaje interno entre luces y sombras, máscaras y presión social."
+        },
+        "description": {
+          "en": "Starting from the concept of identity and through a collective creation process, IN.OUT invites the audience on an inner journey toward self-knowledge, symbolically represented by individual and collective lights and shadows. The characters discover conscious and unconscious social masks and their relationship with the pressure that the system exerts on bodies and subjectivities.\n\nThe spectator travels through visually suggestive and dreamlike environments, wrapped in an immersive soundscape and a combination of different performing arts: text, voice, sound effects, music, lights, shadow theater, video projections and, of course, acting. Together they construct a poetic narrative that explores the relationships between human beings and between the human being and the universe.",
+          "es": "Partiendo del concepto de identidad y a través de un trabajo de creación colectiva, IN.OUT invita al espectador a un viaje interno hacia el autoconocimiento, simbólicamente representado por las luces y las sombras individuales y colectivas. Los personajes descubren las máscaras sociales conscientes e inconscientes y su relación con la presión que el sistema ejerce sobre los cuerpos y las subjetividades.\n\nEl espectador transitará por ambientes visualmente sugerentes y oníricos, a través de un espacio sonoro envolvente y la combinación de diversas artes escénicas como texto, voz, efectos sonoros, música, luces, teatro de sombras, video-proyecciones y, por supuesto, la interpretación actoral. Juntos construyen un relato poético que explora las relaciones entre los seres humanos y del ser humano con el universo."
+        },
+        "thumbnail": "/works/in-out/in-out-poster.jpg",
+        "images": [
+          {
+            "url": "/works/in-out/in-out-poster.jpg",
+            "caption": {
+              "en": "Poster: IN.OUT",
+              "es": "Cartel: IN.OUT"
+            }
+          },
+          {
+            "url": "/works/in-out/in-out-1.jpg",
+            "caption": {
+              "en": "Scene from the play",
+              "es": "Escena de la obra"
+            }
+          },
+          {
+            "url": "/works/in-out/in-out-2.jpg",
+            "caption": {
+              "en": "Scene from the play",
+              "es": "Escena de la obra"
+            }
+          },
+          {
+            "url": "/works/in-out/in-out-3.jpg",
+            "caption": {
+              "en": "Scene from the play",
+              "es": "Escena de la obra"
+            }
+          },
+          {
+            "url": "/works/in-out/in-out-4.jpg",
+            "caption": {
+              "en": "Scene from the play",
+              "es": "Escena de la obra"
+            }
+          },
+          {
+            "url": "/works/in-out/in-out-5.jpg",
+            "caption": {
+              "en": "Scene from the play",
+              "es": "Escena de la obra"
+            }
+          },
+          {
+            "url": "/works/in-out/in-out-6.jpg",
+            "caption": {
+              "en": "Scene from the play",
+              "es": "Escena de la obra"
+            }
+          },
+          {
+            "url": "/works/in-out/in-out-7.jpg",
+            "caption": {
+              "en": "Scene from the play",
+              "es": "Escena de la obra"
+            }
+          },
+          {
+            "url": "/works/in-out/in-out-8.jpg",
+            "caption": {
+              "en": "Scene from the play",
+              "es": "Escena de la obra"
+            }
+          },
+          {
+            "url": "/works/in-out/in-out-9.jpg",
+            "caption": {
+              "en": "Scene from the play",
+              "es": "Escena de la obra"
+            }
+          },
+          {
+            "url": "/works/in-out/in-out-10.jpg",
+            "caption": {
+              "en": "Scene from the play",
+              "es": "Escena de la obra"
+            }
+          },
+          {
+            "url": "/works/in-out/in-out-11.jpg",
+            "caption": {
+              "en": "Scene from the play",
+              "es": "Escena de la obra"
+            }
+          },
+          {
+            "url": "/works/in-out/in-out-12.jpg",
+            "caption": {
+              "en": "Scene from the play",
+              "es": "Escena de la obra"
+            }
+          },
+          {
+            "url": "/works/in-out/in-out-13.jpg",
+            "caption": {
+              "en": "Scene from the play",
+              "es": "Escena de la obra"
+            }
+          },
+          {
+            "url": "/works/in-out/in-out-14.jpg",
+            "caption": {
+              "en": "Scene from the play",
+              "es": "Escena de la obra"
+            }
+          },
+          {
+            "url": "/works/in-out/in-out-15.jpg",
+            "caption": {
+              "en": "Scene from the play",
+              "es": "Escena de la obra"
+            }
+          },
+          {
+            "url": "/works/in-out/in-out-16.jpg",
+            "caption": {
+              "en": "Scene from the play",
+              "es": "Escena de la obra"
+            }
+          },
+          {
+            "url": "/works/in-out/in-out-17.jpg",
+            "caption": {
+              "en": "Scene from the play",
+              "es": "Escena de la obra"
+            }
+          },
+          {
+            "url": "/works/in-out/in-out-18.jpg",
+            "caption": {
+              "en": "Scene from the play",
+              "es": "Escena de la obra"
+            }
+          },
+          {
+            "url": "/works/in-out/in-out-19.jpg",
+            "caption": {
+              "en": "Scene from the play",
+              "es": "Escena de la obra"
+            }
+          },
+          {
+            "url": "/works/in-out/in-out-20.jpg",
+            "caption": {
+              "en": "Scene from the play",
+              "es": "Escena de la obra"
+            }
+          },
+          {
+            "url": "/works/in-out/in-out-21.jpg",
+            "caption": {
+              "en": "Scene from the play",
+              "es": "Escena de la obra"
+            }
+          },
+          {
+            "url": "/works/in-out/in-out-22.jpg",
+            "caption": {
+              "en": "Scene from the play",
+              "es": "Escena de la obra"
+            }
+          },
+          {
+            "url": "/works/in-out/in-out-23.jpg",
+            "caption": {
+              "en": "Scene from the play",
+              "es": "Escena de la obra"
+            }
+          },
+          {
+            "url": "/works/in-out/in-out-24.jpg",
+            "caption": {
+              "en": "Scene from the play",
+              "es": "Escena de la obra"
+            }
+          },
+          {
+            "url": "/works/in-out/in-out-25.jpg",
+            "caption": {
+              "en": "Scene from the play",
+              "es": "Escena de la obra"
+            }
+          },
+          {
+            "url": "/works/in-out/in-out-26.jpg",
+            "caption": {
+              "en": "Scene from the play",
+              "es": "Escena de la obra"
+            }
+          },
+          {
+            "url": "/works/in-out/in-out-27.jpg",
+            "caption": {
+              "en": "Scene from the play",
+              "es": "Escena de la obra"
+            }
+          },
+          {
+            "url": "/works/in-out/in-out-28.jpg",
+            "caption": {
+              "en": "Scene from the play",
+              "es": "Escena de la obra"
+            }
+          },
+          {
+            "url": "/works/in-out/in-out-29.jpg",
+            "caption": {
+              "en": "Scene from the play",
+              "es": "Escena de la obra"
+            }
+          },
+          {
+            "url": "/works/in-out/in-out-30.jpg",
+            "caption": {
+              "en": "Scene from the play",
+              "es": "Escena de la obra"
+            }
+          },
+          {
+            "url": "/works/in-out/in-out-31.jpg",
+            "caption": {
+              "en": "Scene from the play",
+              "es": "Escena de la obra"
+            }
+          },
+          {
+            "url": "/works/in-out/in-out-32.jpg",
+            "caption": {
+              "en": "Scene from the play",
+              "es": "Escena de la obra"
+            }
+          },
+          {
+            "url": "/works/in-out/in-out-33.jpg",
+            "caption": {
+              "en": "Scene from the play",
+              "es": "Escena de la obra"
+            }
+          },
+          {
+            "url": "/works/in-out/in-out-34.jpg",
+            "caption": {
+              "en": "Scene from the play",
+              "es": "Escena de la obra"
+            }
+          },
+          {
+            "url": "/works/in-out/in-out-35.jpg",
+            "caption": {
+              "en": "Scene from the play",
+              "es": "Escena de la obra"
+            }
+          },
+          {
+            "url": "/works/in-out/in-out-36.jpg",
+            "caption": {
+              "en": "Scene from the play",
+              "es": "Escena de la obra"
+            }
+          },
+          {
+            "url": "/works/in-out/in-out-37.jpg",
+            "caption": {
+              "en": "Scene from the play",
+              "es": "Escena de la obra"
+            }
+          },
+          {
+            "url": "/works/in-out/in-out-38.jpg",
+            "caption": {
+              "en": "Scene from the play",
+              "es": "Escena de la obra"
+            }
+          },
+          {
+            "url": "/works/in-out/in-out-39.jpg",
+            "caption": {
+              "en": "Scene from the play",
+              "es": "Escena de la obra"
+            }
+          },
+          {
+            "url": "/works/in-out/in-out-40.jpg",
+            "caption": {
+              "en": "Scene from the play",
+              "es": "Escena de la obra"
+            }
+          },
+          {
+            "url": "/works/in-out/in-out-41.jpg",
+            "caption": {
+              "en": "Scene from the play",
+              "es": "Escena de la obra"
+            }
+          },
+          {
+            "url": "/works/in-out/in-out-42.jpg",
+            "caption": {
+              "en": "Scene from the play",
+              "es": "Escena de la obra"
+            }
+          }
+        ],
+        "videos": [
+          {
+            "url": "https://vimeo.com/1159374648?share=copy&fl=sv&fe=ci",
+            "thumbnail": "https://vumbnail.com/1159374648.jpg"
+          }
+        ],
+        "materials": {
+          "en": "Theater production",
+          "es": "Producción teatral"
+        },
+        "size": {
+          "en": "Theater piece",
+          "es": "Pieza teatral"
+        },
+        "year": 2023
       }
     ],
     "actress": [
@@ -197,23 +950,23 @@
       {
         "id": 4,
         "title": {
-          "en": "El último paquete (2020)",
-          "es": "El último paquete (2020)"
+          "en": "The last package",
+          "es": "El último paquete"
         },
         "shortDescription": {
           "en": "A short film exploring themes of memory and loss.",
           "es": "Un cortometraje que explora temas de memoria y pérdida."
         },
         "description": {
-          "en": "El último paquete is a short film that delves into the emotional landscape of memory and loss. Through poetic imagery and nuanced storytelling, the film invites viewers to reflect on the weight of the past and the fragility of human connections. The work explores how personal narratives intersect with collective memory, creating spaces for reflection and dialogue.",
+          "en": "The last package is a short film that delves into the emotional landscape of memory and loss. Through poetic images and a nuanced narrative, the movie invites viewers to reflect on the weight of the past and the fragility of human connections. The work explores how personal narratives intersect with collective memory, creating spaces for reflection and dialogue.",
           "es": "El último paquete es un cortometraje que profundiza en el paisaje emocional de la memoria y la pérdida. A través de imágenes poéticas y una narrativa matizada, la película invita a los espectadores a reflexionar sobre el peso del pasado y la fragilidad de las conexiones humanas. La obra explora cómo las narrativas personales se cruzan con la memoria colectiva, creando espacios para la reflexión y el diálogo."
         },
-        "thumbnail": "https://img.youtube.com/vi/MNsRA5Ksnyo/maxresdefault.jpg",
+        "thumbnail": "https://img.youtube.com/vi/zPMSaR973wk/maxresdefault.jpg",
         "images": [],
         "videos": [
           {
-            "url": "https://www.youtube.com/watch?v=MNsRA5Ksnyo",
-            "thumbnail": "https://img.youtube.com/vi/MNsRA5Ksnyo/maxresdefault.jpg"
+            "url": "https://www.youtube.com/watch?v=zPMSaR973wk",
+            "thumbnail": "https://img.youtube.com/vi/zPMSaR973wk/maxresdefault.jpg"
           }
         ],
         "materials": {
@@ -224,43 +977,37 @@
           "en": "Duration: 15 minutes",
           "es": "Duración: 15 minutos"
         },
-        "year": 2020
+        "year": 2024
       },
       {
         "id": 5,
         "title": {
-          "en": "Short Story #02 (2023)",
-          "es": "Cortometraje #02 (2023)"
+          "en": "INFIEL - Fiction Scene",
+          "es": "INFIEL - Escena de ficción"
         },
         "shortDescription": {
-          "en": "A narrative short exploring contemporary themes.",
-          "es": "Un cortometraje narrativo que explora temas contemporáneos."
+          "en": "Comedy short film (7:37) written and directed by Elma Hache.",
+          "es": "Cortometraje de comedia (7:37) escrito y dirigido por Elma Hache."
         },
         "description": {
-          "en": "This short film presents a contemporary narrative that examines the complexities of modern life. Through careful composition and evocative cinematography, the work creates an intimate portrait of its characters and their struggles.",
-          "es": "Este cortometraje presenta una narrativa contemporánea que examina las complejidades de la vida moderna. A través de una composición cuidadosa y una cinematografía evocadora, la obra crea un retrato íntimo de sus personajes y sus luchas."
+          "en": "\"INFIEL\" is a fiction scene in which Marcos meets his friend Dani to tell him about an alleged infidelity of the girlfriend of a mutual friend. What he discovers in that encounter leaves him frozen. Starring Juan Caballero, Dani Infinity and Irinah Davis, the piece uses humor to explore trust, friendship and the stories we tell ourselves about others.",
+          "es": "\"INFIEL\" es una escena de ficción en la que Marcos queda con su amigo Dani para contarle una supuesta infidelidad de la novia de un amigo común. Lo que descubre en ese encuentro lo deja helado. Protagonizada por Juan Caballero, Dani Infinity e Irinah Davis, la pieza utiliza el humor para explorar la confianza, la amistad y las historias que nos contamos sobre los demás."
         },
-        "thumbnail": "/placeholder-film-2.jpg",
-        "images": [
+        "thumbnail": "https://img.youtube.com/vi/5p6Dy_AEWag/sddefault.jpg",
+        "images": [],
+        "videos": [
           {
-            "url": "/placeholder-film-2.jpg",
-            "caption": {
-              "en": "Film still",
-              "es": "Fotograma de la película"
-            }
+            "url": "https://www.youtube.com/watch?v=5p6Dy_AEWag",
+            "thumbnail": "https://img.youtube.com/vi/5p6Dy_AEWag/sddefault.jpg"
           }
         ],
-        "video": {
-          "url": "",
-          "thumbnail": ""
-        },
         "materials": {
           "en": "Short film",
           "es": "Cortometraje"
         },
         "size": {
-          "en": "Duration: 12 minutes",
-          "es": "Duración: 12 minutos"
+          "en": "Duration: 7:37 minutes",
+          "es": "Duración: 7,37 minutos"
         },
         "year": 2023
       }
@@ -358,6 +1105,31 @@
       }
     ],
     "collection": []
+  },
+  "home": {
+    "title": {
+      "en": "ELMA HACHE",
+      "es": "ELMA HACHE"
+    },
+    "introduction": {
+      "en": "Elma is a restless soul.\n\nPerhaps because my path has never been linear. The artistic, social and therapeutic have intertwined throughout my life, marked by curiosity.\nProfessionally: photographer, journalist, social educator, theatre-therapist, playwright and stage director, among others. Traveling, learning, discovering new paradigms and building bridges between worlds and perspectives define my way of living in life.\n\nIn 2008 I began the development of my \"CAMARAdas Project\", intercultural communication through photography, through which I developed workshops for children in social vulnerability situations, in countries on five continents: Spain, Argentina, Senegal, India, ending the cycle in 2015, in an aboriginal community in the middle of the Australian desert. https://proyectocamaradas.blogspot.com/\n\nThere was also a period during which I developed a type of theatre therapy based on Gestalt -“Conscious Theatre”- and gave emotional management workshops using theatre as a therapeutic and self-discovery tool.\n\nSince 2020, I decided to delve into scenic arts and studied Scene Direction and Dramaturgy. Having directed, so far, five theatrical pieces and a short film.\n\nNow I am starting to immerse myself in the world of puppets, where a fan opens up possibilities, from shadow theatre to object theatre, passing through all types of puppet and marionette styles, with the ability to fuse conventional manipulation techniques with analog and digital kinematic techniques.\n\nLife is an eternal learning... and I am the eternal learner.",
+      "es": "Elma es un alma inquieta.\n\nQuizás porque mi camino nunca ha sido lineal. Lo artístico, lo social y lo terapéutico se han ido entrelazando a lo largo de mi vida, en una trayectoria marcada por la curiosidad.\nDe profesión: fotógrafa, periodista, educadora social, teatro-terapeuta, dramaturga y directora de escena, entre otras. Viajar, aprender, descubrir nuevos paradigmas y construir puentes entre mundos y miradas, definen mi manera de estar en la vida.\n\nEn 2008 comienzo el desarrollo de mi “Proyecto CAMARAdas”, comunicación intercultural a través de la fotografía, mediante el que desarrollo talleres para niños en situación de vulnerabilidad social, en países de los 5 continentes: España, Argentina, Senegal, India, terminando el ciclo en 2015, en una comunidad aborigen en mitad del desierto australiano.  https://proyectocamaradas.blogspot.com/ \n\nTambién hubo una temporada en la que desarrollé un tipo de teatro terapéutico basado en la Gestalt -“Teatro Consciente”- e impartía talleres de gestión emocional, utilizando el teatro como herramienta terapéutica y de autoconocimiento.\n\nA partir de 2020, decido profundizar en las artes escécinas y estudio Dirección de Escena y Dramaturgia. Habiendo dirigido, hasta el momento, cinco piezas teatrales y un cortometraje.\n\nAhora estoy empezando a adentrarme en el mundo de los títeres, donde se abre un abanico de posibilidades, desde el teatro de sombras hasta el teatro de objetos, pasando por todo tipo de estilos de títeres y marionetas, con la capacidad de fusionar técnicas convencionales de manipulación con técnicas cinéticas analógicas y digitales.\n\nLa vida es un eterno aprendizaje... y yo soy la eterna aprendiz."
+    },
+    "favorites": [
+      "/works/persona/persona-4.jpg",
+      "/works/persona/persona-16.jpg",
+      "/works/persona/persona-8.jpg",
+      "/works/engano-quinones/engano-6.jpg",
+      "/works/in-out/in-out-7.jpg",
+      "/works/interior/interior-1.jpg",
+      "/works/interior/interior-15.jpg"
+    ]
+  },
+  "worksPage": {
+    "description": {
+      "en": "A selection of stage direction and short film works that explore memory, identity, and the encounter with \"the other\" through theater and cinema.",
+      "es": "Una selección de trabajos de dirección escénica y cortometrajes que exploran la memoria, la identidad y el encuentro con \"el otro\" a través del teatro y el cine."
+    }
   },
   "contact": {
     "email": "info@elmahache.com",

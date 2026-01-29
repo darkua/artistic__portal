@@ -1,9 +1,10 @@
-import { useEffect, useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useParams, Link } from 'react-router-dom'
 import { useTranslation } from '../hooks/useTranslation'
 import portfolioData from '../data/portfolioData.json'
 import { ArrowLeft } from 'lucide-react'
 import { isYouTubeUrl, extractYouTubeId, getYouTubeEmbedUrl } from '../utils/youtube'
+import EditableText from '../components/EditableText'
 import { isVimeoUrl, extractVimeoId, getVimeoEmbedUrl } from '../utils/vimeo'
 
 interface WorkImage {
@@ -66,6 +67,31 @@ export default function WorkDetail() {
     ...(worksData.movieDirector || [])
   ]
   const work = allWorks.find((w) => w.id === Number(id))
+  
+  // Find work's category and index for dataPath
+  let workCategory: 'theaterDirector' | 'actress' | 'movieDirector' | null = null
+  let workIndex = -1
+  
+  if (work) {
+    if (worksData.theaterDirector) {
+      workIndex = worksData.theaterDirector.findIndex((w) => w.id === Number(id))
+      if (workIndex !== -1) {
+        workCategory = 'theaterDirector'
+      }
+    }
+    if (workIndex === -1 && worksData.actress) {
+      workIndex = worksData.actress.findIndex((w) => w.id === Number(id))
+      if (workIndex !== -1) {
+        workCategory = 'actress'
+      }
+    }
+    if (workIndex === -1 && worksData.movieDirector) {
+      workIndex = worksData.movieDirector.findIndex((w) => w.id === Number(id))
+      if (workIndex !== -1) {
+        workCategory = 'movieDirector'
+      }
+    }
+  }
 
   if (!work) {
     return (
@@ -81,6 +107,7 @@ export default function WorkDetail() {
   }
 
   const lang = language as 'en' | 'es'
+  const isAdminMode = import.meta.env.VITE_ADMIN_MODE === 'true'
 
   // Fallback to shortDescription if full description doesn't exist
   const description = work.description?.[lang] || work.shortDescription?.[lang] || ''
@@ -91,9 +118,17 @@ export default function WorkDetail() {
       ? work.videos.filter((v) => v.url && v.url.trim() !== '')
       : []
 
+  // Images state (so uploads/deletes don't require a full page reload)
+  const [images, setImages] = useState<WorkImage[]>(work.images || [])
+
   // Image lightbox state
   const [isLightboxOpen, setIsLightboxOpen] = useState(false)
   const [activeImageIndex, setActiveImageIndex] = useState(0)
+  const [isUploading, setIsUploading] = useState(false)
+  const [uploadError, setUploadError] = useState<string | null>(null)
+  const [isDeleting, setIsDeleting] = useState(false)
+  const [deleteError, setDeleteError] = useState<string | null>(null)
+  const [favoriteUrls, setFavoriteUrls] = useState<string[]>([])
 
   const openLightbox = (index: number) => {
     setActiveImageIndex(index)
@@ -105,17 +140,153 @@ export default function WorkDetail() {
   }
 
   const showPrevImage = () => {
-    if (!work.images || work.images.length === 0) return
+    if (!images || images.length === 0) return
     setActiveImageIndex((prev) =>
-      prev === 0 ? work.images!.length - 1 : prev - 1
+      prev === 0 ? images.length - 1 : prev - 1
     )
   }
 
   const showNextImage = () => {
-    if (!work.images || work.images.length === 0) return
+    if (!images || images.length === 0) return
     setActiveImageIndex((prev) =>
-      prev === work.images!.length - 1 ? 0 : prev + 1
+      prev === images.length - 1 ? 0 : prev + 1
     )
+  }
+
+  // Load favorites so we can show which images are already selected for the hero
+  useEffect(() => {
+    let isMounted = true
+    ;(async () => {
+      try {
+        const res = await fetch('/api/favorites')
+        if (!res.ok) return
+        const data = await res.json()
+        if (isMounted && Array.isArray(data.favorites)) {
+          setFavoriteUrls(data.favorites)
+        }
+      } catch {
+        // ignore
+      }
+    })()
+    return () => {
+      isMounted = false
+    }
+  }, [])
+
+  const handleImageUpload = async (e: React.ChangeEvent<HTMLInputElement>) => {
+    const files = e.target.files
+    if (!files || files.length === 0) return
+
+    setUploadError(null)
+    setIsUploading(true)
+
+    try {
+      const newImages: WorkImage[] = []
+      // Upload each file individually
+      for (const file of Array.from(files)) {
+        const formData = new FormData()
+        formData.append('image', file)
+
+        const response = await fetch(`/api/works/${work.id}/images`, {
+          method: 'POST',
+          body: formData,
+        })
+
+        if (!response.ok) {
+          let message = 'Error uploading image'
+          try {
+            const data = await response.json()
+            if (data && data.error) message = data.error
+          } catch {
+            // ignore JSON parse errors
+          }
+          throw new Error(message)
+        }
+
+        // Response includes the URL of the newly added image
+        const data = await response.json()
+        if (data && data.image && data.image.url) {
+          newImages.push({
+            url: data.image.url,
+            caption: {
+              en: 'Scene from the play',
+              es: 'Escena de la obra',
+            },
+          })
+        }
+      }
+
+      if (newImages.length > 0) {
+        setImages((prev) => [...prev, ...newImages])
+      }
+    } catch (error: any) {
+      console.error('Image upload error:', error)
+      setUploadError(error.message || 'Error uploading images')
+    } finally {
+      setIsUploading(false)
+      // Reset file input so the same files can be re-selected if needed
+      if (e.target) {
+        e.target.value = ''
+      }
+    }
+  }
+
+  const handleDeleteImage = async (imageUrl: string) => {
+    if (!imageUrl || !workCategory || workIndex === -1) return
+    if (!confirm('Delete this photo from the gallery? This cannot be undone.')) {
+      return
+    }
+
+    setDeleteError(null)
+    setIsDeleting(true)
+
+    try {
+      const response = await fetch(`/api/works/${work.id}/images`, {
+        method: 'DELETE',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ url: imageUrl }),
+      })
+
+      if (!response.ok) {
+        let message = 'Error deleting image'
+        try {
+          const data = await response.json()
+          if (data && data.error) message = data.error
+        } catch {
+          // ignore
+        }
+        throw new Error(message)
+      }
+
+      // Update local images state so UI refreshes without page reload
+      setImages((prev) => prev.filter((img) => img.url !== imageUrl))
+      setIsDeleting(false)
+    } catch (error: any) {
+      console.error('Image delete error:', error)
+      setDeleteError(error.message || 'Error deleting image')
+      setIsDeleting(false)
+    }
+  }
+
+  const toggleFavorite = async (imageUrl: string) => {
+    try {
+      const res = await fetch('/api/favorites', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ url: imageUrl }),
+      })
+      if (!res.ok) return
+      const data = await res.json()
+      if (Array.isArray(data.favorites)) {
+        setFavoriteUrls(data.favorites)
+      }
+    } catch {
+      // silent fail, UI stays as before
+    }
   }
 
   // Ensure detail page opens scrolled to top when navigated to
@@ -158,19 +329,45 @@ export default function WorkDetail() {
           <span>{t('works.backToWorks')}</span>
         </Link>
 
-        {/* Title */}
-        <h1 className="text-4xl sm:text-5xl lg:text-6xl font-light mb-6 sm:mb-8">
-          {work.title[lang]}
-        </h1>
+        {/* Title + year */}
+        <div className="mb-6 sm:mb-8">
+          {workCategory !== null && workIndex !== -1 ? (
+            <EditableText
+              dataPath={`works.${workCategory}[${workIndex}].title`}
+              language={lang}
+              className="text-4xl sm:text-5xl lg:text-6xl font-light"
+              as="h1"
+            >
+              {work.title[lang]}
+            </EditableText>
+          ) : (
+            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-light">
+              {work.title[lang]}
+            </h1>
+          )}
+          <p className="mt-2 text-sm sm:text-base opacity-60">{work.year}</p>
+        </div>
 
         {/* Main description text */}
-        {description && (
+        {description && workCategory !== null && workIndex !== -1 ? (
+          <div className="max-w-4xl mb-10 sm:mb-12">
+            <EditableText
+              dataPath={`works.${workCategory}[${workIndex}].description`}
+              language={lang}
+              className="text-base sm:text-lg leading-relaxed opacity-90 whitespace-pre-line"
+              as="p"
+              multiline
+            >
+              {description}
+            </EditableText>
+          </div>
+        ) : description ? (
           <div className="max-w-4xl mb-10 sm:mb-12">
             <p className="text-base sm:text-lg leading-relaxed opacity-90 whitespace-pre-line">
               {description}
             </p>
           </div>
-        )}
+        ) : null}
 
         {/* Video gallery – render one or many, stacked */}
         {videoItems.length > 0 && (
@@ -215,42 +412,102 @@ export default function WorkDetail() {
           </div>
         )}
 
+        {/* Admin: upload new photos to the gallery (each uploaded individually, appended at the end) */}
+        {isAdminMode && workCategory !== null && workIndex !== -1 && (
+          <div className="mb-8 max-w-5xl">
+            <label className="block text-xs sm:text-sm font-medium mb-2">
+              Upload photos (they will appear at the end of the gallery)
+            </label>
+            <input
+              type="file"
+              accept="image/*"
+              multiple
+              onChange={handleImageUpload}
+              disabled={isUploading}
+              className="block text-xs sm:text-sm"
+            />
+            {uploadError && (
+              <p className="mt-2 text-xs text-red-500">
+                {uploadError}
+              </p>
+            )}
+          </div>
+        )}
+
         {/* Image thumbnails gallery; click to open full-screen lightbox */}
-        {work.images && work.images.length > 0 && (
+        {images && images.length > 0 && (
           <div className="mb-12 sm:mb-16">
+            {deleteError && (
+              <p className="mb-3 text-xs sm:text-sm text-red-500">
+                {deleteError}
+              </p>
+            )}
             <div className="flex flex-wrap gap-4">
-              {work.images.map((img, index) => (
-                <button
+              {images.map((img, index) => (
+                <div
                   key={index}
-                  type="button"
-                  className="group relative w-24 h-24 sm:w-28 sm:h-28 lg:w-32 lg:h-32 overflow-hidden border border-border"
-                  onClick={() => openLightbox(index)}
+                  className="flex flex-col items-center gap-1"
                 >
-                  <img
-                    src={img.url}
-                    alt={`${work.title[lang]} - ${index + 1}`}
-                    className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
-                    onError={(e) => {
-                      const target = e.target as HTMLImageElement
-                      target.style.display = 'none'
-                      const parent = target.parentElement
-                      if (parent) {
-                        parent.innerHTML = `
-                          <div class="w-full h-full bg-gray-200 flex items-center justify-center">
-                            <span class="text-gray-400 text-xs">${work.title[lang]}</span>
-                          </div>
-                        `
-                      }
-                    }}
-                  />
-                </button>
+                  <button
+                    type="button"
+                    className="group relative w-24 h-24 sm:w-28 sm:h-28 lg:w-32 lg:h-32 overflow-hidden border border-border"
+                    onClick={() => openLightbox(index)}
+                  >
+                    {/* Favorite heart in top-right corner */}
+                    <button
+                      type="button"
+                      className="absolute top-1 right-1 z-10 p-1 rounded-full bg-black/40 hover:bg-black/60"
+                      onClick={(e) => {
+                        e.stopPropagation()
+                        toggleFavorite(img.url)
+                      }}
+                    >
+                      <span
+                        className={`text-xs sm:text-sm ${
+                          favoriteUrls.includes(img.url)
+                            ? 'text-red-500'
+                            : 'text-white/70'
+                        }`}
+                      >
+                        ♥
+                      </span>
+                    </button>
+                    <img
+                      src={img.url}
+                      alt={`${work.title[lang]} - ${index + 1}`}
+                      className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
+                      onError={(e) => {
+                        const target = e.target as HTMLImageElement
+                        target.style.display = 'none'
+                        const parent = target.parentElement
+                        if (parent) {
+                          parent.innerHTML = `
+                            <div class="w-full h-full bg-gray-200 flex items-center justify-center">
+                              <span class="text-gray-400 text-xs">${work.title[lang]}</span>
+                            </div>
+                          `
+                        }
+                      }}
+                    />
+                  </button>
+                  {isAdminMode && (
+                    <button
+                      type="button"
+                      className="text-[10px] sm:text-xs text-red-500 hover:underline"
+                      onClick={() => handleDeleteImage(img.url)}
+                      disabled={isDeleting}
+                    >
+                      {isDeleting ? 'Deleting…' : 'Delete'}
+                    </button>
+                  )}
+                </div>
               ))}
             </div>
           </div>
         )}
 
         {/* Full-screen lightbox for images */}
-        {isLightboxOpen && work.images && work.images.length > 0 && (
+        {isLightboxOpen && images && images.length > 0 && (
           <div className="fixed inset-0 z-40 bg-black/90 flex items-center justify-center">
             {/* Close area */}
             <button
@@ -264,7 +521,7 @@ export default function WorkDetail() {
             <div className="relative z-50 max-w-5xl w-full px-4">
               <div className="flex items-center justify-between mb-4 text-white text-xs sm:text-sm opacity-75">
                 <span>
-                  {activeImageIndex + 1} / {work.images.length}
+                        {activeImageIndex + 1} / {images.length}
                 </span>
                 <button
                   type="button"
@@ -277,13 +534,13 @@ export default function WorkDetail() {
 
               <div className="relative w-full aspect-[4/3] bg-black flex items-center justify-center">
                 <img
-                  src={work.images[activeImageIndex].url}
+                  src={images[activeImageIndex].url}
                   alt={`${work.title[lang]} - ${activeImageIndex + 1}`}
                   className="max-w-full max-h-full object-contain"
                 />
 
                 {/* Navigation buttons */}
-                {work.images.length > 1 && (
+                {images.length > 1 && (
                   <>
                     <button
                       type="button"
@@ -306,10 +563,10 @@ export default function WorkDetail() {
               </div>
 
               {/* Image caption */}
-              {work.images[activeImageIndex].caption &&
-                work.images[activeImageIndex].caption[lang] && (
+                     {images[activeImageIndex].caption &&
+                       images[activeImageIndex].caption[lang] && (
                   <p className="mt-3 text-xs sm:text-sm text-white/80 italic text-center">
-                    {work.images[activeImageIndex].caption[lang]}
+                           {images[activeImageIndex].caption[lang]}
                   </p>
                 )}
             </div>

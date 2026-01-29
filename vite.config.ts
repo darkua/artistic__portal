@@ -19,6 +19,14 @@ export default defineConfig({
       '.ngrok.io',
       'localhost',
     ],
+    proxy: {
+      // Proxy API calls to the Node server in dev so the frontend can use relative /api URLs
+      '/api': {
+        target: 'http://localhost:8082',
+        changeOrigin: true,
+        secure: false,
+      },
+    },
   },
 })
 

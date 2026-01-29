@@ -1,7 +1,9 @@
 {
   "nav": {
-    "works": "OBRAS",
-    "news": "NOTICIAS",
+    "home": "INICIO",
+    "works": "DIRECCIÓN",
+    "news": "INTERPRETACIÓN",
+    "assistantDirection": "AYUDANTE DE DIRECCIÓN",
     "cv": "CV",
     "contact": "CONTACTO"
   },
@@ -11,20 +13,26 @@
     "introduction": "Elma es un alma inquieta. Ella se define a sí misma como \"la eterna aprendiz\", quizás porque su camino nunca ha sido lineal. Lo artístico, lo social y lo terapéutico se han ido entrelazando a lo largo de su vida, en una trayectoria marcada por la curiosidad.\n\nDe profesión: fotógrafa, periodista, educadora social, teatro-terapeuta, dramaturga y directora de escena, entre otras. Viajar, aprender, descubrir nuevos paradigmas y construir puentes entre mundos y miradas, definen su manera de estar en la vida.\n\nA partir de 2020, su naturaleza sincrética la empuja de nuevo a explorar otros lenguajes creativos: el teatro y el cine. Se gradúa en Dirección de Escena y Dramaturgia, dirige y escribe cinco piezas teatrales y un cortometraje: \"El último paquete\"."
   },
   "works": {
-    "title": "OBRAS",
+    "title": "DIRECCIÓN",
     "viewWork": "Ver Obra",
     "backToWorks": "Volver a Obras",
     "notFound": "Obra no encontrada",
     "materials": "Materiales",
     "size": "Tamaño",
-    "theaterDirector": "Directora de Teatro",
+    "theaterDirector": "Teatro",
     "actress": "Actriz",
-    "movieDirector": "Directora de Cine - Cortometrajes",
+    "movieDirector": "Cinema - Cortometrajes",
     "noWorks": "No hay obras disponibles en esta categoría"
   },
   "news": {
-    "title": "NOTICIAS",
-    "readMore": "Leer Más"
+    "title": "INTERPRETACIÓN",
+    "description": "Selección de trabajos de interpretación y performance.",
+    "placeholder": "Aquí aparecerán los trabajos de interpretación."
+  },
+  "assistantDirection": {
+    "title": "AYUDANTE DE DIRECCIÓN",
+    "description": "Selección de trabajos como ayudante de dirección.",
+    "placeholder": "Aquí aparecerán los proyectos como ayudante de dirección."
   },
   "cv": {
     "title": "CV",

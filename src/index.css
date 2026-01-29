@@ -84,3 +84,8 @@ a:focus-visible {
   @apply outline-2 outline-offset-2 outline-primary;
 }
 
+/* Work grid item - items wrap naturally based on their calculated 50% size */
+.work-item-vertical {
+  flex-shrink: 0;
+}
+

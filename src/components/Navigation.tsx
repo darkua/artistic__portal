@@ -10,8 +10,10 @@ export default function Navigation() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
 
   const navItems = [
+    { path: '/', key: 'nav.home' },
     { path: '/works', key: 'nav.works' },
     { path: '/news', key: 'nav.news' },
+    { path: '/assistant-direction', key: 'nav.assistantDirection' },
     { path: '/cv', key: 'nav.cv' },
     { path: '/contact', key: 'nav.contact' },
   ]

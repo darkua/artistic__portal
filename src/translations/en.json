@@ -1,7 +1,9 @@
 {
   "nav": {
-    "works": "WORKS",
-    "news": "NEWS",
+    "home": "HOME",
+    "works": "DIRECTION",
+    "news": "PERFORMANCE",
+    "assistantDirection": "ASSISTANT DIRECTOR",
     "cv": "CV",
     "contact": "CONTACT"
   },
@@ -11,20 +13,26 @@
     "introduction": "Elma is a restless soul. She defines herself as \"the eternal learner,\" perhaps because her path has never been linear. The artistic, the social, and the therapeutic have been interweaving throughout her life, in a trajectory marked by curiosity.\n\nBy profession: photographer, journalist, social educator, theater-therapist, playwright, and stage director, among others. Traveling, learning, discovering new paradigms, and building bridges between worlds and perspectives define her way of being in life.\n\nSince 2020, her syncretic nature has pushed her again to explore other creative languages: theater and film. She graduates in Stage Direction and Dramaturgy, directs and writes five theatrical pieces and a short film: \"El último paquete\"."
   },
   "works": {
-    "title": "WORKS",
+    "title": "DIRECTION",
     "viewWork": "View Work",
     "backToWorks": "Back to Works",
     "notFound": "Work not found",
     "materials": "Materials",
     "size": "Size",
-    "theaterDirector": "Theater Director",
+    "theaterDirector": "Theater",
     "actress": "Actress",
-    "movieDirector": "Movie Director - Short Stories",
+    "movieDirector": "Cinema - Short Stories",
     "noWorks": "No works available in this category"
   },
   "news": {
-    "title": "NEWS",
-    "readMore": "Read More"
+    "title": "PERFORMANCE",
+    "description": "Selected acting and performance work.",
+    "placeholder": "Performance works will appear here."
+  },
+  "assistantDirection": {
+    "title": "ASSISTANT DIRECTOR",
+    "description": "Selected work as assistant director.",
+    "placeholder": "Assistant director projects will appear here."
   },
   "cv": {
     "title": "CV",

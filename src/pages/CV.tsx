@@ -1,8 +1,10 @@
 import { useTranslation } from '../hooks/useTranslation'
 import portfolioData from '../data/portfolioData.json'
+import EditableText from '../components/EditableText'
 
 export default function CV() {
   const { t, language } = useTranslation()
+  const lang = language as 'en' | 'es'
   const cv = portfolioData.cv
 
   return (
@@ -22,9 +24,15 @@ export default function CV() {
               {t('cv.bio.title')}
             </h2>
             <div className="prose prose-sm max-w-none">
-              <p className="text-base leading-relaxed opacity-90 whitespace-pre-line">
-                {cv.bio[language as 'en' | 'es']}
-              </p>
+              <EditableText
+                dataPath="cv.bio"
+                language={lang}
+                className="text-base leading-relaxed opacity-90 whitespace-pre-line"
+                as="p"
+                multiline
+              >
+                {cv.bio[lang]}
+              </EditableText>
             </div>
           </section>
 
