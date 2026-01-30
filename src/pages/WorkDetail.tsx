@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useRef, useLayoutEffect } from 'react'
+import React, { useEffect, useState, useRef } from 'react'
 import { useParams, Link } from 'react-router-dom'
 import { useTranslation } from '../hooks/useTranslation'
 import portfolioData from '../data/portfolioData.json'
@@ -54,27 +54,146 @@ interface Work {
 export default function WorkDetail() {
   const { id } = useParams<{ id: string }>()
   const { t, language } = useTranslation()
-  const worksData = portfolioData.works as {
+  
+  // All hooks must be declared before any conditional returns
+  // Use static import for initial state, update from API responses and HMR
+  const [portfolioDataState, setPortfolioDataState] = useState<any>(portfolioData)
+
+  // In development, watch for JSON file changes via HMR
+  useEffect(() => {
+    if ((import.meta as any).hot) {
+      (import.meta as any).hot.accept('/src/data/portfolioData.json', (newModule: any) => {
+        if (newModule) {
+          setPortfolioDataState(newModule.default)
+        }
+      })
+    }
+  }, [])
+  const [images, setImages] = useState<WorkImage[]>([])
+  const [videos, setVideos] = useState<WorkVideo[]>([])
+  
+  // Image lightbox state
+  const [isLightboxOpen, setIsLightboxOpen] = useState(false)
+  const [activeImageIndex, setActiveImageIndex] = useState(0)
+  const [isUploading, setIsUploading] = useState(false)
+  const [uploadError, setUploadError] = useState<string | null>(null)
+  const [isDeleting, setIsDeleting] = useState(false)
+  const [deleteError, setDeleteError] = useState<string | null>(null)
+  const [favoriteUrls, setFavoriteUrls] = useState<string[]>([])
+  
+  // Video upload state
+  const [showVideoForm, setShowVideoForm] = useState(false)
+  const [videoUrl, setVideoUrl] = useState('')
+  const [isAddingVideo, setIsAddingVideo] = useState(false)
+  const [videoError, setVideoError] = useState<string | null>(null)
+
+  // Load favorites so we can show which images are already selected for the hero
+  useEffect(() => {
+    let isMounted = true
+    ;(async () => {
+      try {
+        const res = await fetch('/api/favorites')
+        if (!res.ok) return
+        const data = await res.json()
+        if (isMounted && Array.isArray(data.favorites)) {
+          setFavoriteUrls(data.favorites)
+        }
+      } catch {
+        // ignore
+      }
+    })()
+    return () => {
+      isMounted = false
+    }
+  }, [])
+
+  // Scroll to top when navigating to a new work
+  useEffect(() => {
+    window.scrollTo({ top: 0, left: 0, behavior: 'instant' as ScrollBehavior })
+  }, [id])
+
+  // Keyboard navigation for lightbox - must be declared before conditional returns
+  useEffect(() => {
+    if (!isLightboxOpen) return
+
+    const handleKeyDown = (event: KeyboardEvent) => {
+      if (event.key === 'Escape') {
+        setIsLightboxOpen(false)
+      } else if (event.key === 'ArrowLeft') {
+        setActiveImageIndex((prev) => {
+          if (!images || images.length === 0) return prev
+          return prev === 0 ? images.length - 1 : prev - 1
+        })
+      } else if (event.key === 'ArrowRight') {
+        setActiveImageIndex((prev) => {
+          if (!images || images.length === 0) return prev
+          return prev === images.length - 1 ? 0 : prev + 1
+        })
+      }
+    }
+
+    window.addEventListener('keydown', handleKeyDown)
+    return () => {
+      window.removeEventListener('keydown', handleKeyDown)
+    }
+  }, [isLightboxOpen, images])
+
+  // Update images and videos state when work data is available
+  // This effect must be declared before conditional returns
+  const workIdRef = useRef<number | null>(null)
+  useEffect(() => {
+    const worksData = portfolioDataState?.works as {
+      theaterDirector: Work[]
+      actress: Work[]
+      movieDirector: Work[]
+      assistantDirection?: Work[]
+    } | undefined
+    
+    const allWorks = worksData ? [
+      ...(worksData.theaterDirector || []),
+      ...(worksData.actress || []),
+      ...(worksData.movieDirector || []),
+      ...(worksData.assistantDirection || [])
+    ] : []
+    const foundWork = allWorks.find((w) => w.id === Number(id))
+    
+    // Only update if work ID changed or work data changed
+    if (foundWork && foundWork.id !== workIdRef.current) {
+      workIdRef.current = foundWork.id
+      setImages(foundWork.images || [])
+      const initialVideos: WorkVideo[] = foundWork.videos && foundWork.videos.length > 0
+        ? foundWork.videos.filter((v) => v.url && v.url.trim() !== '')
+        : []
+      setVideos(initialVideos)
+    } else if (!foundWork && workIdRef.current !== null) {
+      // Reset state when work is not available
+      workIdRef.current = null
+      setImages([])
+      setVideos([])
+    }
+  }, [portfolioDataState, id])
+
+  const worksData = portfolioDataState?.works as {
     theaterDirector: Work[]
     actress: Work[]
     movieDirector: Work[]
     assistantDirection?: Work[]
-  }
+  } | undefined
   
   // Flatten all works from all categories to find by ID
-  const allWorks = [
+  const allWorks = worksData ? [
     ...(worksData.theaterDirector || []),
     ...(worksData.actress || []),
     ...(worksData.movieDirector || []),
     ...(worksData.assistantDirection || [])
-  ]
+  ] : []
   const work = allWorks.find((w) => w.id === Number(id))
   
   // Find work's category and index for dataPath
   let workCategory: 'theaterDirector' | 'actress' | 'movieDirector' | 'assistantDirection' | null = null
   let workIndex = -1
   
-  if (work) {
+  if (work && worksData) {
     if (worksData.theaterDirector) {
       workIndex = worksData.theaterDirector.findIndex((w) => w.id === Number(id))
       if (workIndex !== -1) {
@@ -139,47 +258,10 @@ export default function WorkDetail() {
   }
 
   // Fallback to shortDescription if full description doesn't exist
-  const description = work.description?.[lang] || work.shortDescription?.[lang] || ''
-
-  // Build initial list of videos from work data
-  const initialVideos: WorkVideo[] = work.videos && work.videos.length > 0
-    ? work.videos.filter((v) => v.url && v.url.trim() !== '')
-    : []
-
-  // Images state (so uploads/deletes don't require a full page reload)
-  const [images, setImages] = useState<WorkImage[]>(work.images || [])
-  // Videos state
-  const [videos, setVideos] = useState<WorkVideo[]>(initialVideos)
-  // Ref to maintain scroll position during reordering
-  const scrollPositionRef = useRef<number>(0)
-  const shouldRestoreScroll = useRef<boolean>(false)
-
-  // Restore scroll position after images state updates (for reordering)
-  useLayoutEffect(() => {
-    if (shouldRestoreScroll.current && scrollPositionRef.current > 0) {
-      window.scrollTo(0, scrollPositionRef.current)
-      shouldRestoreScroll.current = false
-    }
-  }, [images])
+  const description = work?.description?.[lang] || work?.shortDescription?.[lang] || ''
   
   // Use videos state for rendering
   const videoItems: WorkVideo[] = videos
-
-  // Image lightbox state
-  const [isLightboxOpen, setIsLightboxOpen] = useState(false)
-  const [activeImageIndex, setActiveImageIndex] = useState(0)
-  const [isUploading, setIsUploading] = useState(false)
-  const [uploadError, setUploadError] = useState<string | null>(null)
-  const [isDeleting, setIsDeleting] = useState(false)
-  const [deleteError, setDeleteError] = useState<string | null>(null)
-  const [isReordering, setIsReordering] = useState(false)
-  const [favoriteUrls, setFavoriteUrls] = useState<string[]>([])
-  
-  // Video upload state
-  const [showVideoForm, setShowVideoForm] = useState(false)
-  const [videoUrl, setVideoUrl] = useState('')
-  const [isAddingVideo, setIsAddingVideo] = useState(false)
-  const [videoError, setVideoError] = useState<string | null>(null)
 
   const openLightbox = (index: number) => {
     setActiveImageIndex(index)
@@ -203,26 +285,6 @@ export default function WorkDetail() {
       prev === images.length - 1 ? 0 : prev + 1
     )
   }
-
-  // Load favorites so we can show which images are already selected for the hero
-  useEffect(() => {
-    let isMounted = true
-    ;(async () => {
-      try {
-        const res = await fetch('/api/favorites')
-        if (!res.ok) return
-        const data = await res.json()
-        if (isMounted && Array.isArray(data.favorites)) {
-          setFavoriteUrls(data.favorites)
-        }
-      } catch {
-        // ignore
-      }
-    })()
-    return () => {
-      isMounted = false
-    }
-  }, [])
 
   const handleImageUpload = async (e: React.ChangeEvent<HTMLInputElement>) => {
     const files = e.target.files
@@ -323,6 +385,32 @@ export default function WorkDetail() {
 
       // Update local images state so UI refreshes without page reload
       setImages((prev) => prev.filter((img) => img.url !== imageUrl))
+      // Also update portfolioDataState if the API returns updated work data
+      try {
+        const deleteData = await response.json()
+        if (deleteData?.work) {
+          setPortfolioDataState((prev: any) => {
+            const updated = { ...prev }
+            const worksData = updated.works as any
+            if (workCategory === 'theaterDirector' && worksData.theaterDirector) {
+              const idx = worksData.theaterDirector.findIndex((w: Work) => w.id === work.id)
+              if (idx !== -1) worksData.theaterDirector[idx] = deleteData.work
+            } else if (workCategory === 'actress' && worksData.actress) {
+              const idx = worksData.actress.findIndex((w: Work) => w.id === work.id)
+              if (idx !== -1) worksData.actress[idx] = deleteData.work
+            } else if (workCategory === 'movieDirector' && worksData.movieDirector) {
+              const idx = worksData.movieDirector.findIndex((w: Work) => w.id === work.id)
+              if (idx !== -1) worksData.movieDirector[idx] = deleteData.work
+            } else if (workCategory === 'assistantDirection' && worksData.assistantDirection) {
+              const idx = worksData.assistantDirection.findIndex((w: Work) => w.id === work.id)
+              if (idx !== -1) worksData.assistantDirection[idx] = deleteData.work
+            }
+            return updated
+          })
+        }
+      } catch {
+        // If response doesn't have JSON, that's okay
+      }
       setIsDeleting(false)
     } catch (error: any) {
       console.error('Image delete error:', error)
@@ -351,12 +439,8 @@ export default function WorkDetail() {
   }
 
   const handleReorderImage = async (imageUrl: string, direction: 'left' | 'right') => {
-    if (!imageUrl || !workCategory || workIndex === -1 || isReordering) return
+    if (!imageUrl || !workCategory || workIndex === -1) return
 
-    // Save current scroll position
-    scrollPositionRef.current = window.scrollY
-
-    setIsReordering(true)
     setDeleteError(null)
 
     try {
@@ -386,22 +470,33 @@ export default function WorkDetail() {
 
       const data = await response.json()
       if (data.images && Array.isArray(data.images)) {
-        // Mark that we should restore scroll position after state update
-        shouldRestoreScroll.current = true
         // Update local images state so UI refreshes without page reload
         setImages(data.images)
+        // Also update portfolioDataState if the API returns updated work data
+        if (data.work) {
+          setPortfolioDataState((prev: any) => {
+            const updated = { ...prev }
+            const worksData = updated.works as any
+            if (workCategory === 'theaterDirector' && worksData.theaterDirector) {
+              const idx = worksData.theaterDirector.findIndex((w: Work) => w.id === work.id)
+              if (idx !== -1) worksData.theaterDirector[idx] = data.work
+            } else if (workCategory === 'actress' && worksData.actress) {
+              const idx = worksData.actress.findIndex((w: Work) => w.id === work.id)
+              if (idx !== -1) worksData.actress[idx] = data.work
+            } else if (workCategory === 'movieDirector' && worksData.movieDirector) {
+              const idx = worksData.movieDirector.findIndex((w: Work) => w.id === work.id)
+              if (idx !== -1) worksData.movieDirector[idx] = data.work
+            } else if (workCategory === 'assistantDirection' && worksData.assistantDirection) {
+              const idx = worksData.assistantDirection.findIndex((w: Work) => w.id === work.id)
+              if (idx !== -1) worksData.assistantDirection[idx] = data.work
+            }
+            return updated
+          })
+        }
       }
-      setIsReordering(false)
     } catch (error: any) {
       console.error('Image reorder error:', error)
       setDeleteError(error.message || 'Error reordering image')
-      setIsReordering(false)
-      // Restore scroll position even on error
-      shouldRestoreScroll.current = true
-      requestAnimationFrame(() => {
-        window.scrollTo(0, scrollPositionRef.current)
-        shouldRestoreScroll.current = false
-      })
     }
   }
 
@@ -461,15 +556,6 @@ export default function WorkDetail() {
       setIsAddingVideo(false)
     }
   }
-
-  // Ensure detail page opens scrolled to top when navigated to (only on route change, not on state updates)
-  useEffect(() => {
-    // Only scroll to top when the work ID changes (new page navigation), not during reordering
-    if (!isReordering && !shouldRestoreScroll.current) {
-      window.scrollTo({ top: 0, left: 0, behavior: 'instant' as ScrollBehavior })
-    }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [id]) // Only run when the route ID changes, not on every render
 
   // Keyboard navigation for image lightbox
   useEffect(() => {
@@ -739,7 +825,7 @@ export default function WorkDetail() {
                         onMouseDown={(e) => {
                           e.preventDefault()
                         }}
-                        disabled={isReordering}
+                        disabled={false}
                         aria-label="Move left"
                         title="Move left (first item moves to end)"
                       >
@@ -759,7 +845,7 @@ export default function WorkDetail() {
                         onMouseDown={(e) => {
                           e.preventDefault()
                         }}
-                        disabled={isReordering}
+                        disabled={false}
                         aria-label="Move right"
                         title="Move right (last item moves to beginning)"
                       >
@@ -773,7 +859,7 @@ export default function WorkDetail() {
                           e.stopPropagation()
                           handleDeleteImage(img.url)
                         }}
-                        disabled={isDeleting || isReordering}
+                        disabled={isDeleting}
                       >
                         {isDeleting ? 'Deleting…' : 'Delete'}
                       </button>

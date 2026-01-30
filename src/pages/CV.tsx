@@ -1,3 +1,4 @@
+import { useEffect, useState } from 'react'
 import { useTranslation } from '../hooks/useTranslation'
 import portfolioData from '../data/portfolioData.json'
 import EditableText from '../components/EditableText'
@@ -14,8 +15,21 @@ interface Work {
 export default function CV() {
   const { t, language } = useTranslation()
   const lang = language as 'en' | 'es'
-  const cv = portfolioData.cv
-  const worksData = portfolioData.works as {
+  const [portfolioDataState, setPortfolioDataState] = useState<any>(portfolioData)
+
+  // In development, watch for JSON file changes via HMR
+  useEffect(() => {
+    if ((import.meta as any).hot) {
+      (import.meta as any).hot.accept('/src/data/portfolioData.json', (newModule: any) => {
+        if (newModule) {
+          setPortfolioDataState(newModule.default)
+        }
+      })
+    }
+  }, [])
+
+  const cv = portfolioDataState.cv
+  const worksData = portfolioDataState.works as {
     theaterDirector: Work[]
   }
 

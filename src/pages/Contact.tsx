@@ -1,10 +1,24 @@
+import { useEffect, useState } from 'react'
 import { useTranslation } from '../hooks/useTranslation'
 import portfolioData from '../data/portfolioData.json'
 import { Instagram } from 'lucide-react'
 
 export default function Contact() {
   const { t, language } = useTranslation()
-  const contact = portfolioData.contact
+  const [portfolioDataState, setPortfolioDataState] = useState<any>(portfolioData)
+
+  // In development, watch for JSON file changes via HMR
+  useEffect(() => {
+    if ((import.meta as any).hot) {
+      (import.meta as any).hot.accept('/src/data/portfolioData.json', (newModule: any) => {
+        if (newModule) {
+          setPortfolioDataState(newModule.default)
+        }
+      })
+    }
+  }, [])
+
+  const contact = portfolioDataState.contact
 
   return (
     <div className="w-full">

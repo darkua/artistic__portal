@@ -7,10 +7,29 @@ import EditableText from '../components/EditableText'
 export default function Home() {
   const { language } = useTranslation()
   const lang = language as 'en' | 'es'
-  const home = (portfolioData as any).home
+  const [portfolioDataState, setPortfolioDataState] = useState<any>(portfolioData)
 
+  // In development, watch for JSON file changes via HMR
+  useEffect(() => {
+    if ((import.meta as any).hot) {
+      (import.meta as any).hot.accept('/src/data/portfolioData.json', (newModule: any) => {
+        if (newModule) {
+          setPortfolioDataState(newModule.default)
+        }
+      })
+    }
+  }, [])
+
+  const home = portfolioDataState.home
   const initialFavorites = (home && Array.isArray(home.favorites)) ? home.favorites : []
   const [heroImages, setHeroImages] = useState<string[]>(initialFavorites)
+
+  // Update hero images when portfolioData changes
+  useEffect(() => {
+    const home = portfolioDataState.home
+    const favorites = (home && Array.isArray(home.favorites)) ? home.favorites : []
+    setHeroImages(favorites)
+  }, [portfolioDataState])
 
   // Load live favorites from backend so changes from hearts appear on reload
   useEffect(() => {
@@ -31,6 +50,7 @@ export default function Home() {
       isMounted = false
     }
   }, [])
+
 
   return (
     <div className="w-full">

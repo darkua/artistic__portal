@@ -719,6 +719,87 @@ app.post('/api/works/thumbnail', workUpload.single('thumbnail'), async (req, res
   }
 });
 
+// Update thumbnail for existing work
+app.put('/api/works/:workId/thumbnail', workUpload.single('thumbnail'), async (req, res) => {
+  try {
+    const workId = Number(req.params.workId);
+    if (!workId || Number.isNaN(workId)) {
+      return res.status(400).json({ error: 'Invalid workId' });
+    }
+    if (!req.file) {
+      return res.status(400).json({ error: 'No thumbnail file uploaded' });
+    }
+
+    const portfolioData = readPortfolioData();
+    const found = findWorkById(portfolioData, workId);
+
+    if (!found) {
+      fs.unlinkSync(req.file.path);
+      return res.status(404).json({ error: `Work with id ${workId} not found` });
+    }
+
+    const { section, index, work } = found;
+
+    // Derive directory name from existing thumbnail or first image
+    let baseFolder = 'misc';
+    const basePath =
+      (work.thumbnail && typeof work.thumbnail === 'string' && work.thumbnail) ||
+      (work.images && work.images.length > 0 && work.images[0].url);
+
+    if (basePath && typeof basePath === 'string' && basePath.startsWith('/works/')) {
+      const segments = basePath.split('/');
+      if (segments.length >= 3 && segments[2]) {
+        baseFolder = segments[2];
+      }
+    }
+
+    const worksDir = path.join(__dirname, '..', 'public', 'works', baseFolder);
+    if (!fs.existsSync(worksDir)) {
+      fs.mkdirSync(worksDir, { recursive: true });
+    }
+
+    // Delete old thumbnail if it exists and is a local file
+    if (work.thumbnail && typeof work.thumbnail === 'string' && work.thumbnail.startsWith('/works/')) {
+      const oldThumbPath = path.join(__dirname, '..', 'public', work.thumbnail);
+      if (fs.existsSync(oldThumbPath)) {
+        try {
+          fs.unlinkSync(oldThumbPath);
+        } catch (err) {
+          console.warn(`Could not delete old thumbnail: ${oldThumbPath}`, err);
+        }
+      }
+    }
+
+    // Generate unique filename based on timestamp
+    const timestamp = Date.now();
+    const filename = `thumbnail-${timestamp}.jpg`;
+    const destPath = path.join(worksDir, filename);
+
+    // Process image with ImageMagick
+    const result = processWorkImage(req.file.path, destPath);
+    fs.unlinkSync(req.file.path); // Clean up temp file
+
+    if (!result.success) {
+      return res.status(500).json({ error: result.error || 'Failed to process thumbnail' });
+    }
+
+    const urlPath = `/works/${baseFolder}/${filename}`;
+
+    // Update work thumbnail
+    work.thumbnail = urlPath;
+    portfolioData.works[section][index] = work;
+    writePortfolioData(portfolioData);
+
+    res.json({ success: true, thumbnail: urlPath, work });
+  } catch (error) {
+    console.error('Thumbnail update error:', error);
+    if (req.file && fs.existsSync(req.file.path)) {
+      fs.unlinkSync(req.file.path);
+    }
+    res.status(500).json({ error: error.message });
+  }
+});
+
 // Create a new work
 app.post('/api/works', async (req, res) => {
   try {
