@@ -40,6 +40,9 @@
       "title": "Biografía",
       "content": "Elma Hache es una artista que trabaja en instalación, video y escultura. Su práctica explora temas de tiempo, movimiento y percepción a través de tecnologías contemporáneas y métodos históricos."
     },
+    "exhibitions": {
+      "title": "Exhibiciones"
+    },
     "awards": {
       "title": "Premios"
     },
@@ -63,6 +66,19 @@
   },
   "common": {
     "photo": "Foto"
+  },
+  "createWork": {
+    "title": {
+      "performance": "Crear Nueva Obra de Interpretación",
+      "assistant": "Crear Nueva Obra de Ayudante de Dirección"
+    },
+    "button": "Crear Nueva Obra"
+  },
+  "workDetail": {
+    "addVideo": "Añadir Video",
+    "videoUrl": "URL del Video (YouTube o Vimeo)",
+    "add": "Añadir",
+    "cancel": "Cancelar"
   }
 }
 

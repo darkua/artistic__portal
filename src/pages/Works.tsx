@@ -1,5 +1,4 @@
 import { Link } from 'react-router-dom'
-import { useState } from 'react'
 import { useTranslation } from '../hooks/useTranslation'
 import portfolioData from '../data/portfolioData.json'
 import EditableText from '../components/EditableText'
@@ -35,7 +34,7 @@ interface WorksData {
   movieDirector: Work[]
 }
 
-// Component for a single work item that detects image orientation and sets size to 66% of original (100% for "El Engaño y Quiñones")
+// Component for a single work item with fixed thumbnail size for consistent rendering
 function WorkItem({
   work,
   language,
@@ -43,55 +42,31 @@ function WorkItem({
   work: Work
   language: 'en' | 'es'
 }) {
-  const [imageDimensions, setImageDimensions] = useState<{
-    width: number
-    height: number
-  } | null>(null)
-
   // Thumbnail for the list; if missing, fall back to first gallery image
   let thumbnailUrl = work.thumbnail
   if (!thumbnailUrl && work.images && work.images.length > 0) {
     thumbnailUrl = work.images[0].url
   }
 
-  const handleImageLoad = (e: React.SyntheticEvent<HTMLImageElement>) => {
-    const img = e.currentTarget
-    // Use 100% for "El Engaño y Quiñones" (id: 7), 66% for others
-    const scale = work.id === 7 ? 0.75 : 0.66
-    const width = Math.round(img.naturalWidth * scale)
-    const height = Math.round(img.naturalHeight * scale)
-    setImageDimensions({ width, height })
-  }
-
-  // Calculate container style based on image size (66% for most, 75% for "El Engaño y Quiñones")
-  // Use a max pixel width so thumbnails have a fixed size on larger screens,
-  // but allow them to shrink responsively on small screens (mobile).
-  const containerStyle: React.CSSProperties = imageDimensions
-    ? {
-        width: `${imageDimensions.width}px`,
-        maxWidth: '100%', // never exceed viewport on mobile
-        flexShrink: 0,
-      }
-    : {
-        // Default size before image loads
-        width: '100%',
-      }
+  // Fixed width for all thumbnails (vertical posters)
+  // On mobile, use full width with max constraint; on larger screens, use fixed width
+  // "El último paquete" (id: 4) needs larger width to match INFIEL's vertical size
+  const fixedWidth = work.id === 4 ? 640 : 480 // Fixed width in pixels for consistent sizing
 
   return (
-    <div className="flex flex-col work-item-vertical" style={containerStyle}>
+    <div className="flex flex-col work-item-vertical" style={{ width: `${fixedWidth}px`, maxWidth: '100%', flexShrink: 0 }}>
       <Link
         to={`/works/${work.id}`}
         className="group block overflow-hidden"
-        // Let the image define the height so it scales down naturally on small screens
-        style={imageDimensions ? { width: '100%' } : {}}
+        style={{ width: '100%' }}
       >
-        <div className="relative w-full h-full">
+        <div className="relative w-full" style={{ aspectRatio: 'auto' }}>
           {thumbnailUrl && (
             <img
               src={thumbnailUrl}
               alt={work.title[language]}
-              className="w-full h-full object-contain transition-transform duration-300 group-hover:scale-105"
-              onLoad={handleImageLoad}
+              className="w-full h-auto object-contain transition-transform duration-300 group-hover:scale-105"
+              style={{ maxHeight: 'none' }}
               onError={(e) => {
                 const target = e.target as HTMLImageElement
                 target.style.display = 'none'
@@ -107,7 +82,7 @@ function WorkItem({
             />
           )}
           {!thumbnailUrl && (
-            <div className="w-full h-full flex items-center justify-center bg-gray-200">
+            <div className="w-full h-64 flex items-center justify-center bg-gray-200">
               <span className="text-gray-400 text-sm">{work.title[language]}</span>
             </div>
           )}

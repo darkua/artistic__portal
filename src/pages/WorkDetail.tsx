@@ -1,8 +1,8 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState, useRef, useLayoutEffect } from 'react'
 import { useParams, Link } from 'react-router-dom'
 import { useTranslation } from '../hooks/useTranslation'
 import portfolioData from '../data/portfolioData.json'
-import { ArrowLeft } from 'lucide-react'
+import { ArrowLeft, ChevronLeft, ChevronRight } from 'lucide-react'
 import { isYouTubeUrl, extractYouTubeId, getYouTubeEmbedUrl } from '../utils/youtube'
 import EditableText from '../components/EditableText'
 import { isVimeoUrl, extractVimeoId, getVimeoEmbedUrl } from '../utils/vimeo'
@@ -58,18 +58,20 @@ export default function WorkDetail() {
     theaterDirector: Work[]
     actress: Work[]
     movieDirector: Work[]
+    assistantDirection?: Work[]
   }
   
   // Flatten all works from all categories to find by ID
   const allWorks = [
     ...(worksData.theaterDirector || []),
     ...(worksData.actress || []),
-    ...(worksData.movieDirector || [])
+    ...(worksData.movieDirector || []),
+    ...(worksData.assistantDirection || [])
   ]
   const work = allWorks.find((w) => w.id === Number(id))
   
   // Find work's category and index for dataPath
-  let workCategory: 'theaterDirector' | 'actress' | 'movieDirector' | null = null
+  let workCategory: 'theaterDirector' | 'actress' | 'movieDirector' | 'assistantDirection' | null = null
   let workIndex = -1
   
   if (work) {
@@ -91,6 +93,12 @@ export default function WorkDetail() {
         workCategory = 'movieDirector'
       }
     }
+    if (workIndex === -1 && worksData.assistantDirection) {
+      workIndex = worksData.assistantDirection.findIndex((w) => w.id === Number(id))
+      if (workIndex !== -1) {
+        workCategory = 'assistantDirection'
+      }
+    }
   }
 
   if (!work) {
@@ -99,7 +107,7 @@ export default function WorkDetail() {
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16">
           <p>{t('works.notFound')}</p>
           <Link to="/works" className="mt-4 inline-block text-sm hover:opacity-70">
-            {t('works.backToWorks')}
+            Back to {t('works.title')}
           </Link>
         </div>
       </div>
@@ -109,17 +117,53 @@ export default function WorkDetail() {
   const lang = language as 'en' | 'es'
   const isAdminMode = import.meta.env.VITE_ADMIN_MODE === 'true'
 
+  // Determine back URL based on work category
+  const getBackUrl = () => {
+    if (workCategory === 'actress') {
+      return '/news' // Performance page
+    } else if (workCategory === 'assistantDirection') {
+      return '/assistant-direction'
+    } else {
+      return '/works' // Direction page (theaterDirector or movieDirector)
+    }
+  }
+
+  const getBackLabel = () => {
+    if (workCategory === 'actress') {
+      return t('news.title') // "PERFORMANCE" or "INTERPRETACIÓN"
+    } else if (workCategory === 'assistantDirection') {
+      return t('assistantDirection.title') // "ASSISTANT DIRECTOR" or "AYUDANTE DE DIRECCIÓN"
+    } else {
+      return t('works.title') // "DIRECTION" or "DIRECCIÓN"
+    }
+  }
+
   // Fallback to shortDescription if full description doesn't exist
   const description = work.description?.[lang] || work.shortDescription?.[lang] || ''
 
-  // Build a unified list of videos (single or many)
-  const videoItems: WorkVideo[] =
-    work.videos && work.videos.length > 0
-      ? work.videos.filter((v) => v.url && v.url.trim() !== '')
-      : []
+  // Build initial list of videos from work data
+  const initialVideos: WorkVideo[] = work.videos && work.videos.length > 0
+    ? work.videos.filter((v) => v.url && v.url.trim() !== '')
+    : []
 
   // Images state (so uploads/deletes don't require a full page reload)
   const [images, setImages] = useState<WorkImage[]>(work.images || [])
+  // Videos state
+  const [videos, setVideos] = useState<WorkVideo[]>(initialVideos)
+  // Ref to maintain scroll position during reordering
+  const scrollPositionRef = useRef<number>(0)
+  const shouldRestoreScroll = useRef<boolean>(false)
+
+  // Restore scroll position after images state updates (for reordering)
+  useLayoutEffect(() => {
+    if (shouldRestoreScroll.current && scrollPositionRef.current > 0) {
+      window.scrollTo(0, scrollPositionRef.current)
+      shouldRestoreScroll.current = false
+    }
+  }, [images])
+  
+  // Use videos state for rendering
+  const videoItems: WorkVideo[] = videos
 
   // Image lightbox state
   const [isLightboxOpen, setIsLightboxOpen] = useState(false)
@@ -128,7 +172,14 @@ export default function WorkDetail() {
   const [uploadError, setUploadError] = useState<string | null>(null)
   const [isDeleting, setIsDeleting] = useState(false)
   const [deleteError, setDeleteError] = useState<string | null>(null)
+  const [isReordering, setIsReordering] = useState(false)
   const [favoriteUrls, setFavoriteUrls] = useState<string[]>([])
+  
+  // Video upload state
+  const [showVideoForm, setShowVideoForm] = useState(false)
+  const [videoUrl, setVideoUrl] = useState('')
+  const [isAddingVideo, setIsAddingVideo] = useState(false)
+  const [videoError, setVideoError] = useState<string | null>(null)
 
   const openLightbox = (index: number) => {
     setActiveImageIndex(index)
@@ -195,10 +246,15 @@ export default function WorkDetail() {
         if (!response.ok) {
           let message = 'Error uploading image'
           try {
-            const data = await response.json()
-            if (data && data.error) message = data.error
+            const contentType = response.headers.get('content-type')
+            if (contentType && contentType.includes('application/json')) {
+              const data = await response.json()
+              if (data && data.error) message = data.error
+            } else {
+              message = `Server error: ${response.status} ${response.statusText}`
+            }
           } catch {
-            // ignore JSON parse errors
+            message = `Server error: ${response.status} ${response.statusText}`
           }
           throw new Error(message)
         }
@@ -252,10 +308,15 @@ export default function WorkDetail() {
       if (!response.ok) {
         let message = 'Error deleting image'
         try {
-          const data = await response.json()
-          if (data && data.error) message = data.error
+          const contentType = response.headers.get('content-type')
+          if (contentType && contentType.includes('application/json')) {
+            const data = await response.json()
+            if (data && data.error) message = data.error
+          } else {
+            message = `Server error: ${response.status} ${response.statusText}`
+          }
         } catch {
-          // ignore
+          message = `Server error: ${response.status} ${response.statusText}`
         }
         throw new Error(message)
       }
@@ -289,10 +350,126 @@ export default function WorkDetail() {
     }
   }
 
-  // Ensure detail page opens scrolled to top when navigated to
+  const handleReorderImage = async (imageUrl: string, direction: 'left' | 'right') => {
+    if (!imageUrl || !workCategory || workIndex === -1 || isReordering) return
+
+    // Save current scroll position
+    scrollPositionRef.current = window.scrollY
+
+    setIsReordering(true)
+    setDeleteError(null)
+
+    try {
+      const response = await fetch(`/api/works/${work.id}/images/reorder`, {
+        method: 'PUT',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ imageUrl, direction }),
+      })
+
+      if (!response.ok) {
+        let message = 'Error reordering image'
+        try {
+          const contentType = response.headers.get('content-type')
+          if (contentType && contentType.includes('application/json')) {
+            const data = await response.json()
+            if (data && data.error) message = data.error
+          } else {
+            message = `Server error: ${response.status} ${response.statusText}`
+          }
+        } catch {
+          message = `Server error: ${response.status} ${response.statusText}`
+        }
+        throw new Error(message)
+      }
+
+      const data = await response.json()
+      if (data.images && Array.isArray(data.images)) {
+        // Mark that we should restore scroll position after state update
+        shouldRestoreScroll.current = true
+        // Update local images state so UI refreshes without page reload
+        setImages(data.images)
+      }
+      setIsReordering(false)
+    } catch (error: any) {
+      console.error('Image reorder error:', error)
+      setDeleteError(error.message || 'Error reordering image')
+      setIsReordering(false)
+      // Restore scroll position even on error
+      shouldRestoreScroll.current = true
+      requestAnimationFrame(() => {
+        window.scrollTo(0, scrollPositionRef.current)
+        shouldRestoreScroll.current = false
+      })
+    }
+  }
+
+  const handleAddVideo = async () => {
+    if (!videoUrl.trim()) {
+      setVideoError('Video URL is required')
+      return
+    }
+
+    // Validate URL is YouTube or Vimeo
+    const isYouTube = isYouTubeUrl(videoUrl)
+    const isVimeo = isVimeoUrl(videoUrl)
+    
+    if (!isYouTube && !isVimeo) {
+      setVideoError('Please provide a valid YouTube or Vimeo URL')
+      return
+    }
+
+    setVideoError(null)
+    setIsAddingVideo(true)
+
+    try {
+      const response = await fetch(`/api/works/${work.id}/videos`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ url: videoUrl.trim() }),
+      })
+
+      if (!response.ok) {
+        let message = 'Error adding video'
+        try {
+          const contentType = response.headers.get('content-type')
+          if (contentType && contentType.includes('application/json')) {
+            const data = await response.json()
+            if (data && data.error) message = data.error
+          } else {
+            message = `Server error: ${response.status} ${response.statusText}`
+          }
+        } catch {
+          message = `Server error: ${response.status} ${response.statusText}`
+        }
+        throw new Error(message)
+      }
+
+      const data = await response.json()
+      if (data.video) {
+        setVideos((prev) => [...prev, data.video])
+        setVideoUrl('')
+        setShowVideoForm(false)
+      }
+    } catch (error: any) {
+      console.error('Add video error:', error)
+      setVideoError(error.message || 'Error adding video')
+    } finally {
+      setIsAddingVideo(false)
+    }
+  }
+
+  // Ensure detail page opens scrolled to top when navigated to (only on route change, not on state updates)
   useEffect(() => {
-    window.scrollTo({ top: 0, left: 0, behavior: 'instant' as ScrollBehavior })
-  }, [])
+    // Only scroll to top when the work ID changes (new page navigation), not during reordering
+    if (!isReordering && !shouldRestoreScroll.current) {
+      window.scrollTo({ top: 0, left: 0, behavior: 'instant' as ScrollBehavior })
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [id]) // Only run when the route ID changes, not on every render
 
   // Keyboard navigation for image lightbox
   useEffect(() => {
@@ -322,11 +499,11 @@ export default function WorkDetail() {
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12">
         {/* Back link */}
         <Link
-          to="/works"
+          to={getBackUrl()}
           className="inline-flex items-center gap-2 text-sm mb-8 hover:opacity-70 transition-opacity"
         >
           <ArrowLeft className="h-4 w-4" />
-          <span>{t('works.backToWorks')}</span>
+          <span>Back to {getBackLabel()}</span>
         </Link>
 
         {/* Title + year */}
@@ -369,9 +546,65 @@ export default function WorkDetail() {
           </div>
         ) : null}
 
+        {/* Admin: Add video */}
+        {isAdminMode && workCategory !== null && workIndex !== -1 && (
+          <div className="mb-8 max-w-5xl">
+            {!showVideoForm ? (
+              <button
+                type="button"
+                onClick={() => setShowVideoForm(true)}
+                className="px-4 py-2 text-sm bg-black text-white rounded hover:opacity-90 transition-opacity"
+              >
+                {t('workDetail.addVideo')}
+              </button>
+            ) : (
+              <div className="border border-border rounded-lg p-4 space-y-3">
+                <div>
+                  <label className="block text-xs sm:text-sm font-medium mb-2">
+                    {t('workDetail.videoUrl')}
+                  </label>
+                  <input
+                    type="url"
+                    value={videoUrl}
+                    onChange={(e) => setVideoUrl(e.target.value)}
+                    placeholder="https://www.youtube.com/watch?v=..."
+                    className="w-full px-3 py-2 text-sm border border-border rounded focus:outline-none focus:ring-1 focus:ring-gray-400"
+                    disabled={isAddingVideo}
+                  />
+                </div>
+                {videoError && (
+                  <p className="text-xs text-red-500">{videoError}</p>
+                )}
+                <div className="flex gap-2">
+                  <button
+                    type="button"
+                    onClick={handleAddVideo}
+                    disabled={isAddingVideo || !videoUrl.trim()}
+                    className="px-4 py-2 text-xs sm:text-sm bg-black text-white rounded hover:opacity-90 transition-opacity disabled:opacity-50"
+                  >
+                    {isAddingVideo ? 'Adding...' : t('workDetail.add')}
+                  </button>
+                  <button
+                    type="button"
+                    onClick={() => {
+                      setShowVideoForm(false)
+                      setVideoUrl('')
+                      setVideoError(null)
+                    }}
+                    className="px-4 py-2 text-xs sm:text-sm border border-border rounded hover:opacity-70 transition-opacity"
+                    disabled={isAddingVideo}
+                  >
+                    {t('workDetail.cancel')}
+                  </button>
+                </div>
+              </div>
+            )}
+          </div>
+        )}
+
         {/* Video gallery – render one or many, stacked */}
         {videoItems.length > 0 && (
-          <div className="mb-12 sm:mb-16 max-w-5xl space-y-8">
+          <div className={`mb-12 sm:mb-16 space-y-8 ${workCategory === 'movieDirector' || work?.id === 10 ? 'max-w-[50%]' : 'max-w-5xl'}`}>
             {videoItems.map((video, index) => {
               const url = video.url.trim()
               const isYouTube = isYouTubeUrl(url)
@@ -491,14 +724,60 @@ export default function WorkDetail() {
                     />
                   </button>
                   {isAdminMode && (
-                    <button
-                      type="button"
-                      className="text-[10px] sm:text-xs text-red-500 hover:underline"
-                      onClick={() => handleDeleteImage(img.url)}
-                      disabled={isDeleting}
-                    >
-                      {isDeleting ? 'Deleting…' : 'Delete'}
-                    </button>
+                    <div className="flex items-center gap-2">
+                      <button
+                        type="button"
+                        className="p-1 text-gray-600 hover:text-gray-900 disabled:opacity-50 disabled:cursor-not-allowed"
+                        onClick={(e) => {
+                          e.preventDefault()
+                          e.stopPropagation()
+                          const scrollY = window.scrollY
+                          handleReorderImage(img.url, 'left')
+                          // Immediately restore scroll position
+                          setTimeout(() => window.scrollTo(0, scrollY), 0)
+                        }}
+                        onMouseDown={(e) => {
+                          e.preventDefault()
+                        }}
+                        disabled={isReordering}
+                        aria-label="Move left"
+                        title="Move left (first item moves to end)"
+                      >
+                        <ChevronLeft className="h-4 w-4" />
+                      </button>
+                      <button
+                        type="button"
+                        className="p-1 text-gray-600 hover:text-gray-900 disabled:opacity-50 disabled:cursor-not-allowed"
+                        onClick={(e) => {
+                          e.preventDefault()
+                          e.stopPropagation()
+                          const scrollY = window.scrollY
+                          handleReorderImage(img.url, 'right')
+                          // Immediately restore scroll position
+                          setTimeout(() => window.scrollTo(0, scrollY), 0)
+                        }}
+                        onMouseDown={(e) => {
+                          e.preventDefault()
+                        }}
+                        disabled={isReordering}
+                        aria-label="Move right"
+                        title="Move right (last item moves to beginning)"
+                      >
+                        <ChevronRight className="h-4 w-4" />
+                      </button>
+                      <button
+                        type="button"
+                        className="text-[10px] sm:text-xs text-red-500 hover:underline"
+                        onClick={(e) => {
+                          e.preventDefault()
+                          e.stopPropagation()
+                          handleDeleteImage(img.url)
+                        }}
+                        disabled={isDeleting || isReordering}
+                      >
+                        {isDeleting ? 'Deleting…' : 'Delete'}
+                      </button>
+                    </div>
                   )}
                 </div>
               ))}
@@ -517,43 +796,51 @@ export default function WorkDetail() {
               aria-label="Close image gallery"
             />
 
-            {/* Image container */}
-            <div className="relative z-50 max-w-5xl w-full px-4">
-              <div className="flex items-center justify-between mb-4 text-white text-xs sm:text-sm opacity-75">
-                <span>
-                        {activeImageIndex + 1} / {images.length}
+            {/* Image container - full viewport on mobile, constrained on desktop */}
+            <div className="relative z-50 w-full h-full sm:max-w-5xl sm:h-auto sm:px-4 flex flex-col">
+              {/* Header overlay - positioned on top of image */}
+              <div className="absolute top-0 left-0 right-0 z-60 flex items-center justify-between p-3 sm:p-4 bg-gradient-to-b from-black/80 to-transparent">
+                <span className="text-white text-xs sm:text-sm opacity-90">
+                  {activeImageIndex + 1} / {images.length}
                 </span>
                 <button
                   type="button"
-                  className="px-2 py-1 border border-white/40 text-xs uppercase tracking-wide"
+                  className="px-2 py-1 border border-white/40 text-white text-xs uppercase tracking-wide hover:bg-white/20 transition-colors"
                   onClick={closeLightbox}
                 >
                   Close
                 </button>
               </div>
 
-              <div className="relative w-full aspect-[4/3] bg-black flex items-center justify-center">
+              {/* Image area - full height on mobile, aspect ratio on desktop */}
+              <div className="relative w-full h-full sm:aspect-[4/3] sm:h-auto bg-black flex items-center justify-center">
                 <img
                   src={images[activeImageIndex].url}
                   alt={`${work.title[lang]} - ${activeImageIndex + 1}`}
-                  className="max-w-full max-h-full object-contain"
+                  className="max-w-full max-h-full w-auto h-auto object-contain"
                 />
 
-                {/* Navigation buttons */}
+                {/* Navigation buttons - overlaid on image */}
                 {images.length > 1 && (
                   <>
                     <button
                       type="button"
-                      className="absolute left-4 top-1/2 -translate-y-1/2 text-white text-2xl sm:text-3xl px-2 py-1 bg-black/40 hover:bg-black/60"
-                      onClick={showPrevImage}
+                      className="absolute left-2 sm:left-4 top-1/2 -translate-y-1/2 text-white text-3xl sm:text-4xl px-3 py-2 sm:px-4 sm:py-3 bg-black/50 hover:bg-black/70 rounded-full transition-colors touch-manipulation"
+                      onClick={(e) => {
+                        e.stopPropagation()
+                        showPrevImage()
+                      }}
                       aria-label="Previous image"
                     >
                       ‹
                     </button>
                     <button
                       type="button"
-                      className="absolute right-4 top-1/2 -translate-y-1/2 text-white text-2xl sm:text-3xl px-2 py-1 bg-black/40 hover:bg-black/60"
-                      onClick={showNextImage}
+                      className="absolute right-2 sm:right-4 top-1/2 -translate-y-1/2 text-white text-3xl sm:text-4xl px-3 py-2 sm:px-4 sm:py-3 bg-black/50 hover:bg-black/70 rounded-full transition-colors touch-manipulation"
+                      onClick={(e) => {
+                        e.stopPropagation()
+                        showNextImage()
+                      }}
                       aria-label="Next image"
                     >
                       ›
@@ -562,12 +849,14 @@ export default function WorkDetail() {
                 )}
               </div>
 
-              {/* Image caption */}
-                     {images[activeImageIndex].caption &&
-                       images[activeImageIndex].caption[lang] && (
-                  <p className="mt-3 text-xs sm:text-sm text-white/80 italic text-center">
-                           {images[activeImageIndex].caption[lang]}
-                  </p>
+              {/* Image caption - overlay at bottom */}
+              {images[activeImageIndex].caption &&
+                images[activeImageIndex].caption[lang] && (
+                  <div className="absolute bottom-0 left-0 right-0 p-3 sm:p-4 bg-gradient-to-t from-black/80 to-transparent">
+                    <p className="text-xs sm:text-sm text-white/90 italic text-center">
+                      {images[activeImageIndex].caption[lang]}
+                    </p>
+                  </div>
                 )}
             </div>
           </div>

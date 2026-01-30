@@ -120,7 +120,7 @@ const workUpload = multer({
 // Find a work by numeric ID across all categories
 function findWorkById(portfolioData, workId) {
   if (!portfolioData.works) return null;
-  const sections = ['theaterDirector', 'actress', 'movieDirector'];
+  const sections = ['theaterDirector', 'actress', 'movieDirector', 'assistantDirection'];
   for (const section of sections) {
     const arr = portfolioData.works[section];
     if (Array.isArray(arr)) {
@@ -133,26 +133,74 @@ function findWorkById(portfolioData, workId) {
   return null;
 }
 
+// Get next available work ID across all categories
+function getNextWorkId(portfolioData) {
+  if (!portfolioData.works) return 1;
+  let maxId = 0;
+  const sections = ['theaterDirector', 'actress', 'movieDirector', 'assistantDirection'];
+  for (const section of sections) {
+    const arr = portfolioData.works[section];
+    if (Array.isArray(arr)) {
+      for (const work of arr) {
+        if (work && typeof work.id === 'number' && work.id > maxId) {
+          maxId = work.id;
+        }
+      }
+    }
+  }
+  return maxId + 1;
+}
+
 // Process a work image: resize/compress with ImageMagick, no watermark, target < 200KB
 function processWorkImage(sourcePath, destPath) {
   try {
+    // Always convert to JPEG for better compression, regardless of input format
+    const destPathJpeg = destPath.replace(/\.(png|gif|webp)$/i, '.jpg');
     let quality = 85;
     const maxSize = 200 * 1024; // 200 KB
 
-    for (let attempt = 0; attempt < 5; attempt++) {
-      // Resize to max 1920px, strip metadata, adjust quality
+    for (let attempt = 0; attempt < 10; attempt++) {
+      // Resize to max 1920px, strip metadata, convert to JPEG, adjust quality
+      // Use -define jpeg:extent to help target file size
       execSync(
-        `magick "${sourcePath}" -auto-orient -resize "1920x1920>" -strip -quality ${quality} "${destPath}"`,
+        `magick "${sourcePath}" -auto-orient -resize "1920x1920>" -strip -quality ${quality} -define jpeg:extent=${maxSize}b "${destPathJpeg}"`,
         { stdio: 'ignore' }
       );
 
-      const { size } = fs.statSync(destPath);
-      if (size <= maxSize || quality <= 40) {
+      const { size } = fs.statSync(destPathJpeg);
+      console.log(`Attempt ${attempt + 1}: Quality ${quality}, Size: ${(size / 1024).toFixed(2)} KB`);
+      
+      if (size <= maxSize || quality <= 30) {
+        // If original destPath was different (e.g., .png), we need to rename
+        if (destPath !== destPathJpeg && fs.existsSync(destPath)) {
+          fs.unlinkSync(destPath);
+        }
+        // Rename JPEG to match original extension if needed, or keep as JPEG
+        if (destPath !== destPathJpeg) {
+          fs.renameSync(destPathJpeg, destPath);
+        }
         break;
       }
 
-      // Reduce quality and try again
-      quality -= 10;
+      // Reduce quality more aggressively
+      quality -= 8;
+    }
+
+    // Final check - if still too large, try one more time with very low quality
+    const finalPath = destPath.endsWith('.jpg') ? destPath : destPathJpeg;
+    if (fs.existsSync(finalPath)) {
+      const { size } = fs.statSync(finalPath);
+      if (size > maxSize) {
+        console.log(`Final size ${(size / 1024).toFixed(2)} KB still too large, applying aggressive compression...`);
+        execSync(
+          `magick "${sourcePath}" -auto-orient -resize "1600x1600>" -strip -quality 50 -define jpeg:extent=${maxSize}b "${destPathJpeg}"`,
+          { stdio: 'ignore' }
+        );
+        if (destPath !== destPathJpeg) {
+          if (fs.existsSync(destPath)) fs.unlinkSync(destPath);
+          fs.renameSync(destPathJpeg, destPath);
+        }
+      }
     }
 
     return { success: true };
@@ -427,6 +475,72 @@ app.delete('/api/works/:workId/images', async (req, res) => {
   }
 });
 
+// Reorder work gallery images
+app.put('/api/works/:workId/images/reorder', async (req, res) => {
+  try {
+    const workId = Number(req.params.workId);
+    const { imageUrl, direction } = req.body || {}; // direction: 'left' or 'right'
+
+    if (!workId || Number.isNaN(workId)) {
+      return res.status(400).json({ error: 'Invalid workId' });
+    }
+    if (!imageUrl || typeof imageUrl !== 'string') {
+      return res.status(400).json({ error: 'Image URL is required' });
+    }
+    if (!direction || !['left', 'right'].includes(direction)) {
+      return res.status(400).json({ error: 'Direction must be "left" or "right"' });
+    }
+
+    const portfolioData = readPortfolioData();
+    const found = findWorkById(portfolioData, workId);
+
+    if (!found) {
+      return res.status(404).json({ error: `Work with id ${workId} not found` });
+    }
+
+    const { section, index, work } = found;
+    if (!Array.isArray(work.images) || work.images.length < 2) {
+      return res.status(400).json({ error: 'Need at least 2 images to reorder' });
+    }
+
+    const imageIndex = work.images.findIndex((img) => img && img.url === imageUrl);
+    if (imageIndex === -1) {
+      return res.status(404).json({ error: 'Image not found in work gallery' });
+    }
+
+    // Reorder: left moves left (or first to end), right moves right (or last to first)
+    if (direction === 'left') {
+      if (imageIndex === 0) {
+        // First item: move to end
+        const [moved] = work.images.splice(0, 1);
+        work.images.push(moved);
+      } else {
+        // Swap with previous
+        [work.images[imageIndex - 1], work.images[imageIndex]] = 
+          [work.images[imageIndex], work.images[imageIndex - 1]];
+      }
+    } else { // direction === 'right'
+      if (imageIndex === work.images.length - 1) {
+        // Last item: move to beginning
+        const [moved] = work.images.splice(imageIndex, 1);
+        work.images.unshift(moved);
+      } else {
+        // Swap with next
+        [work.images[imageIndex], work.images[imageIndex + 1]] = 
+          [work.images[imageIndex + 1], work.images[imageIndex]];
+      }
+    }
+
+    portfolioData.works[section][index] = work;
+    writePortfolioData(portfolioData);
+
+    res.json({ success: true, images: work.images });
+  } catch (error) {
+    console.error('Reorder work images error:', error);
+    res.status(500).json({ error: error.message });
+  }
+});
+
 // Favorites API: manage hero slideshow favorites (list of image URLs)
 app.get('/api/favorites', (req, res) => {
   try {
@@ -519,22 +633,15 @@ app.put('/api/portfolio', async (req, res) => {
     if (primaryLang) {
       const otherLang = primaryLang === 'en' ? 'es' : 'en';
       let otherValue = req.body[otherLang]; // Optional explicit value
-      
-      // Titles should not be machine-translated; copy the value as-is to both languages
-      const isTitleField = basePath.endsWith('.title');
 
-      if (!otherValue) {
-        if (isTitleField) {
-          otherValue = value; // Use the same text for both languages
-        } else if (ollama) {
-          try {
-            otherValue = await translateText(value, primaryLang, otherLang);
-          } catch (error) {
-            console.warn(
-              '⚠️ Auto-translation failed, keeping only primary language:',
-              (error && error.message) || error
-            );
-          }
+      if (!otherValue && ollama) {
+        try {
+          otherValue = await translateText(value, primaryLang, otherLang);
+        } catch (error) {
+          console.warn(
+            '⚠️ Auto-translation failed, keeping only primary language:',
+            (error && error.message) || error
+          );
         }
       }
 
@@ -570,6 +677,254 @@ app.get('/api/portfolio', (req, res) => {
     }
   } catch (error) {
     console.error('Error reading portfolio data:', error);
+    res.status(500).json({ error: error.message });
+  }
+});
+
+// Upload thumbnail for new work (processes and returns URL)
+app.post('/api/works/thumbnail', workUpload.single('thumbnail'), async (req, res) => {
+  try {
+    if (!req.file) {
+      return res.status(400).json({ error: 'No thumbnail file uploaded' });
+    }
+
+    // Create a folder for the new work (using timestamp)
+    const timestamp = Date.now();
+    const baseFolder = `work-${timestamp}`;
+    const worksDir = path.join(__dirname, '..', 'public', 'works', baseFolder);
+    if (!fs.existsSync(worksDir)) {
+      fs.mkdirSync(worksDir, { recursive: true });
+    }
+
+    // Always use .jpg extension for thumbnails (better compression)
+    const filename = `thumbnail.jpg`;
+    const destPath = path.join(worksDir, filename);
+
+    // Process image with ImageMagick
+    const result = processWorkImage(req.file.path, destPath);
+    fs.unlinkSync(req.file.path); // Clean up temp file
+
+    if (!result.success) {
+      return res.status(500).json({ error: result.error || 'Failed to process thumbnail' });
+    }
+
+    const urlPath = `/works/${baseFolder}/${filename}`;
+    res.json({ url: urlPath, folder: baseFolder });
+  } catch (error) {
+    console.error('Thumbnail upload error:', error);
+    if (req.file && fs.existsSync(req.file.path)) {
+      fs.unlinkSync(req.file.path);
+    }
+    res.status(500).json({ error: error.message });
+  }
+});
+
+// Create a new work
+app.post('/api/works', async (req, res) => {
+  try {
+    const { category, title, year, description, thumbnail } = req.body;
+
+    if (!category || !['actress', 'assistantDirection'].includes(category)) {
+      return res.status(400).json({ error: 'Invalid category. Must be "actress" or "assistantDirection"' });
+    }
+    if (!title || typeof title !== 'object') {
+      return res.status(400).json({ error: 'Title is required and must be an object with language keys' });
+    }
+    if (!year || typeof year !== 'number') {
+      return res.status(400).json({ error: 'Year is required and must be a number' });
+    }
+    if (!description || typeof description !== 'object') {
+      return res.status(400).json({ error: 'Description is required and must be an object with language keys' });
+    }
+    if (!thumbnail || typeof thumbnail !== 'string') {
+      return res.status(400).json({ error: 'Thumbnail URL is required' });
+    }
+
+    const portfolioData = readPortfolioData();
+    
+    // Ensure the category array exists
+    if (!portfolioData.works) portfolioData.works = {};
+    if (!Array.isArray(portfolioData.works[category])) {
+      portfolioData.works[category] = [];
+    }
+
+    // Get next available ID
+    const newId = getNextWorkId(portfolioData);
+
+    // Create new work object
+    const newWork = {
+      id: newId,
+      title: {
+        en: title.en || title.es || '',
+        es: title.es || title.en || '',
+      },
+      description: {
+        en: description.en || description.es || '',
+        es: description.es || description.en || '',
+      },
+      thumbnail,
+      images: [],
+      videos: [],
+      year,
+    };
+
+    // Add to the category array
+    portfolioData.works[category].push(newWork);
+    writePortfolioData(portfolioData);
+
+    console.log(`✅ Created new work with id ${newId} in category ${category}`);
+
+    res.json({ success: true, work: newWork });
+  } catch (error) {
+    console.error('Create work error:', error);
+    res.status(500).json({ error: error.message });
+  }
+});
+
+// Add a video to a work
+app.post('/api/works/:workId/videos', async (req, res) => {
+  try {
+    const workId = Number(req.params.workId);
+    const { url } = req.body || {};
+
+    if (!workId || Number.isNaN(workId)) {
+      return res.status(400).json({ error: 'Invalid workId' });
+    }
+    if (!url || typeof url !== 'string' || !url.trim()) {
+      return res.status(400).json({ error: 'Video URL is required' });
+    }
+
+    const portfolioData = readPortfolioData();
+    const found = findWorkById(portfolioData, workId);
+
+    if (!found) {
+      return res.status(404).json({ error: `Work with id ${workId} not found` });
+    }
+
+    const { section, index, work } = found;
+
+    // Validate URL is YouTube or Vimeo
+    const isYouTube = /(?:youtube\.com|youtu\.be)/.test(url);
+    const isVimeo = /vimeo\.com/.test(url);
+
+    if (!isYouTube && !isVimeo) {
+      return res.status(400).json({ error: 'URL must be a YouTube or Vimeo link' });
+    }
+
+    // Extract thumbnail URL
+    let thumbnail = '';
+    if (isYouTube) {
+      const youtubeIdMatch = url.match(/(?:youtube\.com\/watch\?v=|youtu\.be\/|youtube\.com\/embed\/)([^&\n?#]+)/);
+      if (youtubeIdMatch && youtubeIdMatch[1]) {
+        thumbnail = `https://img.youtube.com/vi/${youtubeIdMatch[1]}/maxresdefault.jpg`;
+      }
+    } else if (isVimeo) {
+      const vimeoIdMatch = url.match(/vimeo\.com\/(\d+)/);
+      if (vimeoIdMatch && vimeoIdMatch[1]) {
+        // Vimeo thumbnails require API call, but we can use a placeholder or fetch
+        thumbnail = `https://vumbnail.com/${vimeoIdMatch[1]}.jpg`;
+      }
+    }
+
+    // Initialize videos array if it doesn't exist
+    if (!Array.isArray(work.videos)) {
+      work.videos = [];
+    }
+
+    // Add new video
+    const newVideo = {
+      url: url.trim(),
+      thumbnail,
+    };
+
+    work.videos.push(newVideo);
+    portfolioData.works[section][index] = work;
+    writePortfolioData(portfolioData);
+
+    console.log(`✅ Added video to work ${workId}`);
+
+    res.json({ success: true, video: newVideo });
+  } catch (error) {
+    console.error('Add video error:', error);
+    res.status(500).json({ error: error.message });
+  }
+});
+
+// Delete a work and all its associated images
+app.delete('/api/works/:workId', async (req, res) => {
+  try {
+    const workId = Number(req.params.workId);
+    if (!workId || Number.isNaN(workId)) {
+      return res.status(400).json({ error: 'Invalid workId' });
+    }
+
+    const portfolioData = readPortfolioData();
+    const found = findWorkById(portfolioData, workId);
+
+    if (!found) {
+      return res.status(404).json({ error: `Work with id ${workId} not found` });
+    }
+
+    const { section, index, work } = found;
+
+    // Collect all image paths to delete
+    const imagesToDelete = [];
+
+    // Add thumbnail if it's a local file
+    if (work.thumbnail && typeof work.thumbnail === 'string' && work.thumbnail.startsWith('/works/')) {
+      imagesToDelete.push(work.thumbnail);
+    }
+
+    // Add all gallery images if they're local files
+    if (Array.isArray(work.images)) {
+      for (const img of work.images) {
+        if (img && img.url && typeof img.url === 'string' && img.url.startsWith('/works/')) {
+          imagesToDelete.push(img.url);
+        }
+      }
+    }
+
+    // Delete all image files from disk
+    for (const imagePath of imagesToDelete) {
+      const filePath = path.join(__dirname, '..', 'public', imagePath);
+      try {
+        if (fs.existsSync(filePath)) {
+          fs.unlinkSync(filePath);
+          console.log(`Deleted image: ${imagePath}`);
+        }
+      } catch (fsErr) {
+        console.warn(`Failed to delete image ${imagePath}:`, fsErr);
+      }
+    }
+
+    // Try to delete the work's folder if it exists and is empty
+    if (work.thumbnail && typeof work.thumbnail === 'string' && work.thumbnail.startsWith('/works/')) {
+      const segments = work.thumbnail.split('/');
+      if (segments.length >= 3 && segments[2]) {
+        const workFolder = path.join(__dirname, '..', 'public', 'works', segments[2]);
+        try {
+          if (fs.existsSync(workFolder)) {
+            const files = fs.readdirSync(workFolder);
+            if (files.length === 0) {
+              fs.rmdirSync(workFolder);
+              console.log(`Deleted empty work folder: ${segments[2]}`);
+            }
+          }
+        } catch (fsErr) {
+          console.warn(`Failed to delete work folder ${segments[2]}:`, fsErr);
+        }
+      }
+    }
+
+    // Remove work from JSON
+    portfolioData.works[section].splice(index, 1);
+    writePortfolioData(portfolioData);
+
+    console.log(`✅ Deleted work ${workId} from section ${section}`);
+
+    res.json({ success: true, deletedImages: imagesToDelete.length });
+  } catch (error) {
+    console.error('Delete work error:', error);
     res.status(500).json({ error: error.message });
   }
 });

@@ -12,18 +12,11 @@
           "es": "Una pieza teatral sobre el encuentro con \"el otro\" y el desmantelamiento de las etiquetas sociales."
         },
         "description": {
-          "en": "Living in a stereotyped world, where social relationships are not based on direct experience but on ignorance of \"the other\". We need to create an other different from us, who bears our insecurities, our fears and our prejudices. Social labels are born this way, which in reality do not exist, because we are all human beings with our fears and our dreams, our privileges and our deficiencies.\n\nWhat happens when we are capable of becoming that \"other\", when we accept that despite the difference, it is equal to us?",
-          "es": "Vivimos en un mundo estereotipado, cuyas relaciones sociales no se basan en una experiencia directa, sino en el desconocimiento de “el otro”. Necesitamos crear un\nextranjero diferente al que hacer depositario de nuestras inseguridades,\nnuestros miedos y nuestros prejuicios. Nacen así las etiquetas sociales, que en la realidad no las hay, pues somos todos  seres humanos con nuestros miedos y nuestros anhelos, nuestros privilegios y nuestras carencias.\n\n¿Y qué ocurre cuando somos capaces de convertirnos en ese “otro”, cuando aceptamos que es, dentro de su diferencia, igual a nosotros mismos?"
+          "en": "Living in a stereotyped world, where social relationships are not based on direct experience but on the ignorance of \"the other\". We need to create an outsider who bears our insecurities, fears and prejudices. Social labels are born this way, but in reality, we are all human beings with our fears and desires, our privileges and deficiencies.\nWhat happens when we are able to become that \"other\", when we accept that despite the difference, it is equal to us?",
+          "es": "Vivimos en un mundo estereotipado, cuyas relaciones sociales no se basan en una experiencia directa, sino en el desconocimiento de “el otro”. Necesitamos crear un extranjero diferente al que hacer depositario de nuestras inseguridades, nuestros miedos y nuestros prejuicios. Nacen así las etiquetas sociales, pero en realidad, somos todos seres humanos con nuestros miedos y nuestros anhelos, nuestros privilegios y nuestras carencias.\n\n¿Y qué ocurre cuando somos capaces de convertirnos en ese “otro”, cuando aceptamos que es, dentro de su diferencia, igual a nosotros mismos?"
         },
-        "thumbnail": "/works/pez-gaviota/pez-1.jpg",
+        "thumbnail": "/works/pez-gaviota/pez-gaviota-poster.jpg",
         "images": [
-          {
-            "url": "/works/pez-gaviota/pez-1.jpg",
-            "caption": {
-              "en": "Poster: El pez y la gaviota",
-              "es": "Cartel: El pez y la gaviota"
-            }
-          },
           {
             "url": "/works/pez-gaviota/pez-2.jpg",
             "caption": {
@@ -36,20 +29,6 @@
             "caption": {
               "en": "Poster variation",
               "es": "Variación del cartel"
-            }
-          },
-          {
-            "url": "/works/pez-gaviota/pez-4.jpg",
-            "caption": {
-              "en": "Rehearsal photo",
-              "es": "Foto de ensayo"
-            }
-          },
-          {
-            "url": "/works/pez-gaviota/pez-5.jpg",
-            "caption": {
-              "en": "Scene from the play",
-              "es": "Escena de la obra"
             }
           },
           {
@@ -75,6 +54,20 @@
           },
           {
             "url": "/works/pez-gaviota/pez-9.jpg",
+            "caption": {
+              "en": "Scene from the play",
+              "es": "Escena de la obra"
+            }
+          },
+          {
+            "url": "/works/pez-gaviota/pez-4.jpg",
+            "caption": {
+              "en": "Rehearsal photo",
+              "es": "Foto de ensayo"
+            }
+          },
+          {
+            "url": "/works/pez-gaviota/pez-5.jpg",
             "caption": {
               "en": "Scene from the play",
               "es": "Escena de la obra"
@@ -108,13 +101,13 @@
           "es": "Una adaptación metateatral en verso inspirada en los entremeses \"El borracho\" y \"El barbero\" de Luis Quiñones de Benavente."
         },
         "description": {
-          "en": "\"El Engaño y Quiñones\" is a personal adaptation with original dramaturgy based on the entremeses \"El borracho\" and \"El barbero\", both included in the book \"Jocoseria. Burlas veras, o reprehensión moral y festiva de los desórdenes públicos\" by Luis Quiñones de Benavente (Madrid, 1645).\n\nThe piece plays with metatheater: the supposed author of \"El Engaño\" himself—Quiñones de Benavente, a famous Golden Age entremés playwright—appears on stage and interacts with the characters of his work, taking sides and bursting into the action on several occasions.\n\nThe dramaturgy, also written in verse, follows the stanzaic composition corresponding, at each moment, to the two original works.",
-          "es": "\"El Engaño y Quiñones\" es una adaptación personal, con dramaturgia propia, que parte de los entremeses \"El borracho\" y \"El barbero\", ambos insertos en el libro \"Jocoseria. Burlas veras, o reprehensión moral y festiva de los desórdenes públicos\" de Luis Quiñones de Benavente (Madrid, 1645).\n\nLa pieza juega con el metateatro, pues aparece en escena la figura del supuesto autor de \"El Engaño\" —Quiñones de Benavente, célebre entremesista del Siglo de Oro— que interactúa con los personajes de su obra, toma partido e irrumpe en escena en varias ocasiones.\n\nLa dramaturgia, escrita también en verso, sigue en cada momento la composición estrófica correspondiente a las dos obras originales."
+          "en": "\"The Deception and Quiñones\" is an adaptation with original drama based on the interludes \"The Drunk\" and \"The Barber\", both inserted in the book \"Jocoseria. Veritable Burlas, or Moral and Festive Reprehension of Public Disorders\" by Luis Quiñones de Benavente (Madrid, 1645).\n\nThe play plays with metatheater, as the figure of the supposed author of \"The Deception\" -Quiñones de Benavente, famous interlude writer of the Golden Age- appears on stage and interacts with the characters of his work, takes sides, and intrudes on stage on several occasions.\n\nThe drama, written in verse, follows every moment the corresponding strophic composition to the two original works.",
+          "es": "\"El Engaño y Quiñones\" es una adaptación, con dramaturgia propia, que parte de los entremeses \"El borracho\" y \"El barbero\", ambos insertos en el libro \"Jocoseria. Burlas veras, o reprehensión moral y festiva de los desórdenes públicos\" de Luis Quiñones de Benavente (Madrid, 1645).\n\nLa pieza juega con el metateatro, pues aparece en escena la figura del supuesto autor de \"El Engaño\" -Quiñones de Benavente, célebre entremesista del Siglo de Oro- que interactúa con los personajes de su obra, toma partido e irrumpe en escena en varias ocasiones.\n\nLa dramaturgia, escrita también en verso, sigue en cada momento la composición estrófica correspondiente a las dos obras originales."
         },
-        "thumbnail": "/works/engano-quinones/engano-1.jpg",
+        "thumbnail": "/works/engano-quinones/engano-quinones-poster.jpg",
         "images": [
           {
-            "url": "/works/engano-quinones/engano-2.jpg",
+            "url": "/works/engano-quinones/work-1769792609604.jpg",
             "caption": {
               "en": "Scene from the play",
               "es": "Escena de la obra"
@@ -122,6 +115,13 @@
           },
           {
             "url": "/works/engano-quinones/engano-3.jpg",
+            "caption": {
+              "en": "Scene from the play",
+              "es": "Escena de la obra"
+            }
+          },
+          {
+            "url": "/works/engano-quinones/engano-2.jpg",
             "caption": {
               "en": "Scene from the play",
               "es": "Escena de la obra"
@@ -196,6 +196,48 @@
               "en": "Scene from the play",
               "es": "Escena de la obra"
             }
+          },
+          {
+            "url": "/works/engano-quinones/work-1769792590559.jpg",
+            "caption": {
+              "en": "Scene from the play",
+              "es": "Escena de la obra"
+            }
+          },
+          {
+            "url": "/works/engano-quinones/work-1769792593446.jpg",
+            "caption": {
+              "en": "Scene from the play",
+              "es": "Escena de la obra"
+            }
+          },
+          {
+            "url": "/works/engano-quinones/work-1769792596648.jpg",
+            "caption": {
+              "en": "Scene from the play",
+              "es": "Escena de la obra"
+            }
+          },
+          {
+            "url": "/works/engano-quinones/work-1769792600150.jpg",
+            "caption": {
+              "en": "Scene from the play",
+              "es": "Escena de la obra"
+            }
+          },
+          {
+            "url": "/works/engano-quinones/work-1769792603993.jpg",
+            "caption": {
+              "en": "Scene from the play",
+              "es": "Escena de la obra"
+            }
+          },
+          {
+            "url": "/works/engano-quinones/work-1769792606710.jpg",
+            "caption": {
+              "en": "Scene from the play",
+              "es": "Escena de la obra"
+            }
           }
         ],
         "videos": [
@@ -230,13 +272,6 @@
         },
         "thumbnail": "/works/persona/persona-poster.jpg",
         "images": [
-          {
-            "url": "/works/persona/persona-poster.jpg",
-            "caption": {
-              "en": "Poster: PERSONA",
-              "es": "Cartel: PERSONA"
-            }
-          },
           {
             "url": "/works/persona/persona-1.jpg",
             "caption": {
@@ -381,10 +416,10 @@
           "es": "Una pieza teatral de Maurice Maeterlinck que explora la muerte y el destino a través de un clímax existencial y una atmósfera simbolista."
         },
         "description": {
-          "en": "Death and destiny, as the two great mysteries of life, are exposed from an existential climax and a symbolist atmosphere. The Freudian concept of the unconscious is explored through the story of characters who arrive at a house to announce the death of one of the daughters. However, upon seeing through the windows the simple daily happiness of those who live there, they remain paralyzed without daring to give the bad news.\n\nThe characters observe and describe what they see in the house, while being observed, in turn, by the spectators.",
-          "es": "La muerte y el destino, como los dos grandes misterios de la vida, son expuestos desde un clímax existencial y una atmósfera simbolista. El concepto freudiano del inconsciente se explora a través de la historia de personajes que llegan a una casa para anunciar la muerte de una de sus hijas. Sin embargo, al ver a través de las ventanas la sencilla felicidad cotidiana de quienes viven allí, quedan paralizados sin atreverse a dar la mala noticia.\n\nLos personajes observan y describen lo que ven en la casa, mientras son observados, a su vez, por los espectadores."
+          "en": "\"Interior\", along with \"The Blind\" and \"The Intruder\", is part of Maurice Maeterlinck's \"Trilogy of Blindness\".\nIt is a daily tragedy, in the style of Maeterlinck, where two of life's great mysteries are explored: death and destiny, which are presented from an existential climax and a symbolic atmosphere.\nTwo characters arrive at a house to announce the death of one of the family's daughters. However, upon seeing through the windows the simple daily happiness of those who live there, they remain paralyzed and unable to deliver the bad news.\nThe characters observe and describe what they see in the house, while they, in turn, are observed by the audience.",
+          "es": "“Interior”, junto con “Los Ciegos” y “La Intrusa”, forma parte de la “Trilogía de la Ceguera” de Maurice Maeterlinck. \nSe trata de una tragedia cotidiana, al estilo de Maeterlinck, donde se exploran dos de los grandes misterios de la vida: la muerte y el destino, que son expuestos desde un clímax existencial y una atmósfera simbolista. \n\nDos personajes llegan a una casa para anunciar la muerte de una de las hijas de la familia. Sin embargo, al ver a través de las ventanas la sencilla felicidad cotidiana de quienes viven allí, quedan paralizados sin atreverse a dar la mala noticia.\nLos personajes observan y describen lo que ven en la casa, mientras son observados, a su vez, por los espectadores."
         },
-        "thumbnail": "/works/interior/interior-24.jpg",
+        "thumbnail": "/works/interior/interior-poster.jpg",
         "images": [
           {
             "url": "/works/interior/interior-1.jpg",
@@ -506,13 +541,6 @@
             }
           },
           {
-            "url": "/works/interior/interior-18.jpg",
-            "caption": {
-              "en": "Scene from the play",
-              "es": "Escena de la obra"
-            }
-          },
-          {
             "url": "/works/interior/interior-19.jpg",
             "caption": {
               "en": "Scene from the play",
@@ -546,13 +574,6 @@
               "en": "Scene from the play",
               "es": "Escena de la obra"
             }
-          },
-          {
-            "url": "/works/interior/interior-24.jpg",
-            "caption": {
-              "en": "Scene from the play",
-              "es": "Escena de la obra"
-            }
           }
         ],
         "videos": [
@@ -582,27 +603,13 @@
           "es": "Una creación colectiva que explora la identidad a través de un viaje interno entre luces y sombras, máscaras y presión social."
         },
         "description": {
-          "en": "Starting from the concept of identity and through a collective creation process, IN.OUT invites the audience on an inner journey toward self-knowledge, symbolically represented by individual and collective lights and shadows. The characters discover conscious and unconscious social masks and their relationship with the pressure that the system exerts on bodies and subjectivities.\n\nThe spectator travels through visually suggestive and dreamlike environments, wrapped in an immersive soundscape and a combination of different performing arts: text, voice, sound effects, music, lights, shadow theater, video projections and, of course, acting. Together they construct a poetic narrative that explores the relationships between human beings and between the human being and the universe.",
-          "es": "Partiendo del concepto de identidad y a través de un trabajo de creación colectiva, IN.OUT invita al espectador a un viaje interno hacia el autoconocimiento, simbólicamente representado por las luces y las sombras individuales y colectivas. Los personajes descubren las máscaras sociales conscientes e inconscientes y su relación con la presión que el sistema ejerce sobre los cuerpos y las subjetividades.\n\nEl espectador transitará por ambientes visualmente sugerentes y oníricos, a través de un espacio sonoro envolvente y la combinación de diversas artes escénicas como texto, voz, efectos sonoros, música, luces, teatro de sombras, video-proyecciones y, por supuesto, la interpretación actoral. Juntos construyen un relato poético que explora las relaciones entre los seres humanos y del ser humano con el universo."
+          "en": "Seeking Light, I find myself pursuing shadows...\n\nBorn from the concept of identity and through collaborative creation, IN.OUT emerges as a theatrical piece that explores the lights and shadows of human existence and their relationship with the social network that invariably produces alienated beings, unable to connect with their true essence.\n\nThrough an inner journey towards self-discovery, characters uncover conscious and unconscious social masks and their relationship with the pressure exerted by the system on individuals.\nOnce unmasked, they embark on the path of return to the origin, to the divine spark that human beings are in essence.\n\nWith a surrounding sound space and the combination of various scenic techniques (voice, sound effects, music, lights, Chinese shadows, video projections), an imaginative visual environment is created that constructs a poetic narrative, where relationships between people and the universe are explored.\n\nIN.OUT shows the sublime in human existence, beauty, but also its darkness, its ugly parts, cruelty.",
+          "es": "Buscando la Luz, me encuentro persiguiendo sombras...\n\nPartiendo del concepto de identidad y a través de un trabajo de creación colectiva nace IN.OUT, una pieza teatral que indaga en las luces y las sombras del ser humano y su relación con el entramado social que, inevitablemente, produce seres alienados, incapaces de conectar con su verdadera esencia.\n\nA través de un viaje interno hacia el autoconocimiento, los personajes descubren las máscaras sociales conscientes e inconscientes y su relación con la presión que el sistema ejerce sobre los individuos.\nUna vez desenmascarados, realizan el camino de regreso al origen, a la chispa divina que el ser humano es en esencia.\n\nCon un espacio sonoro envolvente y la combinación de diversas técnicas escénicas (voz, efectos sonoros, música, luces, sombras chinescas, video-proyecciones) se crea un ambiente visualmente onírico que construye un relato poético, donde se exploran las relaciones entre las personas y el universo.\n\nIN.OUT muestra lo sublime del ser humano, la belleza, pero también su oscuridad, sus partes feas, la crueldad."
         },
         "thumbnail": "/works/in-out/in-out-poster.jpg",
         "images": [
           {
-            "url": "/works/in-out/in-out-poster.jpg",
-            "caption": {
-              "en": "Poster: IN.OUT",
-              "es": "Cartel: IN.OUT"
-            }
-          },
-          {
-            "url": "/works/in-out/in-out-1.jpg",
-            "caption": {
-              "en": "Scene from the play",
-              "es": "Escena de la obra"
-            }
-          },
-          {
-            "url": "/works/in-out/in-out-2.jpg",
+            "url": "/works/in-out/in-out-4.jpg",
             "caption": {
               "en": "Scene from the play",
               "es": "Escena de la obra"
@@ -616,7 +623,7 @@
             }
           },
           {
-            "url": "/works/in-out/in-out-4.jpg",
+            "url": "/works/in-out/in-out-1.jpg",
             "caption": {
               "en": "Scene from the play",
               "es": "Escena de la obra"
@@ -756,14 +763,14 @@
             }
           },
           {
-            "url": "/works/in-out/in-out-24.jpg",
+            "url": "/works/in-out/in-out-25.jpg",
             "caption": {
               "en": "Scene from the play",
               "es": "Escena de la obra"
             }
           },
           {
-            "url": "/works/in-out/in-out-25.jpg",
+            "url": "/works/in-out/in-out-24.jpg",
             "caption": {
               "en": "Scene from the play",
               "es": "Escena de la obra"
@@ -798,14 +805,14 @@
             }
           },
           {
-            "url": "/works/in-out/in-out-30.jpg",
+            "url": "/works/in-out/in-out-31.jpg",
             "caption": {
               "en": "Scene from the play",
               "es": "Escena de la obra"
             }
           },
           {
-            "url": "/works/in-out/in-out-31.jpg",
+            "url": "/works/in-out/in-out-30.jpg",
             "caption": {
               "en": "Scene from the play",
               "es": "Escena de la obra"
@@ -887,6 +894,13 @@
               "en": "Scene from the play",
               "es": "Escena de la obra"
             }
+          },
+          {
+            "url": "/works/in-out/in-out-2.jpg",
+            "caption": {
+              "en": "Scene from the play",
+              "es": "Escena de la obra"
+            }
           }
         ],
         "videos": [
@@ -908,77 +922,27 @@
     ],
     "actress": [
       {
-        "id": 3,
+        "id": 11,
         "title": {
-          "en": "Performance #01 (2024)",
-          "es": "Actuación #01 (2024)"
-        },
-        "shortDescription": {
-          "en": "A dramatic role exploring emotional depth and vulnerability.",
-          "es": "Un papel dramático que explora la profundidad emocional y la vulnerabilidad."
+          "en": "The fat moon",
+          "es": "La luna gorda"
         },
         "description": {
-          "en": "In this performance, Elma Hache brings to life a complex character navigating the intricacies of human relationships. The role demands emotional authenticity and physical presence, showcasing her versatility as an actress.",
-          "es": "En esta actuación, Elma Hache da vida a un personaje complejo que navega por las complejidades de las relaciones humanas. El papel exige autenticidad emocional y presencia física, mostrando su versatilidad como actriz."
+          "en": "Once upon a time there was a little bull who fell in love with the moon...",
+          "es": "Era una vez un \"torito\" que se enamoró de la luna..."
         },
-        "thumbnail": "/placeholder-actress-1.jpg",
-        "images": [
-          {
-            "url": "/placeholder-actress-1.jpg",
-            "caption": {
-              "en": "Photo: Production Name",
-              "es": "Foto: Nombre de la Producción"
-            }
-          }
-        ],
-        "video": {
-          "url": "",
-          "thumbnail": ""
-        },
-        "materials": {
-          "en": "Theater performance",
-          "es": "Actuación teatral"
-        },
-        "size": {
-          "en": "Theater production",
-          "es": "Producción teatral"
-        },
-        "year": 2024
-      }
-    ],
-    "movieDirector": [
-      {
-        "id": 4,
-        "title": {
-          "en": "The last package",
-          "es": "El último paquete"
-        },
-        "shortDescription": {
-          "en": "A short film exploring themes of memory and loss.",
-          "es": "Un cortometraje que explora temas de memoria y pérdida."
-        },
-        "description": {
-          "en": "The last package is a short film that delves into the emotional landscape of memory and loss. Through poetic images and a nuanced narrative, the movie invites viewers to reflect on the weight of the past and the fragility of human connections. The work explores how personal narratives intersect with collective memory, creating spaces for reflection and dialogue.",
-          "es": "El último paquete es un cortometraje que profundiza en el paisaje emocional de la memoria y la pérdida. A través de imágenes poéticas y una narrativa matizada, la película invita a los espectadores a reflexionar sobre el peso del pasado y la fragilidad de las conexiones humanas. La obra explora cómo las narrativas personales se cruzan con la memoria colectiva, creando espacios para la reflexión y el diálogo."
-        },
-        "thumbnail": "https://img.youtube.com/vi/zPMSaR973wk/maxresdefault.jpg",
+        "thumbnail": "/works/work-1769728659337/thumbnail.jpg",
         "images": [],
         "videos": [
           {
-            "url": "https://www.youtube.com/watch?v=zPMSaR973wk",
-            "thumbnail": "https://img.youtube.com/vi/zPMSaR973wk/maxresdefault.jpg"
+            "url": "https://www.youtube.com/watch?v=j5sKEMffoC8",
+            "thumbnail": "https://img.youtube.com/vi/j5sKEMffoC8/maxresdefault.jpg"
           }
         ],
-        "materials": {
-          "en": "Short film",
-          "es": "Cortometraje"
-        },
-        "size": {
-          "en": "Duration: 15 minutes",
-          "es": "Duración: 15 minutos"
-        },
-        "year": 2024
-      },
+        "year": 2026
+      }
+    ],
+    "movieDirector": [
       {
         "id": 5,
         "title": {
@@ -1010,8 +974,45 @@
           "es": "Duración: 7,37 minutos"
         },
         "year": 2023
+      },
+      {
+        "id": 4,
+        "title": {
+          "en": "The last package",
+          "es": "El último paquete"
+        },
+        "shortDescription": {
+          "en": "A short film exploring themes of memory and loss.",
+          "es": "Un cortometraje que explora temas de memoria y pérdida."
+        },
+        "description": {
+          "en": "The last package is a short film that delves into the emotional landscape of memory and loss. Through poetic images and a nuanced narrative, the movie invites viewers to reflect on the weight of the past and the fragility of human connections. The work explores how personal narratives intersect with collective memory, creating spaces for reflection and dialogue.",
+          "es": "El último paquete es un cortometraje que profundiza en el paisaje emocional de la memoria y la pérdida. A través de imágenes poéticas y una narrativa matizada, la película invita a los espectadores a reflexionar sobre el peso del pasado y la fragilidad de las conexiones humanas. La obra explora cómo las narrativas personales se cruzan con la memoria colectiva, creando espacios para la reflexión y el diálogo."
+        },
+        "thumbnail": "https://img.youtube.com/vi/zPMSaR973wk/maxresdefault.jpg",
+        "images": [],
+        "videos": [
+          {
+            "url": "https://www.youtube.com/watch?v=cO_u5k5VT14",
+            "thumbnail": "https://img.youtube.com/vi/cO_u5k5VT14/maxresdefault.jpg"
+          },
+          {
+            "url": "https://www.youtube.com/watch?v=zPMSaR973wk",
+            "thumbnail": "https://img.youtube.com/vi/zPMSaR973wk/maxresdefault.jpg"
+          }
+        ],
+        "materials": {
+          "en": "Short film",
+          "es": "Cortometraje"
+        },
+        "size": {
+          "en": "Duration: 15 minutes",
+          "es": "Duración: 15 minutos"
+        },
+        "year": 2024
       }
-    ]
+    ],
+    "assistantDirection": []
   },
   "news": [
     {
@@ -1053,8 +1054,8 @@
   ],
   "cv": {
     "bio": {
-      "en": "Elma Hache is an artist working across theater, film, and performance. Her practice explores themes of identity, memory, and transformation through contemporary storytelling and innovative staging. Born in 1985, she lives and works in Madrid, Spain.\n\nHer work examines how personal narratives intersect with collective memory, creating spaces for reflection and dialogue. By moving beyond traditional media boundaries, she creates works that invite audiences to engage with complex emotional and social themes.",
-      "es": "Elma Hache es una artista que trabaja en teatro, cine y performance. Su práctica explora temas de identidad, memoria y transformación a través de la narrativa contemporánea y puestas en escena innovadoras. Nacida en 1985, vive y trabaja en Madrid, España.\n\nSu trabajo examina cómo las narrativas personales se cruzan con la memoria colectiva, creando espacios para la reflexión y el diálogo. Al ir más allá de los límites de los medios tradicionales, crea obras que invitan al público a involucrarse con temas emocionales y sociales complejos."
+      "en": "Elma Hache is an artist who works in theatre, film, and performance. Her practice explores themes of identity, memory, and transformation through contemporary narrative and innovative staging. Born in 1971, she lives and works in Murcia, Spain.\n\nHer work examines how personal narratives intersect with collective memory, creating spaces for reflection and dialogue. By going beyond the limits of traditional media, she creates works that invite the audience to engage with emotionally and socially complex themes.",
+      "es": "Elma Hache es una artista que trabaja en teatro, cine y performance. Su práctica explora temas de identidad, memoria y transformación a través de la narrativa contemporánea y puestas en escena innovadoras. Nacida en 1971, vive y trabaja en Murcia, España.\n\nSu trabajo examina cómo las narrativas personales se cruzan con la memoria colectiva, creando espacios para la reflexión y el diálogo. Al ir más allá de los límites de los medios tradicionales, crea obras que invitan al público a involucrarse con temas emocionales y sociales complejos."
     },
     "education": [
       {
@@ -1119,10 +1120,8 @@
       "/works/persona/persona-4.jpg",
       "/works/persona/persona-16.jpg",
       "/works/persona/persona-8.jpg",
-      "/works/engano-quinones/engano-6.jpg",
       "/works/in-out/in-out-7.jpg",
-      "/works/interior/interior-1.jpg",
-      "/works/interior/interior-15.jpg"
+      "/works/persona/persona-7.jpg"
     ]
   },
   "worksPage": {
@@ -1132,14 +1131,9 @@
     }
   },
   "contact": {
-    "email": "info@elmahache.com",
-    "studio": {
-      "en": "Elma Hache Studio",
-      "es": "Estudio Elma Hache"
-    },
+    "email": "elmahache@gmail.com",
     "social": {
-      "instagram": "https://instagram.com/elmahache",
-      "vimeo": "https://vimeo.com/elmahache"
+      "instagram": "https://instagram.com/elmahache"
     }
   }
 }

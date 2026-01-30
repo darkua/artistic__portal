@@ -1,6 +1,6 @@
 import { useTranslation } from '../hooks/useTranslation'
 import portfolioData from '../data/portfolioData.json'
-import { Instagram, Video } from 'lucide-react'
+import { Instagram } from 'lucide-react'
 
 export default function Contact() {
   const { t, language } = useTranslation()
@@ -15,12 +15,6 @@ export default function Contact() {
           </h1>
           
           <div className="space-y-8">
-            <div>
-              <h2 className="text-2xl sm:text-3xl font-light mb-4">
-                {contact.studio[language as 'en' | 'es']}
-              </h2>
-            </div>
-
             <div>
               <a
                 href={`mailto:${contact.email}`}
@@ -40,17 +34,6 @@ export default function Contact() {
                   aria-label="Instagram"
                 >
                   <Instagram className="h-6 w-6" />
-                </a>
-              )}
-              {contact.social.vimeo && (
-                <a
-                  href={contact.social.vimeo}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="hover:opacity-70 transition-opacity"
-                  aria-label="Vimeo"
-                >
-                  <Video className="h-6 w-6" />
                 </a>
               )}
             </div>

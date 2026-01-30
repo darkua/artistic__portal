@@ -19,6 +19,10 @@ export default defineConfig({
       '.ngrok.io',
       'localhost',
     ],
+    watch: {
+      // Ignore portfolioData.json changes to prevent HMR from triggering on API updates
+      ignored: ['**/src/data/portfolioData.json'],
+    },
     proxy: {
       // Proxy API calls to the Node server in dev so the frontend can use relative /api URLs
       '/api': {

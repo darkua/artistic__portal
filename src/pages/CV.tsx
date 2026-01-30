@@ -2,10 +2,27 @@ import { useTranslation } from '../hooks/useTranslation'
 import portfolioData from '../data/portfolioData.json'
 import EditableText from '../components/EditableText'
 
+interface Work {
+  id: number
+  title: {
+    en: string
+    es: string
+  }
+  year: number
+}
+
 export default function CV() {
   const { t, language } = useTranslation()
   const lang = language as 'en' | 'es'
   const cv = portfolioData.cv
+  const worksData = portfolioData.works as {
+    theaterDirector: Work[]
+  }
+
+  // Get all theater director works for exhibitions
+  const exhibitions = worksData.theaterDirector || []
+  // Sort by year (oldest first)
+  const sortedExhibitions = [...exhibitions].sort((a, b) => a.year - b.year)
 
   return (
     <div className="w-full">
@@ -13,9 +30,11 @@ export default function CV() {
         <div className="max-w-4xl">
           {/* Profile Image */}
           <div className="mb-12 sm:mb-16">
-            <div className="w-48 h-64 sm:w-56 sm:h-80 bg-gray-200 flex items-center justify-center">
-              <span className="text-gray-400 text-sm">{t('common.photo')}</span>
-            </div>
+            <img
+              src="/works/persona/persona-4.jpg"
+              alt="Elma Hache"
+              className="w-48 h-64 sm:w-56 sm:h-80 object-cover"
+            />
           </div>
 
           {/* Bio */}
@@ -36,43 +55,26 @@ export default function CV() {
             </div>
           </section>
 
-          {/* Education */}
-          {cv.education && cv.education.length > 0 && (
-            <section className="mb-12 sm:mb-16">
-              <h2 className="text-2xl sm:text-3xl font-light mb-6">
-                {t('cv.education.title')}
+          {/* Exhibitions */}
+          {sortedExhibitions.length > 0 && (
+            <section>
+              <h2 className="text-2xl sm:text-3xl font-light mb-8 sm:mb-12">
+                {t('cv.exhibitions.title')}
               </h2>
-              <div className="space-y-4">
-                {cv.education.map((edu, index) => (
-                  <div key={index}>
-                    <p className="text-base font-light">
-                      {edu.year} {edu.degree[language as 'en' | 'es']}
-                    </p>
-                    <p className="text-sm opacity-70">
-                      {edu.institution[language as 'en' | 'es']}
-                    </p>
-                  </div>
-                ))}
-              </div>
-            </section>
-          )}
-
-
-          {/* Awards */}
-          {cv.awards && cv.awards.length > 0 && (
-            <section className="mb-12 sm:mb-16">
-              <h2 className="text-2xl sm:text-3xl font-light mb-6">
-                {t('cv.awards.title')}
-              </h2>
-              <div className="space-y-4">
-                {cv.awards.map((award, index) => (
-                  <div key={index}>
-                    <p className="text-base font-light">
-                      {award.year} {award.title[language as 'en' | 'es']}
-                    </p>
-                    <p className="text-sm opacity-70">
-                      {award.organization[language as 'en' | 'es']}
-                    </p>
+              <div className="space-y-6">
+                {sortedExhibitions.map((work) => (
+                  <div key={work.id} className="border-b border-border pb-6 last:border-b-0">
+                    <div className="flex flex-col sm:flex-row sm:items-baseline sm:gap-4">
+                      <p className="text-base font-light">
+                        {work.year}
+                      </p>
+                      <p className="text-base font-light">
+                        {work.title[lang]}
+                      </p>
+                      <p className="text-sm opacity-70">
+                        Murcia
+                      </p>
+                    </div>
                   </div>
                 ))}
               </div>
@@ -81,7 +83,7 @@ export default function CV() {
 
           {/* Collection */}
           {cv.collection && cv.collection.length > 0 && (
-            <section>
+            <section className="mt-12 sm:mt-16">
               <h2 className="text-2xl sm:text-3xl font-light mb-6">
                 {t('cv.collection.title')}
               </h2>
