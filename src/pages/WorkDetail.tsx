@@ -2,7 +2,7 @@ import React, { useEffect, useState, useRef } from 'react'
 import { useParams, Link } from 'react-router-dom'
 import { useTranslation } from '../hooks/useTranslation'
 import portfolioData from '../data/portfolioData.json'
-import { ArrowLeft, ChevronLeft, ChevronRight } from 'lucide-react'
+import { ArrowLeft } from 'lucide-react'
 import { isYouTubeUrl, extractYouTubeId, getYouTubeEmbedUrl } from '../utils/youtube'
 import EditableText from '../components/EditableText'
 import { isVimeoUrl, extractVimeoId, getVimeoEmbedUrl } from '../utils/vimeo'
@@ -58,6 +58,7 @@ export default function WorkDetail() {
   // All hooks must be declared before any conditional returns
   // Use static import for initial state, update from API responses and HMR
   const [portfolioDataState, setPortfolioDataState] = useState<any>(portfolioData)
+  const [isLoadingData, setIsLoadingData] = useState(false)
 
   // In development, watch for JSON file changes via HMR
   useEffect(() => {
@@ -80,6 +81,7 @@ export default function WorkDetail() {
   const [isDeleting, setIsDeleting] = useState(false)
   const [deleteError, setDeleteError] = useState<string | null>(null)
   const [favoriteUrls, setFavoriteUrls] = useState<string[]>([])
+  const [draggedImageIndex, setDraggedImageIndex] = useState<number | null>(null)
   
   // Video upload state
   const [showVideoForm, setShowVideoForm] = useState(false)
@@ -106,6 +108,30 @@ export default function WorkDetail() {
       isMounted = false
     }
   }, [])
+
+  // Fetch latest portfolio data when id changes (especially for newly created works)
+  useEffect(() => {
+    const fetchLatestData = async () => {
+      setIsLoadingData(true)
+      try {
+        const response = await fetch('/api/portfolio')
+        if (response.ok) {
+          const data = await response.json()
+          setPortfolioDataState(data)
+        }
+      } catch (error) {
+        console.error('Error fetching latest portfolio data:', error)
+        // Continue with static data if fetch fails
+      } finally {
+        setIsLoadingData(false)
+      }
+    }
+    
+    // Only fetch if we have an id
+    if (id) {
+      fetchLatestData()
+    }
+  }, [id])
 
   // Scroll to top when navigating to a new work
   useEffect(() => {
@@ -173,6 +199,29 @@ export default function WorkDetail() {
     }
   }, [portfolioDataState, id])
 
+  // Keyboard navigation for image lightbox - must be declared before conditional returns
+  useEffect(() => {
+    if (!isLightboxOpen) return
+
+    const handleKeyDown = (event: KeyboardEvent) => {
+      if (event.key === 'Escape') {
+        event.preventDefault()
+        setIsLightboxOpen(false)
+      } else if (event.key === 'ArrowLeft') {
+        if (!images || images.length === 0) return
+        setActiveImageIndex((prev) => (prev === 0 ? images.length - 1 : prev - 1))
+      } else if (event.key === 'ArrowRight') {
+        if (!images || images.length === 0) return
+        setActiveImageIndex((prev) => (prev === images.length - 1 ? 0 : prev + 1))
+      }
+    }
+
+    window.addEventListener('keydown', handleKeyDown)
+    return () => {
+      window.removeEventListener('keydown', handleKeyDown)
+    }
+  }, [isLightboxOpen, images])
+
   const worksData = portfolioDataState?.works as {
     theaterDirector: Work[]
     actress: Work[]
@@ -220,6 +269,18 @@ export default function WorkDetail() {
     }
   }
 
+  // Show loading state while fetching data for newly created works
+  if (isLoadingData) {
+    return (
+      <div className="w-full">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16">
+          <p className="text-sm opacity-60">Loading...</p>
+        </div>
+      </div>
+    )
+  }
+
+  // Only show "not found" after we've finished loading
   if (!work) {
     return (
       <div className="w-full">
@@ -234,7 +295,7 @@ export default function WorkDetail() {
   }
 
   const lang = language as 'en' | 'es'
-  const isAdminMode = import.meta.env.VITE_ADMIN_MODE === 'true'
+  const isAdminMode = (import.meta as any).env.VITE_ADMIN_MODE === 'true'
 
   // Determine back URL based on work category
   const getBackUrl = () => {
@@ -438,7 +499,7 @@ export default function WorkDetail() {
     }
   }
 
-  const handleReorderImage = async (imageUrl: string, direction: 'left' | 'right') => {
+  const handleReorderImage = async (imageUrl: string, newIndex: number) => {
     if (!imageUrl || !workCategory || workIndex === -1) return
 
     setDeleteError(null)
@@ -449,7 +510,7 @@ export default function WorkDetail() {
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({ imageUrl, direction }),
+        body: JSON.stringify({ imageUrl, newIndex }),
       })
 
       if (!response.ok) {
@@ -498,6 +559,40 @@ export default function WorkDetail() {
       console.error('Image reorder error:', error)
       setDeleteError(error.message || 'Error reordering image')
     }
+  }
+
+  const handleImageDragStart = (e: React.DragEvent, index: number) => {
+    e.stopPropagation()
+    setDraggedImageIndex(index)
+    e.dataTransfer.effectAllowed = 'move'
+    e.dataTransfer.setData('text/html', index.toString())
+  }
+
+  const handleImageDragEnd = () => {
+    setDraggedImageIndex(null)
+  }
+
+  const handleImageDragOver = (e: React.DragEvent) => {
+    e.preventDefault()
+    e.stopPropagation()
+    e.dataTransfer.dropEffect = 'move'
+  }
+
+  const handleImageDrop = async (e: React.DragEvent, dropIndex: number) => {
+    e.preventDefault()
+    e.stopPropagation()
+
+    if (draggedImageIndex === null || draggedImageIndex === dropIndex) {
+      setDraggedImageIndex(null)
+      return
+    }
+
+    const image = images[draggedImageIndex]
+    if (image) {
+      await handleReorderImage(image.url, dropIndex)
+    }
+
+    setDraggedImageIndex(null)
   }
 
   const handleAddVideo = async () => {
@@ -556,29 +651,6 @@ export default function WorkDetail() {
       setIsAddingVideo(false)
     }
   }
-
-  // Keyboard navigation for image lightbox
-  useEffect(() => {
-    if (!isLightboxOpen) return
-
-    const handleKeyDown = (event: KeyboardEvent) => {
-      if (event.key === 'Escape') {
-        event.preventDefault()
-        closeLightbox()
-      } else if (event.key === 'ArrowLeft') {
-        event.preventDefault()
-        showPrevImage()
-      } else if (event.key === 'ArrowRight') {
-        event.preventDefault()
-        showNextImage()
-      }
-    }
-
-    window.addEventListener('keydown', handleKeyDown)
-    return () => {
-      window.removeEventListener('keydown', handleKeyDown)
-    }
-  }, [isLightboxOpen, showPrevImage, showNextImage])
 
   return (
     <div className="w-full">
@@ -765,12 +837,21 @@ export default function WorkDetail() {
               {images.map((img, index) => (
                 <div
                   key={index}
-                  className="flex flex-col items-center gap-1"
+                  className={`flex flex-col items-center gap-1 ${draggedImageIndex === index ? 'opacity-50' : ''}`}
+                  onDragOver={(e) => handleImageDragOver(e)}
+                  onDrop={(e) => handleImageDrop(e, index)}
                 >
-                  <button
-                    type="button"
-                    className="group relative w-24 h-24 sm:w-28 sm:h-28 lg:w-32 lg:h-32 overflow-hidden border border-border"
-                    onClick={() => openLightbox(index)}
+                  <div
+                    className={`group relative w-24 h-24 sm:w-28 sm:h-28 lg:w-32 lg:h-32 overflow-hidden border border-border ${isAdminMode ? 'cursor-move' : 'cursor-pointer'}`}
+                    draggable={isAdminMode}
+                    onDragStart={(e) => handleImageDragStart(e, index)}
+                    onDragEnd={handleImageDragEnd}
+                    onClick={() => {
+                      // Only open lightbox if not in admin mode or if not dragging
+                      if (!isAdminMode || draggedImageIndex === null) {
+                        openLightbox(index)
+                      }
+                    }}
                   >
                     {/* Favorite heart in top-right corner */}
                     <button
@@ -780,6 +861,7 @@ export default function WorkDetail() {
                         e.stopPropagation()
                         toggleFavorite(img.url)
                       }}
+                      onMouseDown={(e) => e.stopPropagation()}
                     >
                       <span
                         className={`text-xs sm:text-sm ${
@@ -794,7 +876,8 @@ export default function WorkDetail() {
                     <img
                       src={img.url}
                       alt={`${work.title[lang]} - ${index + 1}`}
-                      className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
+                      className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105 pointer-events-none"
+                      draggable={false}
                       onError={(e) => {
                         const target = e.target as HTMLImageElement
                         target.style.display = 'none'
@@ -808,49 +891,9 @@ export default function WorkDetail() {
                         }
                       }}
                     />
-                  </button>
+                  </div>
                   {isAdminMode && (
                     <div className="flex items-center gap-2">
-                      <button
-                        type="button"
-                        className="p-1 text-gray-600 hover:text-gray-900 disabled:opacity-50 disabled:cursor-not-allowed"
-                        onClick={(e) => {
-                          e.preventDefault()
-                          e.stopPropagation()
-                          const scrollY = window.scrollY
-                          handleReorderImage(img.url, 'left')
-                          // Immediately restore scroll position
-                          setTimeout(() => window.scrollTo(0, scrollY), 0)
-                        }}
-                        onMouseDown={(e) => {
-                          e.preventDefault()
-                        }}
-                        disabled={false}
-                        aria-label="Move left"
-                        title="Move left (first item moves to end)"
-                      >
-                        <ChevronLeft className="h-4 w-4" />
-                      </button>
-                      <button
-                        type="button"
-                        className="p-1 text-gray-600 hover:text-gray-900 disabled:opacity-50 disabled:cursor-not-allowed"
-                        onClick={(e) => {
-                          e.preventDefault()
-                          e.stopPropagation()
-                          const scrollY = window.scrollY
-                          handleReorderImage(img.url, 'right')
-                          // Immediately restore scroll position
-                          setTimeout(() => window.scrollTo(0, scrollY), 0)
-                        }}
-                        onMouseDown={(e) => {
-                          e.preventDefault()
-                        }}
-                        disabled={false}
-                        aria-label="Move right"
-                        title="Move right (last item moves to beginning)"
-                      >
-                        <ChevronRight className="h-4 w-4" />
-                      </button>
                       <button
                         type="button"
                         className="text-[10px] sm:text-xs text-red-500 hover:underline"
@@ -891,19 +934,25 @@ export default function WorkDetail() {
                 </span>
                 <button
                   type="button"
-                  className="px-2 py-1 border border-white/40 text-white text-xs uppercase tracking-wide hover:bg-white/20 transition-colors"
-                  onClick={closeLightbox}
+                  className="absolute top-2 right-2 sm:top-4 sm:right-4 z-70 w-8 h-8 sm:w-10 sm:h-10 flex items-center justify-center text-white text-xl sm:text-2xl hover:bg-white/20 rounded-full transition-colors border border-white/40"
+                  onClick={(e) => {
+                    e.stopPropagation()
+                    closeLightbox()
+                  }}
+                  aria-label="Close image gallery"
+                  title="Close"
                 >
-                  Close
+                  ×
                 </button>
               </div>
 
-              {/* Image area - full height on mobile, aspect ratio on desktop */}
-              <div className="relative w-full h-full sm:aspect-[4/3] sm:h-auto bg-black flex items-center justify-center">
+              {/* Image area - constrained to viewport height */}
+              <div className="relative w-full h-full sm:aspect-[4/3] sm:h-auto bg-black flex items-center justify-center overflow-hidden" style={{ maxHeight: '100vh' }}>
                 <img
                   src={images[activeImageIndex].url}
                   alt={`${work.title[lang]} - ${activeImageIndex + 1}`}
                   className="max-w-full max-h-full w-auto h-auto object-contain"
+                  style={{ maxWidth: '100%', maxHeight: '100%' }}
                 />
 
                 {/* Navigation buttons - overlaid on image */}

@@ -479,7 +479,7 @@ app.delete('/api/works/:workId/images', async (req, res) => {
 app.put('/api/works/:workId/images/reorder', async (req, res) => {
   try {
     const workId = Number(req.params.workId);
-    const { imageUrl, direction } = req.body || {}; // direction: 'left' or 'right'
+    const { imageUrl, newIndex } = req.body || {}; // newIndex: target position (0-based)
 
     if (!workId || Number.isNaN(workId)) {
       return res.status(400).json({ error: 'Invalid workId' });
@@ -487,8 +487,8 @@ app.put('/api/works/:workId/images/reorder', async (req, res) => {
     if (!imageUrl || typeof imageUrl !== 'string') {
       return res.status(400).json({ error: 'Image URL is required' });
     }
-    if (!direction || !['left', 'right'].includes(direction)) {
-      return res.status(400).json({ error: 'Direction must be "left" or "right"' });
+    if (newIndex === undefined || typeof newIndex !== 'number' || newIndex < 0) {
+      return res.status(400).json({ error: 'newIndex must be a non-negative number' });
     }
 
     const portfolioData = readPortfolioData();
@@ -503,38 +503,31 @@ app.put('/api/works/:workId/images/reorder', async (req, res) => {
       return res.status(400).json({ error: 'Need at least 2 images to reorder' });
     }
 
-    const imageIndex = work.images.findIndex((img) => img && img.url === imageUrl);
-    if (imageIndex === -1) {
+    const currentIndex = work.images.findIndex((img) => img && img.url === imageUrl);
+    if (currentIndex === -1) {
       return res.status(404).json({ error: 'Image not found in work gallery' });
     }
 
-    // Reorder: left moves left (or first to end), right moves right (or last to first)
-    if (direction === 'left') {
-      if (imageIndex === 0) {
-        // First item: move to end
-        const [moved] = work.images.splice(0, 1);
-        work.images.push(moved);
-      } else {
-        // Swap with previous
-        [work.images[imageIndex - 1], work.images[imageIndex]] = 
-          [work.images[imageIndex], work.images[imageIndex - 1]];
-      }
-    } else { // direction === 'right'
-      if (imageIndex === work.images.length - 1) {
-        // Last item: move to beginning
-        const [moved] = work.images.splice(imageIndex, 1);
-        work.images.unshift(moved);
-      } else {
-        // Swap with next
-        [work.images[imageIndex], work.images[imageIndex + 1]] = 
-          [work.images[imageIndex + 1], work.images[imageIndex]];
-      }
+    if (newIndex >= work.images.length) {
+      return res.status(400).json({ error: `newIndex must be less than ${work.images.length}` });
     }
+
+    if (currentIndex === newIndex) {
+      // No change needed
+      return res.json({ success: true, images: work.images });
+    }
+
+    // Remove image from current position
+    const [movedImage] = work.images.splice(currentIndex, 1);
+    // Insert at new position
+    work.images.splice(newIndex, 0, movedImage);
 
     portfolioData.works[section][index] = work;
     writePortfolioData(portfolioData);
 
-    res.json({ success: true, images: work.images });
+    console.log(`✅ Reordered image in work ${workId} from index ${currentIndex} to ${newIndex}`);
+
+    res.json({ success: true, images: work.images, work });
   } catch (error) {
     console.error('Reorder work images error:', error);
     res.status(500).json({ error: error.message });
@@ -927,6 +920,52 @@ app.post('/api/works/:workId/videos', async (req, res) => {
     res.json({ success: true, video: newVideo });
   } catch (error) {
     console.error('Add video error:', error);
+    res.status(500).json({ error: error.message });
+  }
+});
+
+// Reorder works within a category
+app.put('/api/works/reorder', async (req, res) => {
+  try {
+    const { category, workId, newIndex } = req.body;
+
+    if (!category || workId === undefined || newIndex === undefined) {
+      return res.status(400).json({ error: 'category, workId, and newIndex are required' });
+    }
+
+    const validCategories = ['theaterDirector', 'actress', 'movieDirector', 'assistantDirection'];
+    if (!validCategories.includes(category)) {
+      return res.status(400).json({ error: `Invalid category. Must be one of: ${validCategories.join(', ')}` });
+    }
+
+    const portfolioData = readPortfolioData();
+    const works = portfolioData.works[category];
+
+    if (!Array.isArray(works)) {
+      return res.status(400).json({ error: `Category ${category} does not exist or is not an array` });
+    }
+
+    const currentIndex = works.findIndex((w) => w.id === Number(workId));
+    if (currentIndex === -1) {
+      return res.status(404).json({ error: `Work with id ${workId} not found in category ${category}` });
+    }
+
+    if (newIndex < 0 || newIndex >= works.length) {
+      return res.status(400).json({ error: `newIndex must be between 0 and ${works.length - 1}` });
+    }
+
+    // Remove work from current position
+    const [work] = works.splice(currentIndex, 1);
+    // Insert at new position
+    works.splice(newIndex, 0, work);
+
+    writePortfolioData(portfolioData);
+
+    console.log(`✅ Reordered work ${workId} in category ${category} from index ${currentIndex} to ${newIndex}`);
+
+    res.json({ success: true, works });
+  } catch (error) {
+    console.error('Reorder works error:', error);
     res.status(500).json({ error: error.message });
   }
 });

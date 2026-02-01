@@ -40,10 +40,24 @@ function WorkItem({
   work,
   language,
   onThumbnailUpdate,
+  index,
+  isDragging,
+  onDragStart,
+  onDragEnd,
+  onDragOver,
+  onDrop,
+  isAnyDragging,
 }: {
   work: Work
   language: 'en' | 'es'
   onThumbnailUpdate?: (workId: number, newThumbnail: string) => void
+  index: number
+  isDragging: boolean
+  onDragStart: (e: React.DragEvent, index: number) => void
+  onDragEnd: () => void
+  onDragOver: (e: React.DragEvent) => void
+  onDrop: (e: React.DragEvent, index: number) => void
+  isAnyDragging: boolean
 }) {
   const [showThumbnailModal, setShowThumbnailModal] = useState(false)
   const [isUploading, setIsUploading] = useState(false)
@@ -111,12 +125,49 @@ function WorkItem({
 
   return (
     <>
-      <div className="flex flex-col work-item-vertical" style={{ width: `${fixedWidth}px`, maxWidth: '100%', flexShrink: 0 }}>
+      <div 
+        className={`flex flex-col work-item-vertical ${isDragging ? 'opacity-50' : ''} ${isAdminMode ? 'cursor-move' : ''}`}
+        style={{ width: `${fixedWidth}px`, maxWidth: '100%', flexShrink: 0 }}
+        draggable={isAdminMode}
+        onDragStart={(e) => {
+          e.stopPropagation()
+          onDragStart(e, index)
+        }}
+        onDragEnd={(e) => {
+          e.stopPropagation()
+          onDragEnd()
+        }}
+        onDragOver={(e) => {
+          e.preventDefault()
+          e.stopPropagation()
+          onDragOver(e)
+        }}
+        onDrop={(e) => {
+          e.preventDefault()
+          e.stopPropagation()
+          onDrop(e, index)
+        }}
+      >
         <div className="relative">
           <Link
             to={`/works/${work.id}`}
             className="group block overflow-hidden"
             style={{ width: '100%' }}
+            onClick={(e) => {
+              // Prevent navigation when any item is being dragged
+              if (isAdminMode && isAnyDragging) {
+                e.preventDefault()
+                e.stopPropagation()
+              }
+            }}
+            onDragStart={(e) => {
+              // Prevent link from interfering with drag
+              if (isAdminMode) {
+                e.preventDefault()
+                e.stopPropagation()
+              }
+            }}
+            draggable={false}
           >
             <div className="relative w-full" style={{ aspectRatio: 'auto' }}>
               {thumbnailUrl && (
@@ -224,15 +275,64 @@ function WorkGrid({
   works,
   language,
   onThumbnailUpdate,
+  onReorder,
 }: {
   works: Work[]
   language: 'en' | 'es'
   onThumbnailUpdate?: (workId: number, newThumbnail: string) => void
+  onReorder?: (workId: number, newIndex: number) => void
 }) {
+  const [draggedIndex, setDraggedIndex] = useState<number | null>(null)
+
+  const handleDragStart = (e: React.DragEvent, index: number) => {
+    setDraggedIndex(index)
+    e.dataTransfer.effectAllowed = 'move'
+    e.dataTransfer.setData('text/html', index.toString())
+  }
+
+  const handleDragEnd = () => {
+    setDraggedIndex(null)
+  }
+
+  const handleDragOver = (e: React.DragEvent) => {
+    e.preventDefault()
+    e.stopPropagation()
+    e.dataTransfer.dropEffect = 'move'
+  }
+
+  const handleDrop = async (e: React.DragEvent, dropIndex: number) => {
+    e.preventDefault()
+    e.stopPropagation()
+
+    if (draggedIndex === null || draggedIndex === dropIndex || !onReorder) {
+      setDraggedIndex(null)
+      return
+    }
+
+    const work = works[draggedIndex]
+    if (work) {
+      await onReorder(work.id, dropIndex)
+    }
+
+    setDraggedIndex(null)
+  }
+
   return (
     <div className="flex flex-wrap gap-6 sm:gap-8">
-      {works.map((work) => (
-        <WorkItem key={work.id} work={work} language={language} onThumbnailUpdate={onThumbnailUpdate} />
+      {works.map((work, index) => (
+        <WorkItem 
+          key={work.id} 
+          work={work} 
+          language={language} 
+          onThumbnailUpdate={onThumbnailUpdate}
+          index={index}
+          isDragging={draggedIndex === index}
+          onDragStart={handleDragStart}
+          onDragEnd={handleDragEnd}
+          onDragOver={handleDragOver}
+          onDrop={handleDrop}
+          isAnyDragging={draggedIndex !== null}
+        />
       ))}
     </div>
   )
@@ -275,10 +375,55 @@ export default function Works() {
     })
   }
 
-  // Sort theater works by year so PERSONA (2024) appears last
-  const sortedTheaterDirector = [...(worksData?.theaterDirector || [])].sort(
-    (a, b) => a.year - b.year
-  )
+  // Handle work reordering
+  const handleReorder = async (category: 'theaterDirector' | 'movieDirector', workId: number, newIndex: number) => {
+    try {
+      const response = await fetch('/api/works/reorder', {
+        method: 'PUT',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          category,
+          workId,
+          newIndex,
+        }),
+      })
+
+      if (!response.ok) {
+        let message = 'Error reordering work'
+        try {
+          const contentType = response.headers.get('content-type')
+          if (contentType && contentType.includes('application/json')) {
+            const data = await response.json()
+            if (data && data.error) message = data.error
+          } else {
+            message = `Server error: ${response.status} ${response.statusText}`
+          }
+        } catch {
+          message = `Server error: ${response.status} ${response.statusText}`
+        }
+        alert(message)
+        return
+      }
+
+      const data = await response.json()
+      if (data.works) {
+        // Update local state with reordered works
+        setPortfolioDataState((prev: any) => {
+          const updated = { ...prev }
+          updated.works[category] = data.works
+          return updated
+        })
+      }
+    } catch (error: any) {
+      console.error('Reorder work error:', error)
+      alert(error.message || 'Error reordering work')
+    }
+  }
+
+  // Use works in their current order (can be reordered via drag and drop)
+  const sortedTheaterDirector = worksData?.theaterDirector || []
 
   return (
     <div className="w-full">
@@ -307,7 +452,12 @@ export default function Works() {
             {t('works.theaterDirector')}
           </h2>
                {sortedTheaterDirector && sortedTheaterDirector.length > 0 ? (
-                 <WorkGrid works={sortedTheaterDirector} language={lang} onThumbnailUpdate={handleThumbnailUpdate} />
+                 <WorkGrid 
+                   works={sortedTheaterDirector} 
+                   language={lang} 
+                   onThumbnailUpdate={handleThumbnailUpdate}
+                   onReorder={(workId, newIndex) => handleReorder('theaterDirector', workId, newIndex)}
+                 />
                ) : (
                  <p className="text-sm opacity-60">{t('works.noWorks')}</p>
                )}
@@ -319,7 +469,12 @@ export default function Works() {
                  {t('works.movieDirector')}
                </h2>
                {worksData?.movieDirector && worksData.movieDirector.length > 0 ? (
-                 <WorkGrid works={worksData.movieDirector} language={lang} onThumbnailUpdate={handleThumbnailUpdate} />
+                 <WorkGrid 
+                   works={worksData.movieDirector} 
+                   language={lang} 
+                   onThumbnailUpdate={handleThumbnailUpdate}
+                   onReorder={(workId, newIndex) => handleReorder('movieDirector', workId, newIndex)}
+                 />
                ) : (
                  <p className="text-sm opacity-60">{t('works.noWorks')}</p>
                )}
