@@ -47,6 +47,7 @@ function WorkItem({
   onDragOver,
   onDrop,
   isAnyDragging,
+  isDropTarget,
 }: {
   work: Work
   language: 'en' | 'es'
@@ -55,9 +56,10 @@ function WorkItem({
   isDragging: boolean
   onDragStart: (e: React.DragEvent, index: number) => void
   onDragEnd: () => void
-  onDragOver: (e: React.DragEvent) => void
+  onDragOver: (e: React.DragEvent, index: number) => void
   onDrop: (e: React.DragEvent, index: number) => void
   isAnyDragging: boolean
+  isDropTarget?: boolean
 }) {
   const [showThumbnailModal, setShowThumbnailModal] = useState(false)
   const [isUploading, setIsUploading] = useState(false)
@@ -140,7 +142,7 @@ function WorkItem({
         onDragOver={(e) => {
           e.preventDefault()
           e.stopPropagation()
-          onDragOver(e)
+          onDragOver(e, index)
         }}
         onDrop={(e) => {
           e.preventDefault()
@@ -283,57 +285,162 @@ function WorkGrid({
   onReorder?: (workId: number, newIndex: number) => void
 }) {
   const [draggedIndex, setDraggedIndex] = useState<number | null>(null)
+  const [dropTargetIndex, setDropTargetIndex] = useState<number | null>(null)
 
   const handleDragStart = (e: React.DragEvent, index: number) => {
+    console.log('[Drag Start]', { index, workId: works[index]?.id, workTitle: works[index]?.title[language] })
     setDraggedIndex(index)
     e.dataTransfer.effectAllowed = 'move'
     e.dataTransfer.setData('text/html', index.toString())
   }
 
   const handleDragEnd = () => {
+    console.log('[Drag End] Resetting drag state')
     setDraggedIndex(null)
+    setDropTargetIndex(null)
   }
 
-  const handleDragOver = (e: React.DragEvent) => {
+  const handleDragOver = (e: React.DragEvent, index: number) => {
     e.preventDefault()
     e.stopPropagation()
     e.dataTransfer.dropEffect = 'move'
+    
+    if (draggedIndex === null) return
+    
+    // Calculate drop position based on mouse position within the element
+    const rect = (e.currentTarget as HTMLElement).getBoundingClientRect()
+    const mouseX = e.clientX
+    const mouseY = e.clientY
+    const centerX = rect.left + rect.width / 2
+    const centerY = rect.top + rect.height / 2
+    
+    // Determine if we should drop before or after this index
+    // For horizontal layout, check X position; for vertical, check Y
+    // Since these are vertical posters in a flex-wrap layout, we check both
+    const shouldDropBefore = mouseX < centerX || mouseY < centerY
+    
+    let calculatedDropIndex = index
+    if (draggedIndex !== null) {
+      if (draggedIndex < index) {
+        // Dragging forward: drop before current index means stay at index, drop after means index + 1
+        calculatedDropIndex = shouldDropBefore ? index : index + 1
+      } else if (draggedIndex > index) {
+        // Dragging backward: drop before means index, drop after means index + 1
+        calculatedDropIndex = shouldDropBefore ? index : index + 1
+      } else {
+        // Same position
+        calculatedDropIndex = index
+      }
+      
+      // Clamp to valid range
+      calculatedDropIndex = Math.max(0, Math.min(calculatedDropIndex, works.length))
+    }
+    
+    console.log('[Drag Over]', {
+      index,
+      draggedIndex,
+      mouseX: mouseX.toFixed(0),
+      mouseY: mouseY.toFixed(0),
+      centerX: centerX.toFixed(0),
+      centerY: centerY.toFixed(0),
+      shouldDropBefore,
+      calculatedDropIndex,
+      rect: { 
+        left: rect.left.toFixed(0), 
+        top: rect.top.toFixed(0), 
+        width: rect.width.toFixed(0), 
+        height: rect.height.toFixed(0) 
+      }
+    })
+    
+    setDropTargetIndex(calculatedDropIndex)
   }
 
   const handleDrop = async (e: React.DragEvent, dropIndex: number) => {
     e.preventDefault()
     e.stopPropagation()
 
-    if (draggedIndex === null || draggedIndex === dropIndex || !onReorder) {
+    console.log('[Drop]', {
+      dropIndex,
+      draggedIndex,
+      dropTargetIndex,
+      worksLength: works.length,
+      draggedWorkId: draggedIndex !== null ? works[draggedIndex]?.id : null
+    })
+
+    if (draggedIndex === null || !onReorder) {
+      console.log('[Drop] No dragged item or onReorder missing, aborting')
       setDraggedIndex(null)
+      setDropTargetIndex(null)
       return
     }
 
+    // Use dropTargetIndex if available, otherwise use dropIndex
+    const finalDropIndex = dropTargetIndex !== null ? dropTargetIndex : dropIndex
+    
+    if (draggedIndex === finalDropIndex) {
+      console.log('[Drop] Same position, aborting')
+      setDraggedIndex(null)
+      setDropTargetIndex(null)
+      return
+    }
+
+    console.log('[Drop] Reordering', {
+      from: draggedIndex,
+      to: finalDropIndex,
+      workId: works[draggedIndex]?.id,
+      workTitle: works[draggedIndex]?.title[language]
+    })
+
     const work = works[draggedIndex]
     if (work) {
-      await onReorder(work.id, dropIndex)
+      await onReorder(work.id, finalDropIndex)
     }
 
     setDraggedIndex(null)
+    setDropTargetIndex(null)
   }
 
   return (
     <div className="flex flex-wrap gap-6 sm:gap-8">
-      {works.map((work, index) => (
-        <WorkItem 
-          key={work.id} 
-          work={work} 
-          language={language} 
-          onThumbnailUpdate={onThumbnailUpdate}
-          index={index}
-          isDragging={draggedIndex === index}
-          onDragStart={handleDragStart}
-          onDragEnd={handleDragEnd}
-          onDragOver={handleDragOver}
-          onDrop={handleDrop}
-          isAnyDragging={draggedIndex !== null}
-        />
-      ))}
+      {works.map((work, index) => {
+        // Show drop indicator before this item if dropTargetIndex equals this index
+        const showDropIndicatorBefore = dropTargetIndex === index && draggedIndex !== null && draggedIndex !== index
+        // Show drop indicator after this item if dropTargetIndex equals index + 1
+        const showDropIndicatorAfter = dropTargetIndex === index + 1 && draggedIndex !== null
+        // Show blue overlay on the item if it's the drop target
+        const showDropIndicator = dropTargetIndex === index && draggedIndex !== null && draggedIndex !== index
+        
+        return (
+          <div key={work.id} className="relative">
+            {/* Drop indicator line before this item */}
+            {showDropIndicatorBefore && (
+              <div className="absolute -left-3 top-0 bottom-0 w-1 bg-blue-500 z-10 rounded shadow-lg" style={{ left: '-12px' }} />
+            )}
+            <WorkItem 
+              work={work} 
+              language={language} 
+              onThumbnailUpdate={onThumbnailUpdate}
+              index={index}
+              isDragging={draggedIndex === index}
+              onDragStart={handleDragStart}
+              onDragEnd={handleDragEnd}
+              onDragOver={handleDragOver}
+              onDrop={handleDrop}
+              isAnyDragging={draggedIndex !== null}
+              isDropTarget={showDropIndicator}
+            />
+            {/* Drop indicator line after this item */}
+            {showDropIndicatorAfter && (
+              <div className="absolute -right-3 top-0 bottom-0 w-1 bg-blue-500 z-10 rounded shadow-lg" style={{ right: '-12px' }} />
+            )}
+            {/* Blue overlay on the item itself when it's the drop target */}
+            {showDropIndicator && (
+              <div className="absolute inset-0 border-4 border-blue-500 z-10 pointer-events-none rounded shadow-lg" />
+            )}
+          </div>
+        )
+      })}
     </div>
   )
 }

@@ -82,6 +82,7 @@ export default function WorkDetail() {
   const [deleteError, setDeleteError] = useState<string | null>(null)
   const [favoriteUrls, setFavoriteUrls] = useState<string[]>([])
   const [draggedImageIndex, setDraggedImageIndex] = useState<number | null>(null)
+  const [dropTargetIndex, setDropTargetIndex] = useState<number | null>(null)
   
   // Video upload state
   const [showVideoForm, setShowVideoForm] = useState(false)
@@ -569,30 +570,97 @@ export default function WorkDetail() {
   }
 
   const handleImageDragEnd = () => {
+    console.log('[Drag End] Resetting drag state')
     setDraggedImageIndex(null)
+    setDropTargetIndex(null)
   }
 
-  const handleImageDragOver = (e: React.DragEvent) => {
+  const handleImageDragOver = (e: React.DragEvent, index: number) => {
     e.preventDefault()
     e.stopPropagation()
     e.dataTransfer.dropEffect = 'move'
+    
+    // Calculate drop position based on mouse position within the element
+    const rect = (e.currentTarget as HTMLElement).getBoundingClientRect()
+    const mouseX = e.clientX
+    const mouseY = e.clientY
+    const centerX = rect.left + rect.width / 2
+    const centerY = rect.top + rect.height / 2
+    
+    // Determine if we should drop before or after this index
+    // If mouse is in the left/top half, drop before; otherwise drop after
+    const shouldDropBefore = mouseX < centerX || mouseY < centerY
+    
+    let calculatedDropIndex = index
+    if (shouldDropBefore && draggedImageIndex !== null && draggedImageIndex < index) {
+      calculatedDropIndex = index
+    } else if (!shouldDropBefore && draggedImageIndex !== null && draggedImageIndex > index) {
+      calculatedDropIndex = index + 1
+    } else if (draggedImageIndex !== null) {
+      // If dragging from a different position, adjust accordingly
+      if (draggedImageIndex < index) {
+        calculatedDropIndex = shouldDropBefore ? index : index + 1
+      } else {
+        calculatedDropIndex = shouldDropBefore ? index : index + 1
+      }
+    }
+    
+    console.log('[Drag Over]', {
+      index,
+      draggedImageIndex,
+      mouseX,
+      mouseY,
+      centerX,
+      centerY,
+      shouldDropBefore,
+      calculatedDropIndex,
+      rect: { left: rect.left, top: rect.top, width: rect.width, height: rect.height }
+    })
+    
+    setDropTargetIndex(calculatedDropIndex)
   }
 
   const handleImageDrop = async (e: React.DragEvent, dropIndex: number) => {
     e.preventDefault()
     e.stopPropagation()
 
-    if (draggedImageIndex === null || draggedImageIndex === dropIndex) {
+    console.log('[Drop]', {
+      dropIndex,
+      draggedImageIndex,
+      dropTargetIndex,
+      imagesLength: images.length
+    })
+
+    if (draggedImageIndex === null) {
+      console.log('[Drop] No dragged image, aborting')
       setDraggedImageIndex(null)
+      setDropTargetIndex(null)
       return
     }
 
+    // Use dropTargetIndex if available, otherwise use dropIndex
+    const finalDropIndex = dropTargetIndex !== null ? dropTargetIndex : dropIndex
+    
+    if (draggedImageIndex === finalDropIndex) {
+      console.log('[Drop] Same position, aborting')
+      setDraggedImageIndex(null)
+      setDropTargetIndex(null)
+      return
+    }
+
+    console.log('[Drop] Reordering', {
+      from: draggedImageIndex,
+      to: finalDropIndex,
+      imageUrl: images[draggedImageIndex]?.url
+    })
+
     const image = images[draggedImageIndex]
     if (image) {
-      await handleReorderImage(image.url, dropIndex)
+      await handleReorderImage(image.url, finalDropIndex)
     }
 
     setDraggedImageIndex(null)
+    setDropTargetIndex(null)
   }
 
   const handleAddVideo = async () => {

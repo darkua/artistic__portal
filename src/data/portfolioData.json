@@ -845,14 +845,34 @@
     ],
     "actress": [
       {
+        "id": 21,
+        "title": {
+          "en": "Mamá, ¿qué hiciste con mi osito?",
+          "es": "Mamá, ¿qué hiciste con mi osito?"
+        },
+        "description": {
+          "en": "Solo escrito e interpretado por Elma Hache, bajo la dirección de Jessica Walker en Laboratorio Escuela. Barcelona, 2018.\n\nDe niña no entendía el mundo de los adultos, le parecía incongruente... y decidió que no quería crecer para hacerse una mujer como su madre.",
+          "es": "Solo escrito e interpretado por Elma Hache, bajo la dirección de Jessica Walker en Laboratorio Escuela. Barcelona, 2018.\n\nDe niña no entendía el mundo de los adultos, le parecía incongruente... y decidió que no quería crecer para hacerse una mujer como su madre."
+        },
+        "thumbnail": "/works/work-1769990771963/thumbnail.jpg",
+        "images": [],
+        "videos": [
+          {
+            "url": "https://youtu.be/2gTTWNtDR3A",
+            "thumbnail": "https://img.youtube.com/vi/2gTTWNtDR3A/maxresdefault.jpg"
+          }
+        ],
+        "year": 2018
+      },
+      {
         "id": 11,
         "title": {
           "en": "Noches de amor efímero",
           "es": "Noches de amor efímero"
         },
         "description": {
-          "en": "Historias cortas de encuentros amorosos entre desconocidos, que suceden durante una noche de luna llena.",
-          "es": "Historias cortas de encuentros amorosos entre desconocidos, que suceden durante una noche de luna llena."
+          "en": "\"Noches de Amor efímero\" is a five-play theater piece by Paloma Pedrero. The stories are short encounters of romantic nature between strangers that happen during a full moon night in the city. Characters, who are lonely and unsatisfied, come out from the corners of the city to live a fleeting and unforgettable experience.\n\nThe plots combine comedic and tragic situations, revealing human connection yearnings that are as necessary but complicated in these times.",
+          "es": "“Noches de Amor efímero” es una pieza de teatro de Paloma Pedrero, compuesta por cinco obras: “Esta noche en el parque”, “La noche dividida”, “Solos esta noche”, “De la noche al alba”, “La noche que ilumina”. Son historias cortas de encuentros amorosos entre desconocidos, que suceden durante una noche de luna llena. Sus personajes disparejos salen de los rincones de la ciudad, acompañados por la insatisfacción y la soledad, para vivir una experiencia fugaz e inolvidable.\nLas tramas desarrollan una mezcla de situaciones cómicas y tristes, revelan anhelos de una conexión humana tan necesaria como complicada en estos tiempos."
         },
         "thumbnail": "/works/work-1769822182324/thumbnail.jpg",
         "images": [
@@ -972,8 +992,8 @@
       {
         "id": 4,
         "title": {
-          "en": "The last package",
-          "es": "El último paquete"
+          "en": "The Last Package - Fiction Short Film\n\n",
+          "es": "EL ÚLTIMO PAQUETE - Cortometraje de ficción"
         },
         "shortDescription": {
           "en": "A short film exploring themes of memory and loss.",
@@ -1007,6 +1027,460 @@
       }
     ],
     "assistantDirection": [
+      {
+        "id": 17,
+        "title": {
+          "en": "La fiebre del heno",
+          "es": "La fiebre del heno"
+        },
+        "description": {
+          "en": "Jorge Balça dirige la comedia de Noel Coward \"Hay Feber\" (La fiebre del Heno), representada por los alumnos de 2º año del curso de entrenamiento de actores.\n\nUna cabaña, un fin de semana y un grupo de artistas y aristócratas aburridos... La locura se instaura en la familia Bliss. Egos inflados y escenas melodramáticas e impostadas revelan el caos encantador que solo una buena comedia británica puede ofrecer.\nA la vez denuncia la hipocresía y la desidia de esta clase social.",
+          "es": "Jorge Balça dirige la comedia de Noel Coward \"Hay Feber\" (La fiebre del Heno), representada por los alumnos de 2º año del curso de entrenamiento de actores.\n\nUna cabaña, un fin de semana y un grupo de artistas y aristócratas aburridos... La locura se instaura en la familia Bliss. Egos inflados y escenas melodramáticas e impostadas revelan el caos encantador que solo una buena comedia británica puede ofrecer.\nA la vez denuncia la hipocresía y la desidia de esta clase social."
+        },
+        "thumbnail": "/works/work-1769905765792/thumbnail.jpg",
+        "images": [
+          {
+            "url": "/works/work-1769905765792/work-1769905779819.jpg",
+            "caption": {
+              "en": "Scene from the play",
+              "es": "Escena de la obra"
+            }
+          },
+          {
+            "url": "/works/work-1769905765792/work-1769905780746.jpg",
+            "caption": {
+              "en": "Scene from the play",
+              "es": "Escena de la obra"
+            }
+          },
+          {
+            "url": "/works/work-1769905765792/work-1769905781530.jpg",
+            "caption": {
+              "en": "Scene from the play",
+              "es": "Escena de la obra"
+            }
+          },
+          {
+            "url": "/works/work-1769905765792/work-1769905782498.jpg",
+            "caption": {
+              "en": "Scene from the play",
+              "es": "Escena de la obra"
+            }
+          },
+          {
+            "url": "/works/work-1769905765792/work-1769905783229.jpg",
+            "caption": {
+              "en": "Scene from the play",
+              "es": "Escena de la obra"
+            }
+          },
+          {
+            "url": "/works/work-1769905765792/work-1769905783944.jpg",
+            "caption": {
+              "en": "Scene from the play",
+              "es": "Escena de la obra"
+            }
+          },
+          {
+            "url": "/works/work-1769905765792/work-1769905784620.jpg",
+            "caption": {
+              "en": "Scene from the play",
+              "es": "Escena de la obra"
+            }
+          },
+          {
+            "url": "/works/work-1769905765792/work-1769905785696.jpg",
+            "caption": {
+              "en": "Scene from the play",
+              "es": "Escena de la obra"
+            }
+          },
+          {
+            "url": "/works/work-1769905765792/work-1769905786548.jpg",
+            "caption": {
+              "en": "Scene from the play",
+              "es": "Escena de la obra"
+            }
+          },
+          {
+            "url": "/works/work-1769905765792/work-1769905787754.jpg",
+            "caption": {
+              "en": "Scene from the play",
+              "es": "Escena de la obra"
+            }
+          },
+          {
+            "url": "/works/work-1769905765792/work-1769905788766.jpg",
+            "caption": {
+              "en": "Scene from the play",
+              "es": "Escena de la obra"
+            }
+          },
+          {
+            "url": "/works/work-1769905765792/work-1769905789473.jpg",
+            "caption": {
+              "en": "Scene from the play",
+              "es": "Escena de la obra"
+            }
+          },
+          {
+            "url": "/works/work-1769905765792/work-1769905790673.jpg",
+            "caption": {
+              "en": "Scene from the play",
+              "es": "Escena de la obra"
+            }
+          },
+          {
+            "url": "/works/work-1769905765792/work-1769905791873.jpg",
+            "caption": {
+              "en": "Scene from the play",
+              "es": "Escena de la obra"
+            }
+          },
+          {
+            "url": "/works/work-1769905765792/work-1769905793033.jpg",
+            "caption": {
+              "en": "Scene from the play",
+              "es": "Escena de la obra"
+            }
+          },
+          {
+            "url": "/works/work-1769905765792/work-1769905793840.jpg",
+            "caption": {
+              "en": "Scene from the play",
+              "es": "Escena de la obra"
+            }
+          },
+          {
+            "url": "/works/work-1769905765792/work-1769905794510.jpg",
+            "caption": {
+              "en": "Scene from the play",
+              "es": "Escena de la obra"
+            }
+          },
+          {
+            "url": "/works/work-1769905765792/work-1769905796006.jpg",
+            "caption": {
+              "en": "Scene from the play",
+              "es": "Escena de la obra"
+            }
+          },
+          {
+            "url": "/works/work-1769905765792/work-1769905797075.jpg",
+            "caption": {
+              "en": "Scene from the play",
+              "es": "Escena de la obra"
+            }
+          },
+          {
+            "url": "/works/work-1769905765792/work-1769905798053.jpg",
+            "caption": {
+              "en": "Scene from the play",
+              "es": "Escena de la obra"
+            }
+          }
+        ],
+        "videos": [],
+        "year": 2025
+      },
+      {
+        "id": 19,
+        "title": {
+          "en": "Una cena familiar",
+          "es": "Una cena familiar"
+        },
+        "description": {
+          "en": "Se estrena, en Teatro da Comuna, la adaptación de la comedia francesa de Pascal Rocher y Josephe Gallet, \"Una cena familiar\", bajo la dirección de Hugo Franco.\n\nCuando Alexandre invita a su familia a una cena especial, todos esperan una velada agradable llena de buenos recuerdos. Pero a medida que el vino fluye y las palabras se vuelven más agudas, secretos largamente guardados comienzan a salir a la luz. Entre conversaciones sobre el pasado, revelaciones inesperadas y momentos hilarantes, esta cena se transforma en una noche inolvidable donde cada miembro de la familia se ve obligado a confrontar sus propias verdades.\n\nUna comedia aguda y de ritmo rápido que explora las complejidades de las relaciones familiares, mostrando que, por caóticas que sean, la familia es siempre la base de todo... o no.",
+          "es": "Se estrena en el Teatro da Comuna la adaptación de la comedia francesa \"Una cena familiar\", escrita por Pascal Rocher y Josephe Gallet, bajo la dirección de Hugo Franco.\n\nCuando Alexandre convoca a su familia a una cena especial, todos esperan una noche agradable llena de buenos recuerdos. Sin embargo, a medida que el vino fluye y las palabras se vuelven más agudas, secretos largamente guardados comienzan a salir a la luz. Entre conversaciones sobre el pasado, revelaciones inesperadas y momentos hilarantes, esta cena se transforma en una noche inolvidable donde cada miembro de la familia se ve obligado a confrontar sus propias verdades.\n\nUna comedia aguda y de ritmo rápido que explora las complejidades de las relaciones familiares, mostrando que, por caóticas que sean, la familia es siempre la base de todo... o no."
+        },
+        "thumbnail": "/works/work-1769907804923/thumbnail.jpg",
+        "images": [
+          {
+            "url": "/works/work-1769907804923/work-1769907816522.jpg",
+            "caption": {
+              "en": "Scene from the play",
+              "es": "Escena de la obra"
+            }
+          },
+          {
+            "url": "/works/work-1769907804923/work-1769907819067.jpg",
+            "caption": {
+              "en": "Scene from the play",
+              "es": "Escena de la obra"
+            }
+          },
+          {
+            "url": "/works/work-1769907804923/work-1769907822475.jpg",
+            "caption": {
+              "en": "Scene from the play",
+              "es": "Escena de la obra"
+            }
+          },
+          {
+            "url": "/works/work-1769907804923/work-1769907825026.jpg",
+            "caption": {
+              "en": "Scene from the play",
+              "es": "Escena de la obra"
+            }
+          },
+          {
+            "url": "/works/work-1769907804923/work-1769907828336.jpg",
+            "caption": {
+              "en": "Scene from the play",
+              "es": "Escena de la obra"
+            }
+          },
+          {
+            "url": "/works/work-1769907804923/work-1769907830923.jpg",
+            "caption": {
+              "en": "Scene from the play",
+              "es": "Escena de la obra"
+            }
+          },
+          {
+            "url": "/works/work-1769907804923/work-1769907834159.jpg",
+            "caption": {
+              "en": "Scene from the play",
+              "es": "Escena de la obra"
+            }
+          },
+          {
+            "url": "/works/work-1769907804923/work-1769907837201.jpg",
+            "caption": {
+              "en": "Scene from the play",
+              "es": "Escena de la obra"
+            }
+          },
+          {
+            "url": "/works/work-1769907804923/work-1769907839745.jpg",
+            "caption": {
+              "en": "Scene from the play",
+              "es": "Escena de la obra"
+            }
+          },
+          {
+            "url": "/works/work-1769907804923/work-1769907841976.jpg",
+            "caption": {
+              "en": "Scene from the play",
+              "es": "Escena de la obra"
+            }
+          },
+          {
+            "url": "/works/work-1769907804923/work-1769907844108.jpg",
+            "caption": {
+              "en": "Scene from the play",
+              "es": "Escena de la obra"
+            }
+          },
+          {
+            "url": "/works/work-1769907804923/work-1769907846739.jpg",
+            "caption": {
+              "en": "Scene from the play",
+              "es": "Escena de la obra"
+            }
+          },
+          {
+            "url": "/works/work-1769907804923/work-1769907849772.jpg",
+            "caption": {
+              "en": "Scene from the play",
+              "es": "Escena de la obra"
+            }
+          }
+        ],
+        "videos": [],
+        "year": 2025
+      },
+      {
+        "id": 16,
+        "title": {
+          "en": "Purga",
+          "es": "Purga"
+        },
+        "description": {
+          "en": "A stifled cry or the hope of a new beginning?\nInspired by Matéi Visniec's work \"Migraaaants\", \"Purga\" brings to the stage the stories of those who were forced to leave and those who watch them from a distance. What does it mean to leave everything behind? To abandon memories, cross invisible borders, face the unknown? We invite you to reflect on exodus, belonging, and survival.\nUnder the direction of Pedro Barao, with Elma Hache and Beatriz Teixeira as assistant directors, this performance by the first-year students of In Ímpetus acting school is an intense work of interpretation.",
+          "es": "¿Un grito sofocado o la esperanza de un nuevo comienzo?\n\nInspirado por la obra \"Migraaaants\", de Matéi Visniec, \"Purga\" trae al escenario las historias de aquellos que se vieron obligados a irse y aquellos que los miran desde la distancia. ¿Qué significa dejar todo atrás? ¿Abandonar recuerdos, cruzar fronteras invisibles, enfrentar lo desconocido? Te invitamos a reflexionar sobre el éxodo, la pertenencia y la supervivencia.\n\nBajo la dirección de Pedro Barao, con Elma Hache y Beatriz Teixeira como ayudantes de dirección, este espectáculo debut para los estudiantes de primer año de la escuela de actores In Ímpetus es un intenso trabajo de interpretación."
+        },
+        "thumbnail": "/works/work-1769904006925/thumbnail.jpg",
+        "images": [
+          {
+            "url": "/works/work-1769904006925/work-1769904794938.jpg",
+            "caption": {
+              "en": "Scene from the play",
+              "es": "Escena de la obra"
+            }
+          },
+          {
+            "url": "/works/work-1769904006925/work-1769904033390.jpg",
+            "caption": {
+              "en": "Scene from the play",
+              "es": "Escena de la obra"
+            }
+          },
+          {
+            "url": "/works/work-1769904006925/work-1769904034320.jpg",
+            "caption": {
+              "en": "Scene from the play",
+              "es": "Escena de la obra"
+            }
+          },
+          {
+            "url": "/works/work-1769904006925/work-1769904057044.jpg",
+            "caption": {
+              "en": "Scene from the play",
+              "es": "Escena de la obra"
+            }
+          },
+          {
+            "url": "/works/work-1769904006925/work-1769904036808.jpg",
+            "caption": {
+              "en": "Scene from the play",
+              "es": "Escena de la obra"
+            }
+          },
+          {
+            "url": "/works/work-1769904006925/work-1769904037796.jpg",
+            "caption": {
+              "en": "Scene from the play",
+              "es": "Escena de la obra"
+            }
+          },
+          {
+            "url": "/works/work-1769904006925/work-1769904038897.jpg",
+            "caption": {
+              "en": "Scene from the play",
+              "es": "Escena de la obra"
+            }
+          },
+          {
+            "url": "/works/work-1769904006925/work-1769904040444.jpg",
+            "caption": {
+              "en": "Scene from the play",
+              "es": "Escena de la obra"
+            }
+          },
+          {
+            "url": "/works/work-1769904006925/work-1769904043356.jpg",
+            "caption": {
+              "en": "Scene from the play",
+              "es": "Escena de la obra"
+            }
+          },
+          {
+            "url": "/works/work-1769904006925/work-1769904042492.jpg",
+            "caption": {
+              "en": "Scene from the play",
+              "es": "Escena de la obra"
+            }
+          },
+          {
+            "url": "/works/work-1769904006925/work-1769904044218.jpg",
+            "caption": {
+              "en": "Scene from the play",
+              "es": "Escena de la obra"
+            }
+          },
+          {
+            "url": "/works/work-1769904006925/work-1769904057887.jpg",
+            "caption": {
+              "en": "Scene from the play",
+              "es": "Escena de la obra"
+            }
+          },
+          {
+            "url": "/works/work-1769904006925/work-1769904045220.jpg",
+            "caption": {
+              "en": "Scene from the play",
+              "es": "Escena de la obra"
+            }
+          },
+          {
+            "url": "/works/work-1769904006925/work-1769904057367.jpg",
+            "caption": {
+              "en": "Scene from the play",
+              "es": "Escena de la obra"
+            }
+          },
+          {
+            "url": "/works/work-1769904006925/work-1769904045966.jpg",
+            "caption": {
+              "en": "Scene from the play",
+              "es": "Escena de la obra"
+            }
+          },
+          {
+            "url": "/works/work-1769904006925/work-1769904049888.jpg",
+            "caption": {
+              "en": "Scene from the play",
+              "es": "Escena de la obra"
+            }
+          },
+          {
+            "url": "/works/work-1769904006925/work-1769904047309.jpg",
+            "caption": {
+              "en": "Scene from the play",
+              "es": "Escena de la obra"
+            }
+          },
+          {
+            "url": "/works/work-1769904006925/work-1769904048017.jpg",
+            "caption": {
+              "en": "Scene from the play",
+              "es": "Escena de la obra"
+            }
+          },
+          {
+            "url": "/works/work-1769904006925/work-1769904051090.jpg",
+            "caption": {
+              "en": "Scene from the play",
+              "es": "Escena de la obra"
+            }
+          },
+          {
+            "url": "/works/work-1769904006925/work-1769904052626.jpg",
+            "caption": {
+              "en": "Scene from the play",
+              "es": "Escena de la obra"
+            }
+          },
+          {
+            "url": "/works/work-1769904006925/work-1769904054226.jpg",
+            "caption": {
+              "en": "Scene from the play",
+              "es": "Escena de la obra"
+            }
+          },
+          {
+            "url": "/works/work-1769904006925/work-1769904056416.jpg",
+            "caption": {
+              "en": "Scene from the play",
+              "es": "Escena de la obra"
+            }
+          },
+          {
+            "url": "/works/work-1769904006925/work-1769904027309.jpeg",
+            "caption": {
+              "en": "Scene from the play",
+              "es": "Escena de la obra"
+            }
+          },
+          {
+            "url": "/works/work-1769904006925/work-1769904032506.jpeg",
+            "caption": {
+              "en": "Scene from the play",
+              "es": "Escena de la obra"
+            }
+          },
+          {
+            "url": "/works/work-1769904006925/work-1769904029893.jpeg",
+            "caption": {
+              "en": "Scene from the play",
+              "es": "Escena de la obra"
+            }
+          }
+        ],
+        "videos": [],
+        "year": 2025
+      },
       {
         "id": 12,
         "title": {
@@ -1222,467 +1696,6 @@
         "year": 2024
       },
       {
-        "id": 15,
-        "title": {
-          "en": "Respira",
-          "es": "Inspira"
-        },
-        "description": {
-          "en": "Adaptación de \"Lungs\" (Pulmones), de Duncan Macmillan, \"Respira\" va más allá de la narrativa tradicional, proponiendo un diálogo urgente sobre los desafíos éticos, ambientales y emocionales que definen a la humanidad en el siglo XXI. Entre reflexiones sobre la huella ecológica, el amor y la continuidad de la vida, la pieza invita a la audiencia a cuestionar el papel del individuo en un planeta al borde del agotamiento.\n\nEn manos de la directora Gracia Correa, con Elma Hache como ayudante de dirección, este trabajo adopta un enfoque innovador. Con un elenco de jóvenes actores, el montaje promete una experiencia atractiva e intelectualmente provocadora, donde el arte y la reflexión coexisten poderosamente. Con humor, honestidad y una mirada inquietante, la pieza es un llamado a la reflexión sobre quiénes somos y lo que queremos para el mundo. ",
-          "es": "Adaptación de \"Lungs\" (Pulmones), de Duncan Macmillan, \"Respira\" va más allá de la narrativa tradicional, proponiendo un diálogo urgente sobre los desafíos éticos, ambientales y emocionales que definen a la humanidad en el siglo XXI. Entre reflexiones sobre la huella ecológica, el amor y la continuidad de la vida, la pieza invita a la audiencia a cuestionar el papel del individuo en un planeta al borde del agotamiento.\n\nEn manos de la directora Gracia Correa y Elma Hache como ayudante de dirección, este trabajo adopta un enfoque innovador. Con un elenco de jóvenes actores, el montaje promete una experiencia atractiva e intelectualmente provocadora, donde el arte y la reflexión coexisten poderosamente. Con humor, honestidad y una mirada inquietante, la pieza es un llamado a la reflexión sobre quiénes somos y lo que queremos para el mundo."
-        },
-        "thumbnail": "/works/work-1769902934948/thumbnail.jpg",
-        "images": [
-          {
-            "url": "/works/work-1769902934948/work-1769902946981.jpg",
-            "caption": {
-              "en": "Scene from the play",
-              "es": "Escena de la obra"
-            }
-          },
-          {
-            "url": "/works/work-1769902934948/work-1769902947669.jpg",
-            "caption": {
-              "en": "Scene from the play",
-              "es": "Escena de la obra"
-            }
-          },
-          {
-            "url": "/works/work-1769902934948/work-1769902948599.jpg",
-            "caption": {
-              "en": "Scene from the play",
-              "es": "Escena de la obra"
-            }
-          },
-          {
-            "url": "/works/work-1769902934948/work-1769902949430.jpg",
-            "caption": {
-              "en": "Scene from the play",
-              "es": "Escena de la obra"
-            }
-          },
-          {
-            "url": "/works/work-1769902934948/work-1769902950102.jpg",
-            "caption": {
-              "en": "Scene from the play",
-              "es": "Escena de la obra"
-            }
-          },
-          {
-            "url": "/works/work-1769902934948/work-1769902950802.jpg",
-            "caption": {
-              "en": "Scene from the play",
-              "es": "Escena de la obra"
-            }
-          },
-          {
-            "url": "/works/work-1769902934948/work-1769902951557.jpg",
-            "caption": {
-              "en": "Scene from the play",
-              "es": "Escena de la obra"
-            }
-          },
-          {
-            "url": "/works/work-1769902934948/work-1769902952209.jpg",
-            "caption": {
-              "en": "Scene from the play",
-              "es": "Escena de la obra"
-            }
-          },
-          {
-            "url": "/works/work-1769902934948/work-1769902952888.jpg",
-            "caption": {
-              "en": "Scene from the play",
-              "es": "Escena de la obra"
-            }
-          },
-          {
-            "url": "/works/work-1769902934948/work-1769902953536.jpg",
-            "caption": {
-              "en": "Scene from the play",
-              "es": "Escena de la obra"
-            }
-          },
-          {
-            "url": "/works/work-1769902934948/work-1769902954252.jpg",
-            "caption": {
-              "en": "Scene from the play",
-              "es": "Escena de la obra"
-            }
-          },
-          {
-            "url": "/works/work-1769902934948/work-1769902954987.jpg",
-            "caption": {
-              "en": "Scene from the play",
-              "es": "Escena de la obra"
-            }
-          },
-          {
-            "url": "/works/work-1769902934948/work-1769902955697.jpg",
-            "caption": {
-              "en": "Scene from the play",
-              "es": "Escena de la obra"
-            }
-          },
-          {
-            "url": "/works/work-1769902934948/work-1769902956395.jpg",
-            "caption": {
-              "en": "Scene from the play",
-              "es": "Escena de la obra"
-            }
-          }
-        ],
-        "videos": [],
-        "year": 2025
-      },
-      {
-        "id": 16,
-        "title": {
-          "en": "Purga",
-          "es": "Purga"
-        },
-        "description": {
-          "en": "¿Un grito sofocado o la esperanza de un nuevo comienzo?\n\nInspirado por la obra \"Migraaaants\", de Matéi Visniec, \"Purga\" trae al escenario las historias de aquellos que se vieron obligados a irse y aquellos que los miran desde la distancia. ¿Qué significa dejar todo atrás? ¿Abandonar recuerdos, cruzar fronteras invisibles, enfrentar lo desconocido? Te invitamos a reflexionar sobre el éxodo, la pertenencia y la supervivencia.\n\nBajo la dirección de Pedro Barao, con Elma Hache y Beatriz Teixeira como ayudantes de dirección, este espectáculo debut para los estudiantes de primer año de la escuela de actores In Ímpetus es un intenso trabajo de interpretación.",
-          "es": "¿Un grito sofocado o la esperanza de un nuevo comienzo?\n\nInspirado por la obra \"Migraaaants\", de Matéi Visniec, \"Purga\" trae al escenario las historias de aquellos que se vieron obligados a irse y aquellos que los miran desde la distancia. ¿Qué significa dejar todo atrás? ¿Abandonar recuerdos, cruzar fronteras invisibles, enfrentar lo desconocido? Te invitamos a reflexionar sobre el éxodo, la pertenencia y la supervivencia.\n\nBajo la dirección de Pedro Barao, con Elma Hache y Beatriz Teixeira como ayudantes de dirección, este espectáculo debut para los estudiantes de primer año de la escuela de actores In Ímpetus es un intenso trabajo de interpretación."
-        },
-        "thumbnail": "/works/work-1769904006925/thumbnail.jpg",
-        "images": [
-          {
-            "url": "/works/work-1769904006925/work-1769904794938.jpg",
-            "caption": {
-              "en": "Scene from the play",
-              "es": "Escena de la obra"
-            }
-          },
-          {
-            "url": "/works/work-1769904006925/work-1769904033390.jpg",
-            "caption": {
-              "en": "Scene from the play",
-              "es": "Escena de la obra"
-            }
-          },
-          {
-            "url": "/works/work-1769904006925/work-1769904034320.jpg",
-            "caption": {
-              "en": "Scene from the play",
-              "es": "Escena de la obra"
-            }
-          },
-          {
-            "url": "/works/work-1769904006925/work-1769904057044.jpg",
-            "caption": {
-              "en": "Scene from the play",
-              "es": "Escena de la obra"
-            }
-          },
-          {
-            "url": "/works/work-1769904006925/work-1769904036808.jpg",
-            "caption": {
-              "en": "Scene from the play",
-              "es": "Escena de la obra"
-            }
-          },
-          {
-            "url": "/works/work-1769904006925/work-1769904037796.jpg",
-            "caption": {
-              "en": "Scene from the play",
-              "es": "Escena de la obra"
-            }
-          },
-          {
-            "url": "/works/work-1769904006925/work-1769904038897.jpg",
-            "caption": {
-              "en": "Scene from the play",
-              "es": "Escena de la obra"
-            }
-          },
-          {
-            "url": "/works/work-1769904006925/work-1769904040444.jpg",
-            "caption": {
-              "en": "Scene from the play",
-              "es": "Escena de la obra"
-            }
-          },
-          {
-            "url": "/works/work-1769904006925/work-1769904043356.jpg",
-            "caption": {
-              "en": "Scene from the play",
-              "es": "Escena de la obra"
-            }
-          },
-          {
-            "url": "/works/work-1769904006925/work-1769904042492.jpg",
-            "caption": {
-              "en": "Scene from the play",
-              "es": "Escena de la obra"
-            }
-          },
-          {
-            "url": "/works/work-1769904006925/work-1769904044218.jpg",
-            "caption": {
-              "en": "Scene from the play",
-              "es": "Escena de la obra"
-            }
-          },
-          {
-            "url": "/works/work-1769904006925/work-1769904057887.jpg",
-            "caption": {
-              "en": "Scene from the play",
-              "es": "Escena de la obra"
-            }
-          },
-          {
-            "url": "/works/work-1769904006925/work-1769904045220.jpg",
-            "caption": {
-              "en": "Scene from the play",
-              "es": "Escena de la obra"
-            }
-          },
-          {
-            "url": "/works/work-1769904006925/work-1769904057367.jpg",
-            "caption": {
-              "en": "Scene from the play",
-              "es": "Escena de la obra"
-            }
-          },
-          {
-            "url": "/works/work-1769904006925/work-1769904045966.jpg",
-            "caption": {
-              "en": "Scene from the play",
-              "es": "Escena de la obra"
-            }
-          },
-          {
-            "url": "/works/work-1769904006925/work-1769904049888.jpg",
-            "caption": {
-              "en": "Scene from the play",
-              "es": "Escena de la obra"
-            }
-          },
-          {
-            "url": "/works/work-1769904006925/work-1769904047309.jpg",
-            "caption": {
-              "en": "Scene from the play",
-              "es": "Escena de la obra"
-            }
-          },
-          {
-            "url": "/works/work-1769904006925/work-1769904048017.jpg",
-            "caption": {
-              "en": "Scene from the play",
-              "es": "Escena de la obra"
-            }
-          },
-          {
-            "url": "/works/work-1769904006925/work-1769904051090.jpg",
-            "caption": {
-              "en": "Scene from the play",
-              "es": "Escena de la obra"
-            }
-          },
-          {
-            "url": "/works/work-1769904006925/work-1769904052626.jpg",
-            "caption": {
-              "en": "Scene from the play",
-              "es": "Escena de la obra"
-            }
-          },
-          {
-            "url": "/works/work-1769904006925/work-1769904054226.jpg",
-            "caption": {
-              "en": "Scene from the play",
-              "es": "Escena de la obra"
-            }
-          },
-          {
-            "url": "/works/work-1769904006925/work-1769904056416.jpg",
-            "caption": {
-              "en": "Scene from the play",
-              "es": "Escena de la obra"
-            }
-          },
-          {
-            "url": "/works/work-1769904006925/work-1769904027309.jpeg",
-            "caption": {
-              "en": "Scene from the play",
-              "es": "Escena de la obra"
-            }
-          },
-          {
-            "url": "/works/work-1769904006925/work-1769904032506.jpeg",
-            "caption": {
-              "en": "Scene from the play",
-              "es": "Escena de la obra"
-            }
-          },
-          {
-            "url": "/works/work-1769904006925/work-1769904029893.jpeg",
-            "caption": {
-              "en": "Scene from the play",
-              "es": "Escena de la obra"
-            }
-          }
-        ],
-        "videos": [],
-        "year": 2025
-      },
-      {
-        "id": 17,
-        "title": {
-          "en": "La fiebre del heno",
-          "es": "La fiebre del heno"
-        },
-        "description": {
-          "en": "Jorge Balça dirige la comedia de Noel Coward \"Hay Feber\" (La fiebre del Heno), representada por los alumnos de 2º año del curso de entrenamiento de actores.\n\nUna cabaña, un fin de semana y un grupo de artistas y aristócratas aburridos... La locura se instaura en la familia Bliss. Egos inflados y escenas melodramáticas e impostadas revelan el caos encantador que solo una buena comedia británica puede ofrecer.\nA la vez denuncia la hipocresía y la desidia de esta clase social.",
-          "es": "Jorge Balça dirige la comedia de Noel Coward \"Hay Feber\" (La fiebre del Heno), representada por los alumnos de 2º año del curso de entrenamiento de actores.\n\nUna cabaña, un fin de semana y un grupo de artistas y aristócratas aburridos... La locura se instaura en la familia Bliss. Egos inflados y escenas melodramáticas e impostadas revelan el caos encantador que solo una buena comedia británica puede ofrecer.\nA la vez denuncia la hipocresía y la desidia de esta clase social."
-        },
-        "thumbnail": "/works/work-1769905765792/thumbnail.jpg",
-        "images": [
-          {
-            "url": "/works/work-1769905765792/work-1769905779819.jpg",
-            "caption": {
-              "en": "Scene from the play",
-              "es": "Escena de la obra"
-            }
-          },
-          {
-            "url": "/works/work-1769905765792/work-1769905780746.jpg",
-            "caption": {
-              "en": "Scene from the play",
-              "es": "Escena de la obra"
-            }
-          },
-          {
-            "url": "/works/work-1769905765792/work-1769905781530.jpg",
-            "caption": {
-              "en": "Scene from the play",
-              "es": "Escena de la obra"
-            }
-          },
-          {
-            "url": "/works/work-1769905765792/work-1769905782498.jpg",
-            "caption": {
-              "en": "Scene from the play",
-              "es": "Escena de la obra"
-            }
-          },
-          {
-            "url": "/works/work-1769905765792/work-1769905783229.jpg",
-            "caption": {
-              "en": "Scene from the play",
-              "es": "Escena de la obra"
-            }
-          },
-          {
-            "url": "/works/work-1769905765792/work-1769905783944.jpg",
-            "caption": {
-              "en": "Scene from the play",
-              "es": "Escena de la obra"
-            }
-          },
-          {
-            "url": "/works/work-1769905765792/work-1769905784620.jpg",
-            "caption": {
-              "en": "Scene from the play",
-              "es": "Escena de la obra"
-            }
-          },
-          {
-            "url": "/works/work-1769905765792/work-1769905785696.jpg",
-            "caption": {
-              "en": "Scene from the play",
-              "es": "Escena de la obra"
-            }
-          },
-          {
-            "url": "/works/work-1769905765792/work-1769905786548.jpg",
-            "caption": {
-              "en": "Scene from the play",
-              "es": "Escena de la obra"
-            }
-          },
-          {
-            "url": "/works/work-1769905765792/work-1769905787754.jpg",
-            "caption": {
-              "en": "Scene from the play",
-              "es": "Escena de la obra"
-            }
-          },
-          {
-            "url": "/works/work-1769905765792/work-1769905788766.jpg",
-            "caption": {
-              "en": "Scene from the play",
-              "es": "Escena de la obra"
-            }
-          },
-          {
-            "url": "/works/work-1769905765792/work-1769905789473.jpg",
-            "caption": {
-              "en": "Scene from the play",
-              "es": "Escena de la obra"
-            }
-          },
-          {
-            "url": "/works/work-1769905765792/work-1769905790673.jpg",
-            "caption": {
-              "en": "Scene from the play",
-              "es": "Escena de la obra"
-            }
-          },
-          {
-            "url": "/works/work-1769905765792/work-1769905791873.jpg",
-            "caption": {
-              "en": "Scene from the play",
-              "es": "Escena de la obra"
-            }
-          },
-          {
-            "url": "/works/work-1769905765792/work-1769905793033.jpg",
-            "caption": {
-              "en": "Scene from the play",
-              "es": "Escena de la obra"
-            }
-          },
-          {
-            "url": "/works/work-1769905765792/work-1769905793840.jpg",
-            "caption": {
-              "en": "Scene from the play",
-              "es": "Escena de la obra"
-            }
-          },
-          {
-            "url": "/works/work-1769905765792/work-1769905794510.jpg",
-            "caption": {
-              "en": "Scene from the play",
-              "es": "Escena de la obra"
-            }
-          },
-          {
-            "url": "/works/work-1769905765792/work-1769905796006.jpg",
-            "caption": {
-              "en": "Scene from the play",
-              "es": "Escena de la obra"
-            }
-          },
-          {
-            "url": "/works/work-1769905765792/work-1769905797075.jpg",
-            "caption": {
-              "en": "Scene from the play",
-              "es": "Escena de la obra"
-            }
-          },
-          {
-            "url": "/works/work-1769905765792/work-1769905798053.jpg",
-            "caption": {
-              "en": "Scene from the play",
-              "es": "Escena de la obra"
-            }
-          }
-        ],
-        "videos": [],
-        "year": 2025
-      },
-      {
         "id": 18,
         "title": {
           "en": "Don Juan",
@@ -1811,113 +1824,6 @@
         "year": 2025
       },
       {
-        "id": 19,
-        "title": {
-          "en": "Una cena familiar",
-          "es": "Una cena familiar"
-        },
-        "description": {
-          "en": "Se estrena, en Teatro da Comuna, la adaptación de la comedia francesa de Pascal Rocher y Josephe Gallet, \"Una cena familiar\", bajo la dirección de Hugo Franco.\n\nCuando Alexandre invita a su familia a una cena especial, todos esperan una velada agradable llena de buenos recuerdos. Pero a medida que el vino fluye y las palabras se vuelven más agudas, secretos largamente guardados comienzan a salir a la luz. Entre conversaciones sobre el pasado, revelaciones inesperadas y momentos hilarantes, esta cena se transforma en una noche inolvidable donde cada miembro de la familia se ve obligado a confrontar sus propias verdades.\n\nUna comedia aguda y de ritmo rápido que explora las complejidades de las relaciones familiares, mostrando que, por caóticas que sean, la familia es siempre la base de todo... o no.",
-          "es": "Se estrena en el Teatro da Comuna la adaptación de la comedia francesa \"Una cena familiar\", escrita por Pascal Rocher y Josephe Gallet, bajo la dirección de Hugo Franco.\n\nCuando Alexandre convoca a su familia a una cena especial, todos esperan una noche agradable llena de buenos recuerdos. Sin embargo, a medida que el vino fluye y las palabras se vuelven más agudas, secretos largamente guardados comienzan a salir a la luz. Entre conversaciones sobre el pasado, revelaciones inesperadas y momentos hilarantes, esta cena se transforma en una noche inolvidable donde cada miembro de la familia se ve obligado a confrontar sus propias verdades.\n\nUna comedia aguda y de ritmo rápido que explora las complejidades de las relaciones familiares, mostrando que, por caóticas que sean, la familia es siempre la base de todo... o no."
-        },
-        "thumbnail": "/works/work-1769907804923/thumbnail.jpg",
-        "images": [
-          {
-            "url": "/works/work-1769907804923/work-1769907816522.jpg",
-            "caption": {
-              "en": "Scene from the play",
-              "es": "Escena de la obra"
-            }
-          },
-          {
-            "url": "/works/work-1769907804923/work-1769907819067.jpg",
-            "caption": {
-              "en": "Scene from the play",
-              "es": "Escena de la obra"
-            }
-          },
-          {
-            "url": "/works/work-1769907804923/work-1769907822475.jpg",
-            "caption": {
-              "en": "Scene from the play",
-              "es": "Escena de la obra"
-            }
-          },
-          {
-            "url": "/works/work-1769907804923/work-1769907825026.jpg",
-            "caption": {
-              "en": "Scene from the play",
-              "es": "Escena de la obra"
-            }
-          },
-          {
-            "url": "/works/work-1769907804923/work-1769907828336.jpg",
-            "caption": {
-              "en": "Scene from the play",
-              "es": "Escena de la obra"
-            }
-          },
-          {
-            "url": "/works/work-1769907804923/work-1769907830923.jpg",
-            "caption": {
-              "en": "Scene from the play",
-              "es": "Escena de la obra"
-            }
-          },
-          {
-            "url": "/works/work-1769907804923/work-1769907834159.jpg",
-            "caption": {
-              "en": "Scene from the play",
-              "es": "Escena de la obra"
-            }
-          },
-          {
-            "url": "/works/work-1769907804923/work-1769907837201.jpg",
-            "caption": {
-              "en": "Scene from the play",
-              "es": "Escena de la obra"
-            }
-          },
-          {
-            "url": "/works/work-1769907804923/work-1769907839745.jpg",
-            "caption": {
-              "en": "Scene from the play",
-              "es": "Escena de la obra"
-            }
-          },
-          {
-            "url": "/works/work-1769907804923/work-1769907841976.jpg",
-            "caption": {
-              "en": "Scene from the play",
-              "es": "Escena de la obra"
-            }
-          },
-          {
-            "url": "/works/work-1769907804923/work-1769907844108.jpg",
-            "caption": {
-              "en": "Scene from the play",
-              "es": "Escena de la obra"
-            }
-          },
-          {
-            "url": "/works/work-1769907804923/work-1769907846739.jpg",
-            "caption": {
-              "en": "Scene from the play",
-              "es": "Escena de la obra"
-            }
-          },
-          {
-            "url": "/works/work-1769907804923/work-1769907849772.jpg",
-            "caption": {
-              "en": "Scene from the play",
-              "es": "Escena de la obra"
-            }
-          }
-        ],
-        "videos": [],
-        "year": 2025
-      },
-      {
         "id": 20,
         "title": {
           "en": "Catita",
@@ -1959,6 +1865,120 @@
           },
           {
             "url": "/works/work-1769908812041/work-1769908825878.jpg",
+            "caption": {
+              "en": "Scene from the play",
+              "es": "Escena de la obra"
+            }
+          }
+        ],
+        "videos": [],
+        "year": 2025
+      },
+      {
+        "id": 15,
+        "title": {
+          "en": "Breathes",
+          "es": "Respira"
+        },
+        "description": {
+          "en": "Adaptación de \"Lungs\" (Pulmones), de Duncan Macmillan, \"Respira\" va más allá de la narrativa tradicional, proponiendo un diálogo urgente sobre los desafíos éticos, ambientales y emocionales que definen a la humanidad en el siglo XXI. Entre reflexiones sobre la huella ecológica, el amor y la continuidad de la vida, la pieza invita a la audiencia a cuestionar el papel del individuo en un planeta al borde del agotamiento.\n\nEn manos de la directora Gracia Correa, con Elma Hache como ayudante de dirección, este trabajo adopta un enfoque innovador. Con un elenco de jóvenes actores, el montaje promete una experiencia atractiva e intelectualmente provocadora, donde el arte y la reflexión coexisten poderosamente. Con humor, honestidad y una mirada inquietante, la pieza es un llamado a la reflexión sobre quiénes somos y lo que queremos para el mundo. ",
+          "es": "Adaptación de \"Lungs\" (Pulmones), de Duncan Macmillan, \"Respira\" va más allá de la narrativa tradicional, proponiendo un diálogo urgente sobre los desafíos éticos, ambientales y emocionales que definen a la humanidad en el siglo XXI. Entre reflexiones sobre la huella ecológica, el amor y la continuidad de la vida, la pieza invita a la audiencia a cuestionar el papel del individuo en un planeta al borde del agotamiento.\n\nEn manos de la directora Gracia Correa y Elma Hache como ayudante de dirección, este trabajo adopta un enfoque innovador. Con un elenco de jóvenes actores, el montaje promete una experiencia atractiva e intelectualmente provocadora, donde el arte y la reflexión coexisten poderosamente. Con humor, honestidad y una mirada inquietante, la pieza es un llamado a la reflexión sobre quiénes somos y lo que queremos para el mundo."
+        },
+        "thumbnail": "/works/work-1769902934948/thumbnail.jpg",
+        "images": [
+          {
+            "url": "/works/work-1769902934948/work-1769902946981.jpg",
+            "caption": {
+              "en": "Scene from the play",
+              "es": "Escena de la obra"
+            }
+          },
+          {
+            "url": "/works/work-1769902934948/work-1769902947669.jpg",
+            "caption": {
+              "en": "Scene from the play",
+              "es": "Escena de la obra"
+            }
+          },
+          {
+            "url": "/works/work-1769902934948/work-1769902948599.jpg",
+            "caption": {
+              "en": "Scene from the play",
+              "es": "Escena de la obra"
+            }
+          },
+          {
+            "url": "/works/work-1769902934948/work-1769902949430.jpg",
+            "caption": {
+              "en": "Scene from the play",
+              "es": "Escena de la obra"
+            }
+          },
+          {
+            "url": "/works/work-1769902934948/work-1769902950102.jpg",
+            "caption": {
+              "en": "Scene from the play",
+              "es": "Escena de la obra"
+            }
+          },
+          {
+            "url": "/works/work-1769902934948/work-1769902950802.jpg",
+            "caption": {
+              "en": "Scene from the play",
+              "es": "Escena de la obra"
+            }
+          },
+          {
+            "url": "/works/work-1769902934948/work-1769902951557.jpg",
+            "caption": {
+              "en": "Scene from the play",
+              "es": "Escena de la obra"
+            }
+          },
+          {
+            "url": "/works/work-1769902934948/work-1769902952209.jpg",
+            "caption": {
+              "en": "Scene from the play",
+              "es": "Escena de la obra"
+            }
+          },
+          {
+            "url": "/works/work-1769902934948/work-1769902952888.jpg",
+            "caption": {
+              "en": "Scene from the play",
+              "es": "Escena de la obra"
+            }
+          },
+          {
+            "url": "/works/work-1769902934948/work-1769902953536.jpg",
+            "caption": {
+              "en": "Scene from the play",
+              "es": "Escena de la obra"
+            }
+          },
+          {
+            "url": "/works/work-1769902934948/work-1769902954252.jpg",
+            "caption": {
+              "en": "Scene from the play",
+              "es": "Escena de la obra"
+            }
+          },
+          {
+            "url": "/works/work-1769902934948/work-1769902954987.jpg",
+            "caption": {
+              "en": "Scene from the play",
+              "es": "Escena de la obra"
+            }
+          },
+          {
+            "url": "/works/work-1769902934948/work-1769902955697.jpg",
+            "caption": {
+              "en": "Scene from the play",
+              "es": "Escena de la obra"
+            }
+          },
+          {
+            "url": "/works/work-1769902934948/work-1769902956395.jpg",
             "caption": {
               "en": "Scene from the play",
               "es": "Escena de la obra"
@@ -2088,8 +2108,8 @@
   },
   "newsPage": {
     "description": {
-      "en": "From a young age, I wanted to be an actress, later I also wanted to be other things... Although I have always been associated with the theater. The first time I went on stage was to represent \"Act without Words\", by Samuel Beckett, with it we won the first prize in the High School Theater Contest. At 19, I joined a university theater company, \"The Blue Cell\", where I was a chorus in Aristophanes' \"Assembly of Women\", some of the dialogues still echo in my head. Then I delved into physical theater with the Lecoq Method, at the Listening Theater, in Clown and in Collective Creation... I attended courses, workshops, scenic laboratories and artistic residencies of various styles, in different cities in Spain.\n\nSome of the works that I have interpreted are \"Act without Words\" by Samuel Beckett; \"Assembly of Women\" by Aristophanes; \"The Whore and Death\", written by me; \"Time and Space\", written by me; \"Love Station\", collective creation theater; \"Lo-Cura\", collective creation work; \"Antagonisms\", brief scenes of contemporary theater; \"Awakening of Oniria\", collective creation work; \"Mommy, Where is My Teddy?\", monologue written by me; \"My Place in the World\", monologue written by me; \"Nights of Fleeting Love. The Divided Night\", by Paloma Pedrero; \"Persona\", work written and directed by me.\n\nHere are some interpretations, as a sample.",
-      "es": "Desde pequeña quería ser actriz, luego también quise ser otras cosas... Aunque siempre he estado vinculada con el teatro. La primera vez que me subí a un escenario fue para representar “Acto sin palabras”, de Samuel Becket, con ella ganamos el primer premio del Concurso de Teatro de Enseñanzas Medias. Con 19 años entré en una compañía de teatro universitario, “La Celda Azul”, donde hice de coro en la obra de Aristófanes “Asamblea de mujeres”, algunos de los diálogos aún resuenan en mi cabeza. Luego me adentré en el teatro físico con el Método Lecoq, en el Teatro de la Escucha, en el Clown y en el Teatro de Creación... Realicé cursos, talleres, laboratorios escénicos y residencias artísticas de diversos estilos, en distintas ciudades de España.\n\nAlgunas de las obras que he interpretado son “Acto sin palabras” de Samuel Beckett; “Asamblea de mujeres”de Aristófanes; “La Puta y , la Muerte”, escrita por mí; “El Tiempo y el Espacio”, escrita por mí; “Estación Amor”, teatro de creación colectiva; “Lo-Cura”, obra de creación colectiva; “Antagonismos”, escenas breves de teatro contemporáneo; “El despertar de Oniria”, obra de creación colectiva; “Mamá, ¿Dónde está mi osito?”, monólogo escrito por mí; “Mi lugar en el mundo”, monólogo escrito por mí; “Noches de amor efímero. La noche dividida”, de Paloma Pedrero; “Persona”, obra escrita y dirigida por mí.\n\nA continuación algunas interpretaciones, a modo de muestra."
+      "en": "I've always wanted to be an actress from a young age, and later I also wanted to be other things... Although I have always been associated with the theater. The first time I stepped on stage was to perform \"Act Without Words,\" by Samuel Beckett, with which we won the first prize in the High School Theatre Competition. At 19, I joined a university theatre company, \"The Blue Cell,\" where I played chorus in Aristophanes' \"Assembly of Women,\" some of the dialogues still echo in my head. Then I delved into physical theater with the Lecoq Method, at the Listening Theatre, Clown and Theatre of Creation... I took courses, workshops, scenic laboratories and artistic residencies of various styles, in different cities in Spain.\n\nSome plays I have performed are \"Act Without Words\" by Samuel Beckett; \"Assembly of Women\" by Aristophanes; \"The Whore and Death,\" written by me; \"Time and Space,\" written by me; \"Love Station,\" theatre of collective creation; \"Lo-Cura,\" collective creation work; \"Antagonisms,\" contemporary short theatre scenes; \"The Awakening of Oniria,\" collective creation work; \"Mommy, Where's My Teddy Bear?,\" monologue written by me; \"My Place in the World,\" monologue written by me; \"Nights of Fleeting Love. The Divided Night,\" by Paloma Pedrero; \"Persona,\" play written and directed by me.",
+      "es": "Desde pequeña quería ser actriz, luego también quise ser otras cosas... Aunque siempre he estado vinculada con el teatro. La primera vez que me subí a un escenario fue para representar “Acto sin palabras”, de Samuel Becket, con ella ganamos el primer premio del Concurso de Teatro de Enseñanzas Medias. Con 19 años entré en una compañía de teatro universitario, “La Celda Azul”, donde hice de coro en la obra de Aristófanes “Asamblea de mujeres”, algunos de los diálogos aún resuenan en mi cabeza. Luego me adentré en el teatro físico con el Método Lecoq, en el Teatro de la Escucha, en el Clown y en el Teatro de Creación... Realicé cursos, talleres, laboratorios escénicos y residencias artísticas de diversos estilos, en distintas ciudades de España.\n\nAlgunas de las obras que he interpretado son “Acto sin palabras” de Samuel Beckett; “Asamblea de mujeres”de Aristófanes; “La Puta y , la Muerte”, escrita por mí; “El Tiempo y el Espacio”, escrita por mí; “Estación Amor”, teatro de creación colectiva; “Lo-Cura”, obra de creación colectiva; “Antagonismos”, escenas breves de teatro contemporáneo; “El despertar de Oniria”, obra de creación colectiva; “Mamá, ¿Dónde está mi osito?”, monólogo escrito por mí; “Mi lugar en el mundo”, monólogo escrito por mí; “Noches de amor efímero. La noche dividida”, de Paloma Pedrero; “Persona”, obra escrita y dirigida por mí."
     }
   },
   "contact": {
