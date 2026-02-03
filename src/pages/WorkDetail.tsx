@@ -748,7 +748,18 @@ export default function WorkDetail() {
               {work.title[lang]}
             </h1>
           )}
-          <p className="mt-2 text-sm sm:text-base opacity-60">{work.year}</p>
+          {workCategory !== null && workIndex !== -1 ? (
+            <EditableText
+              dataPath={`works.${workCategory}[${workIndex}].year`}
+              language={lang}
+              className="mt-2 text-sm sm:text-base opacity-60"
+              as="p"
+            >
+              {String(work.year)}
+            </EditableText>
+          ) : (
+            <p className="mt-2 text-sm sm:text-base opacity-60">{work.year}</p>
+          )}
         </div>
 
         {/* Main description text */}
@@ -845,26 +856,41 @@ export default function WorkDetail() {
                 embedSrc = getVimeoEmbedUrl(vimeoId)
               }
 
+              // For specific works with exactly 2 videos, add titles
+              let videoTitle: string | null = null
+              if (work?.id === 10 && videoItems.length === 2) {
+                // PERSONA: Teaser and Trailer
+                videoTitle = index === 0 ? 'Teaser' : 'Trailer'
+              } else if (work?.id === 4 && videoItems.length === 2) {
+                // Work 4: Trailer and Cortometraje
+                videoTitle = index === 0 ? 'Trailer' : 'Short Film'
+              }
+
               return (
-                <div key={index} className="aspect-video bg-black">
-                  {isYouTube || isVimeo ? (
-                    <iframe
-                      src={embedSrc}
-                      title={`${work.title[lang]} - Video ${index + 1}`}
-                      className="w-full h-full"
-                      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                      allowFullScreen
-                    />
-                  ) : (
-                    <video
-                      src={url}
-                      controls
-                      className="w-full h-full object-contain"
-                      poster={video.thumbnail || undefined}
-                    >
-                      Your browser does not support the video tag.
-                    </video>
+                <div key={index} className="space-y-2">
+                  {videoTitle && (
+                    <h3 className="text-sm sm:text-base font-light opacity-80">{videoTitle}</h3>
                   )}
+                  <div className="aspect-video bg-black">
+                    {isYouTube || isVimeo ? (
+                      <iframe
+                        src={embedSrc}
+                        title={`${work.title[lang]} - Video ${index + 1}`}
+                        className="w-full h-full"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                        allowFullScreen
+                      />
+                    ) : (
+                      <video
+                        src={url}
+                        controls
+                        className="w-full h-full object-contain"
+                        poster={video.thumbnail || undefined}
+                      >
+                        Your browser does not support the video tag.
+                      </video>
+                    )}
+                  </div>
                 </div>
               )
             })}
@@ -906,7 +932,7 @@ export default function WorkDetail() {
                 <div
                   key={index}
                   className={`flex flex-col items-center gap-1 ${draggedImageIndex === index ? 'opacity-50' : ''}`}
-                  onDragOver={(e) => handleImageDragOver(e)}
+                  onDragOver={(e) => handleImageDragOver(e, index)}
                   onDrop={(e) => handleImageDrop(e, index)}
                 >
                   <div

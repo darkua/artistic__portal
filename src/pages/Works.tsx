@@ -307,50 +307,134 @@ function WorkGrid({
     
     if (draggedIndex === null) return
     
-    // Calculate drop position based on mouse position within the element
-    const rect = (e.currentTarget as HTMLElement).getBoundingClientRect()
-    const mouseX = e.clientX
-    const mouseY = e.clientY
-    const centerX = rect.left + rect.width / 2
-    const centerY = rect.top + rect.height / 2
-    
-    // Determine if we should drop before or after this index
-    // For horizontal layout, check X position; for vertical, check Y
-    // Since these are vertical posters in a flex-wrap layout, we check both
-    const shouldDropBefore = mouseX < centerX || mouseY < centerY
-    
-    let calculatedDropIndex = index
-    if (draggedIndex !== null) {
-      if (draggedIndex < index) {
-        // Dragging forward: drop before current index means stay at index, drop after means index + 1
-        calculatedDropIndex = shouldDropBefore ? index : index + 1
-      } else if (draggedIndex > index) {
-        // Dragging backward: drop before means index, drop after means index + 1
-        calculatedDropIndex = shouldDropBefore ? index : index + 1
-      } else {
-        // Same position
-        calculatedDropIndex = index
-      }
-      
-      // Clamp to valid range
-      calculatedDropIndex = Math.max(0, Math.min(calculatedDropIndex, works.length))
+    // Find the container element (the flex-wrap div)
+    const container = (e.currentTarget as HTMLElement).closest('.flex.flex-wrap')
+    if (!container) {
+      setDropTargetIndex(index)
+      return
     }
     
+    const mouseX = e.clientX
+    const mouseY = e.clientY
+    
+    // Get all work item wrapper divs (the direct children of container)
+    // These are in array order (works.map order)
+    const containerChildren = Array.from(container.children) as HTMLElement[]
+    
+    // Create a mapping of visual positions (sorted by top, then left) to array indices
+    const itemsWithIndices = containerChildren.map((child, arrayIndex) => {
+      const rect = child.getBoundingClientRect()
+      return {
+        element: child,
+        arrayIndex,
+        top: rect.top,
+        left: rect.left,
+        centerX: rect.left + rect.width / 2,
+        centerY: rect.top + rect.height / 2,
+      }
+    })
+    
+    // Sort by visual position (top first, then left)
+    itemsWithIndices.sort((a, b) => {
+      const topDiff = a.top - b.top
+      if (Math.abs(topDiff) > 10) return topDiff // Different rows
+      return a.left - b.left // Same row, sort by left
+    })
+    
+    // Find which visual position the mouse is over
+    let targetVisualIndex = -1
+    let foundTarget = false
+    
+    for (let i = 0; i < itemsWithIndices.length; i++) {
+      const item = itemsWithIndices[i]
+      const childRect = item.element.getBoundingClientRect()
+      const isMouseOver = mouseX >= childRect.left && mouseX <= childRect.right &&
+                         mouseY >= childRect.top && mouseY <= childRect.bottom
+      
+      if (isMouseOver) {
+        // Determine if we should drop before or after based on mouse position
+        const shouldDropBefore = mouseX < item.centerX || mouseY < item.centerY
+        
+        if (shouldDropBefore) {
+          // Drop before this visual position
+          targetVisualIndex = i
+        } else {
+          // Drop after this visual position - use the next visual position
+          targetVisualIndex = i + 1
+        }
+        
+        foundTarget = true
+        break
+      }
+    }
+    
+    // If we didn't find a target, find the closest visual position
+    if (!foundTarget) {
+      let closestVisualIndex = 0
+      let closestDistance = Infinity
+      
+      for (let i = 0; i < itemsWithIndices.length; i++) {
+        const item = itemsWithIndices[i]
+        const distance = Math.sqrt(Math.pow(mouseX - item.centerX, 2) + Math.pow(mouseY - item.centerY, 2))
+        
+        if (distance < closestDistance) {
+          closestDistance = distance
+          closestVisualIndex = i
+        }
+      }
+      
+      targetVisualIndex = closestVisualIndex
+    }
+    
+    // Convert visual index back to array index
+    // targetVisualIndex is the position in the sorted visual order where we want to drop
+    let targetArrayIndex: number
+    if (targetVisualIndex >= itemsWithIndices.length) {
+      // Dropping at the end - use the last item's array index + 1
+      const lastItem = itemsWithIndices[itemsWithIndices.length - 1]
+      targetArrayIndex = lastItem.arrayIndex + 1
+    } else if (targetVisualIndex <= 0) {
+      // Dropping at the beginning
+      targetArrayIndex = 0
+    } else {
+      // Use the array index of the item at the target visual position
+      const targetItem = itemsWithIndices[targetVisualIndex]
+      targetArrayIndex = targetItem.arrayIndex
+      
+      // If we're dropping after a visual position, we might need to adjust
+      // Check if the next visual item has a sequential array index
+      if (targetVisualIndex < itemsWithIndices.length - 1) {
+        const nextItem = itemsWithIndices[targetVisualIndex + 1]
+        // If next item's array index is sequential, we might want to drop between them
+        // But for now, use the target item's array index
+      }
+    }
+    
+    // Calculate the final drop index accounting for the dragged item
+    // The backend removes the item first, then inserts at newIndex
+    // So if dragging from 3 to 7, after removing 3, what was 7 is now 6
+    let calculatedDropIndex = targetArrayIndex
+    if (draggedIndex !== null && draggedIndex < targetArrayIndex) {
+      // Dragging forward: after removal, indices shift down by 1
+      calculatedDropIndex = targetArrayIndex - 1
+    }
+    // If dragging backward, targetArrayIndex is already correct (no shift needed)
+    
+    // Clamp to valid range
+    calculatedDropIndex = Math.max(0, Math.min(calculatedDropIndex, works.length - 1))
+    
+    const rect = (e.currentTarget as HTMLElement).getBoundingClientRect()
     console.log('[Drag Over]', {
       index,
       draggedIndex,
+      targetVisualIndex,
+      targetArrayIndex,
+      calculatedDropIndex,
       mouseX: mouseX.toFixed(0),
       mouseY: mouseY.toFixed(0),
-      centerX: centerX.toFixed(0),
-      centerY: centerY.toFixed(0),
-      shouldDropBefore,
-      calculatedDropIndex,
-      rect: { 
-        left: rect.left.toFixed(0), 
-        top: rect.top.toFixed(0), 
-        width: rect.width.toFixed(0), 
-        height: rect.height.toFixed(0) 
-      }
+      containerChildrenCount: containerChildren.length,
+      worksLength: works.length,
+      visualOrder: itemsWithIndices.map((item, i) => ({ visualPos: i, arrayIndex: item.arrayIndex, workId: works[item.arrayIndex]?.id }))
     })
     
     setDropTargetIndex(calculatedDropIndex)

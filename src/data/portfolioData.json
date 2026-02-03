@@ -2,72 +2,135 @@
   "works": {
     "theaterDirector": [
       {
-        "id": 6,
+        "id": 10,
         "title": {
-          "en": "The fish and the seagull",
-          "es": "El pez y la gaviota"
+          "en": "PERSON",
+          "es": "PERSONA"
         },
         "shortDescription": {
-          "en": "A theatrical piece about encountering \"the other\" and dismantling social labels.",
-          "es": "Una pieza teatral sobre el encuentro con \"el otro\" y el desmantelamiento de las etiquetas sociales."
+          "en": "A theatrical exploration of identity as a mirror that only echoes what surrounds us and what the system reflects.",
+          "es": "Una exploración teatral de la identidad como un espejo que solo hace eco de lo que nos rodea y de lo que el sistema refleja."
         },
         "description": {
-          "en": "Living in a stereotyped world, where social relationships are not based on direct experience but on the ignorance of \"the other\". We need to create an outsider who bears our insecurities, fears and prejudices. Social labels are born this way, but in reality, we are all human beings with our fears and desires, our privileges and deficiencies.\nWhat happens when we are able to become that \"other\", when we accept that despite the difference, it is equal to us?",
-          "es": "Vivimos en un mundo estereotipado, cuyas relaciones sociales no se basan en una experiencia directa, sino en el desconocimiento de “el otro”. Necesitamos crear un extranjero diferente al que hacer depositario de nuestras inseguridades, nuestros miedos y nuestros prejuicios. Nacen así las etiquetas sociales, pero en realidad, somos todos seres humanos con nuestros miedos y nuestros anhelos, nuestros privilegios y nuestras carencias.\n\n¿Y qué ocurre cuando somos capaces de convertirnos en ese “otro”, cuando aceptamos que es, dentro de su diferencia, igual a nosotros mismos?"
+          "en": "What is my true identity?, do we confuse identity with social mask?, am I a genuine being or a repeated copy to satiation, in a system whose only interest is perpetuating itself through the production and consumption chain of its members? How trapped am I in my paradigm?\nIs culture that which clones us and mental cloning anticipates any biological cloning.\n\nThe prisoner released from Plato's cave can no longer continue feeding on knowledge based on perceptions and shadows. This is what happens to Alice, she has found a loophole, a crack in the system where she can connect with herself, with her essence and her freedom symbolized through childhood.\nIn PERSONA, Alice and Cecilia are projections of Barbara, personal possibilities, vital choices, like those we all make every minute, that lead us to take different paths. Alice seeks answers to the mysteries posed by the world around her and also to the question \"who am I\". Cecilia loses her sight and with it, any possibility of seeing reality and being herself. Each one chooses her destiny. The clinic, the Nurse and Dr. RAM represent the dehumanization of the system.\nThrough an intimate scenic device, the piece explores how identities are built, reflected and distorted from the structural memory that frames our lives.\nPERSONA invites the audience to question the limits between the authentic self and the characters we inhabit in daily life.",
+          "es": "¿Cuál es mi verdadera identidad?, ¿confundimos identidad con máscara social?, ¿soy un ser genuino o una copia repetida hasta la saciedad, en un sistema cuyo único interés es perpetuarse a sí mismo a través de la cadena de producción y consumo que forman sus miembros? ¿cómo de atrapada estoy en mi paradigma?\nEs la cultura la que nos clona y la clonación mental anticipa cualquier clonación biológica.\n\nEl preso liberado de la caverna de Platón ya no puede continuar alimentándose de un conocimiento basado en percepciones y sombras. Eso es lo que le sucede a Alicia, ha encontrado un resquicio, una grieta en el sistema donde puede conectar consigo misma, con su esencia y su libertad simbolizada a través de la infancia.\n\nEn PERSONA, Alicia y Cecilia son proyecciones de Bárbara, posibilidades personales, elecciones vitales, como las que hacemos todos a cada minuto, que nos llevan a tomar caminos diferentes. Alicia busca respuestas a los enigmas que plantea el mundo que le rodea y también a la pregunta \"quién soy\". Cecilia pierde su visión y, con ella, toda posibilidad de ver la realidad y de ser ella misma. Cada una elige su destino. La clínica, la Enfermera y la Doctora RAM representan la deshumanización del sistema.\n\nA través de un dispositivo escénico íntimo, la pieza explora cómo las identidades se construyen, se reflejan y se distorsionan a partir de la memoria estructural que enmarca nuestras vidas.\nPERSONA invita al espectador a cuestionar los límites entre el yo auténtico y los personajes que habitamos en el día a día."
         },
-        "thumbnail": "/works/pez-gaviota/pez-gaviota-poster.jpg",
+        "thumbnail": "/works/persona/persona-poster.jpg",
         "images": [
           {
-            "url": "/works/pez-gaviota/pez-2.jpg",
-            "caption": {
-              "en": "Poster detail",
-              "es": "Detalle del cartel"
-            }
-          },
-          {
-            "url": "/works/pez-gaviota/pez-3.jpg",
-            "caption": {
-              "en": "Poster variation",
-              "es": "Variación del cartel"
-            }
-          },
-          {
-            "url": "/works/pez-gaviota/pez-4.jpg",
-            "caption": {
-              "en": "Rehearsal photo",
-              "es": "Foto de ensayo"
-            }
-          },
-          {
-            "url": "/works/pez-gaviota/pez-6.jpg",
+            "url": "/works/persona/persona-1.jpg",
             "caption": {
               "en": "Scene from the play",
               "es": "Escena de la obra"
             }
           },
           {
-            "url": "/works/pez-gaviota/pez-8.jpg",
+            "url": "/works/persona/persona-2.jpg",
             "caption": {
               "en": "Scene from the play",
               "es": "Escena de la obra"
             }
           },
           {
-            "url": "/works/pez-gaviota/pez-9.jpg",
+            "url": "/works/persona/work-1769817571937.jpg",
             "caption": {
               "en": "Scene from the play",
               "es": "Escena de la obra"
             }
           },
           {
-            "url": "/works/pez-gaviota/pez-7.jpg",
+            "url": "/works/persona/persona-3.jpg",
             "caption": {
               "en": "Scene from the play",
               "es": "Escena de la obra"
             }
           },
           {
-            "url": "/works/pez-gaviota/pez-5.jpg",
+            "url": "/works/persona/persona-5.jpg",
+            "caption": {
+              "en": "Scene from the play",
+              "es": "Escena de la obra"
+            }
+          },
+          {
+            "url": "/works/persona/persona-4.jpg",
+            "caption": {
+              "en": "Scene from the play",
+              "es": "Escena de la obra"
+            }
+          },
+          {
+            "url": "/works/persona/persona-6.jpg",
+            "caption": {
+              "en": "Scene from the play",
+              "es": "Escena de la obra"
+            }
+          },
+          {
+            "url": "/works/persona/persona-8.jpg",
+            "caption": {
+              "en": "Scene from the play",
+              "es": "Escena de la obra"
+            }
+          },
+          {
+            "url": "/works/persona/persona-9.jpg",
+            "caption": {
+              "en": "Scene from the play",
+              "es": "Escena de la obra"
+            }
+          },
+          {
+            "url": "/works/persona/persona-7.jpg",
+            "caption": {
+              "en": "Scene from the play",
+              "es": "Escena de la obra"
+            }
+          },
+          {
+            "url": "/works/persona/persona-10.jpg",
+            "caption": {
+              "en": "Scene from the play",
+              "es": "Escena de la obra"
+            }
+          },
+          {
+            "url": "/works/persona/persona-11.jpg",
+            "caption": {
+              "en": "Scene from the play",
+              "es": "Escena de la obra"
+            }
+          },
+          {
+            "url": "/works/persona/persona-12.jpg",
+            "caption": {
+              "en": "Scene from the play",
+              "es": "Escena de la obra"
+            }
+          },
+          {
+            "url": "/works/persona/persona-13.jpg",
+            "caption": {
+              "en": "Scene from the play",
+              "es": "Escena de la obra"
+            }
+          },
+          {
+            "url": "/works/persona/persona-14.jpg",
+            "caption": {
+              "en": "Scene from the play",
+              "es": "Escena de la obra"
+            }
+          },
+          {
+            "url": "/works/persona/persona-15.jpg",
+            "caption": {
+              "en": "Scene from the play",
+              "es": "Escena de la obra"
+            }
+          },
+          {
+            "url": "/works/persona/persona-16.jpg",
             "caption": {
               "en": "Scene from the play",
               "es": "Escena de la obra"
@@ -76,7 +139,11 @@
         ],
         "videos": [
           {
-            "url": "https://www.youtube.com/watch?v=MNsRA5Ksnyo&feature=youtu.be",
+            "url": "/works/persona/persona-teaser.mp4",
+            "thumbnail": ""
+          },
+          {
+            "url": "https://www.youtube.com/watch?v=zTNq5Oe6mpY",
             "thumbnail": "https://img.youtube.com/vi/zTNq5Oe6mpY/maxresdefault.jpg"
           }
         ],
@@ -88,145 +155,264 @@
           "en": "Theater piece",
           "es": "Pieza teatral"
         },
-        "year": 2021
+        "year": 2024
       },
       {
-        "id": 7,
+        "id": 9,
         "title": {
-          "en": "Deception and Quinones",
-          "es": "El Engaño y Quiñones"
+          "en": "IN.OUT",
+          "es": "IN.OUT"
         },
         "shortDescription": {
-          "en": "A metatheatrical adaptation in verse inspired by Luis Quiñones de Benavente’s entremeses \"El borracho\" and \"El barbero\".",
-          "es": "Una adaptación metateatral en verso inspirada en los entremeses \"El borracho\" y \"El barbero\" de Luis Quiñones de Benavente."
+          "en": "A collective creation that explores identity through an inner journey between light and shadow, masks and social pressure.",
+          "es": "Una creación colectiva que explora la identidad a través de un viaje interno entre luces y sombras, máscaras y presión social."
         },
         "description": {
-          "en": "\"The Deception and Quiñones\" is an adaptation with original drama based on the interludes \"The Drunk\" and \"The Barber\", both inserted in the book \"Jocoseria. Veritable Burlas, or Moral and Festive Reprehension of Public Disorders\" by Luis Quiñones de Benavente (Madrid, 1645).\n\nThe play plays with metatheater, as the figure of the supposed author of \"The Deception\" -Quiñones de Benavente, famous interlude writer of the Golden Age- appears on stage and interacts with the characters of his work, takes sides, and intrudes on stage on several occasions.\n\nThe drama, written in verse, follows every moment the corresponding strophic composition to the two original works.",
-          "es": "\"El Engaño y Quiñones\" es una adaptación, con dramaturgia propia, que parte de los entremeses \"El borracho\" y \"El barbero\", ambos insertos en el libro \"Jocoseria. Burlas veras, o reprehensión moral y festiva de los desórdenes públicos\" de Luis Quiñones de Benavente (Madrid, 1645).\n\nLa pieza juega con el metateatro, pues aparece en escena la figura del supuesto autor de \"El Engaño\" -Quiñones de Benavente, célebre entremesista del Siglo de Oro- que interactúa con los personajes de su obra, toma partido e irrumpe en escena en varias ocasiones.\n\nLa dramaturgia, escrita también en verso, sigue en cada momento la composición estrófica correspondiente a las dos obras originales."
+          "en": "Pursuing Light, I find myself chasing shadows...\n\nFrom the concept of identity and through collective creative work arises IN.OUT, a theatrical piece that investigates the lights and shadows of human being and their relationship with the social structure that produces alienated beings, unable to connect with their true essence.\n\nThrough an internal journey towards self-discovery, characters uncover their social masks and the pressure the system exerts on individuals. Once unmasked, they embark on a journey back to the origin, to the divine spark that human being is in essence.\n\nWith an enveloping sound space and the combination of various scenic techniques (voice, sound effects, music, lights, Chinese shadows, video projections), an oniric visual environment is created which constructs a poetic narrative, where relationships between people and the universe are explored.\n\nIN.OUT shows the sublime in human being, beauty, but also its darkness, its ugly parts, cruelty.",
+          "es": "Buscando la Luz, me encuentro persiguiendo sombras...\n\nPartiendo del concepto de identidad y a través de un trabajo de creación colectiva nace IN.OUT, una pieza teatral que indaga en las luces y las sombras del ser humano y su relación con el entramado social que produce seres alienados, incapaces de conectar con su verdadera esencia.\n\nA través de un viaje interno hacia el autoconocimiento, los personajes descubren sus máscaras sociales y la presión que el sistema ejerce sobre los individuos. Una vez desenmascarados, realizan el camino de regreso al origen, a la chispa divina que el ser humano es en esencia.\n\nCon un espacio sonoro envolvente y la combinación de diversas técnicas escénicas (voz, efectos sonoros, música, luces, sombras chinescas, video-proyecciones) se crea un ambiente visualmente onírico que construye un relato poético, donde se exploran las relaciones entre las personas y el universo.\n\nIN.OUT muestra lo sublime del ser humano, la belleza, pero también su oscuridad, sus partes feas, la crueldad."
         },
-        "thumbnail": "/works/engano-quinones/thumbnail-1769801597191.jpg",
+        "thumbnail": "/works/in-out/in-out-poster.jpg",
         "images": [
           {
-            "url": "/works/engano-quinones/work-1769804327845.jpg",
+            "url": "/works/in-out/in-out-7.jpg",
             "caption": {
               "en": "Scene from the play",
               "es": "Escena de la obra"
             }
           },
           {
-            "url": "/works/engano-quinones/engano-2.jpg",
+            "url": "/works/in-out/in-out-6.jpg",
             "caption": {
               "en": "Scene from the play",
               "es": "Escena de la obra"
             }
           },
           {
-            "url": "/works/engano-quinones/engano-7.jpg",
+            "url": "/works/in-out/in-out-3.jpg",
             "caption": {
               "en": "Scene from the play",
               "es": "Escena de la obra"
             }
           },
           {
-            "url": "/works/engano-quinones/work-1769792590559.jpg",
+            "url": "/works/in-out/in-out-4.jpg",
             "caption": {
               "en": "Scene from the play",
               "es": "Escena de la obra"
             }
           },
           {
-            "url": "/works/engano-quinones/engano-13.jpg",
+            "url": "/works/in-out/in-out-31.jpg",
             "caption": {
               "en": "Scene from the play",
               "es": "Escena de la obra"
             }
           },
           {
-            "url": "/works/engano-quinones/engano-3.jpg",
+            "url": "/works/in-out/in-out-30.jpg",
             "caption": {
               "en": "Scene from the play",
               "es": "Escena de la obra"
             }
           },
           {
-            "url": "/works/engano-quinones/work-1769792593446.jpg",
+            "url": "/works/in-out/in-out-17.jpg",
             "caption": {
               "en": "Scene from the play",
               "es": "Escena de la obra"
             }
           },
           {
-            "url": "/works/engano-quinones/work-1769792596648.jpg",
+            "url": "/works/in-out/in-out-23.jpg",
             "caption": {
               "en": "Scene from the play",
               "es": "Escena de la obra"
             }
           },
           {
-            "url": "/works/engano-quinones/work-1769792600150.jpg",
+            "url": "/works/in-out/in-out-9.jpg",
             "caption": {
               "en": "Scene from the play",
               "es": "Escena de la obra"
             }
           },
           {
-            "url": "/works/engano-quinones/work-1769792603993.jpg",
+            "url": "/works/in-out/in-out-32.jpg",
             "caption": {
               "en": "Scene from the play",
               "es": "Escena de la obra"
             }
           },
           {
-            "url": "/works/engano-quinones/engano-6.jpg",
+            "url": "/works/in-out/in-out-8.jpg",
             "caption": {
               "en": "Scene from the play",
               "es": "Escena de la obra"
             }
           },
           {
-            "url": "/works/engano-quinones/engano-8.jpg",
+            "url": "/works/in-out/in-out-34.jpg",
             "caption": {
               "en": "Scene from the play",
               "es": "Escena de la obra"
             }
           },
           {
-            "url": "/works/engano-quinones/work-1769792606710.jpg",
+            "url": "/works/in-out/in-out-33.jpg",
             "caption": {
               "en": "Scene from the play",
               "es": "Escena de la obra"
             }
           },
           {
-            "url": "/works/engano-quinones/engano-12.jpg",
+            "url": "/works/in-out/in-out-20.jpg",
             "caption": {
               "en": "Scene from the play",
               "es": "Escena de la obra"
             }
           },
           {
-            "url": "/works/engano-quinones/engano-9.jpg",
+            "url": "/works/in-out/in-out-22.jpg",
             "caption": {
               "en": "Scene from the play",
               "es": "Escena de la obra"
             }
           },
           {
-            "url": "/works/engano-quinones/engano-10.jpg",
+            "url": "/works/in-out/in-out-36.jpg",
             "caption": {
               "en": "Scene from the play",
               "es": "Escena de la obra"
             }
           },
           {
-            "url": "/works/engano-quinones/work-1769792609604.jpg",
+            "url": "/works/in-out/in-out-37.jpg",
             "caption": {
               "en": "Scene from the play",
               "es": "Escena de la obra"
             }
           },
           {
-            "url": "/works/engano-quinones/engano-4.jpg",
+            "url": "/works/in-out/in-out-35.jpg",
+            "caption": {
+              "en": "Scene from the play",
+              "es": "Escena de la obra"
+            }
+          },
+          {
+            "url": "/works/in-out/work-1770072893570.jpg",
+            "caption": {
+              "en": "Scene from the play",
+              "es": "Escena de la obra"
+            }
+          },
+          {
+            "url": "/works/in-out/in-out-25.jpg",
+            "caption": {
+              "en": "Scene from the play",
+              "es": "Escena de la obra"
+            }
+          },
+          {
+            "url": "/works/in-out/in-out-40.jpg",
+            "caption": {
+              "en": "Scene from the play",
+              "es": "Escena de la obra"
+            }
+          },
+          {
+            "url": "/works/in-out/in-out-26.jpg",
+            "caption": {
+              "en": "Scene from the play",
+              "es": "Escena de la obra"
+            }
+          },
+          {
+            "url": "/works/in-out/in-out-39.jpg",
+            "caption": {
+              "en": "Scene from the play",
+              "es": "Escena de la obra"
+            }
+          },
+          {
+            "url": "/works/in-out/in-out-24.jpg",
+            "caption": {
+              "en": "Scene from the play",
+              "es": "Escena de la obra"
+            }
+          },
+          {
+            "url": "/works/in-out/in-out-27.jpg",
+            "caption": {
+              "en": "Scene from the play",
+              "es": "Escena de la obra"
+            }
+          },
+          {
+            "url": "/works/in-out/in-out-28.jpg",
+            "caption": {
+              "en": "Scene from the play",
+              "es": "Escena de la obra"
+            }
+          },
+          {
+            "url": "/works/in-out/in-out-1.jpg",
+            "caption": {
+              "en": "Scene from the play",
+              "es": "Escena de la obra"
+            }
+          },
+          {
+            "url": "/works/in-out/in-out-14.jpg",
+            "caption": {
+              "en": "Scene from the play",
+              "es": "Escena de la obra"
+            }
+          },
+          {
+            "url": "/works/in-out/in-out-15.jpg",
+            "caption": {
+              "en": "Scene from the play",
+              "es": "Escena de la obra"
+            }
+          },
+          {
+            "url": "/works/in-out/work-1770072896756.jpg",
+            "caption": {
+              "en": "Scene from the play",
+              "es": "Escena de la obra"
+            }
+          },
+          {
+            "url": "/works/in-out/in-out-29.jpg",
+            "caption": {
+              "en": "Scene from the play",
+              "es": "Escena de la obra"
+            }
+          },
+          {
+            "url": "/works/in-out/in-out-42.jpg",
+            "caption": {
+              "en": "Scene from the play",
+              "es": "Escena de la obra"
+            }
+          },
+          {
+            "url": "/works/in-out/in-out-41.jpg",
+            "caption": {
+              "en": "Scene from the play",
+              "es": "Escena de la obra"
+            }
+          },
+          {
+            "url": "/works/in-out/in-out-13.jpg",
+            "caption": {
+              "en": "Scene from the play",
+              "es": "Escena de la obra"
+            }
+          },
+          {
+            "url": "/works/in-out/in-out-5.jpg",
             "caption": {
               "en": "Scene from the play",
               "es": "Escena de la obra"
@@ -235,8 +421,8 @@
         ],
         "videos": [
           {
-            "url": "https://youtu.be/1bABAzDwxVc",
-            "thumbnail": "https://img.youtube.com/vi/1bABAzDwxVc/maxresdefault.jpg"
+            "url": "https://vimeo.com/1159374648?share=copy&fl=sv&fe=ci",
+            "thumbnail": "https://vumbnail.com/1159374648.jpg"
           }
         ],
         "materials": {
@@ -247,7 +433,7 @@
           "en": "Theater piece",
           "es": "Pieza teatral"
         },
-        "year": 2022
+        "year": 2023
       },
       {
         "id": 8,
@@ -423,247 +609,142 @@
         "year": 2022
       },
       {
-        "id": 9,
+        "id": 7,
         "title": {
-          "en": "IN.OUT",
-          "es": "IN.OUT"
+          "en": "Deception and Quinones",
+          "es": "El Engaño y Quiñones"
         },
         "shortDescription": {
-          "en": "A collective creation that explores identity through an inner journey between light and shadow, masks and social pressure.",
-          "es": "Una creación colectiva que explora la identidad a través de un viaje interno entre luces y sombras, máscaras y presión social."
+          "en": "A metatheatrical adaptation in verse inspired by Luis Quiñones de Benavente’s entremeses \"El borracho\" and \"El barbero\".",
+          "es": "Una adaptación metateatral en verso inspirada en los entremeses \"El borracho\" y \"El barbero\" de Luis Quiñones de Benavente."
         },
         "description": {
-          "en": "Pursuing Light, I find myself chasing shadows...\n\nFrom the concept of identity and through collective creative work arises IN.OUT, a theatrical piece that investigates the lights and shadows of human being and their relationship with the social structure that produces alienated beings, unable to connect with their true essence.\n\nThrough an internal journey towards self-discovery, characters uncover their social masks and the pressure the system exerts on individuals. Once unmasked, they embark on a journey back to the origin, to the divine spark that human being is in essence.\n\nWith an enveloping sound space and the combination of various scenic techniques (voice, sound effects, music, lights, Chinese shadows, video projections), an oniric visual environment is created which constructs a poetic narrative, where relationships between people and the universe are explored.\n\nIN.OUT shows the sublime in human being, beauty, but also its darkness, its ugly parts, cruelty.",
-          "es": "Buscando la Luz, me encuentro persiguiendo sombras...\n\nPartiendo del concepto de identidad y a través de un trabajo de creación colectiva nace IN.OUT, una pieza teatral que indaga en las luces y las sombras del ser humano y su relación con el entramado social que produce seres alienados, incapaces de conectar con su verdadera esencia.\n\nA través de un viaje interno hacia el autoconocimiento, los personajes descubren sus máscaras sociales y la presión que el sistema ejerce sobre los individuos. Una vez desenmascarados, realizan el camino de regreso al origen, a la chispa divina que el ser humano es en esencia.\n\nCon un espacio sonoro envolvente y la combinación de diversas técnicas escénicas (voz, efectos sonoros, música, luces, sombras chinescas, video-proyecciones) se crea un ambiente visualmente onírico que construye un relato poético, donde se exploran las relaciones entre las personas y el universo.\n\nIN.OUT muestra lo sublime del ser humano, la belleza, pero también su oscuridad, sus partes feas, la crueldad."
+          "en": "\"The Deception and Quiñones\" is an adaptation with original drama based on the interludes \"The Drunk\" and \"The Barber\", both inserted in the book \"Jocoseria. Veritable Burlas, or Moral and Festive Reprehension of Public Disorders\" by Luis Quiñones de Benavente (Madrid, 1645).\n\nThe play plays with metatheater, as the figure of the supposed author of \"The Deception\" -Quiñones de Benavente, famous interlude writer of the Golden Age- appears on stage and interacts with the characters of his work, takes sides, and intrudes on stage on several occasions.\n\nThe drama, written in verse, follows every moment the corresponding strophic composition to the two original works.",
+          "es": "\"El Engaño y Quiñones\" es una adaptación, con dramaturgia propia, que parte de los entremeses \"El borracho\" y \"El barbero\", ambos insertos en el libro \"Jocoseria. Burlas veras, o reprehensión moral y festiva de los desórdenes públicos\" de Luis Quiñones de Benavente (Madrid, 1645).\n\nLa pieza juega con el metateatro, pues aparece en escena la figura del supuesto autor de \"El Engaño\" -Quiñones de Benavente, célebre entremesista del Siglo de Oro- que interactúa con los personajes de su obra, toma partido e irrumpe en escena en varias ocasiones.\n\nLa dramaturgia, escrita también en verso, sigue en cada momento la composición estrófica correspondiente a las dos obras originales."
         },
-        "thumbnail": "/works/in-out/in-out-poster.jpg",
+        "thumbnail": "/works/engano-quinones/thumbnail-1769801597191.jpg",
         "images": [
           {
-            "url": "/works/in-out/in-out-7.jpg",
+            "url": "/works/engano-quinones/work-1769804327845.jpg",
             "caption": {
               "en": "Scene from the play",
               "es": "Escena de la obra"
             }
           },
           {
-            "url": "/works/in-out/in-out-6.jpg",
+            "url": "/works/engano-quinones/engano-2.jpg",
             "caption": {
               "en": "Scene from the play",
               "es": "Escena de la obra"
             }
           },
           {
-            "url": "/works/in-out/in-out-3.jpg",
+            "url": "/works/engano-quinones/engano-7.jpg",
             "caption": {
               "en": "Scene from the play",
               "es": "Escena de la obra"
             }
           },
           {
-            "url": "/works/in-out/in-out-4.jpg",
+            "url": "/works/engano-quinones/work-1769792590559.jpg",
             "caption": {
               "en": "Scene from the play",
               "es": "Escena de la obra"
             }
           },
           {
-            "url": "/works/in-out/in-out-31.jpg",
+            "url": "/works/engano-quinones/engano-13.jpg",
             "caption": {
               "en": "Scene from the play",
               "es": "Escena de la obra"
             }
           },
           {
-            "url": "/works/in-out/in-out-30.jpg",
+            "url": "/works/engano-quinones/engano-3.jpg",
             "caption": {
               "en": "Scene from the play",
               "es": "Escena de la obra"
             }
           },
           {
-            "url": "/works/in-out/in-out-17.jpg",
+            "url": "/works/engano-quinones/work-1769792593446.jpg",
             "caption": {
               "en": "Scene from the play",
               "es": "Escena de la obra"
             }
           },
           {
-            "url": "/works/in-out/in-out-23.jpg",
+            "url": "/works/engano-quinones/work-1769792596648.jpg",
             "caption": {
               "en": "Scene from the play",
               "es": "Escena de la obra"
             }
           },
           {
-            "url": "/works/in-out/in-out-9.jpg",
+            "url": "/works/engano-quinones/work-1769792600150.jpg",
             "caption": {
               "en": "Scene from the play",
               "es": "Escena de la obra"
             }
           },
           {
-            "url": "/works/in-out/in-out-32.jpg",
+            "url": "/works/engano-quinones/work-1769792603993.jpg",
             "caption": {
               "en": "Scene from the play",
               "es": "Escena de la obra"
             }
           },
           {
-            "url": "/works/in-out/in-out-8.jpg",
+            "url": "/works/engano-quinones/engano-6.jpg",
             "caption": {
               "en": "Scene from the play",
               "es": "Escena de la obra"
             }
           },
           {
-            "url": "/works/in-out/in-out-34.jpg",
+            "url": "/works/engano-quinones/engano-8.jpg",
             "caption": {
               "en": "Scene from the play",
               "es": "Escena de la obra"
             }
           },
           {
-            "url": "/works/in-out/in-out-33.jpg",
+            "url": "/works/engano-quinones/work-1769792606710.jpg",
             "caption": {
               "en": "Scene from the play",
               "es": "Escena de la obra"
             }
           },
           {
-            "url": "/works/in-out/in-out-20.jpg",
+            "url": "/works/engano-quinones/engano-12.jpg",
             "caption": {
               "en": "Scene from the play",
               "es": "Escena de la obra"
             }
           },
           {
-            "url": "/works/in-out/in-out-22.jpg",
+            "url": "/works/engano-quinones/engano-9.jpg",
             "caption": {
               "en": "Scene from the play",
               "es": "Escena de la obra"
             }
           },
           {
-            "url": "/works/in-out/in-out-36.jpg",
+            "url": "/works/engano-quinones/engano-10.jpg",
             "caption": {
               "en": "Scene from the play",
               "es": "Escena de la obra"
             }
           },
           {
-            "url": "/works/in-out/in-out-37.jpg",
+            "url": "/works/engano-quinones/work-1769792609604.jpg",
             "caption": {
               "en": "Scene from the play",
               "es": "Escena de la obra"
             }
           },
           {
-            "url": "/works/in-out/in-out-35.jpg",
-            "caption": {
-              "en": "Scene from the play",
-              "es": "Escena de la obra"
-            }
-          },
-          {
-            "url": "/works/in-out/in-out-25.jpg",
-            "caption": {
-              "en": "Scene from the play",
-              "es": "Escena de la obra"
-            }
-          },
-          {
-            "url": "/works/in-out/in-out-40.jpg",
-            "caption": {
-              "en": "Scene from the play",
-              "es": "Escena de la obra"
-            }
-          },
-          {
-            "url": "/works/in-out/in-out-26.jpg",
-            "caption": {
-              "en": "Scene from the play",
-              "es": "Escena de la obra"
-            }
-          },
-          {
-            "url": "/works/in-out/in-out-39.jpg",
-            "caption": {
-              "en": "Scene from the play",
-              "es": "Escena de la obra"
-            }
-          },
-          {
-            "url": "/works/in-out/in-out-24.jpg",
-            "caption": {
-              "en": "Scene from the play",
-              "es": "Escena de la obra"
-            }
-          },
-          {
-            "url": "/works/in-out/in-out-27.jpg",
-            "caption": {
-              "en": "Scene from the play",
-              "es": "Escena de la obra"
-            }
-          },
-          {
-            "url": "/works/in-out/in-out-28.jpg",
-            "caption": {
-              "en": "Scene from the play",
-              "es": "Escena de la obra"
-            }
-          },
-          {
-            "url": "/works/in-out/in-out-1.jpg",
-            "caption": {
-              "en": "Scene from the play",
-              "es": "Escena de la obra"
-            }
-          },
-          {
-            "url": "/works/in-out/in-out-14.jpg",
-            "caption": {
-              "en": "Scene from the play",
-              "es": "Escena de la obra"
-            }
-          },
-          {
-            "url": "/works/in-out/in-out-15.jpg",
-            "caption": {
-              "en": "Scene from the play",
-              "es": "Escena de la obra"
-            }
-          },
-          {
-            "url": "/works/in-out/in-out-29.jpg",
-            "caption": {
-              "en": "Scene from the play",
-              "es": "Escena de la obra"
-            }
-          },
-          {
-            "url": "/works/in-out/in-out-42.jpg",
-            "caption": {
-              "en": "Scene from the play",
-              "es": "Escena de la obra"
-            }
-          },
-          {
-            "url": "/works/in-out/in-out-41.jpg",
-            "caption": {
-              "en": "Scene from the play",
-              "es": "Escena de la obra"
-            }
-          },
-          {
-            "url": "/works/in-out/in-out-13.jpg",
-            "caption": {
-              "en": "Scene from the play",
-              "es": "Escena de la obra"
-            }
-          },
-          {
-            "url": "/works/in-out/in-out-5.jpg",
+            "url": "/works/engano-quinones/engano-4.jpg",
             "caption": {
               "en": "Scene from the play",
               "es": "Escena de la obra"
@@ -672,8 +753,8 @@
         ],
         "videos": [
           {
-            "url": "https://vimeo.com/1159374648?share=copy&fl=sv&fe=ci",
-            "thumbnail": "https://vumbnail.com/1159374648.jpg"
+            "url": "https://youtu.be/1bABAzDwxVc",
+            "thumbnail": "https://img.youtube.com/vi/1bABAzDwxVc/maxresdefault.jpg"
           }
         ],
         "materials": {
@@ -684,138 +765,75 @@
           "en": "Theater piece",
           "es": "Pieza teatral"
         },
-        "year": 2023
+        "year": 2022
       },
       {
-        "id": 10,
+        "id": 6,
         "title": {
-          "en": "PERSONA",
-          "es": "PERSONA"
+          "en": "The fish and the seagull",
+          "es": "El pez y la gaviota"
         },
         "shortDescription": {
-          "en": "A theatrical exploration of identity as a mirror that only echoes what surrounds us and what the system reflects.",
-          "es": "Una exploración teatral de la identidad como un espejo que solo hace eco de lo que nos rodea y de lo que el sistema refleja."
+          "en": "A theatrical piece about encountering \"the other\" and dismantling social labels.",
+          "es": "Una pieza teatral sobre el encuentro con \"el otro\" y el desmantelamiento de las etiquetas sociales."
         },
         "description": {
-          "en": "What is my true identity?, do we confuse identity with social mask?, am I a genuine being or a repeated copy to satiation, in a system whose only interest is perpetuating itself through the production and consumption chain of its members? How trapped am I in my paradigm?\nIs culture that which clones us and mental cloning anticipates any biological cloning.\n\nThe prisoner released from Plato's cave can no longer continue feeding on knowledge based on perceptions and shadows. This is what happens to Alice, she has found a loophole, a crack in the system where she can connect with herself, with her essence and her freedom symbolized through childhood.\nIn PERSONA, Alice and Cecilia are projections of Barbara, personal possibilities, vital choices, like those we all make every minute, that lead us to take different paths. Alice seeks answers to the mysteries posed by the world around her and also to the question \"who am I\". Cecilia loses her sight and with it, any possibility of seeing reality and being herself. Each one chooses her destiny. The clinic, the Nurse and Dr. RAM represent the dehumanization of the system.\nThrough an intimate scenic device, the piece explores how identities are built, reflected and distorted from the structural memory that frames our lives.\nPERSONA invites the audience to question the limits between the authentic self and the characters we inhabit in daily life.",
-          "es": "¿Cuál es mi verdadera identidad?, ¿confundimos identidad con máscara social?, ¿soy un ser genuino o una copia repetida hasta la saciedad, en un sistema cuyo único interés es perpetuarse a sí mismo a través de la cadena de producción y consumo que forman sus miembros? ¿cómo de atrapada estoy en mi paradigma?\nEs la cultura la que nos clona y la clonación mental anticipa cualquier clonación biológica.\n\nEl preso liberado de la caverna de Platón ya no puede continuar alimentándose de un conocimiento basado en percepciones y sombras. Eso es lo que le sucede a Alicia, ha encontrado un resquicio, una grieta en el sistema donde puede conectar consigo misma, con su esencia y su libertad simbolizada a través de la infancia.\n\nEn PERSONA, Alicia y Cecilia son proyecciones de Bárbara, posibilidades personales, elecciones vitales, como las que hacemos todos a cada minuto, que nos llevan a tomar caminos diferentes. Alicia busca respuestas a los enigmas que plantea el mundo que le rodea y también a la pregunta \"quién soy\". Cecilia pierde su visión y, con ella, toda posibilidad de ver la realidad y de ser ella misma. Cada una elige su destino. La clínica, la Enfermera y la Doctora RAM representan la deshumanización del sistema.\n\nA través de un dispositivo escénico íntimo, la pieza explora cómo las identidades se construyen, se reflejan y se distorsionan a partir de la memoria estructural que enmarca nuestras vidas.\nPERSONA invita al espectador a cuestionar los límites entre el yo auténtico y los personajes que habitamos en el día a día."
+          "en": "Living in a stereotyped world, where social relationships are not based on direct experience but on the ignorance of \"the other\". We need to create an outsider who bears our insecurities, fears and prejudices. Social labels are born this way, but in reality, we are all human beings with our fears and desires, our privileges and deficiencies.\nWhat happens when we are able to become that \"other\", when we accept that despite the difference, it is equal to us?",
+          "es": "Vivimos en un mundo estereotipado, cuyas relaciones sociales no se basan en una experiencia directa, sino en el desconocimiento de “el otro”. Necesitamos crear un extranjero diferente al que hacer depositario de nuestras inseguridades, nuestros miedos y nuestros prejuicios. Nacen así las etiquetas sociales, pero en realidad, somos todos seres humanos con nuestros miedos y nuestros anhelos, nuestros privilegios y nuestras carencias.\n\n¿Y qué ocurre cuando somos capaces de convertirnos en ese “otro”, cuando aceptamos que es, dentro de su diferencia, igual a nosotros mismos?"
         },
-        "thumbnail": "/works/persona/persona-poster.jpg",
+        "thumbnail": "/works/pez-gaviota/pez-gaviota-poster.jpg",
         "images": [
           {
-            "url": "/works/persona/persona-1.jpg",
+            "url": "/works/pez-gaviota/pez-2.jpg",
+            "caption": {
+              "en": "Poster detail",
+              "es": "Detalle del cartel"
+            }
+          },
+          {
+            "url": "/works/pez-gaviota/pez-3.jpg",
+            "caption": {
+              "en": "Poster variation",
+              "es": "Variación del cartel"
+            }
+          },
+          {
+            "url": "/works/pez-gaviota/pez-4.jpg",
+            "caption": {
+              "en": "Rehearsal photo",
+              "es": "Foto de ensayo"
+            }
+          },
+          {
+            "url": "/works/pez-gaviota/pez-6.jpg",
             "caption": {
               "en": "Scene from the play",
               "es": "Escena de la obra"
             }
           },
           {
-            "url": "/works/persona/persona-2.jpg",
+            "url": "/works/pez-gaviota/pez-8.jpg",
             "caption": {
               "en": "Scene from the play",
               "es": "Escena de la obra"
             }
           },
           {
-            "url": "/works/persona/work-1769817571937.jpg",
+            "url": "/works/pez-gaviota/pez-9.jpg",
             "caption": {
               "en": "Scene from the play",
               "es": "Escena de la obra"
             }
           },
           {
-            "url": "/works/persona/persona-3.jpg",
+            "url": "/works/pez-gaviota/pez-7.jpg",
             "caption": {
               "en": "Scene from the play",
               "es": "Escena de la obra"
             }
           },
           {
-            "url": "/works/persona/persona-5.jpg",
-            "caption": {
-              "en": "Scene from the play",
-              "es": "Escena de la obra"
-            }
-          },
-          {
-            "url": "/works/persona/persona-4.jpg",
-            "caption": {
-              "en": "Scene from the play",
-              "es": "Escena de la obra"
-            }
-          },
-          {
-            "url": "/works/persona/persona-6.jpg",
-            "caption": {
-              "en": "Scene from the play",
-              "es": "Escena de la obra"
-            }
-          },
-          {
-            "url": "/works/persona/persona-8.jpg",
-            "caption": {
-              "en": "Scene from the play",
-              "es": "Escena de la obra"
-            }
-          },
-          {
-            "url": "/works/persona/persona-9.jpg",
-            "caption": {
-              "en": "Scene from the play",
-              "es": "Escena de la obra"
-            }
-          },
-          {
-            "url": "/works/persona/persona-7.jpg",
-            "caption": {
-              "en": "Scene from the play",
-              "es": "Escena de la obra"
-            }
-          },
-          {
-            "url": "/works/persona/persona-10.jpg",
-            "caption": {
-              "en": "Scene from the play",
-              "es": "Escena de la obra"
-            }
-          },
-          {
-            "url": "/works/persona/persona-11.jpg",
-            "caption": {
-              "en": "Scene from the play",
-              "es": "Escena de la obra"
-            }
-          },
-          {
-            "url": "/works/persona/persona-12.jpg",
-            "caption": {
-              "en": "Scene from the play",
-              "es": "Escena de la obra"
-            }
-          },
-          {
-            "url": "/works/persona/persona-13.jpg",
-            "caption": {
-              "en": "Scene from the play",
-              "es": "Escena de la obra"
-            }
-          },
-          {
-            "url": "/works/persona/persona-14.jpg",
-            "caption": {
-              "en": "Scene from the play",
-              "es": "Escena de la obra"
-            }
-          },
-          {
-            "url": "/works/persona/persona-15.jpg",
-            "caption": {
-              "en": "Scene from the play",
-              "es": "Escena de la obra"
-            }
-          },
-          {
-            "url": "/works/persona/persona-16.jpg",
+            "url": "/works/pez-gaviota/pez-5.jpg",
             "caption": {
               "en": "Scene from the play",
               "es": "Escena de la obra"
@@ -824,11 +842,7 @@
         ],
         "videos": [
           {
-            "url": "/works/persona/persona-teaser.mp4",
-            "thumbnail": ""
-          },
-          {
-            "url": "https://www.youtube.com/watch?v=zTNq5Oe6mpY",
+            "url": "https://www.youtube.com/watch?v=MNsRA5Ksnyo&feature=youtu.be",
             "thumbnail": "https://img.youtube.com/vi/zTNq5Oe6mpY/maxresdefault.jpg"
           }
         ],
@@ -840,34 +854,14 @@
           "en": "Theater piece",
           "es": "Pieza teatral"
         },
-        "year": 2024
+        "year": 2021
       }
     ],
     "actress": [
       {
-        "id": 21,
-        "title": {
-          "en": "Mamá, ¿qué hiciste con mi osito?",
-          "es": "Mamá, ¿qué hiciste con mi osito?"
-        },
-        "description": {
-          "en": "Solo escrito e interpretado por Elma Hache, bajo la dirección de Jessica Walker en Laboratorio Escuela. Barcelona, 2018.\n\nDe niña no entendía el mundo de los adultos, le parecía incongruente... y decidió que no quería crecer para hacerse una mujer como su madre.",
-          "es": "Solo escrito e interpretado por Elma Hache, bajo la dirección de Jessica Walker en Laboratorio Escuela. Barcelona, 2018.\n\nDe niña no entendía el mundo de los adultos, le parecía incongruente... y decidió que no quería crecer para hacerse una mujer como su madre."
-        },
-        "thumbnail": "/works/work-1769990771963/thumbnail.jpg",
-        "images": [],
-        "videos": [
-          {
-            "url": "https://youtu.be/2gTTWNtDR3A",
-            "thumbnail": "https://img.youtube.com/vi/2gTTWNtDR3A/maxresdefault.jpg"
-          }
-        ],
-        "year": 2018
-      },
-      {
         "id": 11,
         "title": {
-          "en": "Noches de amor efímero",
+          "en": "Nights of fleeting love",
           "es": "Noches de amor efímero"
         },
         "description": {
@@ -954,6 +948,66 @@
           }
         ],
         "year": 2020
+      },
+      {
+        "id": 21,
+        "title": {
+          "en": "Mom, what did you do with my teddy bear?",
+          "es": "Mamá, ¿qué hiciste con mi osito?"
+        },
+        "description": {
+          "en": "Written and performed by Elma Hache, directed by Jessica Walker at Laboratorio Escuela. Barcelona, 2018.\n\nAs a child, she didn't understand the world of adults, it seemed inconsistent... and decided that she did not want to grow up to become a woman like her mother.",
+          "es": "Solo escrito e interpretado por Elma Hache, bajo la dirección de Jessica Walker en Laboratorio Escuela. Barcelona, 2018.\n\nDe niña no entendía el mundo de los adultos, le parecía incongruente... y decidió que no quería crecer para hacerse una mujer como su madre."
+        },
+        "thumbnail": "/works/work-1769990771963/thumbnail.jpg",
+        "images": [],
+        "videos": [
+          {
+            "url": "https://youtu.be/2gTTWNtDR3A",
+            "thumbnail": "https://img.youtube.com/vi/2gTTWNtDR3A/maxresdefault.jpg"
+          }
+        ],
+        "year": 2018
+      },
+      {
+        "id": 22,
+        "title": {
+          "en": "La Puta y La Muerte",
+          "es": "La Puta y La Muerte"
+        },
+        "description": {
+          "en": "A stripper bares her soul and speaks to us about love, pain, truth, and death. With irony, strength, and without drama.\nThe text is inspired by the artist Angélica Lidell.",
+          "es": "Monólogo escrito e interpretado por Elma Hache. \nUna prostituta desnuda su alma y nos habla sobre el amor, el dolor, la verdad y la muerte. Con ironía, con fuerza y sin drama.\nTexto inspirado en la artista Angélica Lidell."
+        },
+        "thumbnail": "/works/work-1770148105308/thumbnail.jpg",
+        "images": [],
+        "videos": [
+          {
+            "url": "https://youtu.be/LNwGrNFkA4U",
+            "thumbnail": "https://img.youtube.com/vi/LNwGrNFkA4U/maxresdefault.jpg"
+          }
+        ],
+        "year": 2017
+      },
+      {
+        "id": 23,
+        "title": {
+          "en": "Mi lugar en el mundo",
+          "es": "Mi lugar en el mundo"
+        },
+        "description": {
+          "en": "Monólogo de teatro personal en el que Elma cuenta la historia de su vida y de sus andanzas por el mundo en clave de humor.\nRealizado en el marco del máster de Teatro Terapia Gestalt del Institut Gestalt de Barcelona en 2020.",
+          "es": "Monólogo de teatro personal en el que Elma cuenta la historia de su vida y de sus andanzas por el mundo en clave de humor.\nRealizado en el marco del máster de Teatro Terapia Gestalt del Institut Gestalt de Barcelona en 2020."
+        },
+        "thumbnail": "/works/work-1770159475919/thumbnail.jpg",
+        "images": [],
+        "videos": [
+          {
+            "url": "https://youtu.be/EkTwBAOq5nw",
+            "thumbnail": "https://img.youtube.com/vi/EkTwBAOq5nw/maxresdefault.jpg"
+          }
+        ],
+        "year": 2020
       }
     ],
     "movieDirector": [
@@ -1028,152 +1082,75 @@
     ],
     "assistantDirection": [
       {
-        "id": 17,
+        "id": 12,
         "title": {
-          "en": "La fiebre del heno",
-          "es": "La fiebre del heno"
+          "en": "Do they not kill horses?",
+          "es": "¿Acaso no matan a los caballos?"
         },
         "description": {
-          "en": "Jorge Balça dirige la comedia de Noel Coward \"Hay Feber\" (La fiebre del Heno), representada por los alumnos de 2º año del curso de entrenamiento de actores.\n\nUna cabaña, un fin de semana y un grupo de artistas y aristócratas aburridos... La locura se instaura en la familia Bliss. Egos inflados y escenas melodramáticas e impostadas revelan el caos encantador que solo una buena comedia británica puede ofrecer.\nA la vez denuncia la hipocresía y la desidia de esta clase social.",
-          "es": "Jorge Balça dirige la comedia de Noel Coward \"Hay Feber\" (La fiebre del Heno), representada por los alumnos de 2º año del curso de entrenamiento de actores.\n\nUna cabaña, un fin de semana y un grupo de artistas y aristócratas aburridos... La locura se instaura en la familia Bliss. Egos inflados y escenas melodramáticas e impostadas revelan el caos encantador que solo una buena comedia británica puede ofrecer.\nA la vez denuncia la hipocresía y la desidia de esta clase social."
+          "en": "Under the direction of Ávila Costa and the staging of Pedro Barão, with Elma Hache as assistant director, we embrace this challenge with passion and dedication.\n\nAdapted from Horace McCoy's novel, it was brought to the screen by Sydney Pollack, with Jane Fonda as the lead actress (\"Dance, dance, you cursed ones\" in its Spanish version).\n\nThe story takes place during the Great Depression, in a ballroom by the sea, where an implacable marathon of dancing is held. Exhausted and desperate contestants compete for a monetary prize, a brutal metaphor for the struggle for survival in a ruthless world.\n\nThis work is an invitation to contemplate economic pressures, human resistance limits, and the obsession with spectacle that surrounds us, even today, an opportunity to bring the intensity of this timeless work to the stage.",
+          "es": "Bajo la dirección de Ávila Costa y la puesta en escena de Pedro Barão, con Elma Hache como ayudante de dirección, abrazamos este reto con pasión y dedicación.\n\nAdaptada de la novela de Horace McCoy, fue llevada al cine por por Sydney Pollack, con Jane Fonda como protagonista (\"Danzad, danzad, malditos\" en su versión española) . \n\nLa historia tiene lugar durante la Gran Depresión, en un salón de baile junto al mar, donde se lleva a cabo una implacable maratón de baile. Los concursantes agotados y desesperados, compiten por un premio en efectivo, una metáfora brutal de la lucha por la supervivencia en un mundo despiadado.\n\nEsta obra es una invitación a contemplar las presiones económicas, los límites de la resistencia humana y la obsesión por el espectáculo que nos rodea, incluso hoy en día, una oportunidad de llevar al escenario la intensidad de esta obra intemporal."
         },
-        "thumbnail": "/works/work-1769905765792/thumbnail.jpg",
+        "thumbnail": "/works/work-1769901506794/thumbnail.jpg",
         "images": [
           {
-            "url": "/works/work-1769905765792/work-1769905779819.jpg",
+            "url": "/works/work-1769901506794/work-1769901676729.jpeg",
             "caption": {
               "en": "Scene from the play",
               "es": "Escena de la obra"
             }
           },
           {
-            "url": "/works/work-1769905765792/work-1769905780746.jpg",
+            "url": "/works/work-1769901506794/work-1769901677126.jpeg",
             "caption": {
               "en": "Scene from the play",
               "es": "Escena de la obra"
             }
           },
           {
-            "url": "/works/work-1769905765792/work-1769905781530.jpg",
+            "url": "/works/work-1769901506794/work-1769901677454.jpeg",
             "caption": {
               "en": "Scene from the play",
               "es": "Escena de la obra"
             }
           },
           {
-            "url": "/works/work-1769905765792/work-1769905782498.jpg",
+            "url": "/works/work-1769901506794/work-1769901677758.jpeg",
             "caption": {
               "en": "Scene from the play",
               "es": "Escena de la obra"
             }
           },
           {
-            "url": "/works/work-1769905765792/work-1769905783229.jpg",
+            "url": "/works/work-1769901506794/work-1769901678104.jpeg",
             "caption": {
               "en": "Scene from the play",
               "es": "Escena de la obra"
             }
           },
           {
-            "url": "/works/work-1769905765792/work-1769905783944.jpg",
+            "url": "/works/work-1769901506794/work-1769901678418.jpeg",
             "caption": {
               "en": "Scene from the play",
               "es": "Escena de la obra"
             }
           },
           {
-            "url": "/works/work-1769905765792/work-1769905784620.jpg",
+            "url": "/works/work-1769901506794/work-1769901678780.jpeg",
             "caption": {
               "en": "Scene from the play",
               "es": "Escena de la obra"
             }
           },
           {
-            "url": "/works/work-1769905765792/work-1769905785696.jpg",
+            "url": "/works/work-1769901506794/work-1769901679084.jpeg",
             "caption": {
               "en": "Scene from the play",
               "es": "Escena de la obra"
             }
           },
           {
-            "url": "/works/work-1769905765792/work-1769905786548.jpg",
-            "caption": {
-              "en": "Scene from the play",
-              "es": "Escena de la obra"
-            }
-          },
-          {
-            "url": "/works/work-1769905765792/work-1769905787754.jpg",
-            "caption": {
-              "en": "Scene from the play",
-              "es": "Escena de la obra"
-            }
-          },
-          {
-            "url": "/works/work-1769905765792/work-1769905788766.jpg",
-            "caption": {
-              "en": "Scene from the play",
-              "es": "Escena de la obra"
-            }
-          },
-          {
-            "url": "/works/work-1769905765792/work-1769905789473.jpg",
-            "caption": {
-              "en": "Scene from the play",
-              "es": "Escena de la obra"
-            }
-          },
-          {
-            "url": "/works/work-1769905765792/work-1769905790673.jpg",
-            "caption": {
-              "en": "Scene from the play",
-              "es": "Escena de la obra"
-            }
-          },
-          {
-            "url": "/works/work-1769905765792/work-1769905791873.jpg",
-            "caption": {
-              "en": "Scene from the play",
-              "es": "Escena de la obra"
-            }
-          },
-          {
-            "url": "/works/work-1769905765792/work-1769905793033.jpg",
-            "caption": {
-              "en": "Scene from the play",
-              "es": "Escena de la obra"
-            }
-          },
-          {
-            "url": "/works/work-1769905765792/work-1769905793840.jpg",
-            "caption": {
-              "en": "Scene from the play",
-              "es": "Escena de la obra"
-            }
-          },
-          {
-            "url": "/works/work-1769905765792/work-1769905794510.jpg",
-            "caption": {
-              "en": "Scene from the play",
-              "es": "Escena de la obra"
-            }
-          },
-          {
-            "url": "/works/work-1769905765792/work-1769905796006.jpg",
-            "caption": {
-              "en": "Scene from the play",
-              "es": "Escena de la obra"
-            }
-          },
-          {
-            "url": "/works/work-1769905765792/work-1769905797075.jpg",
-            "caption": {
-              "en": "Scene from the play",
-              "es": "Escena de la obra"
-            }
-          },
-          {
-            "url": "/works/work-1769905765792/work-1769905798053.jpg",
+            "url": "/works/work-1769901506794/work-1769901679442.jpeg",
             "caption": {
               "en": "Scene from the play",
               "es": "Escena de la obra"
@@ -1181,16 +1158,265 @@
           }
         ],
         "videos": [],
-        "year": 2025
+        "year": 2024
+      },
+      {
+        "id": 13,
+        "title": {
+          "en": "Blindness",
+          "es": "Ceguera"
+        },
+        "description": {
+          "en": "How many of us remain blind, even with eyes open?\n\nWith Pedro Alves' staging from the Mosca Theatre and Elma Hache's directional assistance, second-year students at In Ímpetus - Actors School construct a moving portrait of a collapsed world.\nBased on José Saramago's novel \"Blindness\", this theatrical exercise reveals the abyss of human condition, where chaos turns into order and physical blindness transforms into moral blindness. It is in confronting our own shadows where we find the true challenge: seeing beyond the ruins of what we consider life.",
+          "es": "¿Cuántos de nosotros permanecemos ciegos, incluso con los ojos abiertos?\n\nCon la puesta en escena de Pedro Alves desde el Teatro Mosca y la asistencia de dirección de Elma Hache, los alumnos de 2º año de In Ímpetus - Escuela de Actores construyen un conmovedor retrato de un mundo colapsado.\nBasada en la novela de José Saramago \"Ensayo sobre la ceguera\", este ejercicio teatral revela el abismo de la condición humana, donde el caos se convierte en orden y la ceguera deja de ser solo física para ser, sobre todo, moral. Es en la confrontación con nuestras propias sombras donde encontramos el verdadero desafío: ver más allá de las ruinas de lo que consideramos vida."
+        },
+        "thumbnail": "/works/work-1769902117580/thumbnail.jpg",
+        "images": [
+          {
+            "url": "/works/work-1769902117580/work-1769902155626.jpg",
+            "caption": {
+              "en": "Scene from the play",
+              "es": "Escena de la obra"
+            }
+          },
+          {
+            "url": "/works/work-1769902117580/work-1769902187622.jpg",
+            "caption": {
+              "en": "Scene from the play",
+              "es": "Escena de la obra"
+            }
+          },
+          {
+            "url": "/works/work-1769902117580/work-1769902157872.jpg",
+            "caption": {
+              "en": "Scene from the play",
+              "es": "Escena de la obra"
+            }
+          },
+          {
+            "url": "/works/work-1769902117580/work-1769902160749.jpg",
+            "caption": {
+              "en": "Scene from the play",
+              "es": "Escena de la obra"
+            }
+          },
+          {
+            "url": "/works/work-1769902117580/work-1769902163541.jpg",
+            "caption": {
+              "en": "Scene from the play",
+              "es": "Escena de la obra"
+            }
+          },
+          {
+            "url": "/works/work-1769902117580/work-1769902166335.jpg",
+            "caption": {
+              "en": "Scene from the play",
+              "es": "Escena de la obra"
+            }
+          },
+          {
+            "url": "/works/work-1769902117580/work-1769902168302.jpg",
+            "caption": {
+              "en": "Scene from the play",
+              "es": "Escena de la obra"
+            }
+          },
+          {
+            "url": "/works/work-1769902117580/work-1769902170480.jpg",
+            "caption": {
+              "en": "Scene from the play",
+              "es": "Escena de la obra"
+            }
+          },
+          {
+            "url": "/works/work-1769902117580/work-1769902172753.jpg",
+            "caption": {
+              "en": "Scene from the play",
+              "es": "Escena de la obra"
+            }
+          },
+          {
+            "url": "/works/work-1769902117580/work-1769904836582.jpg",
+            "caption": {
+              "en": "Scene from the play",
+              "es": "Escena de la obra"
+            }
+          },
+          {
+            "url": "/works/work-1769902117580/work-1769904836198.jpg",
+            "caption": {
+              "en": "Scene from the play",
+              "es": "Escena de la obra"
+            }
+          },
+          {
+            "url": "/works/work-1769902117580/work-1769902174954.jpg",
+            "caption": {
+              "en": "Scene from the play",
+              "es": "Escena de la obra"
+            }
+          },
+          {
+            "url": "/works/work-1769902117580/work-1769902177439.jpg",
+            "caption": {
+              "en": "Scene from the play",
+              "es": "Escena de la obra"
+            }
+          },
+          {
+            "url": "/works/work-1769902117580/work-1769902179676.jpg",
+            "caption": {
+              "en": "Scene from the play",
+              "es": "Escena de la obra"
+            }
+          },
+          {
+            "url": "/works/work-1769902117580/work-1769902181814.jpg",
+            "caption": {
+              "en": "Scene from the play",
+              "es": "Escena de la obra"
+            }
+          },
+          {
+            "url": "/works/work-1769902117580/work-1769902184277.jpg",
+            "caption": {
+              "en": "Scene from the play",
+              "es": "Escena de la obra"
+            }
+          },
+          {
+            "url": "/works/work-1769902117580/work-1769902186524.jpg",
+            "caption": {
+              "en": "Scene from the play",
+              "es": "Escena de la obra"
+            }
+          }
+        ],
+        "videos": [],
+        "year": 2024
+      },
+      {
+        "id": 15,
+        "title": {
+          "en": "Breathe",
+          "es": "Respira"
+        },
+        "description": {
+          "en": "Adaptation of \"Lungs\" (Lungs), by Duncan Macmillan, \"Respira\" extends beyond traditional narrative, proposing an urgent dialogue about the ethical, environmental, and emotional challenges defining humanity in the 21st century. Reflections on ecological footprint, love, and the continuity of life, the piece invites the audience to question the role of the individual on a planet nearing exhaustion.\n\nUnder the direction of Graça Correa, with Elma Hache as assistant director, this work adopts an innovative approach. With a young cast, the staging promises an attractive and intellectually provoking experience, where art and reflection coexist powerfully. With humor, honesty, and a unsettling gaze, the piece is a call to reflection on who we are and what we want for the world.",
+          "es": "Adaptación de \"Lungs\" (Pulmones), de Duncan Macmillan, \"Respira\" se extiende más allá de la narrativa tradicional, proponiendo un diálogo urgente sobre los desafíos éticos, ambientales y emocionales que definen a la humanidad en el siglo XXI. Entre reflexiones sobre la huella ecológica, el amor y la continuidad de la vida, la pieza invita a la audiencia a cuestionar el papel del individuo en un planeta al borde del agotamiento.\n\nEn manos de la directora Graça Correa, con Elma Hache como ayudante de dirección, este trabajo adopta un enfoque innovador. Con un elenco de jóvenes actores, el montaje promete una experiencia atractiva e intelectualmente provocadora, donde el arte y la reflexión coexisten poderosamente. Con humor, honestidad y una mirada inquietante, la pieza es un llamado a la reflexión sobre quiénes somos y lo que queremos para el mundo."
+        },
+        "thumbnail": "/works/work-1769902934948/thumbnail.jpg",
+        "images": [
+          {
+            "url": "/works/work-1769902934948/work-1769902946981.jpg",
+            "caption": {
+              "en": "Scene from the play",
+              "es": "Escena de la obra"
+            }
+          },
+          {
+            "url": "/works/work-1769902934948/work-1769902947669.jpg",
+            "caption": {
+              "en": "Scene from the play",
+              "es": "Escena de la obra"
+            }
+          },
+          {
+            "url": "/works/work-1769902934948/work-1769902948599.jpg",
+            "caption": {
+              "en": "Scene from the play",
+              "es": "Escena de la obra"
+            }
+          },
+          {
+            "url": "/works/work-1769902934948/work-1769902949430.jpg",
+            "caption": {
+              "en": "Scene from the play",
+              "es": "Escena de la obra"
+            }
+          },
+          {
+            "url": "/works/work-1769902934948/work-1769902950102.jpg",
+            "caption": {
+              "en": "Scene from the play",
+              "es": "Escena de la obra"
+            }
+          },
+          {
+            "url": "/works/work-1769902934948/work-1769902950802.jpg",
+            "caption": {
+              "en": "Scene from the play",
+              "es": "Escena de la obra"
+            }
+          },
+          {
+            "url": "/works/work-1769902934948/work-1769902951557.jpg",
+            "caption": {
+              "en": "Scene from the play",
+              "es": "Escena de la obra"
+            }
+          },
+          {
+            "url": "/works/work-1769902934948/work-1769902952209.jpg",
+            "caption": {
+              "en": "Scene from the play",
+              "es": "Escena de la obra"
+            }
+          },
+          {
+            "url": "/works/work-1769902934948/work-1769902952888.jpg",
+            "caption": {
+              "en": "Scene from the play",
+              "es": "Escena de la obra"
+            }
+          },
+          {
+            "url": "/works/work-1769902934948/work-1769902953536.jpg",
+            "caption": {
+              "en": "Scene from the play",
+              "es": "Escena de la obra"
+            }
+          },
+          {
+            "url": "/works/work-1769902934948/work-1769902954252.jpg",
+            "caption": {
+              "en": "Scene from the play",
+              "es": "Escena de la obra"
+            }
+          },
+          {
+            "url": "/works/work-1769902934948/work-1769902954987.jpg",
+            "caption": {
+              "en": "Scene from the play",
+              "es": "Escena de la obra"
+            }
+          },
+          {
+            "url": "/works/work-1769902934948/work-1769902955697.jpg",
+            "caption": {
+              "en": "Scene from the play",
+              "es": "Escena de la obra"
+            }
+          },
+          {
+            "url": "/works/work-1769902934948/work-1769902956395.jpg",
+            "caption": {
+              "en": "Scene from the play",
+              "es": "Escena de la obra"
+            }
+          }
+        ],
+        "videos": [],
+        "year": 2024
       },
       {
         "id": 19,
         "title": {
-          "en": "Una cena familiar",
+          "en": "A family dinner",
           "es": "Una cena familiar"
         },
         "description": {
-          "en": "Se estrena, en Teatro da Comuna, la adaptación de la comedia francesa de Pascal Rocher y Josephe Gallet, \"Una cena familiar\", bajo la dirección de Hugo Franco.\n\nCuando Alexandre invita a su familia a una cena especial, todos esperan una velada agradable llena de buenos recuerdos. Pero a medida que el vino fluye y las palabras se vuelven más agudas, secretos largamente guardados comienzan a salir a la luz. Entre conversaciones sobre el pasado, revelaciones inesperadas y momentos hilarantes, esta cena se transforma en una noche inolvidable donde cada miembro de la familia se ve obligado a confrontar sus propias verdades.\n\nUna comedia aguda y de ritmo rápido que explora las complejidades de las relaciones familiares, mostrando que, por caóticas que sean, la familia es siempre la base de todo... o no.",
+          "en": "The French comedy adaptation \"Una cena familiar\" written by Pascal Rocher and Josephe Gallet debuts at Teatro da Comuna, directed by Hugo Franco.\n\nAlexandre invites his family to a special dinner, expecting an enjoyable night filled with cherished memories. However, as the wine flows and words become sharper, long-hidden secrets start to come to light. Conversations about the past, unexpected revelations, and humorous moments turn this dinner into an unforgettable night where each family member is forced to confront their own truths.\n\nA sharp, fast-paced comedy that explores the complexities of family relationships, showing that, despite being chaotic, family is always the foundation of everything... or not.",
           "es": "Se estrena en el Teatro da Comuna la adaptación de la comedia francesa \"Una cena familiar\", escrita por Pascal Rocher y Josephe Gallet, bajo la dirección de Hugo Franco.\n\nCuando Alexandre convoca a su familia a una cena especial, todos esperan una noche agradable llena de buenos recuerdos. Sin embargo, a medida que el vino fluye y las palabras se vuelven más agudas, secretos largamente guardados comienzan a salir a la luz. Entre conversaciones sobre el pasado, revelaciones inesperadas y momentos hilarantes, esta cena se transforma en una noche inolvidable donde cada miembro de la familia se ve obligado a confrontar sus propias verdades.\n\nUna comedia aguda y de ritmo rápido que explora las complejidades de las relaciones familiares, mostrando que, por caóticas que sean, la familia es siempre la base de todo... o no."
         },
         "thumbnail": "/works/work-1769907804923/thumbnail.jpg",
@@ -1293,7 +1519,7 @@
       {
         "id": 16,
         "title": {
-          "en": "Purga",
+          "en": "Purge",
           "es": "Purga"
         },
         "description": {
@@ -1482,75 +1708,152 @@
         "year": 2025
       },
       {
-        "id": 12,
+        "id": 17,
         "title": {
-          "en": "Do they not kill horses?",
-          "es": "¿Acaso no matan a los caballos?"
+          "en": "Hay fever",
+          "es": "La fiebre del heno"
         },
         "description": {
-          "en": "Bajo la dirección de Ávila Costa y la puesta en escena de Pedro Barão, con Elma Hache como ayudante de dirección, abrazamos este reto con pasión y dedicación.\n\nAdaptada de la novela de Horace McCoy, fue llevada al cine por por Sydney Pollack, con Jane Fonda como protagonista (\"Danzad, danzad, malditos\" en su versión española) . \n\nLa historia tiene lugar durante la Gran Depresión, en un salón de baile junto al mar, donde se lleva a cabo una implacable maratón de baile. Los concursantes agotados y desesperados, compiten por un premio en efectivo, una metáfora brutal de la lucha por la supervivencia en un mundo despiadado.\n\nEsta obra es una invitación a contemplar las presiones económicas, los límites de la resistencia humana y la obsesión por el espectáculo que nos rodea, incluso hoy en día, una oportunidad de llevar al escenario la intensidad de esta obra intemporal.",
-          "es": "Bajo la dirección de Ávila Costa y la puesta en escena de Pedro Barão, con Elma Hache como ayudante de dirección, abrazamos este reto con pasión y dedicación.\n\nAdaptada de la novela de Horace McCoy, fue llevada al cine por por Sydney Pollack, con Jane Fonda como protagonista (\"Danzad, danzad, malditos\" en su versión española) . \n\nLa historia tiene lugar durante la Gran Depresión, en un salón de baile junto al mar, donde se lleva a cabo una implacable maratón de baile. Los concursantes agotados y desesperados, compiten por un premio en efectivo, una metáfora brutal de la lucha por la supervivencia en un mundo despiadado.\n\nEsta obra es una invitación a contemplar las presiones económicas, los límites de la resistencia humana y la obsesión por el espectáculo que nos rodea, incluso hoy en día, una oportunidad de llevar al escenario la intensidad de esta obra intemporal."
+          "en": "Jorge Balça directs the comedy \"Hay Fever\" (The Madness of Lady Fleur) by Noel Coward, performed by second-year students of the actor training course.\n\nA cabin, a weekend and a group of bored artists and aristocrats... Madness ensues in the Bliss family. Inflated egos and melodramatic, staged scenes reveal the charming chaos that only a good British comedy can offer. At the same time, it denounces the hypocrisy and apathy of this social class.",
+          "es": "Jorge Balça dirige la comedia de Noel Coward \"Hay Feber\" (La fiebre del Heno), representada por los alumnos de 2º año del curso de entrenamiento de actores.\n\nUna cabaña, un fin de semana y un grupo de artistas y aristócratas aburridos... La locura se instaura en la familia Bliss. Egos inflados y escenas melodramáticas e impostadas revelan el caos encantador que solo una buena comedia británica puede ofrecer.\nA la vez denuncia la hipocresía y la desidia de esta clase social."
         },
-        "thumbnail": "/works/work-1769901506794/thumbnail.jpg",
+        "thumbnail": "/works/work-1769905765792/thumbnail.jpg",
         "images": [
           {
-            "url": "/works/work-1769901506794/work-1769901676729.jpeg",
+            "url": "/works/work-1769905765792/work-1769905779819.jpg",
             "caption": {
               "en": "Scene from the play",
               "es": "Escena de la obra"
             }
           },
           {
-            "url": "/works/work-1769901506794/work-1769901677126.jpeg",
+            "url": "/works/work-1769905765792/work-1769905780746.jpg",
             "caption": {
               "en": "Scene from the play",
               "es": "Escena de la obra"
             }
           },
           {
-            "url": "/works/work-1769901506794/work-1769901677454.jpeg",
+            "url": "/works/work-1769905765792/work-1769905781530.jpg",
             "caption": {
               "en": "Scene from the play",
               "es": "Escena de la obra"
             }
           },
           {
-            "url": "/works/work-1769901506794/work-1769901677758.jpeg",
+            "url": "/works/work-1769905765792/work-1769905782498.jpg",
             "caption": {
               "en": "Scene from the play",
               "es": "Escena de la obra"
             }
           },
           {
-            "url": "/works/work-1769901506794/work-1769901678104.jpeg",
+            "url": "/works/work-1769905765792/work-1769905783229.jpg",
             "caption": {
               "en": "Scene from the play",
               "es": "Escena de la obra"
             }
           },
           {
-            "url": "/works/work-1769901506794/work-1769901678418.jpeg",
+            "url": "/works/work-1769905765792/work-1769905783944.jpg",
             "caption": {
               "en": "Scene from the play",
               "es": "Escena de la obra"
             }
           },
           {
-            "url": "/works/work-1769901506794/work-1769901678780.jpeg",
+            "url": "/works/work-1769905765792/work-1769905784620.jpg",
             "caption": {
               "en": "Scene from the play",
               "es": "Escena de la obra"
             }
           },
           {
-            "url": "/works/work-1769901506794/work-1769901679084.jpeg",
+            "url": "/works/work-1769905765792/work-1769905785696.jpg",
             "caption": {
               "en": "Scene from the play",
               "es": "Escena de la obra"
             }
           },
           {
-            "url": "/works/work-1769901506794/work-1769901679442.jpeg",
+            "url": "/works/work-1769905765792/work-1769905786548.jpg",
+            "caption": {
+              "en": "Scene from the play",
+              "es": "Escena de la obra"
+            }
+          },
+          {
+            "url": "/works/work-1769905765792/work-1769905787754.jpg",
+            "caption": {
+              "en": "Scene from the play",
+              "es": "Escena de la obra"
+            }
+          },
+          {
+            "url": "/works/work-1769905765792/work-1769905788766.jpg",
+            "caption": {
+              "en": "Scene from the play",
+              "es": "Escena de la obra"
+            }
+          },
+          {
+            "url": "/works/work-1769905765792/work-1769905789473.jpg",
+            "caption": {
+              "en": "Scene from the play",
+              "es": "Escena de la obra"
+            }
+          },
+          {
+            "url": "/works/work-1769905765792/work-1769905790673.jpg",
+            "caption": {
+              "en": "Scene from the play",
+              "es": "Escena de la obra"
+            }
+          },
+          {
+            "url": "/works/work-1769905765792/work-1769905791873.jpg",
+            "caption": {
+              "en": "Scene from the play",
+              "es": "Escena de la obra"
+            }
+          },
+          {
+            "url": "/works/work-1769905765792/work-1769905793033.jpg",
+            "caption": {
+              "en": "Scene from the play",
+              "es": "Escena de la obra"
+            }
+          },
+          {
+            "url": "/works/work-1769905765792/work-1769905793840.jpg",
+            "caption": {
+              "en": "Scene from the play",
+              "es": "Escena de la obra"
+            }
+          },
+          {
+            "url": "/works/work-1769905765792/work-1769905794510.jpg",
+            "caption": {
+              "en": "Scene from the play",
+              "es": "Escena de la obra"
+            }
+          },
+          {
+            "url": "/works/work-1769905765792/work-1769905796006.jpg",
+            "caption": {
+              "en": "Scene from the play",
+              "es": "Escena de la obra"
+            }
+          },
+          {
+            "url": "/works/work-1769905765792/work-1769905797075.jpg",
+            "caption": {
+              "en": "Scene from the play",
+              "es": "Escena de la obra"
+            }
+          },
+          {
+            "url": "/works/work-1769905765792/work-1769905798053.jpg",
             "caption": {
               "en": "Scene from the play",
               "es": "Escena de la obra"
@@ -1558,134 +1861,50 @@
           }
         ],
         "videos": [],
-        "year": 2024
+        "year": 2025
       },
       {
-        "id": 13,
+        "id": 20,
         "title": {
-          "en": "Ceguera",
-          "es": "Ceguera"
+          "en": "Catita",
+          "es": "Catita"
         },
         "description": {
-          "en": "How many of us remain blind, even with eyes open?\n\nWith Pedro Alves' staging from the Mosca Theatre and Elma Hache's directional assistance, second-year students at In Ímpetus - Actors School construct a moving portrait of a collapsed world.\nBased on José Saramago's novel \"Blindness\", this theatrical exercise reveals the abyss of human condition, where chaos turns into order and physical blindness transforms into moral blindness. It is in confronting our own shadows where we find the true challenge: seeing beyond the ruins of what we consider life.",
-          "es": "¿Cuántos de nosotros permanecemos ciegos, incluso con los ojos abiertos?\n\nCon la puesta en escena de Pedro Alves desde el Teatro Mosca y la asistencia de dirección de Elma Hache, los alumnos de 2º año de In Ímpetus - Escuela de Actores construyen un conmovedor retrato de un mundo colapsado.\nBasada en la novela de José Saramago \"Ensayo sobre la ceguera\", este ejercicio teatral revela el abismo de la condición humana, donde el caos se convierte en orden y la ceguera deja de ser solo física para ser, sobre todo, moral. Es en la confrontación con nuestras propias sombras donde encontramos el verdadero desafío: ver más allá de las ruinas de lo que consideramos vida."
+          "en": "What can climbing have in common with the evolution of a friendship over the years? The latest show by Teatro Mosca explores this little-known connection.\n\nThe play \"CATITA\" starts with the correspondence between two childhood friends, Pedro and Catita. While one remained in the place where he was born, the other chose to travel until he settled as a mountain guide in the Pyrenees. More than twenty years, they exchanged letters sharing what was happening to them, but it was during the COVID-19 pandemic that Peter and Catita reconnected, spending quarantine together in the mountains, climbing and talking about their lives, their past, what they had lived... And sometimes one wishes to be the other, sometimes they desire to exchange lives with each other, as if they could exchange skins, as if they were choosing again... or maybe not, and it's just a simple exercise of imagination.",
+          "es": "¿Qué puede tener la escalada en paralelo con la evolución de una amistad a lo largo de los años? El último espectáculo de Teatro Mosca abre nuevos caminos y explora esta conexión poco obvia.\n\n\"CATITA\" tiene como punto de partida correspondencia entre dos amigos de la infancia, Pedro y Catita. Mientras uno permanecía en el lugar donde nació, el otro prefirió viajar hasta que se estableció como guía de montaña en los Pirineos. Más de veinte años, intercambiaron cartas compartiendo lo que les estaba pasando, pero fue durante la pandemia de COVID-19 que Peter y Catita se reencontraron, pasando la cuarentena juntos, en las montañas, eescalando y hablando de sus vidas, de su pasado, de lo que han vivido... Y por eso a veces uno desea ser el otro, a veces desean intercambiar vidas unos con otros, como si pudieran intercambiar pieles, como si fueran a elegir de nuevo... o quizás no,  y sea un simple ejercicio de imaginación."
         },
-        "thumbnail": "/works/work-1769902117580/thumbnail.jpg",
+        "thumbnail": "/works/work-1769908812041/thumbnail.jpg",
         "images": [
           {
-            "url": "/works/work-1769902117580/work-1769902155626.jpg",
+            "url": "/works/work-1769908812041/work-1769908825291.jpg",
             "caption": {
               "en": "Scene from the play",
               "es": "Escena de la obra"
             }
           },
           {
-            "url": "/works/work-1769902117580/work-1769902187622.jpg",
+            "url": "/works/work-1769908812041/work-1769908825522.jpg",
             "caption": {
               "en": "Scene from the play",
               "es": "Escena de la obra"
             }
           },
           {
-            "url": "/works/work-1769902117580/work-1769902157872.jpg",
+            "url": "/works/work-1769908812041/work-1769908826343.jpg",
             "caption": {
               "en": "Scene from the play",
               "es": "Escena de la obra"
             }
           },
           {
-            "url": "/works/work-1769902117580/work-1769902160749.jpg",
+            "url": "/works/work-1769908812041/work-1769908826123.jpg",
             "caption": {
               "en": "Scene from the play",
               "es": "Escena de la obra"
             }
           },
           {
-            "url": "/works/work-1769902117580/work-1769902163541.jpg",
-            "caption": {
-              "en": "Scene from the play",
-              "es": "Escena de la obra"
-            }
-          },
-          {
-            "url": "/works/work-1769902117580/work-1769902166335.jpg",
-            "caption": {
-              "en": "Scene from the play",
-              "es": "Escena de la obra"
-            }
-          },
-          {
-            "url": "/works/work-1769902117580/work-1769902168302.jpg",
-            "caption": {
-              "en": "Scene from the play",
-              "es": "Escena de la obra"
-            }
-          },
-          {
-            "url": "/works/work-1769902117580/work-1769902170480.jpg",
-            "caption": {
-              "en": "Scene from the play",
-              "es": "Escena de la obra"
-            }
-          },
-          {
-            "url": "/works/work-1769902117580/work-1769902172753.jpg",
-            "caption": {
-              "en": "Scene from the play",
-              "es": "Escena de la obra"
-            }
-          },
-          {
-            "url": "/works/work-1769902117580/work-1769904836582.jpg",
-            "caption": {
-              "en": "Scene from the play",
-              "es": "Escena de la obra"
-            }
-          },
-          {
-            "url": "/works/work-1769902117580/work-1769904836198.jpg",
-            "caption": {
-              "en": "Scene from the play",
-              "es": "Escena de la obra"
-            }
-          },
-          {
-            "url": "/works/work-1769902117580/work-1769902174954.jpg",
-            "caption": {
-              "en": "Scene from the play",
-              "es": "Escena de la obra"
-            }
-          },
-          {
-            "url": "/works/work-1769902117580/work-1769902177439.jpg",
-            "caption": {
-              "en": "Scene from the play",
-              "es": "Escena de la obra"
-            }
-          },
-          {
-            "url": "/works/work-1769902117580/work-1769902179676.jpg",
-            "caption": {
-              "en": "Scene from the play",
-              "es": "Escena de la obra"
-            }
-          },
-          {
-            "url": "/works/work-1769902117580/work-1769902181814.jpg",
-            "caption": {
-              "en": "Scene from the play",
-              "es": "Escena de la obra"
-            }
-          },
-          {
-            "url": "/works/work-1769902117580/work-1769902184277.jpg",
-            "caption": {
-              "en": "Scene from the play",
-              "es": "Escena de la obra"
-            }
-          },
-          {
-            "url": "/works/work-1769902117580/work-1769902186524.jpg",
+            "url": "/works/work-1769908812041/work-1769908825878.jpg",
             "caption": {
               "en": "Scene from the play",
               "es": "Escena de la obra"
@@ -1693,7 +1912,7 @@
           }
         ],
         "videos": [],
-        "year": 2024
+        "year": 2025
       },
       {
         "id": 18,
@@ -1702,7 +1921,7 @@
           "es": "Don Juan"
         },
         "description": {
-          "en": "¿Cuántas promesas caben en un beso?\n\nEn esta puesta en escena de Vitor Lemos, los alumnos de 3ª grado de In Ímpetus se sumergen, a través de la mítica figura de Don Juan, en un cínico juego entre el deseo, la mentira y la identidad.\n\nEntre la comedia y la enseñanza moral, este ejercicio teatral expone un mundo donde la seducción es un arma para conquistar la libertad, ¿o deberíamos decir la falta de responsabilidad sobre los propios actos?\n\nDon Juan no es solo un hombre, es el espejo distorsionado de las ilusiones que elegimos amar.",
+          "en": "How many promises can fit in a kiss?\n\nIn this staging by Vitor Lemos, the third-grade students of In Ímpetus immerse themselves, through the mythical figure of Don Juan, in a cynical game between desire, lies, and identity.\n\nBetween comedy and moral teaching, this theatrical exercise exposes a world where seduction is a weapon to conquer freedom, or should we say irresponsibility towards one's own actions?\n\nDon Juan is not just a man, he is the distorted mirror of illusions that we choose to love.",
           "es": "¿Cuántas promesas caben en un beso?\n\nEn esta puesta en escena de Vitor Lemos, los alumnos de 3ª grado de In Ímpetus se sumergen, a través de la mítica figura de Don Juan, en un cínico juego entre el deseo, la mentira y la identidad.\n\nEntre la comedia y la enseñanza moral, este ejercicio teatral expone un mundo donde la seducción es un arma para conquistar la libertad, ¿o deberíamos decir la falta de responsabilidad sobre los propios actos?\n\nDon Juan no es solo un hombre, es el espejo distorsionado de las ilusiones que elegimos amar."
         },
         "thumbnail": "/works/work-1769906782224/thumbnail.jpg",
@@ -1814,171 +2033,6 @@
           },
           {
             "url": "/works/work-1769906782224/work-1769906831308.jpg",
-            "caption": {
-              "en": "Scene from the play",
-              "es": "Escena de la obra"
-            }
-          }
-        ],
-        "videos": [],
-        "year": 2025
-      },
-      {
-        "id": 20,
-        "title": {
-          "en": "Catita",
-          "es": "Catita"
-        },
-        "description": {
-          "en": "¿Qué puede tener la escalada en paralelo con la evolución de una amistad a lo largo de los años? El último espectáculo de Teatro Mosca abre nuevos caminos y explora esta conexión poco obvia.\n\n\"CATITA\" tiene como punto de partida correspondencia entre dos amigos de la infancia, Pedro y Catita. Mientras uno permanecía en el lugar donde nació, el otro prefirió viajar hasta que se estableció como guía de montaña en los Pirineos. Más de veinte años, intercambiaron cartas compartiendo lo que les estaba pasando, pero fue durante la pandemia de COVID-19 que Peter y Catita se reencontraron, pasando la cuarentena juntos, en las montañas, eescalando y hablando de sus vidas, de su pasado, de lo que han vivido... Y por eso a veces uno desea ser el otro, a veces desean intercambiar vidas unos con otros, como si pudieran intercambiar pieles, como si fueran a elegir de nuevo... o quizás no,  y sea un simple ejercicio de imaginación.",
-          "es": "¿Qué puede tener la escalada en paralelo con la evolución de una amistad a lo largo de los años? El último espectáculo de Teatro Mosca abre nuevos caminos y explora esta conexión poco obvia.\n\n\"CATITA\" tiene como punto de partida correspondencia entre dos amigos de la infancia, Pedro y Catita. Mientras uno permanecía en el lugar donde nació, el otro prefirió viajar hasta que se estableció como guía de montaña en los Pirineos. Más de veinte años, intercambiaron cartas compartiendo lo que les estaba pasando, pero fue durante la pandemia de COVID-19 que Peter y Catita se reencontraron, pasando la cuarentena juntos, en las montañas, eescalando y hablando de sus vidas, de su pasado, de lo que han vivido... Y por eso a veces uno desea ser el otro, a veces desean intercambiar vidas unos con otros, como si pudieran intercambiar pieles, como si fueran a elegir de nuevo... o quizás no,  y sea un simple ejercicio de imaginación."
-        },
-        "thumbnail": "/works/work-1769908812041/thumbnail.jpg",
-        "images": [
-          {
-            "url": "/works/work-1769908812041/work-1769908825291.jpg",
-            "caption": {
-              "en": "Scene from the play",
-              "es": "Escena de la obra"
-            }
-          },
-          {
-            "url": "/works/work-1769908812041/work-1769908825522.jpg",
-            "caption": {
-              "en": "Scene from the play",
-              "es": "Escena de la obra"
-            }
-          },
-          {
-            "url": "/works/work-1769908812041/work-1769908826343.jpg",
-            "caption": {
-              "en": "Scene from the play",
-              "es": "Escena de la obra"
-            }
-          },
-          {
-            "url": "/works/work-1769908812041/work-1769908826123.jpg",
-            "caption": {
-              "en": "Scene from the play",
-              "es": "Escena de la obra"
-            }
-          },
-          {
-            "url": "/works/work-1769908812041/work-1769908825878.jpg",
-            "caption": {
-              "en": "Scene from the play",
-              "es": "Escena de la obra"
-            }
-          }
-        ],
-        "videos": [],
-        "year": 2025
-      },
-      {
-        "id": 15,
-        "title": {
-          "en": "Breathes",
-          "es": "Respira"
-        },
-        "description": {
-          "en": "Adaptación de \"Lungs\" (Pulmones), de Duncan Macmillan, \"Respira\" va más allá de la narrativa tradicional, proponiendo un diálogo urgente sobre los desafíos éticos, ambientales y emocionales que definen a la humanidad en el siglo XXI. Entre reflexiones sobre la huella ecológica, el amor y la continuidad de la vida, la pieza invita a la audiencia a cuestionar el papel del individuo en un planeta al borde del agotamiento.\n\nEn manos de la directora Gracia Correa, con Elma Hache como ayudante de dirección, este trabajo adopta un enfoque innovador. Con un elenco de jóvenes actores, el montaje promete una experiencia atractiva e intelectualmente provocadora, donde el arte y la reflexión coexisten poderosamente. Con humor, honestidad y una mirada inquietante, la pieza es un llamado a la reflexión sobre quiénes somos y lo que queremos para el mundo. ",
-          "es": "Adaptación de \"Lungs\" (Pulmones), de Duncan Macmillan, \"Respira\" va más allá de la narrativa tradicional, proponiendo un diálogo urgente sobre los desafíos éticos, ambientales y emocionales que definen a la humanidad en el siglo XXI. Entre reflexiones sobre la huella ecológica, el amor y la continuidad de la vida, la pieza invita a la audiencia a cuestionar el papel del individuo en un planeta al borde del agotamiento.\n\nEn manos de la directora Gracia Correa y Elma Hache como ayudante de dirección, este trabajo adopta un enfoque innovador. Con un elenco de jóvenes actores, el montaje promete una experiencia atractiva e intelectualmente provocadora, donde el arte y la reflexión coexisten poderosamente. Con humor, honestidad y una mirada inquietante, la pieza es un llamado a la reflexión sobre quiénes somos y lo que queremos para el mundo."
-        },
-        "thumbnail": "/works/work-1769902934948/thumbnail.jpg",
-        "images": [
-          {
-            "url": "/works/work-1769902934948/work-1769902946981.jpg",
-            "caption": {
-              "en": "Scene from the play",
-              "es": "Escena de la obra"
-            }
-          },
-          {
-            "url": "/works/work-1769902934948/work-1769902947669.jpg",
-            "caption": {
-              "en": "Scene from the play",
-              "es": "Escena de la obra"
-            }
-          },
-          {
-            "url": "/works/work-1769902934948/work-1769902948599.jpg",
-            "caption": {
-              "en": "Scene from the play",
-              "es": "Escena de la obra"
-            }
-          },
-          {
-            "url": "/works/work-1769902934948/work-1769902949430.jpg",
-            "caption": {
-              "en": "Scene from the play",
-              "es": "Escena de la obra"
-            }
-          },
-          {
-            "url": "/works/work-1769902934948/work-1769902950102.jpg",
-            "caption": {
-              "en": "Scene from the play",
-              "es": "Escena de la obra"
-            }
-          },
-          {
-            "url": "/works/work-1769902934948/work-1769902950802.jpg",
-            "caption": {
-              "en": "Scene from the play",
-              "es": "Escena de la obra"
-            }
-          },
-          {
-            "url": "/works/work-1769902934948/work-1769902951557.jpg",
-            "caption": {
-              "en": "Scene from the play",
-              "es": "Escena de la obra"
-            }
-          },
-          {
-            "url": "/works/work-1769902934948/work-1769902952209.jpg",
-            "caption": {
-              "en": "Scene from the play",
-              "es": "Escena de la obra"
-            }
-          },
-          {
-            "url": "/works/work-1769902934948/work-1769902952888.jpg",
-            "caption": {
-              "en": "Scene from the play",
-              "es": "Escena de la obra"
-            }
-          },
-          {
-            "url": "/works/work-1769902934948/work-1769902953536.jpg",
-            "caption": {
-              "en": "Scene from the play",
-              "es": "Escena de la obra"
-            }
-          },
-          {
-            "url": "/works/work-1769902934948/work-1769902954252.jpg",
-            "caption": {
-              "en": "Scene from the play",
-              "es": "Escena de la obra"
-            }
-          },
-          {
-            "url": "/works/work-1769902934948/work-1769902954987.jpg",
-            "caption": {
-              "en": "Scene from the play",
-              "es": "Escena de la obra"
-            }
-          },
-          {
-            "url": "/works/work-1769902934948/work-1769902955697.jpg",
-            "caption": {
-              "en": "Scene from the play",
-              "es": "Escena de la obra"
-            }
-          },
-          {
-            "url": "/works/work-1769902934948/work-1769902956395.jpg",
             "caption": {
               "en": "Scene from the play",
               "es": "Escena de la obra"
@@ -2102,7 +2156,7 @@
   },
   "worksPage": {
     "description": {
-      "en": "I began writing monologues and dialogues for plays that I myself performed in amateur theater. Gradually I became more professional until I eventually graduated in Scene Direction and Dramaturgy from the Superior School of Dramatic Art.\n\nFor me, Scene Direction is a balance between mind and heart, meticulousness and passion. One needs to transmit the soul of the work and the essence of the character to the actors while at the same time giving them space and freedom to develop their role using their senses. At the same time, it's important to keep in mind the entirety of the work, the set design, lighting design, sound design, rhythm...\nJust like a conductor, one needs to know how to listen to every instrument, detect discordances, and construct a melody between them all.\n\nI also enjoy telling stories, creating worlds and characters, and entering other realities, perhaps to escape from this one.\n\nFollowing is a selection of Scene Direction and short film production works that explore memory, identity, and encounter with the other, through theater and cinema.",
+      "en": "I started writing monologues and dialogues for plays that I myself interpreted in amateur theatre. Gradually, I became more professional, until finally, I graduated in Scene Direction and Dramaturgy from the Superior School of Dramatic Art.\n\nFor me, Scene Direction is a balance between the head and the heart, meticulousness and passion. One must know how to transmit the soul of the work and the essence of the character to the actors, while giving them space and freedom to develop their roles from their senses. At the same time, one must have in mind the totality of the work, scenery, lighting design, sound design, rhythm...\nJust like a director of an orchestra, one needs to know how to listen to each instrument, detect dissonances, and build a melody among all.\n\nI also enjoy telling stories, inventing worlds and characters, and entering into other realities, perhaps to escape from this one.\n\nFollowing is a selection of Scene Direction and short film realization works that explore memory, identity, and encounters with the other through theatre and cinema.",
       "es": "Comencé a escribir monólogos y diálogos para obras que yo misma interpretaba en el teatro amateur. Poco a poco me fui profesionalizando, hasta que finalmente, me gradué en Dirección de Escena y Dramaturgia en la Escuela Superior de Arte Dramático.\n\nPara mí la Dirección de escena es un equilibrio entre la cabeza y el corazón, la meticulosidad y la pasión. Hay que saber transmitir el alma de la obra y la esencia del personaje a los actores, a la vez que darles espacio y libertad para desarrollar el papel desde sus sentidos. Y al mismo tiempo tener en la cabeza la totalidad de la obra, la escenografía, el diseño de luces, el espacio sonoro, el ritmo…\nComo un director de orquesta, se necesita saber escuchar cada instrumento, detectar disonancias y construir una melodía entre todos.\n\nTambién me gusta contar historias, inventar mundos y personajes y entrar en otras realidades, quizás para escapar de esta.\n\nA continuación, una selección de trabajos de dirección escénica y realización de cortometrajes, que exploran la memoria, la identidad y el encuentro con el otro, a través del teatro y el cine."
     }
   },
