@@ -7,6 +7,40 @@ interface EditableTextProps {
   className?: string
   as?: 'span' | 'p' | 'h1' | 'h2' | 'h3' | 'div'
   multiline?: boolean
+  noTranslate?: boolean // For non-translatable fields like year (plain values, not {en, es} objects)
+  linkify?: boolean // Whether to auto-detect and linkify URLs in the text
+}
+
+// URL regex pattern - matches http://, https://, and www. URLs
+const URL_REGEX = /(https?:\/\/[^\s<]+|www\.[^\s<]+)/gi
+
+// Parse text and convert URLs to clickable links
+function parseTextWithLinks(text: string): React.ReactNode {
+  if (!text) return text
+  console.log('parsing text: ', text)
+  const parts = text.split(URL_REGEX)
+  
+  return parts.map((part, index) => {
+    if (URL_REGEX.test(part)) {
+      // Reset regex lastIndex since we're using 'g' flag
+      URL_REGEX.lastIndex = 0
+      const href = part.startsWith('http') ? part : `https://${part}`
+      return (
+        <a
+          key={index}
+          href={href}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="text-blue-600 hover:text-blue-800 underline"
+          onClick={(e) => e.stopPropagation()}
+          onDoubleClick={(e) => e.stopPropagation()}
+        >
+          {part}
+        </a>
+      )
+    }
+    return part
+  })
 }
 
 // If VITE_API_URL is not set, we use a relative /api base so that Vite can proxy to the backend.
@@ -41,7 +75,12 @@ export default function EditableText({
   className = '',
   as: Component = 'span',
   multiline = false,
+  noTranslate = false,
+  linkify = false,
 }: EditableTextProps) {
+  // For non-translatable fields, don't pass language to the API
+  const effectiveLanguage = noTranslate ? undefined : language
+  
   const {
     isEditing,
     value,
@@ -54,17 +93,17 @@ export default function EditableText({
     handleKeyDown,
   } = useEditable({
     dataPath,
-    language,
+    language: effectiveLanguage,
     initialValue: children,
     onSave: async (newValue) => {
-      await saveText(dataPath, newValue, language)
+      await saveText(dataPath, newValue, effectiveLanguage)
       // Reload the page to reflect changes
       window.location.reload()
     },
   })
 
   if (!isAdminMode) {
-    return <Component className={className}>{children}</Component>
+    return <Component className={className}>{linkify ? parseTextWithLinks(children) : children}</Component>
   }
 
   if (isEditing) {
@@ -140,7 +179,7 @@ export default function EditableText({
       onDoubleClick={handleDoubleClick}
       title={isAdminMode ? 'Double-click to edit' : undefined}
     >
-      {children}
+      {linkify ? parseTextWithLinks(children) : children}
     </Component>
   )
 }

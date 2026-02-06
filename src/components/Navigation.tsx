@@ -16,7 +16,6 @@ export default function Navigation() {
     { path: '/works', key: 'nav.works' },
     { path: '/assistant-direction', key: 'nav.assistantDirection' },
     { path: '/news', key: 'nav.news' },
-    { path: '/cv', key: 'nav.cv' },
     { path: '/contact', key: 'nav.contact' },
   ]
 

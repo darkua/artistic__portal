@@ -754,6 +754,7 @@ export default function WorkDetail() {
               language={lang}
               className="mt-2 text-sm sm:text-base opacity-60"
               as="p"
+              noTranslate
             >
               {String(work.year)}
             </EditableText>
@@ -771,6 +772,7 @@ export default function WorkDetail() {
               className="text-base sm:text-lg leading-relaxed opacity-90 whitespace-pre-line"
               as="p"
               multiline
+              linkify
             >
               {description}
             </EditableText>
@@ -862,8 +864,10 @@ export default function WorkDetail() {
                 // PERSONA: Teaser and Trailer
                 videoTitle = index === 0 ? 'Teaser' : 'Trailer'
               } else if (work?.id === 4 && videoItems.length === 2) {
-                // Work 4: Trailer and Cortometraje
-                videoTitle = index === 0 ? 'Trailer' : 'Short Film'
+                // Work 4: Trailer and Short Film (with Spanish translations)
+                videoTitle = index === 0 
+                  ? (lang === 'es' ? 'Tráiler' : 'Trailer')
+                  : (lang === 'es' ? 'Cortometraje' : 'Short Film')
               }
 
               return (

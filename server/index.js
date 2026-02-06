@@ -1049,6 +1049,163 @@ app.delete('/api/works/:workId', async (req, res) => {
   }
 });
 
+// Upload gallery image for news/performance page
+app.post('/api/news/gallery', workUpload.single('image'), async (req, res) => {
+  try {
+    console.log('=== NEWS GALLERY IMAGE UPLOAD REQUEST ===');
+    console.log('File:', req.file ? req.file.originalname : 'No file');
+
+    if (!req.file) {
+      return res.status(400).json({ error: 'No file uploaded' });
+    }
+
+    const portfolioData = readPortfolioData();
+    
+    // Create news gallery directory
+    const galleryDir = path.join(__dirname, '..', 'public', 'news', 'gallery');
+    if (!fs.existsSync(galleryDir)) {
+      fs.mkdirSync(galleryDir, { recursive: true });
+    }
+
+    const ext = path.extname(req.file.originalname).toLowerCase() || '.jpg';
+    const filename = `gallery-${Date.now()}${ext}`;
+    const destPath = path.join(galleryDir, filename);
+
+    // Process image with ImageMagick
+    const result = processWorkImage(req.file.path, destPath);
+
+    // Remove temp upload
+    fs.unlinkSync(req.file.path);
+
+    if (!result.success) {
+      return res.status(500).json({ error: result.error || 'Failed to process image' });
+    }
+
+    const urlPath = `/news/gallery/${filename}`;
+
+    // Initialize newsPage if it doesn't exist
+    if (!portfolioData.newsPage) {
+      portfolioData.newsPage = {};
+    }
+    if (!Array.isArray(portfolioData.newsPage.gallery)) {
+      portfolioData.newsPage.gallery = [];
+    }
+
+    // Append new image to gallery
+    portfolioData.newsPage.gallery.push(urlPath);
+    writePortfolioData(portfolioData);
+
+    console.log(`✅ Added new image to news gallery: ${urlPath}`);
+
+    res.json({
+      success: true,
+      url: urlPath,
+    });
+  } catch (error) {
+    console.error('News gallery image upload error:', error);
+    if (req.file && fs.existsSync(req.file.path)) {
+      fs.unlinkSync(req.file.path);
+    }
+    res.status(500).json({ error: error.message });
+  }
+});
+
+// Delete a gallery image from news/performance page
+app.delete('/api/news/gallery', async (req, res) => {
+  try {
+    const { url } = req.body || {};
+
+    if (!url || typeof url !== 'string') {
+      return res.status(400).json({ error: 'URL is required' });
+    }
+
+    const portfolioData = readPortfolioData();
+
+    if (!portfolioData.newsPage || !Array.isArray(portfolioData.newsPage.gallery)) {
+      return res.status(404).json({ error: 'Gallery not found' });
+    }
+
+    // Remove from array
+    const initialLength = portfolioData.newsPage.gallery.length;
+    portfolioData.newsPage.gallery = portfolioData.newsPage.gallery.filter((imgUrl) => imgUrl !== url);
+
+    if (portfolioData.newsPage.gallery.length === initialLength) {
+      return res.status(404).json({ error: 'Image not found in gallery' });
+    }
+
+    // Delete file from disk if it's a local file
+    if (url.startsWith('/news/gallery/')) {
+      const filePath = path.join(__dirname, '..', 'public', url);
+      if (fs.existsSync(filePath)) {
+        try {
+          fs.unlinkSync(filePath);
+          console.log(`✅ Deleted gallery image file: ${filePath}`);
+        } catch (fileError) {
+          console.warn(`⚠️ Could not delete file ${filePath}:`, fileError.message);
+        }
+      }
+    }
+
+    writePortfolioData(portfolioData);
+
+    console.log(`✅ Removed image from news gallery: ${url}`);
+
+    res.json({
+      success: true,
+      message: 'Image deleted successfully',
+    });
+  } catch (error) {
+    console.error('Delete news gallery image error:', error);
+    res.status(500).json({ error: error.message });
+  }
+});
+
+// Reorder gallery images for news/performance page
+app.put('/api/news/gallery/reorder', async (req, res) => {
+  try {
+    const { imageUrl, newIndex } = req.body;
+
+    if (!imageUrl || typeof imageUrl !== 'string' || newIndex === undefined) {
+      return res.status(400).json({ error: 'imageUrl and newIndex are required' });
+    }
+
+    const portfolioData = readPortfolioData();
+
+    if (!portfolioData.newsPage || !Array.isArray(portfolioData.newsPage.gallery)) {
+      return res.status(404).json({ error: 'Gallery not found' });
+    }
+
+    const gallery = portfolioData.newsPage.gallery;
+    const currentIndex = gallery.indexOf(imageUrl);
+
+    if (currentIndex === -1) {
+      return res.status(404).json({ error: 'Image not found in gallery' });
+    }
+
+    if (newIndex < 0 || newIndex >= gallery.length) {
+      return res.status(400).json({ error: `newIndex must be between 0 and ${gallery.length - 1}` });
+    }
+
+    // Remove image from current position
+    const [movedImage] = gallery.splice(currentIndex, 1);
+    
+    // Insert at new position
+    gallery.splice(newIndex, 0, movedImage);
+
+    writePortfolioData(portfolioData);
+
+    console.log(`✅ Reordered gallery image from index ${currentIndex} to ${newIndex}`);
+
+    res.json({
+      success: true,
+      gallery: gallery,
+    });
+  } catch (error) {
+    console.error('Reorder news gallery image error:', error);
+    res.status(500).json({ error: error.message });
+  }
+});
+
 // Health check endpoint
 app.get('/api/health', (req, res) => {
   res.json({ status: 'ok', message: 'Server is running' });

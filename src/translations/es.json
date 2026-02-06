@@ -27,7 +27,8 @@
   "news": {
     "title": "INTERPRETACIÓN",
     "description": "Selección de trabajos de interpretación y performance.",
-    "placeholder": "Aquí aparecerán los trabajos de interpretación."
+    "placeholder": "Aquí aparecerán los trabajos de interpretación.",
+    "gallery": "Galería"
   },
   "assistantDirection": {
     "title": "AYUDANTE DE DIRECCIÓN",

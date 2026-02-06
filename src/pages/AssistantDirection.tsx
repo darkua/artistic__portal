@@ -59,7 +59,7 @@ function WorkItem({
   }
 
   // Fixed width for all thumbnails (same as Direction page)
-  const fixedWidth = 480 // Fixed width in pixels for consistent sizing
+  const fixedWidth = 360 // Fixed width in pixels for consistent sizing
 
   const handleThumbnailUpload = async (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0]
@@ -664,6 +664,7 @@ export default function AssistantDirection() {
             className="text-base sm:text-lg leading-relaxed opacity-90 whitespace-pre-line"
             as="p"
             multiline
+            linkify
           >
             {portfolioDataState?.assistantDirection?.description?.[lang] || ''}
           </EditableText>

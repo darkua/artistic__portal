@@ -73,6 +73,7 @@ export default function Home() {
                 className="text-base leading-relaxed opacity-90 whitespace-pre-line"
                 as="p"
                 multiline
+                linkify={true}
               >
                 {home.introduction[lang]}
               </EditableText>
@@ -106,6 +107,7 @@ export default function Home() {
                   className="text-base leading-relaxed opacity-90 whitespace-pre-line"
                   as="p"
                   multiline
+                  linkify={true}
                 >
                   {home.introduction[lang]}
                 </EditableText>

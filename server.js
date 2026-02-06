@@ -36,7 +36,7 @@ async function translateText(text, sourceLanguage, targetLanguage) {
   const sourceLang = sourceLanguage === 'es' ? 'Spanish' : 'English';
   const targetLang = targetLanguage === 'es' ? 'Spanish' : 'English';
   
-  const prompt = `Translate the following text from ${sourceLang} to ${targetLang}. Only return the translation, no explanations or additional text:\n\n${text}`;
+  const prompt = `You are a professional translator. Translate the following text from ${sourceLang} to ${targetLang}. Only return the literal translation, no explanations or any factual information. Do not add any additional text, only the translation:\n\n${text}`;
   
   try {
     console.log(`🔄 Translating from ${sourceLang} to ${targetLang}...`);

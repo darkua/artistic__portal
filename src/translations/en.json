@@ -27,7 +27,8 @@
   "news": {
     "title": "PERFORMANCE",
     "description": "Selected acting and performance work.",
-    "placeholder": "Performance works will appear here."
+    "placeholder": "Performance works will appear here.",
+    "gallery": "Gallery"
   },
   "assistantDirection": {
     "title": "ASSISTANT DIRECTOR",
