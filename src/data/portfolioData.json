@@ -2228,7 +2228,9 @@
   "contact": {
     "email": "elmahache@gmail.com",
     "social": {
-      "instagram": "https://instagram.com/elmahache"
+      "instagram": "https://instagram.com/elmahache",
+      "facebook": "https://www.facebook.com/ElmaHachePhoto",
+      "whatsapp": "https://api.whatsapp.com/send/?phone=34679832249&text&type=phone_number&app_absent=0"
     }
   },
   "assistantDirection": {

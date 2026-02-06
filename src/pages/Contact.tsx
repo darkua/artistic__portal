@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
 import { useTranslation } from '../hooks/useTranslation'
 import portfolioData from '../data/portfolioData.json'
-import { Instagram } from 'lucide-react'
+import { Instagram, Facebook, MessageCircle } from 'lucide-react'
 
 export default function Contact() {
   const { t } = useTranslation()
@@ -48,6 +48,28 @@ export default function Contact() {
                   aria-label="Instagram"
                 >
                   <Instagram className="h-6 w-6" />
+                </a>
+              )}
+              {contact.social.facebook && (
+                <a
+                  href={contact.social.facebook}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="hover:opacity-70 transition-opacity"
+                  aria-label="Facebook"
+                >
+                  <Facebook className="h-6 w-6" />
+                </a>
+              )}
+              {contact.social.whatsapp && (
+                <a
+                  href={contact.social.whatsapp}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="hover:opacity-70 transition-opacity"
+                  aria-label="WhatsApp"
+                >
+                  <MessageCircle className="h-6 w-6" />
                 </a>
               )}
             </div>
