@@ -102,7 +102,7 @@ export default function CV() {
                 {t('cv.collection.title')}
               </h2>
               <div className="space-y-2">
-                {cv.collection.map((item, index) => (
+                {cv.collection.map((item: any, index: number) => (
                   <p key={index} className="text-base opacity-90">
                     {item.name[language as 'en' | 'es']}
                   </p>

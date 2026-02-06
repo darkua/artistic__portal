@@ -44,7 +44,7 @@ function parseTextWithLinks(text: string): React.ReactNode {
 }
 
 // If VITE_API_URL is not set, we use a relative /api base so that Vite can proxy to the backend.
-const API_BASE_URL = import.meta.env.VITE_API_URL || ''
+const API_BASE_URL = (import.meta as any).env.VITE_API_URL || ''
 
 async function saveText(dataPath: string, value: string, language?: 'en' | 'es') {
   const base = API_BASE_URL || ''

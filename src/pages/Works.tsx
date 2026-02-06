@@ -46,8 +46,7 @@ function WorkItem({
   onDragEnd,
   onDragOver,
   onDrop,
-  isAnyDragging,
-  isDropTarget,
+  isAnyDragging, 
 }: {
   work: Work
   language: 'en' | 'es'
@@ -404,7 +403,7 @@ function WorkGrid({
       // If we're dropping after a visual position, we might need to adjust
       // Check if the next visual item has a sequential array index
       if (targetVisualIndex < itemsWithIndices.length - 1) {
-        const nextItem = itemsWithIndices[targetVisualIndex + 1]
+        // const nextItem = itemsWithIndices[targetVisualIndex + 1]
         // If next item's array index is sequential, we might want to drop between them
         // But for now, use the target item's array index
       }
@@ -423,7 +422,7 @@ function WorkGrid({
     // Clamp to valid range
     calculatedDropIndex = Math.max(0, Math.min(calculatedDropIndex, works.length - 1))
     
-    const rect = (e.currentTarget as HTMLElement).getBoundingClientRect()
+    // const rect = (e.currentTarget as HTMLElement).getBoundingClientRect()
     console.log('[Drag Over]', {
       index,
       draggedIndex,

@@ -7,7 +7,7 @@ interface UseEditableOptions {
   onSave?: (value: string) => Promise<void>
 }
 
-export function useEditable({ dataPath, language, initialValue, onSave }: UseEditableOptions) {
+export function useEditable({ initialValue, onSave }: UseEditableOptions) {
   const [isEditing, setIsEditing] = useState(false)
   const [value, setValue] = useState(initialValue)
   const [isSaving, setIsSaving] = useState(false)
@@ -15,7 +15,7 @@ export function useEditable({ dataPath, language, initialValue, onSave }: UseEdi
 
   // Check if admin mode is enabled
   useEffect(() => {
-    const adminMode = import.meta.env.VITE_ADMIN_MODE === 'true'
+    const adminMode = (import.meta as any).env.VITE_ADMIN_MODE === 'true'
     setIsAdminMode(adminMode)
   }, [])
 

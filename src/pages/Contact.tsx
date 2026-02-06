@@ -4,7 +4,7 @@ import portfolioData from '../data/portfolioData.json'
 import { Instagram } from 'lucide-react'
 
 export default function Contact() {
-  const { t, language } = useTranslation()
+  const { t } = useTranslation()
   const [portfolioDataState, setPortfolioDataState] = useState<any>(portfolioData)
 
   // In development, watch for JSON file changes via HMR
