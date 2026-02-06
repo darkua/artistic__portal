@@ -5,6 +5,20 @@ import EditableText from '../components/EditableText'
 import CreateWorkForm from '../components/CreateWorkForm'
 import portfolioData from '../data/portfolioData.json'
 
+// Helper functions for YouTube video detection
+function isYouTubeUrl(url: string): boolean {
+  return /(?:youtube\.com\/(?:watch\?v=|embed\/)|youtu\.be\/)/.test(url)
+}
+
+function getYouTubeVideoId(url: string): string | null {
+  const match = url.match(/(?:youtube\.com\/(?:watch\?v=|embed\/)|youtu\.be\/)([a-zA-Z0-9_-]+)/)
+  return match ? match[1] : null
+}
+
+function getYouTubeThumbnail(url: string): string {
+  const videoId = getYouTubeVideoId(url)
+  return videoId ? `http://i3.ytimg.com/vi/${videoId}/hqdefault.jpg` : ''
+}
 interface WorkImage {
   url: string
 }
@@ -1104,24 +1118,51 @@ export default function News() {
                             ♥
                           </span>
                         </button>
-                        <img
-                          src={imgUrl}
-                          alt={`Gallery image ${index + 1}`}
-                          className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105 pointer-events-none"
-                          draggable={false}
-                          onError={(e) => {
-                            const target = e.target as HTMLImageElement
-                            target.style.display = 'none'
-                            const parent = target.parentElement
-                            if (parent) {
-                              parent.innerHTML = `
-                                <div class="w-full h-full bg-gray-200 flex items-center justify-center">
-                                  <span class="text-gray-400 text-xs">Gallery image</span>
-                                </div>
-                              `
-                            }
-                          }}
-                        />
+                        {isYouTubeUrl(imgUrl) ? (
+                          <>
+                            <img
+                              src={getYouTubeThumbnail(imgUrl)}
+                              alt={`Video ${index + 1}`}
+                              className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105 pointer-events-none"
+                              draggable={false}
+                              onError={(e) => {
+                                const target = e.target as HTMLImageElement
+                                // Fallback to hqdefault if maxresdefault fails
+                                const videoId = getYouTubeVideoId(imgUrl)
+                                if (videoId && target.src.includes('maxresdefault')) {
+                                  target.src = `https://img.youtube.com/vi/${videoId}/hqdefault.jpg`
+                                }
+                              }}
+                            />
+                            {/* Play button overlay */}
+                            <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
+                              <div className="w-10 h-10 sm:w-12 sm:h-12 bg-red-600 rounded-full flex items-center justify-center shadow-lg">
+                                <svg className="w-5 h-5 sm:w-6 sm:h-6 text-white ml-1" fill="currentColor" viewBox="0 0 24 24">
+                                  <path d="M8 5v14l11-7z" />
+                                </svg>
+                              </div>
+                            </div>
+                          </>
+                        ) : (
+                          <img
+                            src={imgUrl}
+                            alt={`Gallery image ${index + 1}`}
+                            className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105 pointer-events-none"
+                            draggable={false}
+                            onError={(e) => {
+                              const target = e.target as HTMLImageElement
+                              target.style.display = 'none'
+                              const parent = target.parentElement
+                              if (parent) {
+                                parent.innerHTML = `
+                                  <div class="w-full h-full bg-gray-200 flex items-center justify-center">
+                                    <span class="text-gray-400 text-xs">Gallery image</span>
+                                  </div>
+                                `
+                              }
+                            }}
+                          />
+                        )}
                       </div>
                       {isAdminMode && (
                         <div className="flex items-center gap-2">
@@ -1187,14 +1228,27 @@ export default function News() {
               </button>
             </div>
 
-            {/* Image area - constrained to viewport height */}
+            {/* Image/Video area - constrained to viewport height */}
             <div className="relative w-full h-full sm:aspect-[4/3] sm:h-auto bg-black flex items-center justify-center overflow-hidden" style={{ maxHeight: '100vh' }}>
-              <img
-                src={galleryImages[activeImageIndex]}
-                alt={`Gallery image ${activeImageIndex + 1}`}
-                className="max-w-full max-h-full w-auto h-auto object-contain"
-                style={{ maxWidth: '100%', maxHeight: '100%' }}
-              />
+              {isYouTubeUrl(galleryImages[activeImageIndex]) ? (
+                <div className="w-full h-full flex items-center justify-center">
+                  <iframe
+                    src={`https://www.youtube.com/embed/${getYouTubeVideoId(galleryImages[activeImageIndex])}?autoplay=1&rel=0`}
+                    title="Video player"
+                    className="w-full h-full max-w-4xl aspect-video"
+                    style={{ maxHeight: '80vh' }}
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                    allowFullScreen
+                  />
+                </div>
+              ) : (
+                <img
+                  src={galleryImages[activeImageIndex]}
+                  alt={`Gallery image ${activeImageIndex + 1}`}
+                  className="max-w-full max-h-full w-auto h-auto object-contain"
+                  style={{ maxWidth: '100%', maxHeight: '100%' }}
+                />
+              )}
 
               {/* Navigation buttons - overlaid on image */}
               {galleryImages.length > 1 && (

@@ -843,7 +843,7 @@ export default function WorkDetail() {
 
         {/* Video gallery – render one or many, stacked */}
         {videoItems.length > 0 && (
-          <div className={`mb-12 sm:mb-16 space-y-8 ${workCategory === 'movieDirector' || work?.id === 10 ? 'max-w-[50%]' : 'max-w-5xl'}`}>
+          <div className={`mb-12 sm:mb-16 space-y-8 ${workCategory === 'movieDirector' || work?.id === 10 ? 'w-full min-w-[360px] max-w-[800px]' : 'max-w-5xl'}`}>
             {videoItems.map((video, index) => {
               const url = video.url.trim()
               const isYouTube = isYouTubeUrl(url)
