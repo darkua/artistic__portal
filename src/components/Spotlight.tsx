@@ -3,24 +3,29 @@ import { useEffect, useState, useRef } from 'react'
 interface SpotlightProps {
   isActive: boolean
   onClose: () => void
+  initialPos?: { x: number; y: number } | null
 }
 
-export default function Spotlight({ isActive, onClose }: SpotlightProps) {
+export default function Spotlight({ isActive, onClose, initialPos }: SpotlightProps) {
   const [mousePos, setMousePos] = useState({ x: 0, y: 0 })
   const [isVisible, setIsVisible] = useState(false)
   const overlayRef = useRef<HTMLDivElement>(null)
   const spotlightSize = 400 // Size of the spotlight circle in pixels
 
-  // Initialize mouse position to center of screen when activated
+  // Initialize mouse position to click position (or center of screen as fallback) when activated
   useEffect(() => {
     if (isActive) {
-      setMousePos({ x: window.innerWidth / 2, y: window.innerHeight / 2 })
+      if (initialPos) {
+        setMousePos({ x: initialPos.x, y: initialPos.y })
+      } else {
+        setMousePos({ x: window.innerWidth / 2, y: window.innerHeight / 2 })
+      }
       // Small delay for fade-in animation
       setTimeout(() => setIsVisible(true), 10)
     } else {
       setIsVisible(false)
     }
-  }, [isActive])
+  }, [isActive, initialPos])
 
   // Track mouse movement
   useEffect(() => {

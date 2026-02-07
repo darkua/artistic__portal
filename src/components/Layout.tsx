@@ -9,14 +9,14 @@ interface LayoutProps {
 }
 
 export default function Layout({ children }: LayoutProps) {
-  const { isActive, deactivate } = useSpotlight()
+  const { isActive, initialPos, deactivate } = useSpotlight()
 
   return (
     <div className="min-h-screen flex flex-col">
       <Navigation />
       <main className="flex-1 w-full">{children}</main>
       <Footer />
-      <Spotlight isActive={isActive} onClose={deactivate} />
+      <Spotlight isActive={isActive} onClose={deactivate} initialPos={initialPos} />
     </div>
   )
 }

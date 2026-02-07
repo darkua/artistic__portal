@@ -28,13 +28,17 @@ export default function Navigation() {
           {/* Logo/Home Link */}
           <Link
             to="/"
-            className="text-xl font-light tracking-wide uppercase hover:opacity-70 transition-opacity"
+            className="hover:opacity-70 transition-opacity"
             onClick={(e) => {
               e.preventDefault() // Prevent navigation, only activate spotlight
-              activate()
+              activate({ x: e.clientX, y: e.clientY })
             }}
           >
-            {t('home.title')}
+            <img
+              src="/logo.svg"
+              alt={t('home.title')}
+              className="h-10 w-auto dark:invert"
+            />
           </Link>
 
           {/* Desktop Navigation */}
