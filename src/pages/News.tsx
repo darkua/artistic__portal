@@ -587,7 +587,10 @@ export default function News() {
   }, [portfolioDataState])
 
   // Load favorites so we can show which images are already selected for the hero
+  // Skip API calls in production (static mode)
   useEffect(() => {
+    if ((import.meta as any).env?.PROD) return // Static mode, skip API
+    
     let isMounted = true
     ;(async () => {
       try {
@@ -727,6 +730,8 @@ export default function News() {
 
   // Gallery handlers (same as WorkDetail)
   const toggleFavorite = async (imageUrl: string) => {
+    if ((import.meta as any).env?.PROD) return // Static mode, skip API
+    
     try {
       const res = await fetch('/api/favorites', {
         method: 'POST',

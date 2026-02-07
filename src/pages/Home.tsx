@@ -32,7 +32,10 @@ export default function Home() {
   }, [portfolioDataState])
 
   // Load live favorites from backend so changes from hearts appear on reload
+  // Skip API calls in production (static mode) - use JSON data instead
   useEffect(() => {
+    if ((import.meta as any).env?.PROD) return // Static mode, skip API
+    
     let isMounted = true
     ;(async () => {
       try {
