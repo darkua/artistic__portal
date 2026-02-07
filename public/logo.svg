@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" fill="black">
+  <!-- Serif H letter -->
+  <!-- Left pillar -->
+  <rect x="20" y="20" width="24" height="160" />
+  <!-- Right pillar -->
+  <rect x="156" y="20" width="24" height="160" />
+  <!-- Crossbar -->
+  <rect x="20" y="85" width="160" height="24" />
+
+  <!-- Top serifs - left pillar -->
+  <polygon points="5,20 60,20 60,28 44,28 44,32 20,32 20,28 5,28" />
+  <!-- Top serifs - right pillar -->
+  <polygon points="140,20 195,20 195,28 180,28 180,32 156,32 156,28 140,28" />
+
+  <!-- Bottom serifs - left pillar -->
+  <polygon points="5,172 20,172 20,168 44,168 44,172 60,172 60,180 5,180" />
+  <!-- Bottom serifs - right pillar -->
+  <polygon points="140,172 156,172 156,168 180,168 180,172 195,172 195,180 140,180" />
+
+  <!-- ELMA text centered in the crossbar -->
+  <text x="100" y="102" text-anchor="middle" dominant-baseline="central" font-family="Georgia, 'Times New Roman', Times, serif" font-size="28" font-weight="700" letter-spacing="5" fill="white">ELMA</text>
+</svg>
