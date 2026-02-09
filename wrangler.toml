@@ -1,5 +1,4 @@
 name = "artistic-portal"
-main = "worker.js"
 compatibility_date = "2026-01-16"
 
 [assets]
