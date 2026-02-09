@@ -35,9 +35,9 @@ export default function Navigation() {
             }}
           >
             <img
-              src="/logo.svg"
+              src="/logo.png"
               alt={t('home.title')}
-              className="h-10 w-auto dark:invert"
+              className="h-10 w-auto"
             />
           </Link>
 
