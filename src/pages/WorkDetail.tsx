@@ -115,6 +115,12 @@ export default function WorkDetail() {
 
   // Fetch latest portfolio data when id changes (especially for newly created works)
   useEffect(() => {
+    // Skip API calls in production (static mode) - use JSON data instead
+    if ((import.meta as any).env?.PROD) {
+      setIsLoadingData(false)
+      return
+    }
+
     const fetchLatestData = async () => {
       setIsLoadingData(true)
       try {

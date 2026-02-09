@@ -17,7 +17,7 @@ const URL_REGEX = /(https?:\/\/[^\s<]+|www\.[^\s<]+)/gi
 // Parse text and convert URLs to clickable links
 function parseTextWithLinks(text: string): React.ReactNode {
   if (!text) return text
-  console.log('parsing text: ', text)
+  
   const parts = text.split(URL_REGEX)
   
   return parts.map((part, index) => {
