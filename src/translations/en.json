@@ -4,6 +4,7 @@
     "works": "DIRECTION",
     "news": "PERFORMANCE",
     "assistantDirection": "ASSISTANT DIRECTOR",
+    "gallery": "PHOTO GALLERY",
     "cv": "CV",
     "contact": "CONTACT"
   },
@@ -29,6 +30,10 @@
     "description": "Selected acting and performance work.",
     "placeholder": "Performance works will appear here.",
     "gallery": "Gallery"
+  },
+  "gallery": {
+    "title": "PHOTO GALLERY",
+    "placeholder": "Gallery photos will appear here."
   },
   "assistantDirection": {
     "title": "ASSISTANT DIRECTOR",

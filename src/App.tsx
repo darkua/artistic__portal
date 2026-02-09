@@ -6,6 +6,7 @@ import Home from './pages/Home'
 import Works from './pages/Works'
 import WorkDetail from './pages/WorkDetail'
 import News from './pages/News'
+import Gallery from './pages/Gallery'
 import AssistantDirection from './pages/AssistantDirection'
 import CV from './pages/CV'
 import Contact from './pages/Contact'
@@ -20,6 +21,7 @@ function App() {
             <Route path="/works" element={<Works />} />
             <Route path="/works/:id" element={<WorkDetail />} />
             <Route path="/news" element={<News />} />
+            <Route path="/gallery" element={<Gallery />} />
             <Route path="/assistant-direction" element={<AssistantDirection />} />
             <Route path="/cv" element={<CV />} />
             <Route path="/contact" element={<Contact />} />

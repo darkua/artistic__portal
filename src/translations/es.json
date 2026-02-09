@@ -4,6 +4,7 @@
     "works": "DIRECCIÓN",
     "news": "INTERPRETACIÓN",
     "assistantDirection": "AYUDANTE DE DIRECCIÓN",
+    "gallery": "GALERÍA DE FOTOS",
     "cv": "CV",
     "contact": "CONTACTO"
   },
@@ -29,6 +30,10 @@
     "description": "Selección de trabajos de interpretación y performance.",
     "placeholder": "Aquí aparecerán los trabajos de interpretación.",
     "gallery": "Galería"
+  },
+  "gallery": {
+    "title": "GALERÍA DE FOTOS",
+    "placeholder": "Las fotos de la galería aparecerán aquí."
   },
   "assistantDirection": {
     "title": "AYUDANTE DE DIRECCIÓN",
