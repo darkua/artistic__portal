@@ -2228,7 +2228,157 @@
       "/news/gallery/gallery-1770607639180.jpg",
       "/news/gallery/gallery-1770607645631.jpg",
       "https://youtu.be/q-5pO7j7Glk"
-    ]
+    ],
+    "galleryTitles": {
+      "/news/gallery/gallery-1770329112303.jpg": {
+        "en": "",
+        "es": "El despertar de Oniria. (Teatro de Creación)"
+      },
+      "/news/gallery/gallery-1770329180728.jpg": {
+        "en": "",
+        "es": "El despertar de Oniria. (Teatro de Creación)"
+      },
+      "/news/gallery/gallery-1770329177037.jpg": {
+        "en": "",
+        "es": "El despertar de Oniria. (Teatro de Creación)"
+      },
+      "/news/gallery/gallery-1770329175636.jpg": {
+        "en": "",
+        "es": "El despertar de Oniria. (Teatro de Creación)"
+      },
+      "/news/gallery/gallery-1770329173832.jpg": {
+        "en": "",
+        "es": "El despertar de Oniria. (Teatro de Creación)"
+      },
+      "/news/gallery/gallery-1770329111827.jpg": {
+        "en": "",
+        "es": "Antagonismos"
+      },
+      "/news/gallery/gallery-1770329186276.jpg": {
+        "en": "",
+        "es": "El buen vecino. (Juan Mayorga)"
+      },
+      "/news/gallery/gallery-1770329189798.jpg": {
+        "en": "",
+        "es": "El buen vecino. (Juan Mayorga)"
+      },
+      "/news/gallery/gallery-1770329192920.jpg": {
+        "en": "",
+        "es": "El buen vecino. (Juan Mayorga)"
+      },
+      "/news/gallery/gallery-1770329113675.jpg": {
+        "en": "",
+        "es": "Lo-cura. (Teatro de Creación)"
+      },
+      "/news/gallery/gallery-1770329117715.jpg": {
+        "en": "",
+        "es": "Match de Impro"
+      },
+      "/news/gallery/gallery-1770329112928.jpg": {
+        "en": "",
+        "es": "Estación Amor. (Teatro de Creación)"
+      },
+      "/news/gallery/gallery-1770329122912.jpg": {
+        "en": "",
+        "es": "La puta y la muerte. (Elma Hache)"
+      },
+      "/news/gallery/gallery-1770329127172.jpg": {
+        "en": "",
+        "es": "La puta y la muerte. (Elma Hache)"
+      },
+      "/news/gallery/gallery-1770329179294.jpg": {
+        "en": "",
+        "es": "La puta y la muerte. (Elma Hache)"
+      },
+      "/news/gallery/gallery-1770329159444.jpg": {
+        "en": "",
+        "es": "Noches de amor efímero. (Paloma Pedrero)"
+      },
+      "/news/gallery/gallery-1770329165831.jpg": {
+        "en": "",
+        "es": "Noches de amor efímero. (Paloma Pedrero)"
+      },
+      "/news/gallery/gallery-1770329118364.jpg": {
+        "en": "",
+        "es": "Taller de Teatro Terapéutico"
+      },
+      "/news/gallery/gallery-1770329107592.jpg": {
+        "en": "",
+        "es": "Persona. (Elma Hache)"
+      },
+      "/news/gallery/gallery-1770329103856.jpg": {
+        "en": "",
+        "es": "Persona. (Elma Hache)"
+      },
+      "/news/gallery/gallery-1770329136442.jpg": {
+        "en": "",
+        "es": "El pez y la gaviota. (Elma Hache)"
+      },
+      "/news/gallery/gallery-1770329139687.jpg": {
+        "en": "",
+        "es": "El pez y la gaviota. (Elma Hache)"
+      },
+      "/news/gallery/gallery-1770329090623.jpg": {
+        "en": "",
+        "es": "El engaño y Quiñones. (Elma Hache)"
+      },
+      "/news/gallery/gallery-1770329155942.jpg": {
+        "en": "",
+        "es": "Interior. (Maurice Maeterlinck)"
+      },
+      "/news/gallery/gallery-1770329111121.jpg": {
+        "en": "",
+        "es": "Persona. (Elma Hache)"
+      },
+      "/news/gallery/gallery-1770379687959.jpg": {
+        "en": "",
+        "es": "IN.OUT. (Elma Hache)"
+      },
+      "/news/gallery/gallery-1770329177448.jpg": {
+        "en": "",
+        "es": "Ensayo de Interior"
+      },
+      "/news/gallery/gallery-1770329173187.jpg": {
+        "en": "",
+        "es": "Taller con Andrés Lima"
+      },
+      "/news/gallery/gallery-1770329193936.jpeg": {
+        "en": "",
+        "es": "Ensayo de Persona"
+      },
+      "/news/gallery/gallery-1770329195117.jpeg": {
+        "en": "",
+        "es": "Ensayo de Persona"
+      },
+      "/news/gallery/gallery-1770607641142.jpg": {
+        "en": "",
+        "es": "Taller de teatro terapéutico. (Elma Hache)"
+      },
+      "/news/gallery/gallery-1770607637253.jpg": {
+        "en": "",
+        "es": "Taller de teatro terapéutico. (Elma Hache)"
+      },
+      "/news/gallery/gallery-1770607643496.jpg": {
+        "en": "",
+        "es": "Taller de teatro terapéutico. (Elma Hache)"
+      },
+      "/news/gallery/gallery-1770607639180.jpg": {
+        "en": "",
+        "es": "Taller de teatro terapéutico. (Elma Hache)"
+      },
+      "/news/gallery/gallery-1770607645631.jpg": {
+        "en": "",
+        "es": "Taller de teatro terapéutico. (Elma Hache)"
+      },
+      "https://youtu.be/q-5pO7j7Glk": {
+        "en": "",
+        "es": "Mi vida en tres minutos. (Elma Hache)"
+      },
+      "/news/gallery/gallery-1770329178768.jpg": {
+        "en": "",
+        "es": "¿Acaso no matan a los caballos? (Horacio McCoy)"
+      }
+    }
   },
   "contact": {
     "email": "elmahache@gmail.com",

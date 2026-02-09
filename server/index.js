@@ -1206,6 +1206,51 @@ app.put('/api/news/gallery/reorder', async (req, res) => {
   }
 });
 
+// Update gallery image title for news/performance page
+app.put('/api/news/gallery/title', async (req, res) => {
+  try {
+    const { url, title, language } = req.body;
+
+    if (!url || typeof url !== 'string') {
+      return res.status(400).json({ error: 'url is required' });
+    }
+    if (!title && title !== '') {
+      return res.status(400).json({ error: 'title is required' });
+    }
+    if (!language || !['en', 'es'].includes(language)) {
+      return res.status(400).json({ error: 'language must be "en" or "es"' });
+    }
+
+    const portfolioData = readPortfolioData();
+
+    if (!portfolioData.newsPage) {
+      portfolioData.newsPage = {};
+    }
+    if (!portfolioData.newsPage.galleryTitles) {
+      portfolioData.newsPage.galleryTitles = {};
+    }
+
+    // Initialize this URL's title object if needed
+    if (!portfolioData.newsPage.galleryTitles[url]) {
+      portfolioData.newsPage.galleryTitles[url] = { en: '', es: '' };
+    }
+
+    portfolioData.newsPage.galleryTitles[url][language] = title;
+
+    writePortfolioData(portfolioData);
+
+    console.log(`✅ Updated gallery title for ${url} [${language}]: "${title}"`);
+
+    res.json({
+      success: true,
+      galleryTitles: portfolioData.newsPage.galleryTitles,
+    });
+  } catch (error) {
+    console.error('Update gallery title error:', error);
+    res.status(500).json({ error: error.message });
+  }
+});
+
 // Health check endpoint
 app.get('/api/health', (req, res) => {
   res.json({ status: 'ok', message: 'Server is running' });

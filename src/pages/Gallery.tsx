@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useRef, useCallback } from 'react'
 import { useTranslation } from '../hooks/useTranslation'
 import portfolioData from '../data/portfolioData.json'
 
@@ -17,11 +17,162 @@ function getYouTubeThumbnail(url: string): string {
   return videoId ? `http://i3.ytimg.com/vi/${videoId}/hqdefault.jpg` : ''
 }
 
+const API_BASE_URL = (import.meta as any).env.VITE_API_URL || ''
+
+// ------------------------------------------------------------------
+// Inline Editable Gallery Title
+// ------------------------------------------------------------------
+interface EditableGalleryTitleProps {
+  imageUrl: string
+  title: string
+  language: 'en' | 'es'
+  isAdminMode: boolean
+  onSave: (imageUrl: string, title: string, language: 'en' | 'es') => Promise<void>
+  className?: string
+  placeholderClass?: string
+  /** If true we're inside the lightbox – different styling */
+  lightbox?: boolean
+}
+
+function EditableGalleryTitle({
+  imageUrl,
+  title,
+  language,
+  isAdminMode,
+  onSave,
+  className = '',
+  placeholderClass = '',
+  lightbox = false,
+}: EditableGalleryTitleProps) {
+  const [isEditing, setIsEditing] = useState(false)
+  const [value, setValue] = useState(title)
+  const [isSaving, setIsSaving] = useState(false)
+  const inputRef = useRef<HTMLInputElement>(null)
+
+  // Keep local value in sync with prop
+  useEffect(() => {
+    if (!isEditing) setValue(title)
+  }, [title, isEditing])
+
+  // Auto-focus input when entering edit mode
+  useEffect(() => {
+    if (isEditing && inputRef.current) {
+      inputRef.current.focus()
+      inputRef.current.select()
+    }
+  }, [isEditing])
+
+  const handleSave = useCallback(async () => {
+    if (isSaving) return
+    setIsSaving(true)
+    try {
+      await onSave(imageUrl, value, language)
+    } catch (err) {
+      console.error('Error saving gallery title:', err)
+    } finally {
+      setIsSaving(false)
+      setIsEditing(false)
+    }
+  }, [imageUrl, value, language, onSave, isSaving])
+
+  const handleCancel = () => {
+    setValue(title)
+    setIsEditing(false)
+  }
+
+  const handleKeyDown = (e: React.KeyboardEvent) => {
+    if (e.key === 'Enter') {
+      e.preventDefault()
+      handleSave()
+    } else if (e.key === 'Escape') {
+      e.preventDefault()
+      handleCancel()
+    }
+  }
+
+  // Non-admin: just show title (or nothing)
+  if (!isAdminMode) {
+    if (!title) return null
+    return <span className={className}>{title}</span>
+  }
+
+  // Admin – editing mode
+  if (isEditing) {
+    return (
+      <span
+        className={`inline-flex items-center gap-1 ${className}`}
+        onClick={(e) => e.stopPropagation()}
+        onDoubleClick={(e) => e.stopPropagation()}
+      >
+        <input
+          ref={inputRef}
+          type="text"
+          value={value}
+          onChange={(e) => setValue(e.target.value)}
+          onKeyDown={handleKeyDown}
+          disabled={isSaving}
+          className={`px-1 py-0.5 border border-blue-500 rounded text-xs focus:outline-none focus:ring-1 focus:ring-blue-300 ${
+            lightbox
+              ? 'bg-black/60 text-white placeholder:text-white/50 w-64'
+              : 'bg-white text-black w-full max-w-[8rem] sm:max-w-[10rem]'
+          }`}
+          placeholder="Enter title…"
+        />
+        <button
+          type="button"
+          onClick={(e) => {
+            e.stopPropagation()
+            handleSave()
+          }}
+          disabled={isSaving}
+          className="text-[10px] px-1 py-0.5 bg-blue-500 text-white rounded hover:bg-blue-600 disabled:opacity-50"
+        >
+          {isSaving ? '…' : '✓'}
+        </button>
+        <button
+          type="button"
+          onClick={(e) => {
+            e.stopPropagation()
+            handleCancel()
+          }}
+          disabled={isSaving}
+          className="text-[10px] px-1 py-0.5 bg-gray-400 text-white rounded hover:bg-gray-500"
+        >
+          ✕
+        </button>
+      </span>
+    )
+  }
+
+  // Admin – display mode (click or double-click to edit)
+  const displayText = title || (lightbox ? 'Click to add title' : 'Add title')
+  return (
+    <span
+      className={`${title ? className : placeholderClass || className} cursor-text hover:bg-blue-50/30 transition-colors rounded px-0.5`}
+      onClick={(e) => {
+        e.stopPropagation()
+        setIsEditing(true)
+      }}
+      onDoubleClick={(e) => {
+        e.stopPropagation()
+        setIsEditing(true)
+      }}
+      title="Click to edit title"
+    >
+      {displayText}
+    </span>
+  )
+}
+
+// ------------------------------------------------------------------
+// Gallery Page
+// ------------------------------------------------------------------
 export default function Gallery() {
-  const { t } = useTranslation()
+  const { t, language } = useTranslation()
   const isAdminMode = (import.meta as any).env.VITE_ADMIN_MODE === 'true'
   const [portfolioDataState, setPortfolioDataState] = useState<any>(portfolioData)
   const [galleryImages, setGalleryImages] = useState<string[]>([])
+  const [galleryTitles, setGalleryTitles] = useState<Record<string, { en: string; es: string }>>({})
   const [isLightboxOpen, setIsLightboxOpen] = useState(false)
   const [activeImageIndex, setActiveImageIndex] = useState(0)
   const [isUploadingGallery, setIsUploadingGallery] = useState(false)
@@ -43,7 +194,7 @@ export default function Gallery() {
     }
   }, [])
 
-  // Load gallery images from state
+  // Load gallery images and titles from state
   useEffect(() => {
     const gallery = portfolioDataState?.newsPage?.gallery
     if (Array.isArray(gallery)) {
@@ -51,7 +202,50 @@ export default function Gallery() {
     } else {
       setGalleryImages([])
     }
+    const titles = portfolioDataState?.newsPage?.galleryTitles
+    if (titles && typeof titles === 'object') {
+      setGalleryTitles(titles)
+    }
   }, [portfolioDataState])
+
+  // Save a gallery title via the API
+  const saveGalleryTitle = useCallback(async (imageUrl: string, title: string, lang: 'en' | 'es') => {
+    const base = API_BASE_URL || ''
+    const response = await fetch(`${base}/api/news/gallery/title`, {
+      method: 'PUT',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ url: imageUrl, title, language: lang }),
+    })
+    if (!response.ok) {
+      const err = await response.json().catch(() => ({}))
+      throw new Error(err.error || 'Failed to save title')
+    }
+    const data = await response.json()
+    // Update local state with new titles
+    if (data.galleryTitles) {
+      setGalleryTitles(data.galleryTitles)
+      setPortfolioDataState((prev: any) => ({
+        ...prev,
+        newsPage: { ...prev.newsPage, galleryTitles: data.galleryTitles },
+      }))
+    } else {
+      // Optimistic update
+      setGalleryTitles((prev) => ({
+        ...prev,
+        [imageUrl]: {
+          ...(prev[imageUrl] || { en: '', es: '' }),
+          [lang]: title,
+        },
+      }))
+    }
+  }, [])
+
+  // Helper to get a gallery item's title for the current language
+  const getGalleryTitle = useCallback((imageUrl: string): string => {
+    const entry = galleryTitles[imageUrl]
+    if (!entry) return ''
+    return entry[language] || ''
+  }, [galleryTitles, language])
 
   // Load favorites so we can show which images are already selected for the hero
   // Skip API calls in production (static mode)
@@ -394,109 +588,125 @@ export default function Gallery() {
               </p>
             )}
             <div className="flex flex-wrap gap-4">
-              {galleryImages.map((imgUrl, index) => (
-                <div
-                  key={index}
-                  className={`flex flex-col items-center gap-1 ${draggedImageIndex === index ? 'opacity-50' : ''}`}
-                  onDragOver={(e) => handleImageDragOver(e, index)}
-                  onDrop={(e) => handleImageDrop(e, index)}
-                >
+              {galleryImages.map((imgUrl, index) => {
+                const itemTitle = getGalleryTitle(imgUrl)
+                return (
                   <div
-                    className={`group relative w-24 h-24 sm:w-28 sm:h-28 lg:w-32 lg:h-32 overflow-hidden border border-border ${isAdminMode ? 'cursor-move' : 'cursor-pointer'}`}
-                    draggable={isAdminMode}
-                    onDragStart={(e) => handleImageDragStart(e, index)}
-                    onDragEnd={handleImageDragEnd}
-                    onClick={() => {
-                      // Only open lightbox if not in admin mode or if not dragging
-                      if (!isAdminMode || draggedImageIndex === null) {
-                        openLightbox(index)
-                      }
-                    }}
+                    key={index}
+                    className={`flex flex-col items-center gap-1 ${draggedImageIndex === index ? 'opacity-50' : ''}`}
+                    onDragOver={(e) => handleImageDragOver(e, index)}
+                    onDrop={(e) => handleImageDrop(e, index)}
                   >
-                    {/* Favorite heart in top-right corner */}
-                    <button
-                      type="button"
-                      className="absolute top-1 right-1 z-10 p-1 rounded-full bg-black/40 hover:bg-black/60"
-                      onClick={(e) => {
-                        e.stopPropagation()
-                        toggleFavorite(imgUrl)
+                    <div
+                      className={`group relative w-24 h-24 sm:w-28 sm:h-28 lg:w-32 lg:h-32 overflow-hidden border border-border ${isAdminMode ? 'cursor-move' : 'cursor-pointer'}`}
+                      draggable={isAdminMode}
+                      onDragStart={(e) => handleImageDragStart(e, index)}
+                      onDragEnd={handleImageDragEnd}
+                      onClick={() => {
+                        // Only open lightbox if not in admin mode or if not dragging
+                        if (!isAdminMode || draggedImageIndex === null) {
+                          openLightbox(index)
+                        }
                       }}
-                      onMouseDown={(e) => e.stopPropagation()}
                     >
-                      <span
-                        className={`text-xs sm:text-sm ${
-                          favoriteUrls.includes(imgUrl)
-                            ? 'text-red-500'
-                            : 'text-white/70'
-                        }`}
+                      {/* Favorite heart in top-right corner */}
+                      <button
+                        type="button"
+                        className="absolute top-1 right-1 z-10 p-1 rounded-full bg-black/40 hover:bg-black/60"
+                        onClick={(e) => {
+                          e.stopPropagation()
+                          toggleFavorite(imgUrl)
+                        }}
+                        onMouseDown={(e) => e.stopPropagation()}
                       >
-                        ♥
-                      </span>
-                    </button>
-                    {isYouTubeUrl(imgUrl) ? (
-                      <>
+                        <span
+                          className={`text-xs sm:text-sm ${
+                            favoriteUrls.includes(imgUrl)
+                              ? 'text-red-500'
+                              : 'text-white/70'
+                          }`}
+                        >
+                          ♥
+                        </span>
+                      </button>
+                      {isYouTubeUrl(imgUrl) ? (
+                        <>
+                          <img
+                            src={getYouTubeThumbnail(imgUrl)}
+                            alt={itemTitle || `Video ${index + 1}`}
+                            className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105 pointer-events-none"
+                            draggable={false}
+                            onError={(e) => {
+                              const target = e.target as HTMLImageElement
+                              const videoId = getYouTubeVideoId(imgUrl)
+                              if (videoId && target.src.includes('maxresdefault')) {
+                                target.src = `https://img.youtube.com/vi/${videoId}/hqdefault.jpg`
+                              }
+                            }}
+                          />
+                          {/* Play button overlay */}
+                          <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
+                            <div className="w-10 h-10 sm:w-12 sm:h-12 bg-red-600 rounded-full flex items-center justify-center shadow-lg">
+                              <svg className="w-5 h-5 sm:w-6 sm:h-6 text-white ml-1" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M8 5v14l11-7z" />
+                              </svg>
+                            </div>
+                          </div>
+                        </>
+                      ) : (
                         <img
-                          src={getYouTubeThumbnail(imgUrl)}
-                          alt={`Video ${index + 1}`}
+                          src={imgUrl}
+                          alt={itemTitle || `Gallery image ${index + 1}`}
                           className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105 pointer-events-none"
                           draggable={false}
                           onError={(e) => {
                             const target = e.target as HTMLImageElement
-                            // Fallback to hqdefault if maxresdefault fails
-                            const videoId = getYouTubeVideoId(imgUrl)
-                            if (videoId && target.src.includes('maxresdefault')) {
-                              target.src = `https://img.youtube.com/vi/${videoId}/hqdefault.jpg`
+                            target.style.display = 'none'
+                            const parent = target.parentElement
+                            if (parent) {
+                              parent.innerHTML = `
+                                <div class="w-full h-full bg-gray-200 flex items-center justify-center">
+                                  <span class="text-gray-400 text-xs">Gallery image</span>
+                                </div>
+                              `
                             }
                           }}
                         />
-                        {/* Play button overlay */}
-                        <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
-                          <div className="w-10 h-10 sm:w-12 sm:h-12 bg-red-600 rounded-full flex items-center justify-center shadow-lg">
-                            <svg className="w-5 h-5 sm:w-6 sm:h-6 text-white ml-1" fill="currentColor" viewBox="0 0 24 24">
-                              <path d="M8 5v14l11-7z" />
-                            </svg>
-                          </div>
-                        </div>
-                      </>
-                    ) : (
-                      <img
-                        src={imgUrl}
-                        alt={`Gallery image ${index + 1}`}
-                        className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105 pointer-events-none"
-                        draggable={false}
-                        onError={(e) => {
-                          const target = e.target as HTMLImageElement
-                          target.style.display = 'none'
-                          const parent = target.parentElement
-                          if (parent) {
-                            parent.innerHTML = `
-                              <div class="w-full h-full bg-gray-200 flex items-center justify-center">
-                                <span class="text-gray-400 text-xs">Gallery image</span>
-                              </div>
-                            `
-                          }
-                        }}
-                      />
+                      )}
+                    </div>
+                    {/* Title below thumbnail */}
+                    {(itemTitle || isAdminMode) && (
+                      <div className="w-24 sm:w-28 lg:w-32 text-center">
+                        <EditableGalleryTitle
+                          imageUrl={imgUrl}
+                          title={itemTitle}
+                          language={language}
+                          isAdminMode={isAdminMode}
+                          onSave={saveGalleryTitle}
+                          className="text-[10px] sm:text-xs text-foreground/70 leading-tight line-clamp-2"
+                          placeholderClass="text-[10px] sm:text-xs text-foreground/30 italic leading-tight"
+                        />
+                      </div>
+                    )}
+                    {isAdminMode && (
+                      <div className="flex items-center gap-2">
+                        <button
+                          type="button"
+                          className="text-[10px] sm:text-xs text-red-500 hover:underline"
+                          onClick={(e) => {
+                            e.preventDefault()
+                            e.stopPropagation()
+                            handleDeleteGalleryImage(imgUrl)
+                          }}
+                          disabled={isDeleting}
+                        >
+                          {isDeleting ? 'Deleting…' : 'Delete'}
+                        </button>
+                      </div>
                     )}
                   </div>
-                  {isAdminMode && (
-                    <div className="flex items-center gap-2">
-                      <button
-                        type="button"
-                        className="text-[10px] sm:text-xs text-red-500 hover:underline"
-                        onClick={(e) => {
-                          e.preventDefault()
-                          e.stopPropagation()
-                          handleDeleteGalleryImage(imgUrl)
-                        }}
-                        disabled={isDeleting}
-                      >
-                        {isDeleting ? 'Deleting…' : 'Delete'}
-                      </button>
-                    </div>
-                  )}
-                </div>
-              ))}
+                )
+              })}
             </div>
           </div>
         )}
@@ -557,7 +767,7 @@ export default function Gallery() {
               ) : (
                 <img
                   src={galleryImages[activeImageIndex]}
-                  alt={`Gallery image ${activeImageIndex + 1}`}
+                  alt={getGalleryTitle(galleryImages[activeImageIndex]) || `Gallery image ${activeImageIndex + 1}`}
                   className="max-w-full max-h-full w-auto h-auto object-contain"
                   style={{ maxWidth: '100%', maxHeight: '100%' }}
                 />
@@ -591,6 +801,27 @@ export default function Gallery() {
                 </>
               )}
             </div>
+
+            {/* Title overlay at the bottom of the lightbox */}
+            {(() => {
+              const activeUrl = galleryImages[activeImageIndex]
+              const activeTitle = getGalleryTitle(activeUrl)
+              if (!activeTitle && !isAdminMode) return null
+              return (
+                <div className="absolute bottom-0 left-0 right-0 z-60 bg-gradient-to-t from-black/80 to-transparent px-4 py-3 sm:py-4 flex justify-center">
+                  <EditableGalleryTitle
+                    imageUrl={activeUrl}
+                    title={activeTitle}
+                    language={language}
+                    isAdminMode={isAdminMode}
+                    onSave={saveGalleryTitle}
+                    className="text-white text-sm sm:text-base font-light"
+                    placeholderClass="text-white/40 text-sm sm:text-base italic"
+                    lightbox
+                  />
+                </div>
+              )
+            })()}
           </div>
         </div>
       )}
