@@ -609,26 +609,28 @@ export default function Gallery() {
                         }
                       }}
                     >
-                      {/* Favorite heart in top-right corner */}
-                      <button
-                        type="button"
-                        className="absolute top-1 right-1 z-10 p-1 rounded-full bg-black/40 hover:bg-black/60"
-                        onClick={(e) => {
-                          e.stopPropagation()
-                          toggleFavorite(imgUrl)
-                        }}
-                        onMouseDown={(e) => e.stopPropagation()}
-                      >
-                        <span
-                          className={`text-xs sm:text-sm ${
-                            favoriteUrls.includes(imgUrl)
-                              ? 'text-red-500'
-                              : 'text-white/70'
-                          }`}
+                      {/* Favorite heart in top-right corner (admin only) */}
+                      {isAdminMode && (
+                        <button
+                          type="button"
+                          className="absolute top-1 right-1 z-10 p-1 rounded-full bg-black/40 hover:bg-black/60"
+                          onClick={(e) => {
+                            e.stopPropagation()
+                            toggleFavorite(imgUrl)
+                          }}
+                          onMouseDown={(e) => e.stopPropagation()}
                         >
-                          ♥
-                        </span>
-                      </button>
+                          <span
+                            className={`text-xs sm:text-sm ${
+                              favoriteUrls.includes(imgUrl)
+                                ? 'text-red-500'
+                                : 'text-white/70'
+                            }`}
+                          >
+                            ♥
+                          </span>
+                        </button>
+                      )}
                       {isYouTubeUrl(imgUrl) ? (
                         <>
                           <img
@@ -730,29 +732,29 @@ export default function Gallery() {
             aria-label="Close image gallery"
           />
 
-          {/* Image container - full viewport on mobile, constrained on desktop */}
-          <div className="relative z-50 w-full h-full sm:max-w-5xl sm:h-auto sm:px-4 flex flex-col">
-            {/* Header overlay - positioned on top of image */}
-            <div className="absolute top-0 left-0 right-0 z-60 flex items-center justify-between p-3 sm:p-4 bg-gradient-to-b from-black/80 to-transparent">
-              <span className="text-white text-xs sm:text-sm opacity-90">
+          {/* Image container - centered, auto height so bar stays above photo */}
+          <div className="relative z-50 w-full max-h-full sm:max-w-5xl px-2 sm:px-4 flex flex-col items-stretch" style={{ maxHeight: '96vh' }}>
+            {/* Top bar – counter + close button, above the photo */}
+            <div className="flex-shrink-0 flex items-center justify-between px-1 pb-1.5 sm:pb-2">
+              <span className="text-white text-[10px] sm:text-xs opacity-80">
                 {activeImageIndex + 1} / {galleryImages.length}
               </span>
               <button
                 type="button"
-                className="absolute top-2 right-2 sm:top-4 sm:right-4 z-70 w-8 h-8 sm:w-10 sm:h-10 flex items-center justify-center text-white text-xl sm:text-2xl hover:bg-white/20 rounded-full transition-colors border border-white/40"
+                className="flex items-center gap-1 px-1.5 py-0.5 sm:px-2 sm:py-1 text-white text-[10px] sm:text-xs bg-white/10 hover:bg-white/20 transition-colors border border-white/25 rounded-sm"
                 onClick={(e) => {
                   e.stopPropagation()
                   closeLightbox()
                 }}
                 aria-label="Close image gallery"
-                title="Close"
               >
-                ×
+                <span className="text-xs sm:text-sm leading-none">×</span>
+                <span>{language === 'es' ? 'Cerrar' : 'Close'}</span>
               </button>
             </div>
 
-            {/* Image/Video area - constrained to viewport height */}
-            <div className="relative w-full h-full sm:aspect-[4/3] sm:h-auto bg-black flex items-center justify-center overflow-hidden" style={{ maxHeight: '100vh' }}>
+            {/* Image/Video area - fills remaining space */}
+            <div className="relative flex-1 min-h-0 bg-black flex items-center justify-center overflow-hidden">
               {isYouTubeUrl(galleryImages[activeImageIndex]) ? (
                 <div className="w-full h-full flex items-center justify-center">
                   <iframe
