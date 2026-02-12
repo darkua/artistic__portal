@@ -72,8 +72,8 @@ function WorkItem({
 
   // Fixed width for all thumbnails (vertical posters)
   // On mobile, use full width with max constraint; on larger screens, use fixed width
-  // "El último paquete" (id: 4) needs larger width to match INFIEL's vertical size
-  const fixedWidth = work.id === 4 ? 480 : 360 // Fixed width in pixels for consistent sizing
+  // INFIEL (id: 5) uses a narrower width for its vertical thumbnail
+  const fixedWidth = work.id === 5 ? 280 : 360 // Fixed width in pixels for consistent sizing
 
   const handleThumbnailUpload = async (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0]
