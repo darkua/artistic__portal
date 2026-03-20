@@ -962,26 +962,28 @@ export default function WorkDetail() {
                       }
                     }}
                   >
-                    {/* Favorite heart in top-right corner */}
-                    <button
-                      type="button"
-                      className="absolute top-1 right-1 z-10 p-1 rounded-full bg-black/40 hover:bg-black/60"
-                      onClick={(e) => {
-                        e.stopPropagation()
-                        toggleFavorite(img.url)
-                      }}
-                      onMouseDown={(e) => e.stopPropagation()}
-                    >
-                      <span
-                        className={`text-xs sm:text-sm ${
-                          favoriteUrls.includes(img.url)
-                            ? 'text-red-500'
-                            : 'text-white/70'
-                        }`}
+                    {/* Favorite heart in top-right corner (admin only) */}
+                    {isAdminMode && (
+                      <button
+                        type="button"
+                        className="absolute top-1 right-1 z-10 p-1 rounded-full bg-black/40 hover:bg-black/60"
+                        onClick={(e) => {
+                          e.stopPropagation()
+                          toggleFavorite(img.url)
+                        }}
+                        onMouseDown={(e) => e.stopPropagation()}
                       >
-                        ♥
-                      </span>
-                    </button>
+                        <span
+                          className={`text-xs sm:text-sm ${
+                            favoriteUrls.includes(img.url)
+                              ? 'text-red-500'
+                              : 'text-white/70'
+                          }`}
+                        >
+                          ♥
+                        </span>
+                      </button>
+                    )}
                     <img
                       src={img.url}
                       alt={`${work.title[lang]} - ${index + 1}`}
