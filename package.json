@@ -7,7 +7,9 @@
     "dev:admin": "cross-env VITE_ADMIN_MODE=true vite",
     "dev:server": "node server/index.js",
     "dev:all": "concurrently \"npm run dev\" \"npm run dev:server\"",
-    "build": "tsc && vite build",
+    "build": "tsc && vite build && node scripts/generate-og-works.mjs",
+    "build:og": "node scripts/generate-og-works.mjs",
+    "preview:cf": "npm run build && wrangler dev",
     "start": "node server/index.js",
     "preview": "vite preview",
     "lint": "eslint ."
