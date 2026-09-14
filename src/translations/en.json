@@ -23,6 +23,7 @@
     "theaterDirector": "Theater",
     "actress": "Actress",
     "movieDirector": "Cinema",
+    "handMadeCinema": "Hand made Cinema",
     "noWorks": "No works available in this category"
   },
   "news": {

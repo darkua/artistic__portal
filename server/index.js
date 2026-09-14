@@ -34,6 +34,7 @@ let ollama = null;
 const allowedOrigins = [
   'http://localhost:5173',
   'https://uncorroborated-divergent-kyleigh.ngrok-free.dev',
+  'https://df57-176-223-61-45.ngrok-free.app',
 ];
 
 // Enable CORS
@@ -950,20 +951,42 @@ app.put('/api/works/reorder', async (req, res) => {
       return res.status(404).json({ error: `Work with id ${workId} not found in category ${category}` });
     }
 
-    if (newIndex < 0 || newIndex >= works.length) {
-      return res.status(400).json({ error: `newIndex must be between 0 and ${works.length - 1}` });
-    }
+    const getMovieSubsection = (work) =>
+      work && work.movieSubsection === 'handMadeCinema' ? 'handMadeCinema' : 'main';
 
-    // Remove work from current position
-    const [work] = works.splice(currentIndex, 1);
-    // Insert at new position
-    works.splice(newIndex, 0, work);
+    if (category === 'movieDirector') {
+      const subsection = req.body.subsection === 'handMadeCinema' ? 'handMadeCinema' : 'main';
+      const groupWorks = works.filter((w) => getMovieSubsection(w) === subsection);
+      const groupIndex = groupWorks.findIndex((w) => w.id === Number(workId));
+      if (groupIndex === -1) {
+        return res.status(404).json({ error: `Work with id ${workId} not found in movieDirector subsection ${subsection}` });
+      }
+      if (newIndex < 0 || newIndex >= groupWorks.length) {
+        return res.status(400).json({ error: `newIndex must be between 0 and ${groupWorks.length - 1}` });
+      }
+
+      const [movedWork] = groupWorks.splice(groupIndex, 1);
+      groupWorks.splice(newIndex, 0, movedWork);
+
+      const mainWorks = subsection === 'main' ? groupWorks : works.filter((w) => getMovieSubsection(w) === 'main');
+      const handMadeWorks =
+        subsection === 'handMadeCinema' ? groupWorks : works.filter((w) => getMovieSubsection(w) === 'handMadeCinema');
+
+      portfolioData.works.movieDirector = [...mainWorks, ...handMadeWorks];
+    } else {
+      if (newIndex < 0 || newIndex >= works.length) {
+        return res.status(400).json({ error: `newIndex must be between 0 and ${works.length - 1}` });
+      }
+
+      const [work] = works.splice(currentIndex, 1);
+      works.splice(newIndex, 0, work);
+    }
 
     writePortfolioData(portfolioData);
 
     console.log(`✅ Reordered work ${workId} in category ${category} from index ${currentIndex} to ${newIndex}`);
 
-    res.json({ success: true, works });
+    res.json({ success: true, works: portfolioData.works[category] });
   } catch (error) {
     console.error('Reorder works error:', error);
     res.status(500).json({ error: error.message });

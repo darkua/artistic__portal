@@ -1091,6 +1091,39 @@
           "es": "Duración: 7,37 minutos"
         },
         "year": 2023
+      },
+      {
+        "id": 25,
+        "movieSubsection": "handMadeCinema",
+        "title": {
+          "en": "Title",
+          "es": "Zapping"
+        },
+        "shortDescription": {
+          "en": "",
+          "es": ""
+        },
+        "description": {
+          "en": "Iboga Productions surprises with a new audiovisual creation that combines traditional shadow theater with manual cinematographic techniques and real-time interactive virtual projections directly onto the stage.\n\nThis is an immersive show that uses analog projectors, silhouettes, actors, virtual projections, and sound effects. All of this live and in view of the audience, taking theater to cinematic experience.\n\n\"Zapping\" is a brief integrative story in which the audience has the opportunity to participate as the protagonist: a character is watching TV at home, but everything changes when he falls into a deep sleep where reality and fiction are confused.\n\n(The video has not been edited, sound effects and visuals are launched live during the shadow show, through a video tracking program, using the mapping technique).\n\nDirection: Elma Hache and Almeida V.\nDuration: 5 minutes",
+          "es": "Iboga Producciones nos sorprende con una nueva creación audiovisual, que fusiona el teatro de sombras artesanal con técnicas cinematográficas manuales y proyecciones virtuales interactivas a tiempo real, directamente sobre el escenario.\nSe trata de un espectáculo inmersivo, que utiliza retroproyectores analógicos antiguos, siluetas, actores, proyecciones virtuales y efectos sonoros. Todo ello en vivo y a la vista del público, llevando la teatralidad a la experiencia cinematográfica.\n\n\"Zapping\" es una breve historia integradora en la que el público tiene la oportunidad de participar como protagonista: un personaje está viendo la televisión en casa, pero todo se transforma al caer en un sueño profundo donde se confunden realidad y ficción.\n\n(El vídeo no ha sido editado, los efectos sonoros y visuales son lanzados en directo durante el espectáculo de sombras, a través de un programa de video tracking, usando la técnica de mapping).\n\nDirección: Elma Hache y Almeida V.\nDuración: 5 minutos"
+        },
+        "thumbnail": "/works/misc/thumbnail-1789415769755.jpg",
+        "images": [],
+        "videos": [
+          {
+            "url": "https://vimeo.com/1226686720?activityReferer=1",
+            "thumbnail": "https://vumbnail.com/1226686720.jpg"
+          }
+        ],
+        "materials": {
+          "en": "Short film",
+          "es": "Cortometraje"
+        },
+        "size": {
+          "en": "",
+          "es": ""
+        },
+        "year": "2026"
       }
     ],
     "assistantDirection": [
@@ -2180,6 +2213,16 @@
     ]
   },
   "worksPage": {
+    "handMadeCinema": {
+      "title": {
+        "en": "Handmade cinema",
+        "es": "Cine hecho a mano"
+      },
+      "description": {
+        "en": "Here is the translation of the provided Spanish text:\n\n\"En una escena, se ve a un hombre de aspecto fuerte, con una camiseta azul y una chaqueta de cuero negro, mirando hacia adelante y sentado en una silla de madera. En la mano derecha, tiene una pistola de tipo revolver, con el dardo aún atravesando su cuerpo. Se ve también a un hombre más pequeño, con ropa de cuidado personal, que se encuentra detrás de él y se está abrazando su torso.\"\n\nTranslation:\n\n\"In a scene, a man with a strong appearance, wearing a blue t-shirt and a black leather jacket, is looking forward and sitting on a wooden chair. In his right hand, he holds a revolver-type pistol, with the dart still piercing his body. Another man, smaller in size, wearing well-dressed clothes, is seen behind him, embracing his torso.\"",
+        "es": ""
+      }
+    },
     "description": {
       "en": "I started writing monologues and dialogues for plays that I myself performed in amateur theater. Gradually, I became more professional until finally, I graduated in Scene Direction and Dramaturgy from the Superior School of Dramatic Art of Murcia.\nFor me, scene direction is a balance between mind and heart, meticulousness and passion. One must know how to transmit the soul of the work and the essence of the character to the actors, while also giving them space and freedom to develop their role from their senses. To have the entire production in one's head – scenery, lighting design, sound space, rhythm...\nAs a director, one needs to know how to listen to every instrument, detect dissonances, and build a melody among all.\nI also enjoy telling stories, inventing worlds and characters... entering other realities, perhaps to escape from this one.\nHereafter, examples of my stage direction and short film production work, which explore memory, identity, and encounter with the other, through theater and cinema.",
       "es": "Comencé a escribir monólogos y diálogos para obras que yo misma interpretaba en el teatro amateur. Poco a poco me fui profesionalizando, hasta que finalmente, me gradué en Dirección de Escena y Dramaturgia en la Escuela Superior de Arte Dramático de Murcia.\nPara mí la dirección de escena es un equilibrio entre la cabeza y el corazón, la meticulosidad y la pasión. Hay que saber transmitir el alma de la obra y la esencia del personaje a los actores, a la vez que darles espacio y libertad para desarrollar el papel desde sus sentidos. Tener en la cabeza la totalidad de la obra, la escenografía, el diseño de luces, el espacio sonoro, el ritmo…\nComo un director de orquesta, se necesita saber escuchar cada instrumento, detectar disonancias y construir una melodía entre todos.\nTambién me gusta contar historias, inventar mundos y personajes... entrar en otras realidades, quizás para escapar de esta.\nA continuación, una muestra de mis trabajos de dirección escénica y de realización de cortometrajes, que exploran la memoria, la identidad y el encuentro con el otro, a través del teatro y el cine."

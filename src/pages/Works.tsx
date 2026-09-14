@@ -27,6 +27,16 @@ interface Work {
   // Optional gallery of images for the detail page
   images?: WorkImage[]
   year: number
+  /** When set to `handMadeCinema`, shown under the Hand made Cinema block on Direction → Cinema */
+  movieSubsection?: 'handMadeCinema'
+}
+
+const HAND_MADE_CINEMA_SUBSECTION = 'handMadeCinema' as const
+
+function getMovieSubsection(work: Work): 'main' | typeof HAND_MADE_CINEMA_SUBSECTION {
+  return work.movieSubsection === HAND_MADE_CINEMA_SUBSECTION
+    ? HAND_MADE_CINEMA_SUBSECTION
+    : 'main'
 }
 
 interface WorksData {
@@ -72,8 +82,9 @@ function WorkItem({
 
   // Fixed width for all thumbnails (vertical posters)
   // On mobile, use full width with max constraint; on larger screens, use fixed width
-  // INFIEL (id: 5) uses a narrower width for its vertical thumbnail
-  const fixedWidth = work.id === 5 ? 280 : 360 // Fixed width in pixels for consistent sizing
+  // Hand-made cinema posters (e.g. INFIEL) use a narrower width for vertical thumbnails
+  const fixedWidth =
+    getMovieSubsection(work) === HAND_MADE_CINEMA_SUBSECTION || work.id === 5 ? 280 : 360
 
   const handleThumbnailUpload = async (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0]
@@ -530,6 +541,7 @@ function WorkGrid({
 
 export default function Works() {
   const { t, language } = useTranslation()
+  const isAdminMode = (import.meta as any).env.VITE_ADMIN_MODE === 'true'
   const [portfolioDataState, setPortfolioDataState] = useState<any>(portfolioData)
 
   // In development, watch for JSON file changes via HMR
@@ -566,7 +578,12 @@ export default function Works() {
   }
 
   // Handle work reordering
-  const handleReorder = async (category: 'theaterDirector' | 'movieDirector', workId: number, newIndex: number) => {
+  const handleReorder = async (
+    category: 'theaterDirector' | 'movieDirector',
+    workId: number,
+    newIndex: number,
+    movieSubsection?: 'main' | typeof HAND_MADE_CINEMA_SUBSECTION
+  ) => {
     try {
       const response = await fetch('/api/works/reorder', {
         method: 'PUT',
@@ -577,6 +594,9 @@ export default function Works() {
           category,
           workId,
           newIndex,
+          ...(category === 'movieDirector' && movieSubsection === HAND_MADE_CINEMA_SUBSECTION
+            ? { subsection: HAND_MADE_CINEMA_SUBSECTION }
+            : {}),
         }),
       })
 
@@ -614,6 +634,15 @@ export default function Works() {
 
   // Use works in their current order (can be reordered via drag and drop)
   const sortedTheaterDirector = worksData?.theaterDirector || []
+  const allMovieDirector = worksData?.movieDirector || []
+  const mainCinemaWorks = allMovieDirector.filter((w) => getMovieSubsection(w) === 'main')
+  const handMadeCinemaWorks = allMovieDirector.filter(
+    (w) => getMovieSubsection(w) === HAND_MADE_CINEMA_SUBSECTION
+  )
+  const handMadeCinemaTitle =
+    portfolioDataState?.worksPage?.handMadeCinema?.title?.[lang] || t('works.handMadeCinema')
+  const handMadeCinemaDescription =
+    portfolioDataState?.worksPage?.handMadeCinema?.description?.[lang] ?? ''
 
   return (
     <div className="w-full">
@@ -659,15 +688,57 @@ export default function Works() {
                <h2 className="text-2xl sm:text-3xl font-light mb-8 sm:mb-12">
                  {t('works.movieDirector')}
                </h2>
-               {worksData?.movieDirector && worksData.movieDirector.length > 0 ? (
+               {mainCinemaWorks.length > 0 ? (
                  <WorkGrid 
-                   works={worksData.movieDirector} 
+                   works={mainCinemaWorks} 
                    language={lang} 
                    onThumbnailUpdate={handleThumbnailUpdate}
-                   onReorder={(workId, newIndex) => handleReorder('movieDirector', workId, newIndex)}
+                   onReorder={(workId, newIndex) => handleReorder('movieDirector', workId, newIndex, 'main')}
                  />
                ) : (
                  <p className="text-sm opacity-60">{t('works.noWorks')}</p>
+               )}
+
+               {(handMadeCinemaWorks.length > 0 || portfolioDataState?.worksPage?.handMadeCinema) && (
+                 <div className="mt-14 sm:mt-16 pt-10 sm:pt-12 border-t border-border">
+                   <EditableText
+                     dataPath="worksPage.handMadeCinema.title"
+                     language={lang}
+                     className="text-xl sm:text-2xl font-light mb-4 sm:mb-6"
+                     as="h3"
+                   >
+                     {handMadeCinemaTitle}
+                   </EditableText>
+                   {(handMadeCinemaDescription || isAdminMode) && (
+                     <div className="max-w-4xl mb-8 sm:mb-10">
+                       <EditableText
+                         dataPath="worksPage.handMadeCinema.description"
+                         language={lang}
+                         className={`text-base sm:text-lg leading-relaxed opacity-90 whitespace-pre-line${
+                           !handMadeCinemaDescription && isAdminMode ? ' opacity-40 italic min-h-[1.5em]' : ''
+                         }`}
+                         as="p"
+                         multiline
+                         linkify
+                       >
+                         {handMadeCinemaDescription ||
+                           (isAdminMode ? 'Double-click to add a description for this section' : '')}
+                       </EditableText>
+                     </div>
+                   )}
+                   {handMadeCinemaWorks.length > 0 ? (
+                     <WorkGrid
+                       works={handMadeCinemaWorks}
+                       language={lang}
+                       onThumbnailUpdate={handleThumbnailUpdate}
+                       onReorder={(workId, newIndex) =>
+                         handleReorder('movieDirector', workId, newIndex, HAND_MADE_CINEMA_SUBSECTION)
+                       }
+                     />
+                   ) : (
+                     <p className="text-sm opacity-60">{t('works.noWorks')}</p>
+                   )}
+                 </div>
                )}
              </section>
       </div>

@@ -775,17 +775,20 @@ export default function WorkDetail() {
         </div>
 
         {/* Main description text */}
-        {description && workCategory !== null && workIndex !== -1 ? (
+        {workCategory !== null && workIndex !== -1 && (description || isAdminMode) ? (
           <div className="max-w-4xl mb-10 sm:mb-12">
             <EditableText
               dataPath={`works.${workCategory}[${workIndex}].description`}
               language={lang}
-              className="text-base sm:text-lg leading-relaxed opacity-90 whitespace-pre-line"
+              className={`text-base sm:text-lg leading-relaxed opacity-90 whitespace-pre-line${
+                !description && isAdminMode ? ' opacity-40 italic min-h-[1.5em]' : ''
+              }`}
               as="p"
               multiline
               linkify
             >
-              {description}
+              {description ||
+                (isAdminMode ? 'Double-click to add a description' : '')}
             </EditableText>
           </div>
         ) : description ? (

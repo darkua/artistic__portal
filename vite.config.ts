@@ -15,6 +15,8 @@ export default defineConfig({
     host: true,
     allowedHosts: [
       'uncorroborated-divergent-kyleigh.ngrok-free.dev',
+      'df57-176-223-61-45.ngrok-free.app',
+      '.ngrok-free.app',
       '.ngrok-free.dev',
       '.ngrok.io',
       'localhost',
